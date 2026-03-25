@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PerfectHolograms -- Wiki | Perfect Plugins</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a href="../../" class="nav-logo"><span>Perfect</span>Plugins</a>
+      <ul class="nav-links">
+      <li><a href="../../">Home</a></li>
+      <li><a href="../../#plugins">Plugins</a></li>
+      <li><a href="https://builtbybit.com/members/perfectplugins.491641/">Store</a></li>
+    </ul>
+</div></nav>
+<div class="wiki-layout">
+  <aside class="wiki-sidebar">
+    <h3>PerfectHolograms</h3>
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#richtext">Rich Text</a></li>
+      <li><a href="#fonts">Fonts</a></li>
+      <li><a href="#images">Image Support</a></li>
+      <li><a href="#placeholders">Placeholders</a></li>
+      <li><a href="#commands">Commands</a></li>
+      <li><a href="#gui">GUI Editor</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </aside>
+  <main class="wiki-content">
+    <h1 id="overview">PerfectHolograms</h1>
+    <p>The most advanced hologram plugin for Hytale servers. Rich text with hex colors, gradients, bold/italic/underline, 8 fonts, image support, dynamic placeholders, and a full interactive GUI editor.</p>
+
+    <table>
+      <tr><th>Version</th><td>1.3</td></tr>
+      <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
+      <tr><th>Java</th><td>21+</td></tr>
+      <tr><th>Dependencies</th><td>None</td></tr>
+      <tr><th>Languages</th><td>EN, FR, ES, DE, IT, PT</td></tr>
+    </table>
+
+    <h2 id="installation">Installation</h2>
+    <ol>
+      <li>Drop <code>PerfectHolograms-1.3.jar</code> in <code>mods/</code></li>
+      <li>Start the server</li>
+      <li>Use <code>/ph create myhologram</code> or <code>/ph menu</code></li>
+    </ol>
+
+    <h2 id="richtext">Rich Text Formatting</h2>
+    <p>Holograms support rich text markup for stunning visuals:</p>
+    <table>
+      <tr><th>Syntax</th><th>Effect</th></tr>
+      <tr><td><code>&lt;#FF6B00&gt;text&lt;/&gt;</code></td><td>Hex color</td></tr>
+      <tr><td><code>&lt;gradient:#FF0000,#0000FF&gt;text&lt;/&gt;</code></td><td>Color gradient</td></tr>
+      <tr><td><code>&lt;rainbow&gt;text&lt;/rainbow&gt;</code></td><td>Rainbow effect</td></tr>
+      <tr><td><code>&lt;b&gt;text&lt;/b&gt;</code></td><td>Bold</td></tr>
+      <tr><td><code>&lt;i&gt;text&lt;/i&gt;</code></td><td>Italic</td></tr>
+      <tr><td><code>&lt;u&gt;text&lt;/u&gt;</code></td><td>Underline</td></tr>
+    </table>
+
+    <h2 id="fonts">Fonts (8)</h2>
+    <ul>
+      <li><strong>Default</strong> -- Standard Hytale font</li>
+      <li><strong>Sans</strong> -- Clean sans-serif</li>
+      <li><strong>Serif</strong> -- Classic serif</li>
+      <li><strong>Thin</strong> -- Lightweight</li>
+      <li><strong>Cursive</strong> -- Handwritten style</li>
+      <li><strong>Impact</strong> -- Bold display</li>
+      <li><strong>Comic</strong> -- Casual</li>
+      <li><strong>Mono</strong> -- Monospaced / code</li>
+    </ul>
+
+    <h2 id="images">Image Support</h2>
+    <ol>
+      <li>Place a PNG file in the <code>images/</code> folder inside the plugin data</li>
+      <li>Use <code>/ph addimage &lt;name&gt; &lt;file.png&gt; [width]</code></li>
+      <li>Restart the server for assets to load</li>
+    </ol>
+    <p>Images render as pixel art using colored block characters. Scale is adjustable independently from text.</p>
+
+    <h2 id="placeholders">Dynamic Placeholders</h2>
+    <p>Auto-updated every 30 seconds:</p>
+    <table>
+      <tr><th>Placeholder</th><th>Value</th></tr>
+      <tr><td><code>{online}</code></td><td>Players in world</td></tr>
+      <tr><td><code>{time}</code></td><td>Server time (HH:mm)</td></tr>
+      <tr><td><code>{date}</code></td><td>Server date (yyyy-MM-dd)</td></tr>
+      <tr><td><code>{world}</code></td><td>World name</td></tr>
+    </table>
+
+    <h2 id="commands">Commands</h2>
+    <table>
+      <tr><th>Command</th><th>Description</th></tr>
+      <tr><td><code>/ph create &lt;name&gt;</code></td><td>Create hologram at your position</td></tr>
+      <tr><td><code>/ph delete &lt;name&gt;</code></td><td>Delete hologram</td></tr>
+      <tr><td><code>/ph addline &lt;name&gt; &lt;text&gt;</code></td><td>Add a line</td></tr>
+      <tr><td><code>/ph setline &lt;name&gt; &lt;#&gt; &lt;text&gt;</code></td><td>Replace a line</td></tr>
+      <tr><td><code>/ph removeline &lt;name&gt; &lt;#&gt;</code></td><td>Remove a line</td></tr>
+      <tr><td><code>/ph clearlines &lt;name&gt;</code></td><td>Clear all lines</td></tr>
+      <tr><td><code>/ph move &lt;name&gt; &lt;x&gt; &lt;y&gt; &lt;z&gt;</code></td><td>Move to coordinates</td></tr>
+      <tr><td><code>/ph movehere &lt;name&gt;</code></td><td>Move to your position</td></tr>
+      <tr><td><code>/ph adjust &lt;name&gt; &lt;dx&gt; &lt;dy&gt; &lt;dz&gt;</code></td><td>Adjust by offset</td></tr>
+      <tr><td><code>/ph spacing &lt;name&gt; &lt;value&gt;</code></td><td>Set line spacing</td></tr>
+      <tr><td><code>/ph addimage &lt;name&gt; &lt;file&gt; [width]</code></td><td>Add image</td></tr>
+      <tr><td><code>/ph copy &lt;src&gt; &lt;new&gt;</code></td><td>Duplicate hologram</td></tr>
+      <tr><td><code>/ph near [radius]</code></td><td>List nearby holograms</td></tr>
+      <tr><td><code>/ph list</code></td><td>List all holograms</td></tr>
+      <tr><td><code>/ph info &lt;name&gt;</code></td><td>Show details</td></tr>
+      <tr><td><code>/ph menu</code></td><td>Open GUI editor</td></tr>
+      <tr><td><code>/ph reload</code></td><td>Reload from disk</td></tr>
+    </table>
+
+    <h2 id="gui">Interactive GUI Editor</h2>
+    <p>Open with <code>/ph menu</code>. The GUI provides:</p>
+    <ul>
+      <li>Hologram list with pagination (5 per page)</li>
+      <li>Position editor with move/adjust controls</li>
+      <li>Rotation editor (yaw + "Face Me" mode)</li>
+      <li>Scale adjustment (text: 1-20x, image: independent)</li>
+      <li>Line spacing tuning</li>
+      <li>Font selector (8 options, instant switch)</li>
+      <li>Rich text line editor</li>
+      <li>Image insertion</li>
+      <li>Copy and delete operations</li>
+    </ul>
+
+    <h2 id="faq">FAQ</h2>
+    <h3>Image not showing?</h3>
+    <p>Images require a server restart after placing the PNG in the <code>images/</code> folder. The asset pack is generated at boot.</p>
+    <h3>How many characters per hologram?</h3>
+    <p>Each character is an individual ECS entity. Very long holograms (100+ characters) may impact performance.</p>
+  </main>
+</div>
+<footer><p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> -- Perfect Plugins 2026</p></footer>
+</body>
+</html>
