@@ -106,6 +106,22 @@ nav {
 .tag.new { background: rgba(63, 185, 80, 0.15); color: var(--green); }
 .tag.popular { background: var(--accent-glow); color: var(--accent); }
 
+/* Plugin status line */
+.plugin-status {
+  font-size: 0.8rem; font-weight: 600; margin-bottom: 0.75rem;
+  padding: 0.3rem 0.75rem; border-radius: 6px; display: inline-block;
+}
+.plugin-status.released { background: rgba(63, 185, 80, 0.15); color: var(--green); }
+.plugin-status.dev { background: rgba(255, 200, 50, 0.15); color: #f0c040; }
+.plugin-status.free { background: rgba(88, 166, 255, 0.15); color: var(--blue); }
+
+/* Dev card style */
+.plugin-card.dev { border-style: dashed; opacity: 0.85; }
+.plugin-card.dev:hover { opacity: 1; }
+
+/* Small version text */
+.plugin-card h3 small { font-size: 0.75rem; color: var(--text-dim); font-weight: 400; }
+
 /* ── FEATURES ── */
 .features {
   display: grid;
