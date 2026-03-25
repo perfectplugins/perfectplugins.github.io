@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PerfectAutomation — Wiki | Perfect Plugins</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../../" class="nav-logo"><span>Perfect</span>Plugins</a>
+    <ul class="nav-links">
+      <li><a href="../../">Home</a></li>
+      <li><a href="../perfectautomation/" class="active">Automation</a></li>
+      <li><a href="../perfectportals/">Portals</a></li>
+      <li><a href="../perfectspawner/">Spawner</a></li>
+      <li><a href="../perfectnpc/">NPC</a></li>
+      <li><a href="../perfecttranslate/">Translate</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wiki-layout">
+  <aside class="wiki-sidebar">
+    <h3>PerfectAutomation</h3>
+    <ul>
+      <li><a href="#overview" class="active">Overview</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#blocks">Blocks</a></li>
+      <li><a href="#networks">Networks</a></li>
+      <li><a href="#commands">Commands</a></li>
+      <li><a href="#config">Configuration</a></li>
+      <li><a href="#recipes">Furnace Recipes</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <h3 style="margin-top: 1.5rem;">Blocks Reference</h3>
+    <ul>
+      <li><a href="#block-conveyor">Conveyor</a></li>
+      <li><a href="#block-importer">Importer</a></li>
+      <li><a href="#block-exporter">Exporter</a></li>
+      <li><a href="#block-autofurnace">Auto Furnace</a></li>
+      <li><a href="#block-breaker">Breaker</a></li>
+      <li><a href="#block-hopper">Hopper</a></li>
+      <li><a href="#block-splitter">Splitter</a></li>
+      <li><a href="#block-trashbin">Trash Bin</a></li>
+    </ul>
+  </aside>
+
+  <main class="wiki-content">
+    <h1 id="overview">PerfectAutomation</h1>
+    <p>A full item automation system for Hytale. Build conveyor networks, automate smelting, break blocks, and transport items between chests — all without writing a single line of code.</p>
+
+    <table>
+      <tr><th>Version</th><td>1.0.0</td></tr>
+      <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
+      <tr><th>Java</th><td>21</td></tr>
+      <tr><th>Dependencies</th><td>None</td></tr>
+    </table>
+
+    <h2 id="installation">Installation</h2>
+    <ol>
+      <li>Download <code>PerfectAutomation-1.0.0.jar</code></li>
+      <li>Place it in your server's <code>UserData/Mods/</code> folder</li>
+      <li>Start the server — config files auto-generate</li>
+      <li>Use <code>/automation give PA_Conveyor 10</code> to get started</li>
+    </ol>
+
+    <h2 id="blocks">Blocks Overview</h2>
+    <p>PerfectAutomation adds 24 unique blocks organized into categories:</p>
+
+    <h3>Transport</h3>
+    <table>
+      <tr><th>Block</th><th>Function</th></tr>
+      <tr><td>PA_Conveyor</td><td>Moves items forward along the belt</td></tr>
+      <tr><td>PA_VerticalConveyor</td><td>Moves items up or down</td></tr>
+      <tr><td>PA_Pipe</td><td>Enclosed transport tube (8 connection variants)</td></tr>
+      <tr><td>PA_Fan</td><td>Pushes items through air (configurable range)</td></tr>
+    </table>
+
+    <h3>Routing</h3>
+    <table>
+      <tr><th>Block</th><th>Function</th></tr>
+      <tr><td>PA_Splitter</td><td>Distributes items round-robin to 3 outputs</td></tr>
+      <tr><td>PA_Merger</td><td>Combines 3 inputs into 1 output</td></tr>
+      <tr><td>PA_FilterGate</td><td>Only passes specific item types</td></tr>
+    </table>
+
+    <h3>Storage / IO</h3>
+    <table>
+      <tr><th>Block</th><th>Function</th></tr>
+      <tr><td>PA_Importer</td><td>Pulls items from adjacent chest into the network</td></tr>
+      <tr><td>PA_Exporter</td><td>Pushes items from network into adjacent chest</td></tr>
+      <tr><td>PA_Hopper</td><td>Pulls items from chest above, pushes forward</td></tr>
+      <tr><td>PA_TrashBin</td><td>Destroys any items that enter it</td></tr>
+    </table>
+
+    <h3>Processing</h3>
+    <table>
+      <tr><th>Block</th><th>Function</th></tr>
+      <tr><td>PA_AutoFurnace</td><td>Smelts ores into bars (configurable recipes)</td></tr>
+      <tr><td>PA_Compactor</td><td>Compresses bars into blocks</td></tr>
+      <tr><td>PA_Decompactor</td><td>Breaks blocks back into bars</td></tr>
+    </table>
+
+    <h3>World Interaction</h3>
+    <table>
+      <tr><th>Block</th><th>Function</th></tr>
+      <tr><td>PA_Breaker</td><td>Breaks the block behind it and injects into network</td></tr>
+      <tr><td>PA_AutoHarvester</td><td>Harvests crops in range</td></tr>
+      <tr><td>PA_AutoPlanter</td><td>Plants seeds from buffer</td></tr>
+    </table>
+
+    <h2 id="networks">How Networks Work</h2>
+    <p>When you place automation blocks next to each other, they automatically form a <strong>network</strong>. Items flow through connected blocks based on their type and direction.</p>
+
+    <h3>Network Rules</h3>
+    <ul>
+      <li>Adjacent blocks (touching faces) are part of the same network</li>
+      <li>Breaking a block in the middle splits the network into two</li>
+      <li>Placing a block between two networks merges them</li>
+      <li>Each block has a <strong>direction</strong> (shown when placed) — this is the output direction</li>
+      <li>Items in broken blocks are saved to the <strong>lost &amp; found</strong></li>
+    </ul>
+
+    <h3>Basic Setup Example</h3>
+    <pre><code>[Chest] &lt;- [Importer] -&gt; [Conveyor] -&gt; [Conveyor] -&gt; [Exporter] -&gt; [Chest]</code></pre>
+    <p>The Importer pulls from the chest behind it. Items travel along conveyors. The Exporter deposits into the chest in front.</p>
+
+    <h2 id="commands">Commands</h2>
+    <table>
+      <tr><th>Command</th><th>Description</th></tr>
+      <tr><td><code>/automation help</code></td><td>Show all commands</td></tr>
+      <tr><td><code>/automation give &lt;block&gt; [amount]</code></td><td>Give yourself automation blocks</td></tr>
+      <tr><td><code>/automation info</code></td><td>Show the nearest network info</td></tr>
+      <tr><td><code>/automation stats</code></td><td>Show all networks overview</td></tr>
+      <tr><td><code>/automation claim</code></td><td>Retrieve items from lost &amp; found</td></tr>
+      <tr><td><code>/automation reload</code></td><td>Reload configuration</td></tr>
+    </table>
+
+    <h2 id="config">Configuration</h2>
+    <p>Config file: <code>UserData/Saves/MODDING/mods/KatsuyaTV_PerfectAutomation/config.json</code></p>
+    <pre><code>{
+  "lang": "EN",
+  "autoSaveSeconds": 300,
+  "tickRates": {
+    "conveyor": 2,
+    "machine": 2,
+    "source": 2,
+    "collector": 2
+  },
+  "limits": {
+    "maxNetworkSize": 256,
+    "maxItemsInTransit": 128
+  }
+}</code></pre>
+
+    <h2 id="recipes">Furnace Recipes</h2>
+    <p>The Auto Furnace smelts these items by default (configurable):</p>
+    <table>
+      <tr><th>Input</th><th>Output</th></tr>
+      <tr><td>Ore_Iron</td><td>Ingredient_Bar_Iron</td></tr>
+      <tr><td>Ore_Copper</td><td>Ingredient_Bar_Copper</td></tr>
+      <tr><td>Ore_Gold</td><td>Ingredient_Bar_Gold</td></tr>
+      <tr><td>Ore_Cobalt</td><td>Ingredient_Bar_Cobalt</td></tr>
+      <tr><td>Ore_Adamantite</td><td>Ingredient_Bar_Adamantite</td></tr>
+    </table>
+
+    <h2 id="block-conveyor">Conveyor</h2>
+    <p>The basic transport block. Moves one item at a time in the direction it faces. Comes in straight, corner, slope and slope-down variants.</p>
+    <ul>
+      <li><strong>Direction:</strong> Arrow on top shows output direction</li>
+      <li><strong>Buffer:</strong> 1 item</li>
+      <li><strong>Variants:</strong> PA_Conveyor, PA_Conveyor_Corner, PA_Conveyor_Slope, PA_Conveyor_SlopeDown</li>
+    </ul>
+
+    <h2 id="block-importer">Importer</h2>
+    <p>Pulls items from the chest <strong>behind</strong> it (opposite of arrow direction) and injects them into the network.</p>
+    <ul>
+      <li><strong>Input:</strong> Chest behind (opposite of arrow)</li>
+      <li><strong>Output:</strong> Arrow direction</li>
+      <li><strong>Buffer:</strong> 1 item</li>
+    </ul>
+
+    <h2 id="block-exporter">Exporter</h2>
+    <p>Takes items from the network and deposits them into the chest <strong>in front</strong> (arrow direction).</p>
+    <ul>
+      <li><strong>Input:</strong> Network (any adjacent block)</li>
+      <li><strong>Output:</strong> Chest in arrow direction</li>
+    </ul>
+
+    <h2 id="block-autofurnace">Auto Furnace</h2>
+    <p>Automatically smelts ores into bars. Items enter from any adjacent network block and exit in the arrow direction.</p>
+    <ul>
+      <li><strong>Input:</strong> Any adjacent network block</li>
+      <li><strong>Output:</strong> Arrow direction</li>
+      <li><strong>Buffer:</strong> 2 items</li>
+      <li><strong>Recipes:</strong> Configurable in config.json</li>
+    </ul>
+
+    <h2 id="block-breaker">Breaker</h2>
+    <p>Breaks the block <strong>behind</strong> it (opposite of arrow) and injects the result into the network in the arrow direction.</p>
+    <ul>
+      <li><strong>Breaks:</strong> Block behind (opposite of arrow)</li>
+      <li><strong>Output:</strong> Arrow direction (any adjacent network block)</li>
+      <li><strong>Buffer:</strong> 3 items</li>
+      <li><strong>Cooldown:</strong> 2 seconds between breaks</li>
+      <li><strong>Note:</strong> Will not break automation blocks</li>
+    </ul>
+
+    <h2 id="block-hopper">Hopper</h2>
+    <p>Pulls items from the chest <strong>above</strong> it and pushes them in the arrow direction.</p>
+    <ul>
+      <li><strong>Input:</strong> Chest directly above</li>
+      <li><strong>Output:</strong> Arrow direction</li>
+      <li><strong>Buffer:</strong> 2 items</li>
+    </ul>
+
+    <h2 id="block-splitter">Splitter</h2>
+    <p>Distributes items round-robin across its side and back outputs (left, right, behind relative to arrow).</p>
+    <ul>
+      <li><strong>Input:</strong> Arrow direction (front)</li>
+      <li><strong>Outputs:</strong> Left, Right, Behind (round-robin)</li>
+    </ul>
+
+    <h2 id="block-trashbin">Trash Bin</h2>
+    <p>Destroys any item that enters its buffer. Use at the end of overflow lines.</p>
+    <ul>
+      <li><strong>Input:</strong> Any adjacent network block</li>
+      <li><strong>Output:</strong> None (items are destroyed)</li>
+    </ul>
+
+    <h2 id="faq">FAQ</h2>
+    <h3>Items disappeared when I broke a block!</h3>
+    <p>Items in broken blocks are saved to the <strong>lost &amp; found</strong>. Use <code>/automation claim</code> to get them back.</p>
+
+    <h3>My network shows the wrong number of blocks</h3>
+    <p>The auto-cleanup runs every 5 seconds. Wait a moment and check again with <code>/automation stats</code>.</p>
+
+    <h3>The Breaker isn't working</h3>
+    <p>Make sure the block to break is <strong>behind</strong> the Breaker (opposite of the arrow). The arrow shows where items go, not where it breaks.</p>
+
+  </main>
+</div>
+
+<footer>
+  <p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> &mdash; Perfect Plugins &copy; 2026</p>
+</footer>
+
+</body>
+</html>

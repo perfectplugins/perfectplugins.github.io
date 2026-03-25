@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PerfectNPC — Wiki | Perfect Plugins</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../../" class="nav-logo"><span>Perfect</span>Plugins</a>
+    <ul class="nav-links">
+      <li><a href="../../">Home</a></li>
+      <li><a href="../perfectautomation/">Automation</a></li>
+      <li><a href="../perfectportals/">Portals</a></li>
+      <li><a href="../perfectspawner/">Spawner</a></li>
+      <li><a href="../perfectnpc/" class="active">NPC</a></li>
+      <li><a href="../perfecttranslate/">Translate</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wiki-layout">
+  <aside class="wiki-sidebar">
+    <h3>PerfectNPC</h3>
+    <ul>
+      <li><a href="#overview" class="active">Overview</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#types">NPC Types</a></li>
+      <li><a href="#quests">Quest System</a></li>
+      <li><a href="#shops">Shops</a></li>
+      <li><a href="#faceme">Face-Me Rotation</a></li>
+      <li><a href="#commands">Commands</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </aside>
+
+  <main class="wiki-content">
+    <h1 id="overview">PerfectNPC</h1>
+    <p>Custom NPCs with quests, dialogues, shops, face-me rotation, and interactive UI panels. Bring your server world to life.</p>
+
+    <table>
+      <tr><th>Version</th><td>1.1</td></tr>
+      <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
+      <tr><th>Java</th><td>21</td></tr>
+      <tr><th>Dependencies</th><td>None</td></tr>
+      <tr><th>Languages</th><td>EN, FR, ES, DE, IT</td></tr>
+    </table>
+
+    <h2 id="installation">Installation</h2>
+    <ol>
+      <li>Download <code>PerfectNPC-1.1.jar</code></li>
+      <li>Place it in your server's <code>UserData/Mods/</code> folder</li>
+      <li>Start the server</li>
+      <li>Use <code>/npc</code> to open the admin panel</li>
+    </ol>
+
+    <h2 id="types">NPC Types</h2>
+    <table>
+      <tr><th>Type</th><th>Description</th></tr>
+      <tr><td>Shopkeeper</td><td>Sells and buys items via interactive UI</td></tr>
+      <tr><td>Quest Giver</td><td>Assigns quests with objectives and rewards</td></tr>
+      <tr><td>Dialogue</td><td>Displays conversation text with multiple responses</td></tr>
+      <tr><td>Ambient</td><td>Decorative NPC, no interaction</td></tr>
+    </table>
+
+    <p>All NPCs support:</p>
+    <ul>
+      <li>Custom model with rescale (<code>Model.createScaledModel</code>)</li>
+      <li>Nameplate display (single line)</li>
+      <li>Frozen/idle animations</li>
+      <li>Chunk-based spawning (auto-spawn when chunks load)</li>
+      <li>JSON persistence</li>
+    </ul>
+
+    <h2 id="quests">Quest System</h2>
+    <p>Create quests with objectives and rewards. Players interact with Quest Giver NPCs to accept, track, and complete quests.</p>
+    <ul>
+      <li>Multiple objective types: collect items, kill mobs, visit locations</li>
+      <li>Item and XP rewards on completion</li>
+      <li>Quest progress tracked per player</li>
+      <li>Configurable via admin UI</li>
+    </ul>
+
+    <h2 id="shops">Shops</h2>
+    <p>Shopkeeper NPCs open a trade UI where players can buy and sell items.</p>
+    <ul>
+      <li>Configurable item list, prices, and stock</li>
+      <li>Buy and sell in the same UI</li>
+      <li>Category tabs for large shops</li>
+    </ul>
+
+    <h2 id="faceme">Face-Me Rotation</h2>
+    <p>NPCs can rotate to face the nearest player. Due to Hytale limitations, this works via despawn/respawn:</p>
+    <ul>
+      <li>Calculates yaw: <code>atan2(dx, dz) + PI</code> (in radians)</li>
+      <li>Despawns and respawns the NPC entity with the new rotation</li>
+      <li>Re-applies interactions after 500ms delay</li>
+    </ul>
+
+    <h2 id="commands">Commands</h2>
+    <table>
+      <tr><th>Command</th><th>Description</th></tr>
+      <tr><td><code>/npc</code></td><td>Open the NPC admin panel</td></tr>
+      <tr><td><code>/npc help</code></td><td>Show help</td></tr>
+    </table>
+
+    <h2 id="faq">FAQ</h2>
+    <h3>NPC nameplate doesn't support line breaks</h3>
+    <p>This is a Hytale limitation. All nameplate text must be on a single line.</p>
+
+    <h3>NPC doesn't rotate smoothly</h3>
+    <p>Face-me uses despawn/respawn which causes a brief flicker. This is the only reliable method in the current Hytale API.</p>
+  </main>
+</div>
+
+<footer>
+  <p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> &mdash; Perfect Plugins &copy; 2026</p>
+</footer>
+
+</body>
+</html>

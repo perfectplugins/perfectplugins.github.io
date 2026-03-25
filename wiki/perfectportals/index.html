@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PerfectPortals — Wiki | Perfect Plugins</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../../" class="nav-logo"><span>Perfect</span>Plugins</a>
+    <ul class="nav-links">
+      <li><a href="../../">Home</a></li>
+      <li><a href="../perfectautomation/">Automation</a></li>
+      <li><a href="../perfectportals/" class="active">Portals</a></li>
+      <li><a href="../perfectspawner/">Spawner</a></li>
+      <li><a href="../perfectnpc/">NPC</a></li>
+      <li><a href="../perfecttranslate/">Translate</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wiki-layout">
+  <aside class="wiki-sidebar">
+    <h3>PerfectPortals</h3>
+    <ul>
+      <li><a href="#overview" class="active">Overview</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#portals">Portal Types</a></li>
+      <li><a href="#warp">Warp System</a></li>
+      <li><a href="#transfer">Server Transfer</a></li>
+      <li><a href="#proxy">Proxy Setup</a></li>
+      <li><a href="#commands">Commands</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </aside>
+
+  <main class="wiki-content">
+    <h1 id="overview">PerfectPortals</h1>
+    <p>12 stunning colored portal pads with warp system, server transfers, and a built-in reverse proxy for multi-server networks. Link portals, teleport players, or route them between servers — all from one plugin.</p>
+
+    <table>
+      <tr><th>Version</th><td>2.0</td></tr>
+      <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
+      <tr><th>Java</th><td>21</td></tr>
+      <tr><th>Dependencies</th><td>None</td></tr>
+    </table>
+
+    <h2 id="installation">Installation</h2>
+    <ol>
+      <li>Download <code>PerfectPortals-2.0.jar</code></li>
+      <li>Place it in your server's <code>UserData/Mods/</code> folder</li>
+      <li>Start the server — config and data files auto-generate</li>
+      <li>Give yourself a portal: <code>/give Portal_Red</code></li>
+    </ol>
+
+    <h2 id="portals">Portal Types</h2>
+    <p>6 colors x 2 styles = 12 unique portals. Each has its own texture, particles, and icon.</p>
+
+    <h3>Light Variants (colored glow)</h3>
+    <table>
+      <tr><th>Portal</th><th>Color</th><th>Light</th></tr>
+      <tr><td>Portal_Red</td><td>Red</td><td>Red glow (2 block radius)</td></tr>
+      <tr><td>Portal_Green</td><td>Green</td><td>Green glow</td></tr>
+      <tr><td>Portal_Purple</td><td>Purple</td><td>Purple glow</td></tr>
+      <tr><td>Portal_Orange</td><td>Orange</td><td>Orange glow</td></tr>
+      <tr><td>Portal_Pink</td><td>Pink</td><td>Pink glow</td></tr>
+      <tr><td>Portal_Yellow</td><td>Yellow</td><td>Yellow glow</td></tr>
+    </table>
+
+    <h3>Dark Variants (no light)</h3>
+    <p>Same textures and particles, no light emission: <code>Portal_Red_Dark</code>, <code>Portal_Green_Dark</code>, <code>Portal_Purple_Dark</code>, <code>Portal_Orange_Dark</code>, <code>Portal_Pink_Dark</code>, <code>Portal_Yellow_Dark</code></p>
+
+    <h2 id="warp">Warp System</h2>
+    <p>Link any two portals together for instant bidirectional teleportation.</p>
+    <ol>
+      <li>Place two portals anywhere in the world</li>
+      <li>Open <code>/pportals</code> — the admin UI shows all placed portals</li>
+      <li>Click portal A in the list, then portal B</li>
+      <li>Click <strong>"Link A - B"</strong></li>
+      <li>Walk up to either portal and press <strong>[F]</strong> to teleport</li>
+    </ol>
+    <p>Links are bidirectional — both portals teleport to each other. Breaking a linked portal auto-cleans the link.</p>
+
+    <h2 id="transfer">Server Transfer</h2>
+    <p>Portals can transfer players to another Hytale server. Configure via the admin UI:</p>
+    <ol>
+      <li>Open <code>/pportals</code>, select a portal</li>
+      <li>Click <strong>"Server Config"</strong></li>
+      <li>Set Host, Port, Countdown, and Label</li>
+      <li>Players pressing [F] on that portal get transferred to the target server</li>
+    </ol>
+
+    <h2 id="proxy">Proxy Setup (v2.0)</h2>
+    <p>The built-in reverse proxy hides backend server IPs. Players connect to one address; the proxy routes them.</p>
+
+    <pre><code>Players ──► proxy:5520 ──► Lobby (localhost:5521)
+           proxy:5530 ──► SMP   (172.18.0.3:5520)
+           proxy:5540 ──► PvP   (172.18.0.4:5520)</code></pre>
+
+    <h3>Step 1: Change Lobby Port</h3>
+    <p>Set your Hytale lobby server to listen on a different port (e.g. <code>5521</code>).</p>
+
+    <h3>Step 2: Configure proxy.json</h3>
+    <p>File: <code>UserData/Saves/MODDING/mods/KatsuyaTV_PerfectPortals/proxy.json</code></p>
+    <pre><code>{
+  "enabled": true,
+  "publicHost": "play.yourserver.com",
+  "backends": {
+    "lobby": { "listenPort": 5520, "target": "localhost:5521" },
+    "smp":   { "listenPort": 5530, "target": "172.18.0.3:5520" },
+    "pvp":   { "listenPort": 5540, "target": "172.18.0.4:5520" }
+  }
+}</code></pre>
+
+    <h3>Step 3: Set Portal Labels</h3>
+    <p>In the portal Server Config UI, set the <strong>Label</strong> to match the backend name (e.g. <code>smp</code>). The label is case-sensitive.</p>
+
+    <h3>Step 4: Open Firewall Ports</h3>
+    <p>Open all proxy listen ports (5520, 5530, 5540, etc.). Backend internal ports do NOT need to be exposed.</p>
+
+    <h2 id="commands">Commands</h2>
+    <table>
+      <tr><th>Command</th><th>Description</th></tr>
+      <tr><td><code>/pportals</code></td><td>Open the admin portal management UI</td></tr>
+      <tr><td><code>/pportals help</code></td><td>Show help</td></tr>
+    </table>
+
+    <h2 id="faq">FAQ</h2>
+    <h3>Can players connect directly to backend servers?</h3>
+    <p>Not if you configure your firewall to block external access to backend ports. Only the proxy ports should be public.</p>
+
+    <h3>Do backend servers need PerfectPortals?</h3>
+    <p>No. Only the lobby server needs the plugin. Backends are regular Hytale servers.</p>
+
+    <h3>Can I use portals for same-server teleportation AND server transfer?</h3>
+    <p>Yes. Portals without a server config act as local warps. Portals with server config transfer to other servers.</p>
+  </main>
+</div>
+
+<footer>
+  <p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> &mdash; Perfect Plugins &copy; 2026</p>
+</footer>
+
+</body>
+</html>
