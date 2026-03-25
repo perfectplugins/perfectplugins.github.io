@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PerfectGuard -- Wiki | Perfect Plugins</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a href="../../" class="nav-logo"><span>Perfect</span>Plugins</a>
+  <ul class="nav-links">
+      <li><a href="../../" class="active">Home</a></li>
+      <li><a href="../perfectportals/">Portals</a></li>
+      <li><a href="../perfectnpc/">NPC</a></li>
+      <li><a href="../perfectspawner/">Spawner</a></li>
+      <li><a href="../perfectautomation/">Automation</a></li>
+  </ul>
+</div></nav>
+<div class="wiki-layout">
+  <aside class="wiki-sidebar">
+    <h3>PerfectGuard</h3>
+    <ul><li><a href="#overview">Overview</a></li><li><a href="#installation">Installation</a></li>
+    <li><a href="#anticheat">Anti-Cheat</a></li><li><a href="#moderation">Moderation</a></li>
+    <li><a href="#commands">Commands</a></li><li><a href="#config">Configuration</a></li><li><a href="#faq">FAQ</a></li></ul>
+  </aside>
+  <main class="wiki-content">
+    <h1 id="overview">PerfectGuard</h1>
+    <p>All-in-one anti-cheat and moderation solution. 7 detection types, violation tracking, bans, mutes, reports, staff tools and admin UI.</p>
+    <table><tr><th>Version</th><td>2.1</td></tr><tr><th>Platform</th><td>Hytale Server Plugin</td></tr><tr><th>Languages</th><td>EN, FR, ES, DE, IT</td></tr></table>
+    <h2 id="installation">Installation</h2>
+    <ol><li>Drop <code>PerfectGuard-2.1.jar</code> in <code>mods/</code></li><li>Start the server</li><li>Use <code>/pg menu</code></li></ol>
+    <h2 id="anticheat">Anti-Cheat Engine</h2>
+    <table><tr><th>Check</th><th>Description</th></tr><tr><td>Speed</td><td>Detects abnormal movement speed</td></tr><tr><td>Fly</td><td>Detects unauthorized flight</td></tr><tr><td>FastBreak</td><td>Impossibly fast block breaking</td></tr><tr><td>FastPlace</td><td>Impossibly fast block placing</td></tr><tr><td>Reach</td><td>Attacks beyond normal range</td></tr><tr><td>Nuker</td><td>Mass block destruction</td></tr><tr><td>AutoClick</td><td>Inhuman click rates</td></tr></table>
+    <p>Violations accumulate (VL). Auto-freeze at threshold, auto-jail at higher threshold. VL decays over time.</p>
+    <h2 id="moderation">Moderation Tools</h2>
+    <ul><li><strong>Bans</strong> -- Permanent + temporary with reasons</li><li><strong>IP Bans</strong> -- Block IP addresses</li><li><strong>Mutes</strong> -- Permanent + temporary</li><li><strong>Warnings</strong> -- Issue and track per player</li><li><strong>Jail</strong> -- Teleport cheaters to jail</li><li><strong>Freeze</strong> -- Freeze player movement</li><li><strong>Vanish</strong> -- Invisible staff mode</li><li><strong>Inventory Inspect</strong> -- View player inventory</li><li><strong>Player Notes</strong> -- Private notes per player</li><li><strong>Reports</strong> -- Player-submitted reports</li><li><strong>Word Blacklist</strong> -- Block words in chat</li><li><strong>Announcements</strong> -- Title, notification, chat</li></ul>
+    <h2 id="commands">Commands</h2>
+    <table><tr><th>Command</th><th>Description</th></tr><tr><td><code>/pg help</code></td><td>All commands</td></tr><tr><td><code>/pg menu</code></td><td>Moderation UI</td></tr><tr><td><code>/pg alerts</code></td><td>Toggle alerts</td></tr><tr><td><code>/pg vanish</code></td><td>Toggle vanish</td></tr><tr><td><code>/pg freeze &lt;player&gt;</code></td><td>Freeze</td></tr><tr><td><code>/pg ban &lt;player&gt; &lt;reason&gt;</code></td><td>Permanent ban</td></tr><tr><td><code>/pg tempban &lt;player&gt; &lt;dur&gt; &lt;reason&gt;</code></td><td>Temp ban</td></tr><tr><td><code>/pg unban &lt;player&gt;</code></td><td>Unban</td></tr><tr><td><code>/pg mute &lt;player&gt; &lt;reason&gt;</code></td><td>Mute</td></tr><tr><td><code>/pg unmute &lt;player&gt;</code></td><td>Unmute</td></tr><tr><td><code>/pg kick &lt;player&gt; &lt;reason&gt;</code></td><td>Kick</td></tr><tr><td><code>/pg jail &lt;player&gt;</code></td><td>Send to jail</td></tr><tr><td><code>/pg setjail</code></td><td>Set jail location</td></tr><tr><td><code>/pg warn &lt;player&gt; &lt;reason&gt;</code></td><td>Warn</td></tr><tr><td><code>/pg tp &lt;player&gt;</code></td><td>Teleport to</td></tr><tr><td><code>/pg invsee &lt;player&gt;</code></td><td>View inventory</td></tr><tr><td><code>/pg report &lt;player&gt; &lt;reason&gt;</code></td><td>Report (player)</td></tr><tr><td><code>/pg reload</code></td><td>Reload config</td></tr></table>
+    <h2 id="config">Configuration</h2>
+    <pre><code>{"lang":"EN","speedEnabled":true,"speedThreshold":12.0,"flyEnabled":true,"autoFreezeVL":50,"autoJailVL":100,"vlDecaySeconds":60}</code></pre>
+    <h2 id="faq">FAQ</h2>
+    <h3>False positives?</h3><p>Increase thresholds in config.</p>
+    <h3>Where is jail?</h3><p>Use <code>/pg setjail</code> at your desired location.</p>
+  </main>
+</div>
+<footer><p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> -- Perfect Plugins 2026</p></footer>
+</body>
+</html>

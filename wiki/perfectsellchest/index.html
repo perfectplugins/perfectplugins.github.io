@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PerfectSellChest -- Wiki | Perfect Plugins</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a href="../../" class="nav-logo"><span>Perfect</span>Plugins</a>
+  <ul class="nav-links">
+      <li><a href="../../" class="active">Home</a></li>
+      <li><a href="../perfectportals/">Portals</a></li>
+      <li><a href="../perfectnpc/">NPC</a></li>
+      <li><a href="../perfectspawner/">Spawner</a></li>
+      <li><a href="../perfectautomation/">Automation</a></li>
+  </ul>
+</div></nav>
+<div class="wiki-layout">
+  <aside class="wiki-sidebar">
+    <h3>PerfectSellChest</h3>
+    <ul><li><a href="#overview">Overview</a></li><li><a href="#installation">Installation</a></li>
+    <li><a href="#features">Features</a></li><li><a href="#commands">Commands</a></li>
+    <li><a href="#config">Configuration</a></li><li><a href="#economy">Economy</a></li><li><a href="#faq">FAQ</a></li></ul>
+  </aside>
+  <main class="wiki-content">
+    <h1 id="overview">PerfectSellChest</h1>
+    <p>Automatic item selling from chests. Place a SellChest, items sell every 30 seconds. No commands, no menus, no hassle.</p>
+    <table><tr><th>Version</th><td>1.1</td></tr><tr><th>Platform</th><td>Hytale Server Plugin</td></tr><tr><th>Dependencies</th><td>Economy plugin</td></tr></table>
+    <h2 id="installation">Installation</h2>
+    <ol><li>Drop <code>PerfectSellChest-1.1.jar</code> in <code>mods/</code></li><li>Install a compatible economy plugin</li><li>Start the server</li><li>Place a SellChest and <code>/sellchest</code></li></ol>
+    <h2 id="features">Features</h2>
+    <ul><li><strong>Auto-Sell</strong> -- Every 30 seconds</li><li><strong>Multipliers</strong> -- 1x and 2x chest variants</li><li><strong>Per-Player Limits</strong> -- Max chests per player</li><li><strong>Notifications</strong> -- Toggleable sale messages</li><li><strong>Holograms</strong> -- Info display above chest</li></ul>
+    <h2 id="commands">Commands</h2>
+    <table><tr><th>Command</th><th>Description</th></tr><tr><td><code>/sellchest</code></td><td>Register nearby chest</td></tr><tr><td><code>/sellchest notify</code></td><td>Toggle notifications</td></tr><tr><td><code>/sellchest info</code></td><td>View stats</td></tr></table>
+    <h2 id="config">Configuration</h2>
+    <pre><code>{"economyPlugin":"HTSkyBlock","defaultChestLimit":5}</code></pre>
+    <h2 id="economy">Compatible Economy Plugins</h2>
+    <ul><li>HTSkyBlock (native)</li><li>EconomySystem</li><li>Ecotale</li><li>Economy/Ryukazan</li></ul>
+    <h2 id="faq">FAQ</h2>
+    <h3>Items not selling?</h3><p>Register with <code>/sellchest</code> and check economy plugin is installed.</p>
+  </main>
+</div>
+<footer><p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> -- Perfect Plugins 2026</p></footer>
+</body>
+</html>
