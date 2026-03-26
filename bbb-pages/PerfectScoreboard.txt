@@ -1,0 +1,219 @@
+[CENTER]
+[SIZE=7][B][COLOR=#FF6B00]P E R F E C T[/COLOR] [COLOR=#FFFFFF]SCOREBOARD[/COLOR][/B][/SIZE]
+[SIZE=4][COLOR=#AAAAAA]Customizable HUD scoreboard with profiles, placeholders & admin UI[/COLOR][/SIZE]
+
+[IMG height="25px"]https://img.shields.io/badge/Hytale-Server%20Plugin-orange?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/Java-21-blue?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/v1.0-NEW-green?style=for-the-badge[/IMG]
+[/CENTER]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// WHY PERFECTSCOREBOARD?[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Display a [B]beautiful HUD scoreboard[/B] on every player's screen. Fully configurable [B]title, lines, footer[/B] with [B]color codes[/B] and [B]dynamic placeholders[/B]. Multiple [B]profiles[/B] for different worlds, [B]animations[/B] (rainbow, scroll, flash), [B]custom logo[/B], and [B]5 screen positions[/B]. Everything managed through a clean [B]flat admin UI[/B] — no file editing needed.[/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// FEATURES[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][SIZE=4][COLOR=#55FF55][B]HUD Scoreboard[/B][/COLOR][/SIZE]
+[SIZE=3]Displays automatically when players join. Up to [B]15 configurable lines[/B] with color codes (&a, &b, &c...) and dynamic placeholders. Semi-transparent background, clean design.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Dynamic Placeholders[/B][/COLOR][/SIZE]
+[SIZE=3]Built-in placeholders updated every second:
+— [B]{player}[/B] — Player name
+— [B]{online}[/B] — Online player count
+— [B]{world}[/B] — Current world name
+— [B]{time}[/B] — Server time (HH:mm)
+— [B]{date}[/B] — Server date
+— [B]{ping}[/B] — Player ping
+— Plus [B]unlimited custom placeholders[/B] via command[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Multiple Profiles[/B][/COLOR][/SIZE]
+[SIZE=3]Create different scoreboard layouts for different contexts:
+— Assign profiles [B]per world[/B] (lobby, SMP, PvP each get their own scoreboard)
+— Switch profiles on the fly via command or admin UI
+— Each profile has its own title, lines, footer, animation, position, and logo setting[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Animations[/B][/COLOR][/SIZE]
+[SIZE=3]4 animation modes per profile:
+— [B]None[/B] — Static text
+— [B]Rainbow[/B] — Color wave cycling through lines
+— [B]Scroll[/B] — Scrolling text for long lines
+— [B]Flash[/B] — Pulsing color effect[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]5 Screen Positions[/B][/COLOR][/SIZE]
+[SIZE=3]Choose where the scoreboard appears:
+— [B]Top-Right[/B] (default)
+— [B]Top-Left[/B]
+— [B]Bottom-Right[/B]
+— [B]Bottom-Left[/B]
+— [B]Center-Right[/B]
+Configurable per profile via the admin UI.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Custom Logo[/B][/COLOR][/SIZE]
+[SIZE=3]Display your [B]server logo[/B] at the top of the scoreboard. Just place a PNG image in the plugin's texture folder. Toggle on/off per profile.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Full Admin UI[/B][/COLOR][/SIZE]
+[SIZE=3]Open [B]/sb admin[/B]:
+— Profile list with create/select
+— [B]Title & footer[/B] text fields
+— [B]Line editor[/B] — click any line to edit, add or remove lines
+— [B]Animation selector[/B] — cycle through modes
+— [B]Logo toggle[/B] — ON/OFF
+— [B]Position selector[/B] — cycle through 5 positions
+— Logo file path displayed for easy setup[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Player Toggle[/B][/COLOR][/SIZE]
+[SIZE=3]Players can [B]show/hide[/B] the scoreboard with [B]/sb[/B]. Preference persists across sessions.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Custom Placeholders[/B][/COLOR][/SIZE]
+[SIZE=3]Set custom global placeholders via [B]/sb setplaceholder kills 42[/B]. Use [B]{kills}[/B] in any line. Perfect for integrating with other plugins.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Per-World Profiles[/B][/COLOR][/SIZE]
+[SIZE=3]Assign different scoreboards to different worlds with [B]/sb setworld[/B]. Players see the right scoreboard automatically when they change worlds.[/SIZE]
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// COMMANDS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[TABLE]
+[TR]
+[TD]/sb[/TD]
+[TD]Toggle scoreboard visibility[/TD]
+[/TR]
+[TR]
+[TD]/sb show[/TD]
+[TD]Show scoreboard[/TD]
+[/TR]
+[TR]
+[TD]/sb hide[/TD]
+[TD]Hide scoreboard[/TD]
+[/TR]
+[TR]
+[TD]/sb admin[/TD]
+[TD]Open admin panel[/TD]
+[/TR]
+[TR]
+[TD]/sb list[/TD]
+[TD]List all profiles[/TD]
+[/TR]
+[TR]
+[TD]/sb create <name>[/TD]
+[TD]Create new profile[/TD]
+[/TR]
+[TR]
+[TD]/sb delete <name>[/TD]
+[TD]Delete profile[/TD]
+[/TR]
+[TR]
+[TD]/sb settitle <profile> <text>[/TD]
+[TD]Set profile title[/TD]
+[/TR]
+[TR]
+[TD]/sb setline <profile> <#> <text>[/TD]
+[TD]Edit a line[/TD]
+[/TR]
+[TR]
+[TD]/sb addline <profile> <text>[/TD]
+[TD]Add a line[/TD]
+[/TR]
+[TR]
+[TD]/sb removeline <profile> <#>[/TD]
+[TD]Remove a line[/TD]
+[/TR]
+[TR]
+[TD]/sb setworld <world> <profile>[/TD]
+[TD]Assign profile to world[/TD]
+[/TR]
+[TR]
+[TD]/sb profile <name>[/TD]
+[TD]Switch active profile[/TD]
+[/TR]
+[TR]
+[TD]/sb setplaceholder <key> <value>[/TD]
+[TD]Set custom placeholder[/TD]
+[/TR]
+[TR]
+[TD]/sb help[/TD]
+[TD]Show all commands[/TD]
+[/TR]
+[/TABLE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// PLACEHOLDERS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[TABLE]
+[TR]
+[TD]{player}[/TD]
+[TD]Player username[/TD]
+[/TR]
+[TR]
+[TD]{online}[/TD]
+[TD]Online player count[/TD]
+[/TR]
+[TR]
+[TD]{world}[/TD]
+[TD]Current world name[/TD]
+[/TR]
+[TR]
+[TD]{time}[/TD]
+[TD]Server time (HH:mm)[/TD]
+[/TR]
+[TR]
+[TD]{date}[/TD]
+[TD]Server date (yyyy-MM-dd)[/TD]
+[/TR]
+[TR]
+[TD]{ping}[/TD]
+[TD]Player ping (ms)[/TD]
+[/TR]
+[TR]
+[TD]{custom}[/TD]
+[TD]Any custom placeholder set via command[/TD]
+[/TR]
+[/TABLE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// HOW TO ADD YOUR LOGO[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3][B]1.[/B] Create a PNG image (recommended: [B]240x60 pixels[/B])
+[B]2.[/B] Open the PerfectScoreboard JAR with any zip tool
+[B]3.[/B] Replace [B]Common/UI/Custom/Textures/PerfectScoreboard/logo.png[/B]
+[B]4.[/B] Save and restart the server
+[B]5.[/B] Toggle the logo ON in [B]/sb admin[/B][/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// TECHNICAL DETAILS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][B]Platform:[/B] Hytale Server Plugin
+[*][B]Java Version:[/B] 21
+[*][B]Dependencies:[/B] None
+[*][B]Data Storage:[/B] JSON (profiles, config)
+[*][B]Performance:[/B] 1 update per second, lightweight scheduler
+[*][B]HUD System:[/B] CustomUIHud with dynamic line rendering
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// DOCUMENTATION[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Full documentation and FAQ:
+[URL='https://perfectplugins.github.io/wiki/perfectscoreboard/'][B]perfectplugins.github.io/wiki/perfectscoreboard[/B][/URL][/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=4][COLOR=#AAAAAA]Developed by [B]KatsuyaTV[/B][/COLOR][/SIZE]
+[SIZE=3][COLOR=#555555]Issues or feature requests? DM or discussion tab.[/COLOR][/SIZE]
+[/CENTER]
