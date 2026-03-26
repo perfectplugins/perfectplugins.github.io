@@ -1,0 +1,99 @@
+[CENTER]
+[SIZE=7][B][COLOR=#FF6B00]P E R F E C T[/COLOR] [COLOR=#FFFFFF]ITEM MANAGER[/COLOR][/B][/SIZE]
+[SIZE=4][COLOR=#AAAAAA]The most powerful item management tool for Hytale servers[/COLOR][/SIZE]
+
+[IMG height="25px"]https://img.shields.io/badge/Hytale-Server%20Plugin-orange?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/Java-21-blue?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/v1.5-STABLE-green?style=for-the-badge[/IMG]
+[/CENTER]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// WHY PERFECTITEMMANAGER?[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Take [B]full control[/B] over every item in your server. Override stats, crafting recipes, quality levels, block drops, entity drops, and more — all through a [B]beautiful in-game UI[/B]. No file editing, no restarts. Change a sword's damage, remove a recipe, or make mobs drop custom loot in seconds.[/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// FEATURES[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][SIZE=4][COLOR=#55FF55][B]Item Stats Override[/B][/COLOR][/SIZE]
+[SIZE=3]Modify damage, armor, attributes for [B]any item[/B] in the game. Changes apply instantly.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Crafting Override[/B][/COLOR][/SIZE]
+[SIZE=3]Change or completely remove crafting recipes. Control which benches can craft which items.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Quality Override[/B][/COLOR][/SIZE]
+[SIZE=3]Set custom quality levels per item. Fine-tune your server's item economy.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Drop Rules[/B][/COLOR][/SIZE]
+[SIZE=3]— [B]Block Drops[/B] — Customize what drops when any block is broken
+— [B]Entity Drops[/B] — Customize what any mob drops on death
+Full UI for creating and managing drop rules.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Weapon Tooltips[/B][/COLOR][/SIZE]
+[SIZE=3]Display [B]damage values[/B] directly in item tooltips. Toggleable in config.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Bulk Edit Mode[/B][/COLOR][/SIZE]
+[SIZE=3]Apply changes to [B]multiple items at once[/B]. Global multipliers to scale stats server-wide.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Admin UI[/B][/COLOR][/SIZE]
+[SIZE=3]Full management panel via [B]/itemmanager menu[/B]. Item picker, stat editor, craft editor, drop rules — everything in one clean interface.[/SIZE]
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// COMMANDS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[TABLE]
+[TR]
+[TD]/itemmanager menu[/TD]
+[TD]Open the item management UI[/TD]
+[/TR]
+[TR]
+[TD]/itemmanager drops[/TD]
+[TD]Open the drop rules UI[/TD]
+[/TR]
+[TR]
+[TD]/itemmanager reload[/TD]
+[TD]Reload all overrides from disk[/TD]
+[/TR]
+[TR]
+[TD]/itemmanager setlang <code>[/TD]
+[TD]Set language (EN, FR, ES, IT, DE, PT)[/TD]
+[/TR]
+[TR]
+[TD]/itemmanager help[/TD]
+[TD]Display help[/TD]
+[/TR]
+[/TABLE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// TECHNICAL DETAILS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][B]Platform:[/B] Hytale Server Plugin
+[*][B]Java Version:[/B] 21
+[*][B]Dependencies:[/B] None
+[*][B]Languages:[/B] EN, FR, ES, IT, DE, PT
+[*][B]Data Storage:[/B] JSON
+[*][B]Permissions:[/B] perfectitemmanager.command, .admin, .menu, .menu.stats, .menu.crafts, .menu.quality, .menu.drops
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// DOCUMENTATION[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Full documentation, permissions list, and FAQ:
+[URL='https://perfectplugins.github.io/wiki/perfectitemmanager/'][B]perfectplugins.github.io/wiki/perfectitemmanager[/B][/URL][/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=4][COLOR=#AAAAAA]Developed by [B]KatsuyaTV[/B][/COLOR][/SIZE]
+[SIZE=3][COLOR=#555555]Issues or feature requests? DM or discussion tab.[/COLOR][/SIZE]
+[/CENTER]

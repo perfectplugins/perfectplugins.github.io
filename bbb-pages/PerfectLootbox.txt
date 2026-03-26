@@ -1,0 +1,117 @@
+[CENTER]
+[SIZE=7][B][COLOR=#FF6B00]P E R F E C T[/COLOR] [COLOR=#FFFFFF]LOOTBOX[/COLOR][/B][/SIZE]
+[SIZE=4][COLOR=#AAAAAA]Lootboxes with 3D animations, 10 crates & 10 keys[/COLOR][/SIZE]
+
+[IMG height="25px"]https://img.shields.io/badge/Hytale-Server%20Plugin-orange?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/Java-21-blue?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/v1.0-STABLE-green?style=for-the-badge[/IMG]
+[/CENTER]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// WHY PERFECTLOOTBOX?[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Create [B]custom lootboxes[/B] with [B]weighted drop pools[/B], [B]stunning 3D opening animations[/B], and a [B]key system[/B]. Comes with [B]10 chest models[/B] and [B]10 key models[/B] out of the box. Full [B]admin UI[/B] for managing everything.[/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// FEATURES[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][SIZE=4][COLOR=#55FF55][B]Custom Lootboxes[/B][/COLOR][/SIZE]
+[SIZE=3]Create [B]unlimited lootbox types[/B] with custom names, display settings, and drop pools.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Weighted Drop Pools[/B][/COLOR][/SIZE]
+[SIZE=3]Set [B]weight and quantity[/B] for each drop. Rare items get low weight, common items get high weight.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]10 Chest + 10 Key Models[/B][/COLOR][/SIZE]
+[SIZE=3]— [B]Gold[/B]: Blue, Green, Pink, Red, Silver
+— [B]Silver[/B]: Blue, Green, Pink, Red, Yellow
+All with matching key variants.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Opening Animation[/B][/COLOR][/SIZE]
+[SIZE=3]Stunning [B]3D animation[/B] when players claim a lootbox.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Key System[/B][/COLOR][/SIZE]
+[SIZE=3]Players need the [B]matching key[/B] in their inventory to open a lootbox. Distribute keys as rewards, drops, or sell them.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Holograms[/B][/COLOR][/SIZE]
+[SIZE=3]Customizable hologram display above placed lootboxes.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Placement Protection[/B][/COLOR][/SIZE]
+[SIZE=3]Placed lootboxes [B]can't be broken[/B] by players. Only admins can remove them.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Admin UI[/B][/COLOR][/SIZE]
+[SIZE=3]Full management via [B]/plb menu[/B]. Create, edit drops, manage holograms, distribute keys.[/SIZE]
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// COMMANDS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[TABLE]
+[TR]
+[TD]/plb list[/TD]
+[TD]List all lootboxes[/TD]
+[/TR]
+[TR]
+[TD]/plb claim <name>[/TD]
+[TD]Claim lootbox (needs key)[/TD]
+[/TR]
+[TR]
+[TD]/plb menu[/TD]
+[TD]Open admin UI[/TD]
+[/TR]
+[TR]
+[TD]/plb create <name>[/TD]
+[TD]Create lootbox[/TD]
+[/TR]
+[TR]
+[TD]/plb adddrop <name> <item> [weight] [qty][/TD]
+[TD]Add drop to pool[/TD]
+[/TR]
+[TR]
+[TD]/plb get <name> [qty][/TD]
+[TD]Give lootbox to yourself[/TD]
+[/TR]
+[TR]
+[TD]/plb getkey <name> [qty][/TD]
+[TD]Give key to yourself[/TD]
+[/TR]
+[TR]
+[TD]/plb givekey <player> <key> [qty][/TD]
+[TD]Give key to player[/TD]
+[/TR]
+[TR]
+[TD]/plb reload[/TD]
+[TD]Reload config[/TD]
+[/TR]
+[/TABLE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// TECHNICAL DETAILS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][B]Platform:[/B] Hytale Server Plugin
+[*][B]Java Version:[/B] 21
+[*][B]Dependencies:[/B] None
+[*][B]Languages:[/B] EN, FR, ES, DE, IT
+[*][B]Data Storage:[/B] JSON
+[*][B]Asset Pack:[/B] Included (20 models + textures + icons)
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// DOCUMENTATION[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Full documentation and FAQ:
+[URL='https://perfectplugins.github.io/wiki/perfectlootbox/'][B]perfectplugins.github.io/wiki/perfectlootbox[/B][/URL][/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=4][COLOR=#AAAAAA]Developed by [B]KatsuyaTV[/B][/COLOR][/SIZE]
+[SIZE=3][COLOR=#555555]Issues or feature requests? DM or discussion tab.[/COLOR][/SIZE]
+[/CENTER]

@@ -1,0 +1,72 @@
+[CENTER]
+[SIZE=7][B][COLOR=#FF6B00]CUSTOM[/COLOR] [COLOR=#FFFFFF]CRATES & KEYS[/COLOR][/B][/SIZE]
+[SIZE=4][COLOR=#AAAAAA]Four custom 3D models of crates and keys — VOL 1[/COLOR][/SIZE]
+
+[IMG height="25px"]https://img.shields.io/badge/Hytale-Models-orange?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/v1.2-STABLE-green?style=for-the-badge[/IMG]
+[/CENTER]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// WHAT'S INCLUDED[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]A set of [B]4 custom 3D models[/B] — crates and keys — ready to use in your Hytale server. Just drop in your mods folder and they're available as items.[/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// MODELS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][SIZE=4][COLOR=#55FF55][B]Crate Model 1[/B][/COLOR][/SIZE]
+[SIZE=3]Classic wooden crate with metal bands.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Crate Model 2[/B][/COLOR][/SIZE]
+[SIZE=3]Ornate treasure chest.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Key Model 1[/B][/COLOR][/SIZE]
+[SIZE=3]Classic skeleton key.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Key Model 2[/B][/COLOR][/SIZE]
+[SIZE=3]Ornate golden key.[/SIZE]
+[/LIST]
+
+[SIZE=3]All models include matching [B]inventory icons[/B] and [B]textures[/B]. Works perfectly with [B]PerfectLootbox[/B] or any plugin that supports custom items.[/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// INSTALLATION[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3][B]1.[/B] Download the asset pack
+[B]2.[/B] Place it in your server's [B]mods/[/B] folder
+[B]3.[/B] Start the server — models are available immediately
+[B]4.[/B] Give items via commands or integrate with your plugins[/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// TECHNICAL DETAILS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][B]Type:[/B] Hytale Asset Pack (Models)
+[*][B]Dependencies:[/B] None
+[*][B]Contents:[/B] 4 models + textures + icons
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// DOCUMENTATION[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]More info:
+[URL='https://perfectplugins.github.io/wiki/customcrates/'][B]perfectplugins.github.io/wiki/customcrates[/B][/URL][/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=4][COLOR=#AAAAAA]Developed by [B]KatsuyaTV[/B][/COLOR][/SIZE]
+[SIZE=3][COLOR=#555555]Issues or feature requests? DM or discussion tab.[/COLOR][/SIZE]
+[/CENTER]

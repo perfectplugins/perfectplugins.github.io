@@ -1,0 +1,89 @@
+[CENTER]
+[SIZE=7][B][COLOR=#FF6B00]P E R F E C T[/COLOR] [COLOR=#FFFFFF]SELL CHEST[/COLOR][/B][/SIZE]
+[SIZE=4][COLOR=#AAAAAA]Automatic item selling — no commands, no menus, no hassle[/COLOR][/SIZE]
+
+[IMG height="25px"]https://img.shields.io/badge/Hytale-Server%20Plugin-orange?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/Java-21-blue?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/v1.1-STABLE-green?style=for-the-badge[/IMG]
+[/CENTER]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// WHY PERFECTSELLCHEST?[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Tired of manually selling your farm drops? Place a [B]SellChest[/B] block and items inside are [B]automatically sold every 30 seconds[/B]. No commands, no menus, no hassle. Just place, fill, and earn.[/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// FEATURES[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][SIZE=4][COLOR=#55FF55][B]Automatic Selling[/B][/COLOR][/SIZE]
+[SIZE=3]Items are sold automatically [B]every 30 seconds[/B]. No player interaction needed.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Price Multipliers[/B][/COLOR][/SIZE]
+[SIZE=3]1x and 2x chest variants. Premium chests sell items at [B]double the price[/B].[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Per-Player Limits[/B][/COLOR][/SIZE]
+[SIZE=3]Configurable [B]max chests per player[/B]. Per-player overrides available.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Sell Notifications[/B][/COLOR][/SIZE]
+[SIZE=3]Players see how much they earned each cycle. [B]Toggleable[/B] per player.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Hologram Display[/B][/COLOR][/SIZE]
+[SIZE=3]Info display above each SellChest showing status and earnings.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Multi-Economy Support[/B][/COLOR][/SIZE]
+[SIZE=3]Compatible with [B]HTSkyBlock[/B], [B]EconomySystem[/B], [B]Ecotale[/B], and [B]Economy/Ryukazan[/B].[/SIZE]
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// COMMANDS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[TABLE]
+[TR]
+[TD]/sellchest[/TD]
+[TD]Register nearby SellChest block[/TD]
+[/TR]
+[TR]
+[TD]/sellchest notify[/TD]
+[TD]Toggle sell notifications[/TD]
+[/TR]
+[TR]
+[TD]/sellchest info[/TD]
+[TD]View your SellChest stats[/TD]
+[/TR]
+[TR]
+[TD]/sellchest help[/TD]
+[TD]Show commands[/TD]
+[/TR]
+[/TABLE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// TECHNICAL DETAILS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][B]Platform:[/B] Hytale Server Plugin
+[*][B]Java Version:[/B] 21
+[*][B]Dependencies:[/B] Compatible economy plugin
+[*][B]Data Storage:[/B] JSON
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// DOCUMENTATION[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Full documentation, economy setup, and FAQ:
+[URL='https://perfectplugins.github.io/wiki/perfectsellchest/'][B]perfectplugins.github.io/wiki/perfectsellchest[/B][/URL][/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=4][COLOR=#AAAAAA]Developed by [B]KatsuyaTV[/B][/COLOR][/SIZE]
+[SIZE=3][COLOR=#555555]Issues or feature requests? DM or discussion tab.[/COLOR][/SIZE]
+[/CENTER]

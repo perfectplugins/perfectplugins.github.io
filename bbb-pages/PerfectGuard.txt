@@ -1,0 +1,146 @@
+[CENTER]
+[SIZE=7][B][COLOR=#FF6B00]P E R F E C T[/COLOR] [COLOR=#FFFFFF]GUARD[/COLOR][/B][/SIZE]
+[SIZE=4][COLOR=#AAAAAA]The all-in-one anti-cheat & moderation solution[/COLOR][/SIZE]
+
+[IMG height="25px"]https://img.shields.io/badge/Hytale-Server%20Plugin-orange?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/Java-21-blue?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/v2.1-STABLE-green?style=for-the-badge[/IMG]
+[/CENTER]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// WHY PERFECTGUARD?[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Protect your server with [B]7 anti-cheat detections[/B], a full [B]moderation toolkit[/B], and an [B]in-game admin panel[/B]. Ban, mute, freeze, jail, warn, vanish — everything you need to keep your community safe, in one plugin.[/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// FEATURES[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][SIZE=4][COLOR=#55FF55][B]7 Anti-Cheat Detections[/B][/COLOR][/SIZE]
+[SIZE=3]— [B]Speed[/B] — Detects abnormal movement speed
+— [B]Fly[/B] — Detects unauthorized flight
+— [B]FastBreak[/B] — Impossibly fast block breaking
+— [B]FastPlace[/B] — Impossibly fast block placing
+— [B]Reach[/B] — Attacks beyond normal range
+— [B]Nuker[/B] — Mass block destruction
+— [B]AutoClick[/B] — Inhuman click rates
+All thresholds are fully configurable. VL (violation level) system with auto-freeze and auto-jail.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Ban System[/B][/COLOR][/SIZE]
+[SIZE=3]Permanent bans, temporary bans with duration, IP bans. All with reasons and history tracking.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Mute System[/B][/COLOR][/SIZE]
+[SIZE=3]Permanent and temporary mutes. Word blacklist with auto-blocking.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Staff Tools[/B][/COLOR][/SIZE]
+[SIZE=3]— [B]Vanish[/B] — Invisible staff mode
+— [B]Freeze[/B] — Stop player movement
+— [B]Jail[/B] — Teleport cheaters to configurable jail
+— [B]Inventory Inspect[/B] — View any player's inventory
+— [B]Teleport[/B] — TP to player or bring player to you
+— [B]Warnings[/B] — Issue, view, and clear warnings
+— [B]Player Notes[/B] — Private admin notes per player[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Reports & Alerts[/B][/COLOR][/SIZE]
+[SIZE=3]Players can submit reports. Staff receive real-time violation alerts. Full report management UI.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Announcements[/B][/COLOR][/SIZE]
+[SIZE=3]Title, notification, and chat announcements from the admin panel.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Admin UI[/B][/COLOR][/SIZE]
+[SIZE=3]12 UI pages covering players, violations, reports, settings, bans, mutes, blacklist, and more. All via [B]/pg menu[/B].[/SIZE]
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// COMMANDS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[TABLE]
+[TR]
+[TD]/pg menu[/TD]
+[TD]Open moderation UI[/TD]
+[/TR]
+[TR]
+[TD]/pg alerts[/TD]
+[TD]Toggle violation alerts[/TD]
+[/TR]
+[TR]
+[TD]/pg vanish[/TD]
+[TD]Toggle vanish mode[/TD]
+[/TR]
+[TR]
+[TD]/pg freeze <player>[/TD]
+[TD]Freeze/unfreeze player[/TD]
+[/TR]
+[TR]
+[TD]/pg ban <player> <reason>[/TD]
+[TD]Permanent ban[/TD]
+[/TR]
+[TR]
+[TD]/pg tempban <player> <dur> <reason>[/TD]
+[TD]Temporary ban[/TD]
+[/TR]
+[TR]
+[TD]/pg mute <player> <reason>[/TD]
+[TD]Mute player[/TD]
+[/TR]
+[TR]
+[TD]/pg kick <player> <reason>[/TD]
+[TD]Kick player[/TD]
+[/TR]
+[TR]
+[TD]/pg jail <player>[/TD]
+[TD]Send to jail[/TD]
+[/TR]
+[TR]
+[TD]/pg warn <player> <reason>[/TD]
+[TD]Issue warning[/TD]
+[/TR]
+[TR]
+[TD]/pg tp <player>[/TD]
+[TD]Teleport to player[/TD]
+[/TR]
+[TR]
+[TD]/pg invsee <player>[/TD]
+[TD]View player inventory[/TD]
+[/TR]
+[TR]
+[TD]/pg report <player> <reason>[/TD]
+[TD]File report (player cmd)[/TD]
+[/TR]
+[TR]
+[TD]/pg reload[/TD]
+[TD]Reload config[/TD]
+[/TR]
+[/TABLE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// TECHNICAL DETAILS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][B]Platform:[/B] Hytale Server Plugin
+[*][B]Java Version:[/B] 21
+[*][B]Dependencies:[/B] None
+[*][B]Languages:[/B] EN, FR, ES, DE, IT
+[*][B]Data Storage:[/B] JSON
+[*][B]Performance:[/B] Lightweight polling system
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// DOCUMENTATION[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Full documentation, permissions list, and configuration guide:
+[URL='https://perfectplugins.github.io/wiki/perfectguard/'][B]perfectplugins.github.io/wiki/perfectguard[/B][/URL][/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=4][COLOR=#AAAAAA]Developed by [B]KatsuyaTV[/B][/COLOR][/SIZE]
+[SIZE=3][COLOR=#555555]Issues or feature requests? DM or discussion tab.[/COLOR][/SIZE]
+[/CENTER]

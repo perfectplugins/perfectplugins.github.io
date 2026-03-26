@@ -1,0 +1,125 @@
+[CENTER]
+[SIZE=7][B][COLOR=#FF6B00]P E R F E C T[/COLOR] [COLOR=#FFFFFF]WARPS[/COLOR][/B][/SIZE]
+[SIZE=4][COLOR=#AAAAAA]Warp teleportation system with categories, favorites & admin UI[/COLOR][/SIZE]
+
+[IMG height="25px"]https://img.shields.io/badge/Hytale-Server%20Plugin-orange?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/Java-21-blue?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/v1.0-NEW-green?style=for-the-badge[/IMG]
+[/CENTER]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// WHY PERFECTWARPS?[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]The most complete warp system for Hytale. Create warps with [B]custom icons[/B], organize them by [B]categories[/B], let players mark [B]favorites[/B], and manage everything through a [B]clean flat UI[/B]. Movement cancellation, cooldowns, teleport stats — everything you need.[/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// FEATURES[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][SIZE=4][COLOR=#55FF55][B]Beautiful Warp Menu[/B][/COLOR][/SIZE]
+[SIZE=3]Players open [B]/warps[/B] and see a clean list with [B]item icons[/B], descriptions, delay info, and a green [B]"Warp"[/B] button. Empty rows and pagination are hidden automatically.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Categories & Tabs[/B][/COLOR][/SIZE]
+[SIZE=3]Organize warps by category (Spawn, Shops, Arenas, etc.). Players filter by category using [B]tabs[/B] at the top of the menu.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Favorites[/B][/COLOR][/SIZE]
+[SIZE=3]Players mark warps as [B]favorites[/B] with a gold star. Filter by favorites to see only bookmarked warps. Persisted per player.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Movement Cancellation[/B][/COLOR][/SIZE]
+[SIZE=3]When a warp has a delay, the teleportation is [B]cancelled instantly if the player moves[/B]. Checked every 200ms — no cheating the countdown.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Per-Player Cooldowns[/B][/COLOR][/SIZE]
+[SIZE=3]Configurable cooldown per warp. Players see [B]remaining cooldown[/B] in the UI. Prevents spam.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Teleport Stats[/B][/COLOR][/SIZE]
+[SIZE=3]Each warp tracks [B]total teleportations[/B]. Visible in both player UI and admin panel.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Full Admin UI[/B][/COLOR][/SIZE]
+[SIZE=3]Open [B]/pw admin[/B]:
+— Sidebar with paginated warp list
+— [B]Text fields[/B] for name, description, icon, delay, permission, priority
+— [B]Icon preview[/B] showing the selected item
+— [B]"Set Here"[/B] to update position to your location
+— [B]Confirmation before delete[/B] (click once = "Confirm?", click again = deleted)
+— Create warps directly from the UI — no commands needed[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Import / Export[/B][/COLOR][/SIZE]
+[SIZE=3][B]/pw export[/B] saves all warps to JSON. [B]/pw import[/B] loads them on another server. Easy migration.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Max Warps Limit[/B][/COLOR][/SIZE]
+[SIZE=3]Configurable maximum number of warps in [B]config.json[/B]. Set to 0 for unlimited.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Multi-language[/B][/COLOR][/SIZE]
+[SIZE=3]All messages in [B]5 languages[/B]: EN, FR, ES, DE, IT.[/SIZE]
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// COMMANDS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[TABLE]
+[TR]
+[TD]/pw[/TD]
+[TD]Open warp menu (same as /warps)[/TD]
+[/TR]
+[TR]
+[TD]/warps[/TD]
+[TD]Open warp menu[/TD]
+[/TR]
+[TR]
+[TD]/pw admin[/TD]
+[TD]Open admin panel[/TD]
+[/TR]
+[TR]
+[TD]/pw set <name>[/TD]
+[TD]Quick create warp at your position[/TD]
+[/TR]
+[TR]
+[TD]/pw delete <name>[/TD]
+[TD]Delete a warp[/TD]
+[/TR]
+[TR]
+[TD]/pw export[/TD]
+[TD]Export warps to JSON[/TD]
+[/TR]
+[TR]
+[TD]/pw import[/TD]
+[TD]Import warps from JSON[/TD]
+[/TR]
+[TR]
+[TD]/pw setlang <code>[/TD]
+[TD]Set language (EN, FR, ES, DE, IT)[/TD]
+[/TR]
+[TR]
+[TD]/pw help[/TD]
+[TD]Show help[/TD]
+[/TR]
+[/TABLE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// TECHNICAL DETAILS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][B]Platform:[/B] Hytale Server Plugin
+[*][B]Java Version:[/B] 21
+[*][B]Dependencies:[/B] None
+[*][B]Languages:[/B] EN, FR, ES, DE, IT
+[*][B]Data Storage:[/B] JSON (warps, favorites, config)
+[*][B]Performance:[/B] Event-driven, no tick loops
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// DOCUMENTATION[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Full documentation and FAQ:
+[URL='https://perfectplugins.github.io/wiki/perfectwarps/'][B]perfectplugins.github.io/wiki/perfectwarps[/B][/URL][/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=4][COLOR=#AAAAAA]Developed by [B]KatsuyaTV[/B][/COLOR][/SIZE]
+[SIZE=3][COLOR=#555555]Issues or feature requests? DM or discussion tab.[/COLOR][/SIZE]
+[/CENTER]

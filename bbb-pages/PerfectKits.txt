@@ -1,0 +1,104 @@
+[CENTER]
+[SIZE=7][B][COLOR=#FF6B00]P E R F E C T[/COLOR] [COLOR=#FFFFFF]KITS[/COLOR][/B][/SIZE]
+[SIZE=4][COLOR=#AAAAAA]Create, distribute, and manage kits with full UI support[/COLOR][/SIZE]
+
+[IMG height="25px"]https://img.shields.io/badge/Hytale-Server%20Plugin-orange?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/Java-21-blue?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/v1.1-STABLE-green?style=for-the-badge[/IMG]
+[/CENTER]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// WHY PERFECTKITS?[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Give your players [B]starter kits[/B], [B]reward kits[/B], [B]rank kits[/B] — anything you want. Full [B]cooldown system[/B], [B]permission support[/B], [B]auto-give on first join[/B], and a clean [B]admin UI[/B] to manage everything without touching files.[/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// FEATURES[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][SIZE=4][COLOR=#55FF55][B]Kit Builder[/B][/COLOR][/SIZE]
+[SIZE=3]Create kits via an [B]inventory picker UI[/B]. Add items, set quantities, customize display name and icon.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Cooldowns[/B][/COLOR][/SIZE]
+[SIZE=3]Per-player cooldown tracking. Set any duration in seconds per kit.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Permissions[/B][/COLOR][/SIZE]
+[SIZE=3]Optional permission requirement per kit. Control who can claim what.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Auto-Give[/B][/COLOR][/SIZE]
+[SIZE=3]Automatically give kits on [B]first join[/B]. Perfect for starter gear.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Command Execution[/B][/COLOR][/SIZE]
+[SIZE=3]Execute server commands when a kit is claimed. Run rewards, grant permissions, trigger events.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Broadcast[/B][/COLOR][/SIZE]
+[SIZE=3]Optional server-wide announcement when a player claims a kit.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Admin UI[/B][/COLOR][/SIZE]
+[SIZE=3]Full management panel via [B]/kit admin[/B]. Kit list, editor, item picker, all in one.[/SIZE]
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// COMMANDS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[TABLE]
+[TR]
+[TD]/kit list[/TD]
+[TD]List available kits[/TD]
+[/TR]
+[TR]
+[TD]/kit claim <kit>[/TD]
+[TD]Claim a kit[/TD]
+[/TR]
+[TR]
+[TD]/kit menu[/TD]
+[TD]Open kit menu[/TD]
+[/TR]
+[TR]
+[TD]/kit admin[/TD]
+[TD]Open admin UI[/TD]
+[/TR]
+[TR]
+[TD]/kit create <name>[/TD]
+[TD]Create new kit[/TD]
+[/TR]
+[TR]
+[TD]/kit give <player> <kit>[/TD]
+[TD]Give kit to player[/TD]
+[/TR]
+[TR]
+[TD]/kit reload[/TD]
+[TD]Reload config[/TD]
+[/TR]
+[/TABLE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// TECHNICAL DETAILS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][B]Platform:[/B] Hytale Server Plugin
+[*][B]Java Version:[/B] 21
+[*][B]Dependencies:[/B] None
+[*][B]Languages:[/B] EN, FR, ES, DE, IT
+[*][B]Data Storage:[/B] JSON
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// DOCUMENTATION[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Full documentation and FAQ:
+[URL='https://perfectplugins.github.io/wiki/perfectkits/'][B]perfectplugins.github.io/wiki/perfectkits[/B][/URL][/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=4][COLOR=#AAAAAA]Developed by [B]KatsuyaTV[/B][/COLOR][/SIZE]
+[SIZE=3][COLOR=#555555]Issues or feature requests? DM or discussion tab.[/COLOR][/SIZE]
+[/CENTER]

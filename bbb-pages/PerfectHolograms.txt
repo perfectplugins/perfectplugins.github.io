@@ -1,0 +1,142 @@
+[CENTER]
+[SIZE=7][B][COLOR=#FF6B00]P E R F E C T[/COLOR] [COLOR=#FFFFFF]HOLOGRAMS[/COLOR][/B][/SIZE]
+[SIZE=4][COLOR=#AAAAAA]The most advanced hologram plugin for Hytale servers[/COLOR][/SIZE]
+
+[IMG height="25px"]https://img.shields.io/badge/Hytale-Server%20Plugin-orange?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/Java-21-blue?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/v1.3-STABLE-green?style=for-the-badge[/IMG]
+[/CENTER]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// WHY PERFECTHOLOGRAMS?[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Create [B]stunning floating text[/B] with [B]hex colors[/B], [B]gradients[/B], [B]rainbow effects[/B], [B]8 fonts[/B], [B]image support[/B], and [B]dynamic placeholders[/B]. Full [B]interactive GUI editor[/B] — no commands needed to build beautiful holograms.[/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// FEATURES[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][SIZE=4][COLOR=#55FF55][B]Rich Text Formatting[/B][/COLOR][/SIZE]
+[SIZE=3]— [B]Hex colors[/B]: <#FF6B00>text</>
+— [B]Gradients[/B]: <gradient:#FF0000,#0000FF>text</>
+— [B]Rainbow[/B]: <rainbow>text</rainbow>
+— [B]Bold[/B], [B]Italic[/B], [B]Underline[/B] support[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]8 Font Styles[/B][/COLOR][/SIZE]
+[SIZE=3]Default, Sans, Serif, Thin, Cursive, Impact, Comic, Mono. Switch instantly from the GUI.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Image Support[/B][/COLOR][/SIZE]
+[SIZE=3]Display [B]PNG images as holograms[/B]. Place your image in the images/ folder, add it via command or GUI. Renders as pixel art with full color.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Dynamic Placeholders[/B][/COLOR][/SIZE]
+[SIZE=3]Auto-updated every 30 seconds:
+— {online} — Players in world
+— {time} — Server time
+— {date} — Server date
+— {world} — World name[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Interactive GUI Editor[/B][/COLOR][/SIZE]
+[SIZE=3]Full visual editor via [B]/ph menu[/B]:
+— Hologram list with pagination
+— Position editor (move, adjust, coordinates)
+— Rotation editor (yaw + Face Me mode)
+— Scale adjustment (text + image independently)
+— Line spacing, font selector
+— Rich text line editor
+— Image insertion
+— Copy & delete operations[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Full Persistence[/B][/COLOR][/SIZE]
+[SIZE=3]All holograms saved to JSON. Auto-spawn on player join. Survives restarts.[/SIZE]
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// COMMANDS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[TABLE]
+[TR]
+[TD]/ph menu[/TD]
+[TD]Open the GUI editor[/TD]
+[/TR]
+[TR]
+[TD]/ph create <name>[/TD]
+[TD]Create hologram at your position[/TD]
+[/TR]
+[TR]
+[TD]/ph addline <name> <text>[/TD]
+[TD]Add a line[/TD]
+[/TR]
+[TR]
+[TD]/ph setline <name> <#> <text>[/TD]
+[TD]Replace a line[/TD]
+[/TR]
+[TR]
+[TD]/ph move <name> <x> <y> <z>[/TD]
+[TD]Move to coordinates[/TD]
+[/TR]
+[TR]
+[TD]/ph movehere <name>[/TD]
+[TD]Move to your position[/TD]
+[/TR]
+[TR]
+[TD]/ph addimage <name> <file> [width][/TD]
+[TD]Add image[/TD]
+[/TR]
+[TR]
+[TD]/ph spacing <name> <value>[/TD]
+[TD]Set line spacing[/TD]
+[/TR]
+[TR]
+[TD]/ph copy <src> <new>[/TD]
+[TD]Duplicate hologram[/TD]
+[/TR]
+[TR]
+[TD]/ph list[/TD]
+[TD]List all holograms[/TD]
+[/TR]
+[TR]
+[TD]/ph near [radius][/TD]
+[TD]List nearby holograms[/TD]
+[/TR]
+[TR]
+[TD]/ph delete <name>[/TD]
+[TD]Delete hologram[/TD]
+[/TR]
+[TR]
+[TD]/ph reload[/TD]
+[TD]Reload from disk[/TD]
+[/TR]
+[/TABLE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// TECHNICAL DETAILS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][B]Platform:[/B] Hytale Server Plugin
+[*][B]Java Version:[/B] 21
+[*][B]Dependencies:[/B] None
+[*][B]Languages:[/B] EN, FR, ES, DE, IT, PT
+[*][B]Data Storage:[/B] JSON + auto-generated asset pack
+[*][B]Rendering:[/B] Per-character ECS entities with color tinting
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// DOCUMENTATION[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Full documentation, rich text syntax, and FAQ:
+[URL='https://perfectplugins.github.io/wiki/perfectholograms/'][B]perfectplugins.github.io/wiki/perfectholograms[/B][/URL][/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=4][COLOR=#AAAAAA]Developed by [B]KatsuyaTV[/B][/COLOR][/SIZE]
+[SIZE=3][COLOR=#555555]Issues or feature requests? DM or discussion tab.[/COLOR][/SIZE]
+[/CENTER]

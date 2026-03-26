@@ -1,0 +1,90 @@
+[CENTER]
+[SIZE=7][B][COLOR=#FF6B00]P E R F E C T[/COLOR] [COLOR=#FFFFFF]SPAWNER[/COLOR][/B][/SIZE]
+[SIZE=4][COLOR=#AAAAAA]Fully configurable mob spawner blocks for Hytale servers[/COLOR][/SIZE]
+
+[IMG height="25px"]https://img.shields.io/badge/Hytale-Server%20Plugin-orange?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/Java-21-blue?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/v1.5-STABLE-green?style=for-the-badge[/IMG]
+[/CENTER]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// WHY PERFECTSPAWNER?[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Add [B]fully configurable mob spawners[/B] to your server. Each spawner has a [B]custom cage model[/B] matching its mob type, a [B]hologram display[/B], and [B]stacking support[/B]. Control radius, count, interval, max mobs — everything via the [B]admin UI[/B].[/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// FEATURES[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][SIZE=4][COLOR=#55FF55][B]Custom Cage Models[/B][/COLOR][/SIZE]
+[SIZE=3]Every spawner has a unique [B]3D cage model[/B] matching its mob type. Looks great in any build.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Hologram Display[/B][/COLOR][/SIZE]
+[SIZE=3]Each spawner shows a [B]hologram above[/B] it with the mob name and current status. Updates in real-time.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Stacking[/B][/COLOR][/SIZE]
+[SIZE=3]Stack multiple spawners of the same type at one location to [B]increase spawn rate[/B]. Reduces entity count vs. placing many spawners.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Full Configuration[/B][/COLOR][/SIZE]
+[SIZE=3]Per-spawner settings:
+— [B]Spawn Radius[/B] — How far from the spawner mobs spawn (default: 5)
+— [B]Spawn Count[/B] — How many mobs per cycle (default: 2)
+— [B]Spawn Interval[/B] — Time between cycles (default: 30s)
+— [B]Max Mobs[/B] — Maximum alive mobs (default: 8)
+— [B]Activation Range[/B] — Player must be within range (default: 32)[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]All Vanilla Mobs[/B][/COLOR][/SIZE]
+[SIZE=3]Works with all Hytale mobs — animals, hostile mobs, and special creatures.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Admin UI[/B][/COLOR][/SIZE]
+[SIZE=3]Full management panel via [B]/spawner[/B]. Paginated spawner list, type config, settings editor.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Performance[/B][/COLOR][/SIZE]
+[SIZE=3]Event-driven spawning. Distance-based activation — inactive spawners use [B]zero resources[/B].[/SIZE]
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// COMMANDS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[TABLE]
+[TR]
+[TD]/spawner[/TD]
+[TD]Open the admin spawner management UI[/TD]
+[/TR]
+[TR]
+[TD]/give [MobName]_Spawner[/TD]
+[TD]Give yourself a spawner (e.g. /give Bear_Grizzly_Spawner)[/TD]
+[/TR]
+[/TABLE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// TECHNICAL DETAILS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][B]Platform:[/B] Hytale Server Plugin
+[*][B]Java Version:[/B] 21
+[*][B]Dependencies:[/B] None
+[*][B]Data Storage:[/B] JSON
+[*][B]Asset Pack:[/B] Included (cage models, textures, icons per mob)
+[*][B]Performance:[/B] Distance-based activation, event-driven
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// DOCUMENTATION[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Full documentation and FAQ:
+[URL='https://perfectplugins.github.io/wiki/perfectspawner/'][B]perfectplugins.github.io/wiki/perfectspawner[/B][/URL][/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=4][COLOR=#AAAAAA]Developed by [B]KatsuyaTV[/B][/COLOR][/SIZE]
+[SIZE=3][COLOR=#555555]Issues or feature requests? DM or discussion tab.[/COLOR][/SIZE]
+[/CENTER]

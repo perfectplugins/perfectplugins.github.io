@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PerfectWarps -- Wiki | Perfect Plugins</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a href="../../" class="nav-logo"><span>Perfect</span>Plugins</a>
+  <ul class="nav-links">
+      <li><a href="../../">Home</a></li>
+      <li><a href="../../#plugins">Plugins</a></li>
+      <li><a href="https://builtbybit.com/creators/katsuyatv.502728/">Store</a></li>
+  </ul>
+</div></nav>
+<div class="wiki-layout">
+  <aside class="wiki-sidebar">
+    <h3>PerfectWarps</h3>
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#warp-menu">Warp Menu</a></li>
+      <li><a href="#admin">Admin Panel</a></li>
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="#favorites">Favorites</a></li>
+      <li><a href="#cooldowns">Cooldowns</a></li>
+      <li><a href="#commands">Commands</a></li>
+      <li><a href="#config">Configuration</a></li>
+      <li><a href="#import-export">Import / Export</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </aside>
+  <main class="wiki-content">
+    <h1 id="overview">PerfectWarps</h1>
+    <p>Complete warp teleportation system with custom icons, categories, favorites, cooldowns, movement cancellation, teleport stats, and a full admin UI.</p>
+
+    <table>
+      <tr><th>Version</th><td>1.0</td></tr>
+      <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
+      <tr><th>Java</th><td>21+</td></tr>
+      <tr><th>Dependencies</th><td>None</td></tr>
+      <tr><th>Languages</th><td>EN, FR, ES, DE, IT</td></tr>
+    </table>
+
+    <h2 id="installation">Installation</h2>
+    <ol>
+      <li>Drop <code>PerfectWarps-1.0.jar</code> in <code>mods/</code></li>
+      <li>Start the server</li>
+      <li>Use <code>/pw admin</code> to create your first warp</li>
+      <li>Players use <code>/warps</code> to open the warp menu</li>
+    </ol>
+
+    <h2 id="warp-menu">Warp Menu (/warps)</h2>
+    <p>Players see a paginated list with:</p>
+    <ul>
+      <li><strong>Item icon</strong> per warp (configurable by admin)</li>
+      <li><strong>Name</strong> in bold white</li>
+      <li><strong>Description</strong> + teleport count</li>
+      <li><strong>Delay/cooldown info</strong> in cyan</li>
+      <li><strong>Favorite star</strong> (gold) to bookmark</li>
+      <li><strong>"Warp" button</strong> to teleport</li>
+    </ul>
+    <p>Empty rows and pagination are hidden automatically. Category tabs filter the list.</p>
+
+    <h2 id="admin">Admin Panel (/pw admin)</h2>
+    <ul>
+      <li><strong>Left sidebar</strong>: paginated warp list, "New Warp" button</li>
+      <li><strong>Right panel</strong>: editable text fields for name, description, icon, delay, permission, priority</li>
+      <li><strong>Icon preview</strong>: shows the selected item icon</li>
+      <li><strong>Teleport stats</strong>: total teleports displayed</li>
+      <li><strong>"Set Here"</strong>: updates warp position to your location</li>
+      <li><strong>"Delete"</strong>: requires double-click confirmation</li>
+      <li><strong>"Create"</strong>: fill in name and click Save to create at your position</li>
+    </ul>
+
+    <h2 id="categories">Categories</h2>
+    <p>Set a category on each warp (e.g. "Spawn", "Shop", "Arena"). Players see category tabs at the top of the warp menu and can filter by category.</p>
+
+    <h2 id="favorites">Favorites</h2>
+    <p>Players click the gold star next to any warp to add it to their favorites. Click "Fav" tab to see only favorited warps. Favorites persist across sessions.</p>
+
+    <h2 id="cooldowns">Cooldowns & Movement Cancel</h2>
+    <ul>
+      <li><strong>Cooldown</strong>: set per warp in seconds. Players see remaining cooldown in the UI.</li>
+      <li><strong>Delay</strong>: countdown before teleport. If the player moves during the countdown, teleportation is cancelled instantly.</li>
+    </ul>
+
+    <h2 id="commands">Commands</h2>
+    <table>
+      <tr><th>Command</th><th>Description</th></tr>
+      <tr><td><code>/pw</code> or <code>/warps</code></td><td>Open warp menu</td></tr>
+      <tr><td><code>/pw admin</code></td><td>Open admin panel</td></tr>
+      <tr><td><code>/pw set &lt;name&gt;</code></td><td>Quick create warp at your position</td></tr>
+      <tr><td><code>/pw delete &lt;name&gt;</code></td><td>Delete a warp</td></tr>
+      <tr><td><code>/pw export</code></td><td>Export all warps to JSON</td></tr>
+      <tr><td><code>/pw import</code></td><td>Import warps from JSON</td></tr>
+      <tr><td><code>/pw setlang &lt;code&gt;</code></td><td>Set language (EN, FR, ES, DE, IT)</td></tr>
+      <tr><td><code>/pw help</code></td><td>Show help</td></tr>
+    </table>
+
+    <h2 id="config">Configuration</h2>
+    <p>File: <code>UserData/Saves/MODDING/mods/KatsuyaTV_PerfectWarps/config.json</code></p>
+    <pre><code>{
+  "lang": "EN",
+  "maxWarps": 0,
+  "defaultParticle": "VFX_Teleport",
+  "defaultSound": "SFX_UI_Teleport"
+}</code></pre>
+    <p><code>maxWarps: 0</code> = unlimited.</p>
+
+    <h2 id="import-export">Import / Export</h2>
+    <p><code>/pw export</code> saves all warps to <code>warps_export.json</code> in the plugin data folder. Copy this file to another server and run <code>/pw import</code> to load them. Only new warps (by name) are added — existing warps are not overwritten.</p>
+
+    <h2 id="faq">FAQ</h2>
+    <h3>Teleportation cancelled when I move?</h3>
+    <p>Intended behavior. If a warp has a delay, you must stay still during the countdown. Moving more than ~1.4 blocks cancels the teleport.</p>
+
+    <h3>How do categories work?</h3>
+    <p>Set a category name on a warp via the admin UI. Players see tabs at the top of the warp menu to filter by category.</p>
+
+    <h3>Can players create warps?</h3>
+    <p>Only admins can create warps. Players can only view and use them via <code>/warps</code>.</p>
+  </main>
+</div>
+<footer><p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> -- Perfect Plugins 2026</p></footer>
+</body>
+</html>

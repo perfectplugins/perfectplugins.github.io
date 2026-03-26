@@ -1,0 +1,116 @@
+[CENTER]
+[SIZE=7][B][COLOR=#FF6B00]P E R F E C T[/COLOR] [COLOR=#FFFFFF]PORTALS[/COLOR][/B][/SIZE]
+[SIZE=4][COLOR=#AAAAAA]Colored portal pads with warp system & built-in reverse proxy[/COLOR][/SIZE]
+
+[IMG height="25px"]https://img.shields.io/badge/Hytale-Server%20Plugin-orange?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/Java-21-blue?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/v2.0-NEW-green?style=for-the-badge[/IMG]
+[/CENTER]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// WHY PERFECTPORTALS?[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Tired of boring teleportation systems? PerfectPortals brings [B]12 stunning colored portal pads[/B] to your server — each with unique [B]particle effects[/B], [B]colored lighting[/B], and a beautiful [B]recolored stone base[/B]. Link any two portals together and let your players teleport between them with a simple [COLOR=#55FF55][B]press of [F][/B][/COLOR]. Perfect for hubs, dungeons, arenas, or any creative build.
+
+[B]NEW in v2.0:[/B] Built-in [COLOR=#FF6B00][B]TCP reverse proxy[/B][/COLOR] — connect multiple Hytale servers behind a single public IP. Players walk through a portal and seamlessly transfer to another server. No external proxy tools needed.[/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// FEATURES[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][SIZE=4][COLOR=#55FF55][B]12 Portal Variants[/B][/COLOR][/SIZE]
+[SIZE=3][B]6 colors[/B] (Red, Green, Purple, Orange, Pink, Yellow) x [B]2 styles[/B] each:
+— [B]Light version[/B] — emits colored light (2 block radius)
+— [B]Dark version[/B] — same particles and texture, no light emission
+Each portal has its own [B]recolored pad texture[/B], [B]matching particle effects[/B], and [B]unique inventory icon[/B].[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Warp System[/B][/COLOR][/SIZE]
+[SIZE=3]Place two portals anywhere in the world and [B]link them together[/B] via the admin UI. Players simply press [B][F][/B] on a linked portal to instantly teleport to the other one. Links are [B]bidirectional[/B] — works both ways.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Cross-Server Transfer[/B][/COLOR][/SIZE]
+[SIZE=3]Configure any portal to [B]transfer players to another Hytale server[/B]. Set the target host, port, and an optional countdown timer. Works with direct IPs or through the built-in proxy.[/SIZE]
+[*][SIZE=4][COLOR=#FF6B00][B]NEW — Built-in Reverse Proxy[/B][/COLOR][/SIZE]
+[SIZE=3]Run multiple Hytale servers behind [B]one public IP[/B]. The proxy hides your backend servers completely:
+— Players connect to a single address — [B]backend IPs are never exposed[/B]
+— Supports [B]Docker internal IPs[/B] (172.x.x.x), local networks (10.x.x.x), localhost
+— Each backend gets its own [B]public port[/B] — fully reliable, zero protocol parsing
+— Add [B]unlimited backends[/B] via a simple JSON config
+— [B]Disabled by default[/B] — existing setups work without changes[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Admin UI Panel[/B][/COLOR][/SIZE]
+[SIZE=3]Clean [B]sidebar layout[/B] accessible via [B]/pportals[/B]:
+— Paginated list of all placed portals with [B]ID, type, position, world[/B]
+— [B]Click to select[/B] portal A, then portal B
+— [B]Link / Unlink[/B] buttons with instant feedback
+— [B]Server Config[/B] page — set host, port, countdown, label per portal
+— Real-time [B]status messages[/B] for every action[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Auto-Registration[/B][/COLOR][/SIZE]
+[SIZE=3]Portals are [B]automatically registered[/B] when placed and [B]unregistered[/B] when broken. Links are cleaned up automatically. No manual setup needed.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Colored Lighting & Particles[/B][/COLOR][/SIZE]
+[SIZE=3]Light variants emit a [B]colored glow[/B] matching their portal color. Each color has its own [B]hue-shifted particle spawners[/B] — background glow, distortion, and frame sparks.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Full Persistence[/B][/COLOR][/SIZE]
+[SIZE=3]All portal data, links, and server configs are [B]saved to JSON[/B] and survive server restarts.[/SIZE]
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// COMMANDS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[TABLE]
+[TR]
+[TD]/pportals menu[/TD]
+[TD]Open the admin portal management UI[/TD]
+[/TR]
+[TR]
+[TD]/pportals help[/TD]
+[TD]Show help[/TD]
+[/TR]
+[/TABLE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// PORTAL TYPES[/B][/COLOR][/SIZE]
+[/CENTER]
+
+LIGHT VARIANTS (with colored glow):
+Portal_Red, Portal_Green, Portal_Orange, Portal_Purple, Portal_Yellow, Portal_Pink
+
+DARK VARIANTS (no light emission):
+Portal_Red_Dark, Portal_Green_Dark, Portal_Orange_Dark, Portal_Purple_Dark, Portal_Yellow_Dark, Portal_Pink_Dark
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// TECHNICAL DETAILS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][B]Platform:[/B] Hytale Server Plugin
+[*][B]Java Version:[/B] 21
+[*][B]Dependencies:[/B] None
+[*][B]Permissions:[/B] perfectportals.admin
+[*][B]Data Storage:[/B] JSON
+[*][B]Asset Pack:[/B] Included (textures, icons, particles, models)
+[*][B]Performance:[/B] Lightweight — event-driven, no tick loops
+[*][B]Proxy:[/B] Built-in TCP reverse proxy (Netty) — optional
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// DOCUMENTATION[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Full documentation, setup guides, proxy configuration, and FAQ:
+[URL='https://perfectplugins.github.io/wiki/perfectportals/'][B]perfectplugins.github.io/wiki/perfectportals[/B][/URL][/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=4][COLOR=#AAAAAA]Developed by [B]KatsuyaTV[/B][/COLOR][/SIZE]
+[SIZE=3][COLOR=#555555]Issues or feature requests? DM or discussion tab.[/COLOR][/SIZE]
+[/CENTER]

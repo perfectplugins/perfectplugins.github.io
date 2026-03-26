@@ -1,0 +1,90 @@
+[CENTER]
+[SIZE=7][B][COLOR=#FF6B00]P E R F E C T[/COLOR] [COLOR=#FFFFFF]NPC[/COLOR][/B][/SIZE]
+[SIZE=4][COLOR=#AAAAAA]The ultimate NPC system for Hytale servers[/COLOR][/SIZE]
+
+[IMG height="25px"]https://img.shields.io/badge/Hytale-Server%20Plugin-orange?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/Java-21-blue?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/v2.1-NEW-green?style=for-the-badge[/IMG]
+[/CENTER]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// WHY PERFECTNPC?[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]PerfectNPC brings your server world to life with [B]custom NPCs[/B] that can sell items, give quests, display dialogues, and rotate to face players. Every NPC is fully configurable through an [B]in-game admin UI[/B] — no file editing required.[/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// FEATURES[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][SIZE=4][COLOR=#55FF55][B]4 NPC Types[/B][/COLOR][/SIZE]
+[SIZE=3]— [B]Shopkeeper[/B] — Sells and buys items via interactive trade UI
+— [B]Quest Giver[/B] — Assigns quests with objectives and rewards
+— [B]Dialogue[/B] — Displays conversation text with multiple responses
+— [B]Ambient[/B] — Decorative NPC, no interaction[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Shop System[/B][/COLOR][/SIZE]
+[SIZE=3]Configurable item list, prices, and stock. Buy and sell in the same UI. Category tabs for large shops.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Quest System[/B][/COLOR][/SIZE]
+[SIZE=3]Multiple objective types: collect items, kill mobs, visit locations. Item and XP rewards. Per-player progress tracking.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Face-Me Rotation[/B][/COLOR][/SIZE]
+[SIZE=3]NPCs rotate to face the nearest player automatically. Uses smart despawn/respawn for reliable rotation.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Chunk Spawning[/B][/COLOR][/SIZE]
+[SIZE=3]NPCs auto-spawn when chunks load. No manual respawning needed after restarts.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Custom Models[/B][/COLOR][/SIZE]
+[SIZE=3]Use any Hytale model with custom scale. Nameplate display. Frozen/idle animations.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Admin UI[/B][/COLOR][/SIZE]
+[SIZE=3]Full in-game management panel via [B]/npc[/B]. Create, configure, and manage all NPCs visually.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Multi-language[/B][/COLOR][/SIZE]
+[SIZE=3]Plugin messages in [B]5 languages[/B]: EN, FR, ES, DE, IT.[/SIZE]
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// COMMANDS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[TABLE]
+[TR]
+[TD]/npc[/TD]
+[TD]Open the NPC admin panel[/TD]
+[/TR]
+[TR]
+[TD]/npc help[/TD]
+[TD]Show help[/TD]
+[/TR]
+[/TABLE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// TECHNICAL DETAILS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][B]Platform:[/B] Hytale Server Plugin
+[*][B]Java Version:[/B] 21
+[*][B]Dependencies:[/B] None
+[*][B]Languages:[/B] EN, FR, ES, DE, IT
+[*][B]Data Storage:[/B] JSON
+[*][B]Performance:[/B] Event-driven, chunk-based spawning
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// DOCUMENTATION[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Full documentation and FAQ:
+[URL='https://perfectplugins.github.io/wiki/perfectnpc/'][B]perfectplugins.github.io/wiki/perfectnpc[/B][/URL][/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=4][COLOR=#AAAAAA]Developed by [B]KatsuyaTV[/B][/COLOR][/SIZE]
+[SIZE=3][COLOR=#555555]Issues or feature requests? DM or discussion tab.[/COLOR][/SIZE]
+[/CENTER]
