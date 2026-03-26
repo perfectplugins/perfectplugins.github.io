@@ -1,0 +1,157 @@
+[CENTER]
+[SIZE=7][B][COLOR=#FF6B00]P E R F E C T[/COLOR] [COLOR=#FFFFFF]DEBUG[/COLOR][/B][/SIZE]
+[SIZE=4][COLOR=#AAAAAA]Passive debug & API scanner for Hytale modders[/COLOR][/SIZE]
+
+[IMG height="25px"]https://img.shields.io/badge/Hytale-Server%20Plugin-orange?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/Java-21-blue?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/FREE-open%20source-brightgreen?style=for-the-badge[/IMG]
+[/CENTER]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// WHY PERFECTDEBUG?[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Building Hytale plugins but can't find the API docs? PerfectDebug [B]automatically scans[/B] the server API, dumps every class, method, and field to text files, sniffs events, tracks vanilla assets, and monitors performance — all in [B]passive mode[/B]. Zero commands, zero config, zero impact. Just drop it in and get instant insight into Hytale's internals.[/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// FEATURES[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][SIZE=4][COLOR=#55FF55][B]API Scanner[/B][/COLOR][/SIZE]
+[SIZE=3]Automatically scans [B]38+ server classes[/B] using reflection:
+— Full method signatures with parameter types and return types
+— All fields with types and modifiers
+— Class hierarchy and interfaces
+— Output: one text file per class in the plugin data folder
+Covers: World, PlayerRef, Entity, ItemStack, Inventory, ItemContainer, ItemModule, HytaleServer, ComponentType, and more.
+Scan completes in [B]~50ms[/B] at startup.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Event Sniffer[/B][/COLOR][/SIZE]
+[SIZE=3]Registers listeners on all available events and logs them:
+— PlayerConnectEvent
+— PlayerReadyEvent
+— PlayerDisconnectEvent
+— PlayerChatEvent
+Output saved to [B]events.txt[/B].[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Vanilla Asset Scanner[/B][/COLOR][/SIZE]
+[SIZE=3]Scans the Hytale asset directory and catalogs everything:
+— [B]581 particles[/B] — All particle effect files
+— [B]1,168 sounds[/B] — All sound effect files
+— [B]356 textures[/B] — All block and item textures
+Results saved to organized text files. Essential for finding the right particle/sound IDs for your mods.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Performance Monitor[/B][/COLOR][/SIZE]
+[SIZE=3]Periodic server health reports every [B]30 seconds[/B]. Track memory usage and performance trends.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Passive Item Tracker[/B][/COLOR][/SIZE]
+[SIZE=3]Logs items seen in player inventories. Useful for discovering item IDs and understanding what's available in the game.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Player Tracker[/B][/COLOR][/SIZE]
+[SIZE=3]Logs player connections and disconnections with timestamps.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]100% Passive[/B][/COLOR][/SIZE]
+[SIZE=3]No commands needed. No configuration. No server impact. Everything runs automatically at startup and outputs to files. Drop in, start server, check the output folder.[/SIZE]
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// OUTPUT FILES[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]All files are written to [B]UserData/Saves/[World]/mods/KatsuyaTV_PerfectDebug/[/B][/SIZE]
+
+[TABLE]
+[TR]
+[TD]api_World.txt[/TD]
+[TD]World class methods and fields[/TD]
+[/TR]
+[TR]
+[TD]api_PlayerRef.txt[/TD]
+[TD]PlayerRef class API[/TD]
+[/TR]
+[TR]
+[TD]api_ItemStack.txt[/TD]
+[TD]ItemStack class API[/TD]
+[/TR]
+[TR]
+[TD]api_Inventory.txt[/TD]
+[TD]Inventory class API[/TD]
+[/TR]
+[TR]
+[TD]api_ItemContainer.txt[/TD]
+[TD]ItemContainer class API[/TD]
+[/TR]
+[TR]
+[TD]api_scan_summary.txt[/TD]
+[TD]Overview of all scanned classes[/TD]
+[/TR]
+[TR]
+[TD]events.txt[/TD]
+[TD]Event sniffer log[/TD]
+[/TR]
+[TR]
+[TD]vanilla_items.txt[/TD]
+[TD]All registered vanilla items[/TD]
+[/TR]
+[TR]
+[TD]vanilla_blocks.txt[/TD]
+[TD]All registered vanilla blocks[/TD]
+[/TR]
+[/TABLE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// INSTALLATION[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3][B]1.[/B] Download [B]PerfectDebug-1.1.jar[/B]
+[B]2.[/B] Place it in your server's [B]mods/[/B] folder
+[B]3.[/B] Start the server — everything runs automatically
+[B]4.[/B] Check output in [B]UserData/Saves/[World]/mods/KatsuyaTV_PerfectDebug/[/B]
+
+That's it. No commands, no config, no setup.[/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// WHO IS THIS FOR?[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][SIZE=3][B]Plugin developers[/B] — Discover undocumented API methods and build better mods[/SIZE]
+[*][SIZE=3][B]Server owners[/B] — Find particle/sound/texture IDs for your custom content[/SIZE]
+[*][SIZE=3][B]Modders[/B] — Understand the ECS architecture and available components[/SIZE]
+[*][SIZE=3][B]Content creators[/B] — Know exactly what items, blocks, and entities exist in vanilla[/SIZE]
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// TECHNICAL DETAILS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[LIST]
+[*][B]Platform:[/B] Hytale Server Plugin
+[*][B]Java Version:[/B] 21
+[*][B]Dependencies:[/B] None
+[*][B]Price:[/B] Free
+[*][B]Performance:[/B] API scan ~50ms at startup. No tick loops.
+[*][B]Mode:[/B] Fully passive — no commands, no player interaction
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// DOCUMENTATION[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Full documentation:
+[URL='https://perfectplugins.github.io/wiki/perfectdebug/'][B]perfectplugins.github.io/wiki/perfectdebug[/B][/URL][/SIZE]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=4][COLOR=#AAAAAA]Developed by [B]KatsuyaTV[/B][/COLOR][/SIZE]
+[SIZE=3][COLOR=#555555]Part of the [URL='https://perfectplugins.github.io']PerfectPlugins[/URL] collection.
+Issues or feature requests? DM or discussion tab.[/COLOR][/SIZE]
+[/CENTER]
