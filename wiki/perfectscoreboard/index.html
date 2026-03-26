@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PerfectScoreboard -- Wiki | Perfect Plugins</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a href="../../" class="nav-logo"><span>Perfect</span>Plugins</a>
+  <ul class="nav-links">
+      <li><a href="../../">Home</a></li>
+      <li><a href="../../#plugins">Plugins</a></li>
+      <li><a href="https://builtbybit.com/creators/katsuyatv.502728/">Store</a></li>
+  </ul>
+</div></nav>
+<div class="wiki-layout">
+  <aside class="wiki-sidebar">
+    <h3>PerfectScoreboard</h3>
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#hud">HUD Display</a></li>
+      <li><a href="#placeholders">Placeholders</a></li>
+      <li><a href="#profiles">Profiles</a></li>
+      <li><a href="#animations">Animations</a></li>
+      <li><a href="#positions">Positions</a></li>
+      <li><a href="#logo">Custom Logo</a></li>
+      <li><a href="#admin">Admin UI</a></li>
+      <li><a href="#commands">Commands</a></li>
+      <li><a href="#config">Configuration</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </aside>
+  <main class="wiki-content">
+    <h1 id="overview">PerfectScoreboard</h1>
+    <p>Customizable HUD scoreboard with profiles, dynamic placeholders, animations, custom logo, 5 screen positions, per-world configs, and a full admin UI.</p>
+
+    <table>
+      <tr><th>Version</th><td>1.0</td></tr>
+      <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
+      <tr><th>Java</th><td>21+</td></tr>
+      <tr><th>Dependencies</th><td>None</td></tr>
+      <tr><th>Price</th><td>Free</td></tr>
+    </table>
+    <p><a href="https://builtbybit.com/resources/perfectscoreboard.100276/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Download on BuiltByBit (Free)</a></p>
+
+    <h2 id="installation">Installation</h2>
+    <ol>
+      <li>Drop <code>PerfectScoreboard-1.0.jar</code> in <code>mods/</code></li>
+      <li>Start the server -- scoreboard appears automatically on join</li>
+      <li>Use <code>/sb admin</code> to customize</li>
+    </ol>
+
+    <h2 id="hud">HUD Display</h2>
+    <p>The scoreboard displays on every player's screen with:</p>
+    <ul>
+      <li><strong>Custom logo</strong> at the top (optional, 240x60 PNG)</li>
+      <li><strong>Title</strong> with color codes</li>
+      <li><strong>Up to 15 lines</strong> with color codes and dynamic placeholders</li>
+      <li><strong>Footer</strong> text</li>
+      <li><strong>Semi-transparent background</strong></li>
+    </ul>
+    <p>Players can toggle visibility with <code>/sb</code>.</p>
+
+    <h2 id="placeholders">Dynamic Placeholders</h2>
+    <p>Updated every second:</p>
+    <table>
+      <tr><th>Placeholder</th><th>Value</th></tr>
+      <tr><td><code>{player}</code></td><td>Player username</td></tr>
+      <tr><td><code>{online}</code></td><td>Online player count</td></tr>
+      <tr><td><code>{world}</code></td><td>Current world name</td></tr>
+      <tr><td><code>{time}</code></td><td>Server time (HH:mm)</td></tr>
+      <tr><td><code>{date}</code></td><td>Server date (yyyy-MM-dd)</td></tr>
+      <tr><td><code>{ping}</code></td><td>Player ping (ms)</td></tr>
+    </table>
+    <p>Custom placeholders: <code>/sb setplaceholder kills 42</code> then use <code>{kills}</code> in any line.</p>
+
+    <h2 id="profiles">Profiles</h2>
+    <p>Create different scoreboard layouts for different contexts. Each profile has its own title, lines, footer, animation, position, and logo setting.</p>
+    <ul>
+      <li><strong>Per-world</strong>: assign a profile to a world with <code>/sb setworld &lt;world&gt; &lt;profile&gt;</code></li>
+      <li><strong>Switch on the fly</strong>: <code>/sb profile &lt;name&gt;</code></li>
+      <li><strong>Create/delete</strong>: <code>/sb create &lt;name&gt;</code> / <code>/sb delete &lt;name&gt;</code></li>
+    </ul>
+
+    <h2 id="animations">Animations</h2>
+    <p>4 modes per profile, selectable in admin UI:</p>
+    <table>
+      <tr><th>Mode</th><th>Effect</th></tr>
+      <tr><td>None</td><td>Static text</td></tr>
+      <tr><td>Rainbow</td><td>Color wave cycling through lines</td></tr>
+      <tr><td>Scroll</td><td>Scrolling text for long lines</td></tr>
+      <tr><td>Flash</td><td>Pulsing color effect</td></tr>
+    </table>
+
+    <h2 id="positions">Screen Positions</h2>
+    <p>5 positions, configurable per profile:</p>
+    <ul>
+      <li><strong>Top-Right</strong> (default)</li>
+      <li><strong>Top-Left</strong></li>
+      <li><strong>Bottom-Right</strong></li>
+      <li><strong>Bottom-Left</strong></li>
+      <li><strong>Center-Right</strong></li>
+    </ul>
+    <p>Position change takes effect on next <code>/sb show</code> or reconnect.</p>
+
+    <h2 id="logo">Custom Logo</h2>
+    <ol>
+      <li>Create a PNG image (recommended: <strong>240x60 pixels</strong>)</li>
+      <li>Open the PerfectScoreboard JAR with any zip tool</li>
+      <li>Replace <code>Common/UI/Custom/Textures/PerfectScoreboard/logo.png</code></li>
+      <li>Save and restart the server</li>
+      <li>Toggle ON/OFF per profile in <code>/sb admin</code></li>
+    </ol>
+
+    <h2 id="admin">Admin UI (/sb admin)</h2>
+    <ul>
+      <li><strong>Profile list</strong> on the left -- select or create profiles</li>
+      <li><strong>Title &amp; footer</strong> text fields</li>
+      <li><strong>Line editor</strong> -- click any line to edit, add or remove lines</li>
+      <li><strong>Animation selector</strong> -- cycle through 4 modes</li>
+      <li><strong>Logo toggle</strong> -- ON/OFF</li>
+      <li><strong>Position selector</strong> -- cycle through 5 positions</li>
+      <li>Logo file path displayed for reference</li>
+    </ul>
+
+    <h2 id="commands">Commands</h2>
+    <table>
+      <tr><th>Command</th><th>Description</th></tr>
+      <tr><td><code>/sb</code></td><td>Toggle scoreboard visibility</td></tr>
+      <tr><td><code>/sb show</code></td><td>Show scoreboard</td></tr>
+      <tr><td><code>/sb hide</code></td><td>Hide scoreboard</td></tr>
+      <tr><td><code>/sb admin</code></td><td>Open admin panel</td></tr>
+      <tr><td><code>/sb list</code></td><td>List all profiles</td></tr>
+      <tr><td><code>/sb create &lt;name&gt;</code></td><td>Create new profile</td></tr>
+      <tr><td><code>/sb delete &lt;name&gt;</code></td><td>Delete profile</td></tr>
+      <tr><td><code>/sb settitle &lt;profile&gt; &lt;text&gt;</code></td><td>Set profile title</td></tr>
+      <tr><td><code>/sb setfooter &lt;profile&gt; &lt;text&gt;</code></td><td>Set footer</td></tr>
+      <tr><td><code>/sb setline &lt;profile&gt; &lt;#&gt; &lt;text&gt;</code></td><td>Edit a line</td></tr>
+      <tr><td><code>/sb addline &lt;profile&gt; &lt;text&gt;</code></td><td>Add a line</td></tr>
+      <tr><td><code>/sb removeline &lt;profile&gt; &lt;#&gt;</code></td><td>Remove a line</td></tr>
+      <tr><td><code>/sb setworld &lt;world&gt; &lt;profile&gt;</code></td><td>Assign profile to world</td></tr>
+      <tr><td><code>/sb profile &lt;name&gt;</code></td><td>Switch active profile</td></tr>
+      <tr><td><code>/sb setplaceholder &lt;key&gt; &lt;value&gt;</code></td><td>Set custom placeholder</td></tr>
+      <tr><td><code>/sb help</code></td><td>Show all commands</td></tr>
+    </table>
+
+    <h2 id="config">Configuration</h2>
+    <p>File: <code>UserData/Saves/MODDING/mods/KatsuyaTV_PerfectScoreboard/config.json</code></p>
+    <pre><code>{
+  "lang": "EN",
+  "refreshMs": 1000,
+  "defaultProfile": "default",
+  "showOnJoin": true,
+  "worldProfiles": {}
+}</code></pre>
+
+    <h2 id="faq">FAQ</h2>
+    <h3>Position change doesn't take effect?</h3>
+    <p>Position is set at HUD creation time. Use <code>/sb show</code> or reconnect to reload with the new position.</p>
+    <h3>How do I use color codes?</h3>
+    <p>Use <code>&amp;</code> codes in lines: <code>&amp;a</code> = green, <code>&amp;c</code> = red, <code>&amp;e</code> = yellow, etc.</p>
+    <h3>Can players hide the scoreboard?</h3>
+    <p>Yes, <code>/sb</code> toggles visibility. Preference persists.</p>
+  </main>
+</div>
+<footer><p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> -- Perfect Plugins 2026</p></footer>
+</body>
+</html>
