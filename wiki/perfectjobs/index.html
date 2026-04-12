@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PerfectJobs — Wiki | Perfect Plugins</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="../../" class="nav-logo"><img src="../../assets/img/logo.png" alt="Perfect Plugin Series" class="nav-logo-img"><span>Perfect</span>Plugins</a>
+    <ul class="nav-links">
+      <li><a href="../../">Home</a></li>
+      <li><a href="../../#plugins">Plugins</a></li>
+      <li><a href="https://builtbybit.com/creators/katsuyatv.502728/">Store</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wiki-layout">
+  <aside class="wiki-sidebar">
+    <h3>PerfectJobs</h3>
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#professions">Professions</a></li>
+      <li><a href="#progression">Progression</a></li>
+      <li><a href="#specializations">Specializations</a></li>
+      <li><a href="#tools">Evolving Tools</a></li>
+      <li><a href="#quests">Daily Quests</a></li>
+      <li><a href="#commands">Commands</a></li>
+      <li><a href="#admin">Admin Panel</a></li>
+      <li><a href="#api">API & Placeholders</a></li>
+      <li><a href="#config">Configuration</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </aside>
+
+  <main class="wiki-content">
+    <h1 id="overview">PerfectJobs</h1>
+    <table>
+      <tr><th>Version</th><td>1.0</td></tr>
+      <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
+      <tr><th>Languages</th><td>EN, FR, ES, DE, IT, PT</td></tr>
+      <tr><th>Dependencies</th><td>None (PerfectEconomy optional for money rewards)</td></tr>
+    </table>
+    <p>Complete job and profession system with 4 professions, 100 levels, evolving tools, specializations, daily quests, leaderboards, HUD tracker, and a full admin panel.</p>
+
+    <h2 id="installation">Installation</h2>
+    <ol>
+      <li>Drop <code>PerfectJobs-1.0.jar</code> into your server's <code>mods/</code> folder</li>
+      <li>Start or restart the server</li>
+      <li>Config files are auto-generated on first run</li>
+      <li>Players can start working immediately by mining, chopping, hunting, or farming</li>
+    </ol>
+
+    <h2 id="features">Features</h2>
+    <ul>
+      <li><strong>4 professions</strong>: Miner, Lumberjack, Hunter, Farmer</li>
+      <li><strong>100 levels</strong> per job with exponential XP curve</li>
+      <li><strong>Evolving tools</strong> in 4 tiers, awarded based on job level</li>
+      <li><strong>Specializations</strong> unlocked at level 25 with +50% XP bonus</li>
+      <li><strong>Daily quests</strong> (5 per job) that scale with player level</li>
+      <li><strong>HUD tracker</strong> showing XP progress for all 4 jobs</li>
+      <li><strong>Leaderboards</strong> per job and global (total level)</li>
+      <li><strong>Admin UI</strong> with quest templates, XP sources, player editor, and XP boost</li>
+      <li><strong>PerfectEconomy integration</strong> for money rewards on quest completion</li>
+      <li><strong>Independent progress</strong> in all 4 jobs simultaneously</li>
+      <li><strong>Auto-save</strong> every 5 minutes</li>
+    </ul>
+
+    <h2 id="professions">Professions</h2>
+
+    <h3>Miner</h3>
+    <p>Earn XP by mining rocks and ores. Higher-tier ores give more XP.</p>
+    <table>
+      <tr><th>Block</th><th>XP</th></tr>
+      <tr><td>Stone, Sandstone, Basalt</td><td>2-4</td></tr>
+      <tr><td>Copper Ore</td><td>8</td></tr>
+      <tr><td>Iron Ore</td><td>15</td></tr>
+      <tr><td>Gold Ore</td><td>30</td></tr>
+      <tr><td>Cobalt Ore</td><td>35</td></tr>
+      <tr><td>Mithril Ore</td><td>45</td></tr>
+      <tr><td>Adamantite Ore</td><td>70</td></tr>
+      <tr><td>Onyxium Ore</td><td>80</td></tr>
+    </table>
+
+    <h3>Lumberjack</h3>
+    <p>Earn XP by chopping wood. Rare woods give more XP.</p>
+    <table>
+      <tr><th>Block</th><th>XP</th></tr>
+      <tr><td>Oak, Birch, Pine</td><td>5-6</td></tr>
+      <tr><td>Maple, Willow, Ash</td><td>6-8</td></tr>
+      <tr><td>Redwood, Cedar, Jungle</td><td>8-10</td></tr>
+      <tr><td>Planks</td><td>2</td></tr>
+    </table>
+
+    <h3>Hunter</h3>
+    <p>Earn XP by slaying mobs. Hostile and boss mobs give the most XP.</p>
+    <table>
+      <tr><th>Entity</th><th>XP</th></tr>
+      <tr><td>Passive mobs (Chicken, Rabbit, Pig)</td><td>3-8</td></tr>
+      <tr><td>Predators (Wolf, Bear)</td><td>15-25</td></tr>
+      <tr><td>Hostile factions (Goblin, Trork)</td><td>20-40</td></tr>
+      <tr><td>Undead (Skeleton, Zombie)</td><td>20-50</td></tr>
+      <tr><td>Bosses (Fire/Frost Dragon)</td><td>500</td></tr>
+    </table>
+
+    <h3>Farmer</h3>
+    <p>Earn XP by harvesting crops, flowers, and mushrooms.</p>
+    <table>
+      <tr><th>Block</th><th>XP</th></tr>
+      <tr><td>Common plants</td><td>2-4</td></tr>
+      <tr><td>Flowers</td><td>3-5</td></tr>
+      <tr><td>Mushrooms</td><td>6-15</td></tr>
+      <tr><td>Crops (Berry, Chilli)</td><td>8-10</td></tr>
+    </table>
+
+    <h2 id="progression">Progression</h2>
+    <h3>Levels & Titles</h3>
+    <p>XP formula: <code>50 x Level^1.8</code> (exponential curve). Max level: 100.</p>
+    <table>
+      <tr><th>Level Range</th><th>Title</th></tr>
+      <tr><td>1 - 9</td><td>Novice</td></tr>
+      <tr><td>10 - 24</td><td>Apprentice</td></tr>
+      <tr><td>25 - 49</td><td>Journeyman</td></tr>
+      <tr><td>50 - 74</td><td>Expert</td></tr>
+      <tr><td>75 - 99</td><td>Master</td></tr>
+      <tr><td>100</td><td>Grand Master</td></tr>
+    </table>
+
+    <h2 id="specializations">Specializations</h2>
+    <p>At level 25, players choose one of two specializations per job. The choice is permanent and grants +50% XP on specific targets.</p>
+    <table>
+      <tr><th>Job</th><th>Option A</th><th>Option B</th></tr>
+      <tr><td>Miner</td><td><strong>Excavator</strong> (+50% on rocks)</td><td><strong>Prospector</strong> (+50% on ores)</td></tr>
+      <tr><td>Lumberjack</td><td><strong>Sawyer</strong> (+50% on common woods)</td><td><strong>Arborist</strong> (+50% on rare woods)</td></tr>
+      <tr><td>Hunter</td><td><strong>Tracker</strong> (+50% on passive mobs)</td><td><strong>Warrior</strong> (+50% on hostile mobs)</td></tr>
+      <tr><td>Farmer</td><td><strong>Cultivator</strong> (+50% on crops)</td><td><strong>Herbalist</strong> (+50% on mushrooms/flowers)</td></tr>
+    </table>
+
+    <h2 id="tools">Evolving Tools</h2>
+    <p>Each job has a unique tool that upgrades as you level up. Claim tools from the Jobs UI.</p>
+    <table>
+      <tr><th>Tier</th><th>Level</th><th>Durability</th><th>Power</th></tr>
+      <tr><td>Tier 1</td><td>1 - 24</td><td>Low</td><td>0.4x</td></tr>
+      <tr><td>Tier 2</td><td>25 - 49</td><td>Medium</td><td>0.7x</td></tr>
+      <tr><td>Tier 3</td><td>50 - 74</td><td>High</td><td>1.0x</td></tr>
+      <tr><td>Tier 4</td><td>75 - 100</td><td>Very High</td><td>1.5x</td></tr>
+    </table>
+    <p>Tools: Jobs_Pickaxe (Miner), Jobs_Axe (Lumberjack), Jobs_Sword (Hunter), Jobs_Hoe (Farmer).</p>
+
+    <h2 id="quests">Daily Quests</h2>
+    <p>Each job generates 5 daily quests that reset at midnight. Quests scale with your job level:</p>
+    <table>
+      <tr><th>Rank</th><th>Level</th><th>Difficulty</th><th>XP Reward</th></tr>
+      <tr><td>Novice</td><td>1-9</td><td>1x</td><td>1x</td></tr>
+      <tr><td>Apprentice</td><td>10-24</td><td>2x</td><td>2.5x</td></tr>
+      <tr><td>Journeyman</td><td>25-49</td><td>4x</td><td>5x</td></tr>
+      <tr><td>Expert</td><td>50-74</td><td>7x</td><td>10x</td></tr>
+      <tr><td>Master</td><td>75-100</td><td>12x</td><td>20x</td></tr>
+    </table>
+    <p>Admins can define custom quest templates or let them auto-generate from XP sources.</p>
+
+    <h2 id="commands">Commands</h2>
+    <table>
+      <tr><th>Command</th><th>Description</th><th>Permission</th></tr>
+      <tr><td><code>/jobs</code></td><td>Open the main jobs UI</td><td>None</td></tr>
+      <tr><td><code>/jobs stats</code></td><td>Display job stats in chat</td><td>None</td></tr>
+      <tr><td><code>/jobs top [job]</code></td><td>View leaderboard (global or per job)</td><td>None</td></tr>
+      <tr><td><code>/jobs setlang &lt;code&gt;</code></td><td>Change language</td><td>None</td></tr>
+      <tr><td><code>/jobs admin</code></td><td>Open admin control panel</td><td>Admin</td></tr>
+      <tr><td><code>/jobs reload</code></td><td>Reload configuration</td><td>Admin</td></tr>
+      <tr><td><code>/jobs help</code></td><td>Display help text</td><td>None</td></tr>
+    </table>
+
+    <h2 id="admin">Admin Panel</h2>
+    <p>Access with <code>/jobs admin</code>. Contains 5 tabs:</p>
+    <ul>
+      <li><strong>Quest Templates</strong> - Create, edit, and delete custom quest templates per job</li>
+      <li><strong>Players</strong> - Browse players, edit levels/XP, reset progress</li>
+      <li><strong>XP Sources</strong> - View, add, adjust, or remove XP sources per job</li>
+      <li><strong>XP Boost</strong> - Set global XP multiplier (0.1x to 10x, quick buttons: 1x/2x/3x/5x)</li>
+      <li><strong>Global Stats</strong> - Total players, total XP earned, average level, per-job breakdowns</li>
+    </ul>
+
+    <h2 id="api">API & Placeholders</h2>
+    <p>PerfectJobs provides a static API for other plugins:</p>
+    <pre><code>JobAPI.getLevel(uuid, "miner")         // Player's level
+JobAPI.getXp(uuid, "miner")            // Player's XP
+JobAPI.getTotalLevel(uuid)             // Total level across all jobs
+JobAPI.getTitle(uuid, "miner")         // Player's title
+JobAPI.getSpecialization(uuid, "miner") // A, B, or null</code></pre>
+
+    <h3>Placeholders</h3>
+    <table>
+      <tr><th>Placeholder</th><th>Output</th></tr>
+      <tr><td><code>{job_level_miner}</code></td><td>Player's Miner level</td></tr>
+      <tr><td><code>{job_xp_miner}</code></td><td>Player's Miner XP</td></tr>
+      <tr><td><code>{job_title_miner}</code></td><td>Player's Miner title</td></tr>
+      <tr><td><code>{job_spec_miner}</code></td><td>Player's Miner specialization</td></tr>
+      <tr><td><code>{job_total_level}</code></td><td>Total level across all jobs</td></tr>
+    </table>
+    <p>Replace <code>miner</code> with <code>lumberjack</code>, <code>hunter</code>, or <code>farmer</code> for other jobs.</p>
+
+    <h2 id="config">Configuration</h2>
+    <h3>config.json</h3>
+    <pre><code>{
+  "lang": "EN",
+  "xpBoost": 1.0
+}</code></pre>
+
+    <h3>jobs.json</h3>
+    <p>Defines all 4 jobs with their XP sources, specializations, and tool IDs. Auto-generated on first run with default values.</p>
+
+    <h3>quest_templates.json</h3>
+    <p>Custom quest definitions per job. If empty, quests auto-generate from XP sources.</p>
+
+    <h3>players.json</h3>
+    <p>Player progress data (XP, levels, specializations, stats, quests). Auto-saved every 5 minutes.</p>
+
+    <p>All config files are stored in <code>UserData/Saves/MODDING/mods/KatsuyaTV_PerfectJobs/</code></p>
+
+    <h2 id="faq">FAQ</h2>
+
+    <h3>Can players progress in multiple jobs at the same time?</h3>
+    <p>Yes! All 4 jobs have independent progress. A player can be level 50 Miner, level 30 Lumberjack, etc.</p>
+
+    <h3>Can I change the specialization after choosing?</h3>
+    <p>No, specialization choice is permanent. Admins can reset a player's job via the admin panel.</p>
+
+    <h3>How does the XP boost work?</h3>
+    <p>The global XP multiplier (default 1.0x) is applied to all XP gains and quest rewards server-wide. Set it from the admin panel or config.</p>
+
+    <h3>Does it work with PerfectEconomy?</h3>
+    <p>Yes! If PerfectEconomy is installed, quest completions can award money rewards alongside XP.</p>
+
+    <h3>How do tools upgrade?</h3>
+    <p>Tools upgrade automatically when you reach the required level. Claim the new tier from the Jobs UI.</p>
+  </main>
+</div>
+
+<footer>
+  <p>Made by <a href="https://github.com/perfectplugins">KatsuyaTV</a> &mdash; Perfect Plugins 2026</p>
+</footer>
+</body>
+</html>
