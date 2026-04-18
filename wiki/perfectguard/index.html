@@ -35,7 +35,29 @@
     <h2 id="moderation">Moderation Tools</h2>
     <ul><li><strong>Bans</strong> -- Permanent + temporary with reasons</li><li><strong>IP Bans</strong> -- Block IP addresses</li><li><strong>Mutes</strong> -- Permanent + temporary</li><li><strong>Warnings</strong> -- Issue and track per player</li><li><strong>Jail</strong> -- Teleport cheaters to jail</li><li><strong>Freeze</strong> -- Freeze player movement</li><li><strong>Vanish</strong> -- Invisible staff mode</li><li><strong>Inventory Inspect</strong> -- View player inventory</li><li><strong>Player Notes</strong> -- Private notes per player</li><li><strong>Reports</strong> -- Player-submitted reports</li><li><strong>Word Blacklist</strong> -- Block words in chat</li><li><strong>Announcements</strong> -- Title, notification, chat</li></ul>
     <h2 id="commands">Commands</h2>
-    <table><tr><th>Command</th><th>Description</th></tr><tr><td><code>/pg help</code></td><td>All commands</td></tr><tr><td><code>/pg menu</code></td><td>Moderation UI</td></tr><tr><td><code>/pg alerts</code></td><td>Toggle alerts</td></tr><tr><td><code>/pg vanish</code></td><td>Toggle vanish</td></tr><tr><td><code>/pg freeze &lt;player&gt;</code></td><td>Freeze</td></tr><tr><td><code>/pg ban &lt;player&gt; &lt;reason&gt;</code></td><td>Permanent ban</td></tr><tr><td><code>/pg tempban &lt;player&gt; &lt;dur&gt; &lt;reason&gt;</code></td><td>Temp ban</td></tr><tr><td><code>/pg unban &lt;player&gt;</code></td><td>Unban</td></tr><tr><td><code>/pg mute &lt;player&gt; &lt;reason&gt;</code></td><td>Mute</td></tr><tr><td><code>/pg unmute &lt;player&gt;</code></td><td>Unmute</td></tr><tr><td><code>/pg kick &lt;player&gt; &lt;reason&gt;</code></td><td>Kick</td></tr><tr><td><code>/pg jail &lt;player&gt;</code></td><td>Send to jail</td></tr><tr><td><code>/pg setjail</code></td><td>Set jail location</td></tr><tr><td><code>/pg warn &lt;player&gt; &lt;reason&gt;</code></td><td>Warn</td></tr><tr><td><code>/pg tp &lt;player&gt;</code></td><td>Teleport to</td></tr><tr><td><code>/pg invsee &lt;player&gt;</code></td><td>View inventory</td></tr><tr><td><code>/pg report &lt;player&gt; &lt;reason&gt;</code></td><td>Report (player)</td></tr><tr><td><code>/pg reload</code></td><td>Reload config</td></tr></table>
+    <table><tr><th>Command</th><th>Description</th><th>Permission</th></tr>
+    <tr><td><code>/pg help</code></td><td>All commands</td><td><code>perfectguard.mod.menu</code></td></tr>
+    <tr><td><code>/pg menu</code></td><td>Moderation UI</td><td><code>perfectguard.mod.menu</code></td></tr>
+    <tr><td><code>/pg alerts</code></td><td>Toggle alerts</td><td><code>perfectguard.mod.alerts</code></td></tr>
+    <tr><td><code>/pg vanish</code></td><td>Toggle vanish</td><td><code>perfectguard.mod.vanish</code></td></tr>
+    <tr><td><code>/pg freeze &lt;player&gt;</code></td><td>Freeze</td><td><code>perfectguard.mod.freeze</code></td></tr>
+    <tr><td><code>/pg ban &lt;player&gt; &lt;reason&gt;</code></td><td>Permanent ban</td><td><code>perfectguard.admin.ban</code></td></tr>
+    <tr><td><code>/pg tempban &lt;player&gt; &lt;dur&gt; &lt;reason&gt;</code></td><td>Temp ban</td><td><code>perfectguard.admin.ban</code></td></tr>
+    <tr><td><code>/pg unban &lt;player&gt;</code></td><td>Unban</td><td><code>perfectguard.admin.ban</code></td></tr>
+    <tr><td><code>/pg mute &lt;player&gt; &lt;reason&gt;</code></td><td>Mute</td><td><code>perfectguard.mod.mute</code></td></tr>
+    <tr><td><code>/pg unmute &lt;player&gt;</code></td><td>Unmute</td><td><code>perfectguard.mod.mute</code></td></tr>
+    <tr><td><code>/pg kick &lt;player&gt; &lt;reason&gt;</code></td><td>Kick</td><td><code>perfectguard.mod.kick</code></td></tr>
+    <tr><td><code>/pg jail &lt;player&gt;</code></td><td>Send to jail</td><td><code>perfectguard.mod.jail</code></td></tr>
+    <tr><td><code>/pg setjail</code></td><td>Set jail location</td><td><code>perfectguard.admin.jail</code></td></tr>
+    <tr><td><code>/pg warn &lt;player&gt; &lt;reason&gt;</code></td><td>Warn</td><td><code>perfectguard.mod.warn</code></td></tr>
+    <tr><td><code>/pg tp &lt;player&gt;</code></td><td>Teleport to</td><td><code>perfectguard.mod.tp</code></td></tr>
+    <tr><td><code>/pg invsee &lt;player&gt;</code></td><td>View inventory</td><td><code>perfectguard.mod.info</code></td></tr>
+    <tr><td><code>/pg report &lt;player&gt; &lt;reason&gt;</code></td><td>Report</td><td><code>perfectguard.report</code></td></tr>
+    <tr><td><code>/pg reload</code></td><td>Reload config</td><td><code>perfectguard.admin.reload</code></td></tr></table>
+    <h3>Special Permissions</h3>
+    <table><tr><th>Permission</th><th>Description</th></tr>
+    <tr><td><code>perfectguard.bypass</code></td><td>Bypass all anti-cheat checks</td></tr>
+    <tr><td><code>perfectguard.staff</code></td><td>Receive violation alerts automatically</td></tr></table>
     <h2 id="config">Configuration</h2>
     <pre><code>{"lang":"EN","speedEnabled":true,"speedThreshold":12.0,"flyEnabled":true,"autoFreezeVL":50,"autoJailVL":100,"vlDecaySeconds":60}</code></pre>
     <h2 id="faq">FAQ</h2>
