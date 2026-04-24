@@ -27,19 +27,21 @@
       <li><a href="#installation">Installation</a></li>
       <li><a href="#portals">Portal Types</a></li>
       <li><a href="#warp">Warp System</a></li>
+      <li><a href="#selector">Server Selector (v2.4)</a></li>
+      <li><a href="#hub">Hub Config (v2.4)</a></li>
       <li><a href="#transfer">Server Transfer</a></li>
-      <li><a href="#proxy">Proxy Setup</a></li>
       <li><a href="#commands">Commands</a></li>
+      <li><a href="#limitations">Limitations</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
   </aside>
 
   <main class="wiki-content">
     <h1 id="overview">PerfectPortals</h1>
-    <p>12 stunning colored portal pads with warp system, server transfers, and a built-in reverse proxy for multi-server networks. Link portals, teleport players, or route them between servers — all from one plugin.</p>
+    <p>Two plugins in one: colored portal pads with warp system and server transfer, plus a server hub with live selector UI, per-backend queue, and pre-connect fallback. All driven by one JAR.</p>
 
     <table>
-      <tr><th>Version</th><td>2.3</td></tr>
+      <tr><th>Version</th><td>2.4 (Hub Update)</td></tr>
       <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
       <tr><th>Java</th><td>21</td></tr>
       <tr><th>Dependencies</th><td>None</td></tr>
@@ -47,11 +49,14 @@
     <p><a href="https://builtbybit.com/resources/perfectportals-big-update.99308/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Buy on BuiltByBit</a></p>
 
     <h2 id="installation">Installation</h2>
+    <p><strong>v2.4 hub mode runs on every instance in your network.</strong> Install the JAR on the hub AND each backend you want to list. This is a change from v2.3.</p>
     <ol>
-      <li>Download <code>PerfectPortals-2.3.jar</code></li>
-      <li>Place it in your server's <code>UserData/Mods/</code> folder</li>
-      <li>Start the server — config and data files auto-generate</li>
-      <li>Give yourself a portal: <code>/give Portal_Red</code></li>
+      <li>Download <code>PerfectPortals-2.4.jar</code></li>
+      <li>Place it in <code>UserData/Mods/</code> on every server (hub + backends)</li>
+      <li>Start each server once so <code>proxy.json</code> auto-generates at <code>UserData/Saves/MODDING/mods/KatsuyaTV_PerfectPortals/proxy.json</code></li>
+      <li>Edit the hub's <code>proxy.json</code> to list every backend (see Hub Config below)</li>
+      <li>Open <code>statusHttpPort</code> (default 5540) between the hub and each backend in your firewall</li>
+      <li>Restart or run <code>/pportals reload</code></li>
     </ol>
 
     <h2 id="portals">Portal Types</h2>
@@ -80,61 +85,129 @@
       <li>Click <strong>"Link A - B"</strong></li>
       <li>Walk up to either portal and press <strong>[F]</strong> to teleport</li>
     </ol>
-    <p>Links are bidirectional — both portals teleport to each other. Breaking a linked portal auto-cleans the link.</p>
+    <p>Links are bidirectional. Breaking a linked portal auto-cleans the link.</p>
 
-    <h2 id="transfer">Server Transfer</h2>
-    <p>Portals can transfer players to another Hytale server. Configure via the admin UI:</p>
-    <ol>
-      <li>Open <code>/pportals</code>, select a portal</li>
-      <li>Click <strong>"Server Config"</strong></li>
-      <li>Set Host, Port, Countdown, and Label</li>
-      <li>Players pressing [F] on that portal get transferred to the target server</li>
-    </ol>
+    <h2 id="selector">Server Selector UI (new in v2.4)</h2>
+    <p>Command: <code>/pportals servers</code> (permission <code>perfectportals.servers</code>).</p>
+    <p>Opens a browsable list of your configured backends. Each row shows:</p>
+    <ul>
+      <li>Display name (from <code>proxy.json</code>)</li>
+      <li>Live online/offline state (queried via HTTP every <code>pollIntervalMs</code>)</li>
+      <li>Current player count and max (if <code>maxPlayers</code> is set)</li>
+      <li>A JOIN button that transfers the player using <code>referToServer</code></li>
+    </ul>
+    <p>When a backend is full (count >= <code>maxPlayers</code>), the player is queued on the origin server. Chat shows their position every 5 sec. When a slot frees up, they are auto-transferred.</p>
+    <p>When a backend is offline and <code>fallbackHub</code> is set, the player is redirected to the fallback instead of failing.</p>
 
-    <h2 id="proxy">Proxy Setup (v2.0)</h2>
-    <p>The built-in reverse proxy hides backend server IPs. Players connect to one address; the proxy routes them.</p>
+    <h2 id="hub">Hub Config (v2.4)</h2>
+    <p>Edit <code>UserData/Saves/MODDING/mods/KatsuyaTV_PerfectPortals/proxy.json</code>:</p>
 
-    <pre><code>Players ──► proxy:5520 ──► Lobby (localhost:5521)
-           proxy:5530 ──► SMP   (172.18.0.3:5520)
-           proxy:5540 ──► PvP   (172.18.0.4:5520)</code></pre>
-
-    <h3>Step 1: Change Lobby Port</h3>
-    <p>Set your Hytale lobby server to listen on a different port (e.g. <code>5521</code>).</p>
-
-    <h3>Step 2: Configure proxy.json</h3>
-    <p>File: <code>UserData/Saves/MODDING/mods/KatsuyaTV_PerfectPortals/proxy.json</code></p>
     <pre><code>{
   "enabled": true,
-  "publicHost": "play.yourserver.com",
+  "fallbackHub": "lobby",
+  "statusHttpPort": 5540,
+  "statusToken": "your-shared-secret",
+  "pollIntervalMs": 5000,
+  "httpTimeoutMs": 2000,
   "backends": {
-    "lobby": { "listenPort": 5520, "target": "localhost:5521" },
-    "smp":   { "listenPort": 5530, "target": "172.18.0.3:5520" },
-    "pvp":   { "listenPort": 5540, "target": "172.18.0.4:5520" }
+    "lobby": {
+      "host": "hub.yourdomain.com",
+      "port": 5520,
+      "statusPort": 5540,
+      "displayName": "Main Hub",
+      "maxPlayers": 0,
+      "hidden": false
+    },
+    "survival": {
+      "host": "survival.yourdomain.com",
+      "port": 5520,
+      "statusPort": 5540,
+      "displayName": "Survival",
+      "maxPlayers": 30,
+      "hidden": false
+    }
   }
 }</code></pre>
 
-    <h3>Step 3: Set Portal Labels</h3>
-    <p>In the portal Server Config UI, set the <strong>Label</strong> to match the backend name (e.g. <code>smp</code>). The label is case-sensitive.</p>
+    <h3>Root fields</h3>
+    <ul>
+      <li><code>enabled</code> — start the hub services on this instance</li>
+      <li><code>fallbackHub</code> — backend name used when a selected backend is offline</li>
+      <li><code>statusHttpPort</code> — port this server exposes for the <code>/status</code> endpoint</li>
+      <li><code>statusToken</code> — shared secret across all instances. Keep it private</li>
+      <li><code>pollIntervalMs</code> — how often the hub polls backends (default 5000)</li>
+      <li><code>httpTimeoutMs</code> — per-request timeout for HTTP polling</li>
+    </ul>
 
-    <h3>Step 4: Open Firewall Ports</h3>
-    <p>Open all proxy listen ports (5520, 5530, 5540, etc.). Backend internal ports do NOT need to be exposed.</p>
+    <h3>Per-backend fields</h3>
+    <ul>
+      <li><code>host</code> / <code>port</code> — address the player's client connects to. Must be public and reachable from the client, not just the hub</li>
+      <li><code>statusPort</code> — HTTP <code>/status</code> port on that backend</li>
+      <li><code>displayName</code> — shown in the selector UI</li>
+      <li><code>maxPlayers</code> — 0 disables the queue for that backend</li>
+      <li><code>hidden</code> — hide from the selector UI</li>
+    </ul>
+
+    <h3>Architecture</h3>
+    <pre><code>+----------+    HTTP /status     +-----------+
+|   Hub    |-------------------->|  Backend  |
+|  (5520)  |<--------------------|  (5520)   |
++----+-----+  {online, players}  +-----------+
+     |
+     | referToServer(backendHost, 5520)   (direct, no proxy)
+     v
+   Client</code></pre>
+
+    <h2 id="transfer">Server Transfer (portal)</h2>
+    <p>A portal pad can be configured to transfer players to another Hytale server (outside the selector UI).</p>
+    <ol>
+      <li>Open <code>/pportals</code>, select a portal</li>
+      <li>Go to <strong>Server</strong> tab</li>
+      <li>Set <strong>Label</strong> to a backend name in <code>proxy.json</code> (e.g. <code>survival</code>)</li>
+      <li>Set Countdown if you want a delay</li>
+      <li>Walk into / interact with the portal to get transferred (with queue + fallback if applicable)</li>
+    </ol>
+    <p>If the label does not match a backend in <code>proxy.json</code>, the fields Host/Port in the portal config are used directly (raw <code>referToServer</code> without queue or fallback).</p>
 
     <h2 id="commands">Commands</h2>
     <table>
-      <tr><th>Command</th><th>Description</th></tr>
-      <tr><td><code>/pportals</code></td><td>Open the admin portal management UI</td></tr>
-      <tr><td><code>/pportals help</code></td><td>Show help</td></tr>
+      <tr><th>Command</th><th>Permission</th><th>Description</th></tr>
+      <tr><td><code>/pportals servers</code></td><td>perfectportals.servers</td><td>Open the server selector UI</td></tr>
+      <tr><td><code>/pportals</code> or <code>/pportals menu</code></td><td>perfectportals.admin</td><td>Open the admin portal UI</td></tr>
+      <tr><td><code>/pportals list</code></td><td>perfectportals.admin</td><td>List all portals in chat</td></tr>
+      <tr><td><code>/pportals reload</code></td><td>perfectportals.admin</td><td>Reload portals + proxy.json</td></tr>
+      <tr><td><code>/pportals help</code></td><td>-</td><td>Show help</td></tr>
     </table>
 
+    <h2 id="limitations">Limitations</h2>
+    <ul>
+      <li><strong>Mid-session fallback is not supported.</strong> If a backend crashes while a player is already in-world, the client will disconnect and needs to reconnect manually. Hytale's current plugin API has no packet to tell the client to reconnect elsewhere from a dying server. This will ship the day Hypixel adds it.</li>
+      <li><strong>Internal IP masking is not provided.</strong> Clients connect directly to each backend's public address. If you need this, a UDP/QUIC reverse proxy would be required (out of scope for the plugin).</li>
+      <li><strong>TLS on the status endpoint is not provided.</strong> Keep <code>statusHttpPort</code> on a trusted network or firewall it to the hub's IP.</li>
+    </ul>
+
     <h2 id="faq">FAQ</h2>
-    <h3>Can players connect directly to backend servers?</h3>
-    <p>Not if you configure your firewall to block external access to backend ports. Only the proxy ports should be public.</p>
 
     <h3>Do backend servers need PerfectPortals?</h3>
-    <p>No. Only the lobby server needs the plugin. Backends are regular Hytale servers.</p>
+    <p><strong>Yes, in v2.4.</strong> Each backend runs PerfectPortals to expose its <code>/status</code> HTTP endpoint so the hub can query its state. This changed from v2.3 (which had a TCP proxy that never actually worked with Hytale's QUIC/UDP traffic).</p>
+
+    <h3>Why not a TCP proxy like v2.3?</h3>
+    <p>Hytale uses QUIC over UDP for all gameplay traffic. A TCP proxy cannot forward QUIC. The v2.3 "built-in reverse proxy" was non-functional in practice. v2.4 uses direct <code>referToServer</code> with an HTTP sidecar for status data, which is a clean, working architecture.</p>
+
+    <h3>What does the status endpoint return?</h3>
+    <p><code>GET /status?token=YOUR_TOKEN</code> returns <code>{"online":true,"players":N,"version":"2.4"}</code>. Request without a token or with the wrong one returns 403.</p>
 
     <h3>Can I use portals for same-server teleportation AND server transfer?</h3>
-    <p>Yes. Portals without a server config act as local warps. Portals with server config transfer to other servers.</p>
+    <p>Yes. Portals without a server label act as local warps. Portals with a server label matching a backend in <code>proxy.json</code> route through the hub (with queue/fallback). Portals with a server label that doesn't match trigger a raw transfer.</p>
+
+    <h3>The UI shows a backend as OFFLINE but the backend is running.</h3>
+    <p>The <code>/status</code> HTTP call is failing. Check: (1) <code>statusHttpPort</code> is reachable from the hub, (2) <code>statusToken</code> matches on both ends, (3) no firewall is blocking.</p>
+
+    <h3>JOIN gives "connection aborted" / "failed to connect".</h3>
+    <p>The <code>host</code> in the backend config must be reachable from the <strong>client's</strong> machine, not just the hub. Use a public hostname or IP, never <code>127.0.0.1</code> / <code>localhost</code>.</p>
+
+    <h3>How to upgrade from v2.3?</h3>
+    <p>Replace the JAR on every server, edit each <code>proxy.json</code> to the new schema (the old <code>listenPort</code>/<code>target</code> fields are gone), open the <code>statusHttpPort</code> in your firewall, restart.</p>
   </main>
 </div>
 
