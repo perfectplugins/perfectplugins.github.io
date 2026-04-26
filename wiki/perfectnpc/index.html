@@ -26,20 +26,23 @@
       <li><a href="#overview" class="active">Overview</a></li>
       <li><a href="#installation">Installation</a></li>
       <li><a href="#types">NPC Types</a></li>
+      <li><a href="#dialogue">Dialogue System</a></li>
       <li><a href="#quests">Quest System</a></li>
       <li><a href="#shops">Shops</a></li>
+      <li><a href="#equipment">Equipment</a></li>
       <li><a href="#faceme">Face-Me Rotation</a></li>
       <li><a href="#commands">Commands</a></li>
+      <li><a href="#changelog">Changelog</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
   </aside>
 
   <main class="wiki-content">
     <h1 id="overview">PerfectNPC</h1>
-    <p>Custom NPCs with quests, dialogues, shops, face-me rotation, and interactive UI panels. Bring your server world to life.</p>
+    <p>Custom NPCs with multi-page dialogues, quests, shops, equipment, face-me rotation, and a full in-game admin UI. Bring your server world to life.</p>
 
     <table>
-      <tr><th>Version</th><td>1.1</td></tr>
+      <tr><th>Version</th><td>2.5</td></tr>
       <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
       <tr><th>Java</th><td>21</td></tr>
       <tr><th>Dependencies</th><td>None</td></tr>
@@ -49,7 +52,7 @@
 
     <h2 id="installation">Installation</h2>
     <ol>
-      <li>Download <code>PerfectNPC-1.1.jar</code></li>
+      <li>Download <code>PerfectNPC-2.5.jar</code></li>
       <li>Place it in your server's <code>UserData/Mods/</code> folder</li>
       <li>Start the server</li>
       <li>Use <code>/pnpc</code> to open the admin panel</li>
@@ -60,7 +63,7 @@
       <tr><th>Type</th><th>Description</th></tr>
       <tr><td>Shopkeeper</td><td>Sells and buys items via interactive UI</td></tr>
       <tr><td>Quest Giver</td><td>Assigns quests with objectives and rewards</td></tr>
-      <tr><td>Dialogue</td><td>Displays conversation text with multiple responses</td></tr>
+      <tr><td>Dialogue</td><td>Displays multi-page conversation text with up to 6 answers per page</td></tr>
       <tr><td>Ambient</td><td>Decorative NPC, no interaction</td></tr>
     </table>
 
@@ -68,18 +71,38 @@
     <ul>
       <li>Custom model with rescale (<code>Model.createScaledModel</code>)</li>
       <li>Nameplate display (single line)</li>
-      <li>Frozen/idle animations</li>
+      <li>Frozen / idle animations</li>
       <li>Chunk-based spawning (auto-spawn when chunks load)</li>
+      <li>Equipment (helmet, chest, leggings, gloves, main hand, off hand)</li>
       <li>JSON persistence</li>
+    </ul>
+
+    <h2 id="dialogue">Dialogue System</h2>
+    <p>NPCs can run multi-page dialogues with branching choices, conditions, and command execution.</p>
+    <ul>
+      <li>Up to <strong>6 answer choices</strong> per page</li>
+      <li><strong>Multiline content</strong>: press Enter in the editor to add a new line</li>
+      <li><strong>Typewriter animation</strong>: text appears character by character at a configurable speed</li>
+      <li>Per-page conditions to gate visibility</li>
+      <li>Per-answer commands (server console or player permission bypass)</li>
+      <li>Navigation buttons (Previous, Next, Custom)</li>
+      <li>Variable substitution: <code>{player}</code>, <code>{npc}</code>, custom variables</li>
     </ul>
 
     <h2 id="quests">Quest System</h2>
     <p>Create quests with objectives and rewards. Players interact with Quest Giver NPCs to accept, track, and complete quests.</p>
+    <p><strong>Objective types tracked live:</strong></p>
     <ul>
-      <li>Multiple objective types: collect items, kill mobs, visit locations</li>
+      <li><code>KILL_ENTITY</code>: kill N entities matching a role name</li>
+      <li><code>COLLECT_ITEM</code>: pick up N items by item ID</li>
+      <li><code>BREAK_BLOCK</code>: break N blocks of a given type</li>
+      <li><code>PLACE_BLOCK</code>: place N blocks of a given type</li>
+    </ul>
+    <ul>
       <li>Item and XP rewards on completion</li>
-      <li>Quest progress tracked per player</li>
-      <li>Configurable via admin UI</li>
+      <li>Per-player progress tracked, persisted across restarts</li>
+      <li>Quest log UI for players</li>
+      <li>Daily / weekly variables and tags for soft state</li>
     </ul>
 
     <h2 id="shops">Shops</h2>
@@ -88,10 +111,19 @@
       <li>Configurable item list, prices, and stock</li>
       <li>Buy and sell in the same UI</li>
       <li>Category tabs for large shops</li>
+      <li>Daily reset option (per-player stock)</li>
+    </ul>
+
+    <h2 id="equipment">Equipment</h2>
+    <p>Dress your NPCs with armor and weapons via the Equipment tab in the admin UI.</p>
+    <ul>
+      <li>Helmet, Chest, Leggings, Gloves</li>
+      <li>Main hand and off hand</li>
+      <li>Visible in-world after spawn</li>
     </ul>
 
     <h2 id="faceme">Face-Me Rotation</h2>
-    <p>NPCs can rotate to face the nearest player. Due to Hytale limitations, this works via despawn/respawn:</p>
+    <p>NPCs can rotate to face the nearest player. Due to Hytale limitations, this works via despawn / respawn:</p>
     <ul>
       <li>Calculates yaw: <code>atan2(dx, dz) + PI</code> (in radians)</li>
       <li>Despawns and respawns the NPC entity with the new rotation</li>
@@ -105,12 +137,43 @@
       <tr><td><code>/pnpc help</code></td><td>Show help</td></tr>
     </table>
 
+    <h2 id="changelog">Changelog</h2>
+
+    <h3>v2.5 - Quality of Life update</h3>
+    <ul>
+      <li>Multiline dialog content (Enter creates a new line in the editor)</li>
+      <li>All four quest objective types now fully tracked: KILL, COLLECT, BREAK, PLACE (previously only KILL was wired up)</li>
+      <li>Typewriter animation now actually renders character by character at the configured speed (was UI-only before)</li>
+      <li>Fixed client crash when navigating between admin tabs after saving</li>
+    </ul>
+
+    <h3>v2.4</h3>
+    <ul>
+      <li>V2 admin UI: tab-based layout (Info, Dialog, Shop, Quest, Equip, Advanced)</li>
+      <li>Equipment section to dress NPCs with armor and weapons</li>
+      <li>Quest item collection check tick</li>
+    </ul>
+
+    <h3>v2.1</h3>
+    <ul>
+      <li>Multi-page dialogues with up to 6 answers per page</li>
+      <li>Quest system with objectives and rewards</li>
+      <li>Shop with category tabs</li>
+    </ul>
+
     <h2 id="faq">FAQ</h2>
+
     <h3>NPC nameplate doesn't support line breaks</h3>
     <p>This is a Hytale limitation. All nameplate text must be on a single line.</p>
 
     <h3>NPC doesn't rotate smoothly</h3>
-    <p>Face-me uses despawn/respawn which causes a brief flicker. This is the only reliable method in the current Hytale API.</p>
+    <p>Face-me uses despawn / respawn which causes a brief flicker. This is the only reliable method in the current Hytale API.</p>
+
+    <h3>Player skin NPCs (humanoid characters)</h3>
+    <p>Not currently supported. NPCs use Hytale's built-in entity roles. Custom player-like NPCs would require Hytale to expose a player-model API, which is not yet available.</p>
+
+    <h3>Daily / weekly quests, quest tree, multi-reward choice</h3>
+    <p>Planned for the v3.0 quest rework. Available now: variables and tags can be used to build manual daily-reset logic via dialogue conditions.</p>
   </main>
 </div>
 
