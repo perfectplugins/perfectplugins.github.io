@@ -2,7 +2,7 @@
 [SIZE=7][B][COLOR=#FF6B00]P E R F E C T[/COLOR] [COLOR=#FFFFFF]ITEM MANAGER[/COLOR][/B][/SIZE]
 [SIZE=4][COLOR=#AAAAAA]The most powerful item management tool for Hytale servers[/COLOR][/SIZE]
 
-[IMG height="25px"]https://img.shields.io/badge/Hytale-Server%20Plugin-orange?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/Java-21-blue?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/v1.5-STABLE-green?style=for-the-badge[/IMG]
+[IMG height="25px"]https://img.shields.io/badge/Hytale-Server%20Plugin-orange?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/Java-21-blue?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/v1.9.2-STABLE-green?style=for-the-badge[/IMG]
 [/CENTER]
 
 [HR][/HR]
@@ -11,7 +11,7 @@
 [SIZE=5][COLOR=#FF6B00][B]// WHY PERFECTITEMMANAGER?[/B][/COLOR][/SIZE]
 [/CENTER]
 
-[SIZE=3]Take [B]full control[/B] over every item in your server. Override stats, crafting recipes, quality levels, block drops, entity drops, and more — all through a [B]beautiful in-game UI[/B]. No file editing, no restarts. Change a sword's damage, remove a recipe, or make mobs drop custom loot in seconds.[/SIZE]
+[SIZE=3]Take [B]full control[/B] over every item in your server. Override stats, crafting recipes, quality levels, block / entity drops, and now [B]roll per-instance tiers[/B] with random affixes on every weapon and armor piece — Common to Legendary, with colored borders, styled tooltips, and dynamic damage multipliers. All from a [B]beautiful in-game UI[/B], in 6 languages, no file editing.[/SIZE]
 
 [HR][/HR]
 
@@ -20,22 +20,53 @@
 [/CENTER]
 
 [LIST]
+[*][SIZE=4][COLOR=#1abc9c][B]Tier System per-instance[/B] [I](new in v1.9)[/I][/COLOR][/SIZE]
+[SIZE=3]Every weapon and armor can roll its own tier at drop / pickup / craft (Common, Uncommon, Rare, Epic, Legendary). Each rolled instance carries:
+— A [B]colored slot border[/B] from the tier
+— A [B]damage multiplier[/B] from the tier
+— A pool of [B]random affixes[/B] with min/max ranges shown in the tooltip
+— A [B]styled per-stack tooltip[/B] with section headers, colored bullets, and roll-range hints[/SIZE]
+
+[*][SIZE=4][COLOR=#1abc9c][B]Weapon affixes[/B][/COLOR][/SIZE]
+[SIZE=3]Damage Boost, Critical Chance, Critical Damage, Lifesteal, Predator (low-HP bonus), Speed Boost, Knockback Bonus.[/SIZE]
+
+[*][SIZE=4][COLOR=#1abc9c][B]Armor affixes[/B][/COLOR][/SIZE]
+[SIZE=3]Damage Reduction (cap 80%), Health Bonus (bumps max HP), Thorns (counter damage to attacker), Knockback Resistance, Regeneration (1Hz health regen tick).[/SIZE]
+
+[*][SIZE=4][COLOR=#1abc9c][B]Common affix[/B][/COLOR][/SIZE]
+[SIZE=3]Durability Bonus — bumps the max durability of the rolled item.[/SIZE]
+
+[*][SIZE=4][COLOR=#55FF55][B]Damage Variance[/B] [I](new in v1.9)[/I][/COLOR][/SIZE]
+[SIZE=3]Slider 0-100% — every hit deals ±X% random damage spread, using Hytale's native [I]randomPercentageModifier[/I]. Makes combat feel less robotic.[/SIZE]
+
+[*][SIZE=4][COLOR=#55FF55][B]Per-Attack Damage editor[/B] [I](new in v1.9)[/I][/COLOR][/SIZE]
+[SIZE=3]Tune individual attacks of any weapon independently — set distinct damage for Stab, Thrust, Swing Down, Swing Down Left/Right, Signature attacks, etc. Available via [B]/itemmanager perattack <itemId>[/B] or the EDIT… button in the Stats tab.[/SIZE]
+
 [*][SIZE=4][COLOR=#55FF55][B]Item Stats Override[/B][/COLOR][/SIZE]
-[SIZE=3]Modify damage, armor, attributes for [B]any item[/B] in the game. Changes apply instantly.[/SIZE]
+[SIZE=3]Modify damage, durability, armor, attack speed, knockback, armor toughness for [B]any item[/B] in the game. Changes apply instantly.[/SIZE]
+
 [*][SIZE=4][COLOR=#55FF55][B]Crafting Override[/B][/COLOR][/SIZE]
 [SIZE=3]Change or completely remove crafting recipes. Control which benches can craft which items.[/SIZE]
+
 [*][SIZE=4][COLOR=#55FF55][B]Quality Override[/B][/COLOR][/SIZE]
 [SIZE=3]Set custom quality levels per item. Fine-tune your server's item economy.[/SIZE]
+
 [*][SIZE=4][COLOR=#55FF55][B]Drop Rules[/B][/COLOR][/SIZE]
-[SIZE=3]— [B]Block Drops[/B] — Customize what drops when any block is broken
-— [B]Entity Drops[/B] — Customize what any mob drops on death
+[SIZE=3]— [B]Block Drops[/B] — customize what drops when any block is broken
+— [B]Entity Drops[/B] — customize what any mob drops on death
 Full UI for creating and managing drop rules.[/SIZE]
+
+[*][SIZE=4][COLOR=#55FF55][B]Restrictions[/B][/COLOR][/SIZE]
+[SIZE=3]Block use, drop, equip or place of any item, optionally per-permission. Useful for class-locked gear or staff-only items.[/SIZE]
+
 [*][SIZE=4][COLOR=#55FF55][B]Weapon Tooltips[/B][/COLOR][/SIZE]
-[SIZE=3]Display [B]damage values[/B] directly in item tooltips. Toggleable in config.[/SIZE]
-[*][SIZE=4][COLOR=#55FF55][B]Bulk Edit Mode[/B][/COLOR][/SIZE]
-[SIZE=3]Apply changes to [B]multiple items at once[/B]. Global multipliers to scale stats server-wide.[/SIZE]
-[*][SIZE=4][COLOR=#55FF55][B]Admin UI[/B][/COLOR][/SIZE]
-[SIZE=3]Full management panel via [B]/itemmanager menu[/B]. Item picker, stat editor, craft editor, drop rules — everything in one clean interface.[/SIZE]
+[SIZE=3]Display [B]damage values[/B] directly in item tooltips, plus the new per-instance tier info. Toggleable in settings.[/SIZE]
+
+[*][SIZE=4][COLOR=#55FF55][B]Bulk Edit & Global Overrides[/B][/COLOR][/SIZE]
+[SIZE=3]Apply changes to [B]multiple items at once[/B], or set global multipliers to scale stats server-wide.[/SIZE]
+
+[*][SIZE=4][COLOR=#FFAA33][B]Item Creator[/B] [I](coming in v1.9.3)[/I][/COLOR][/SIZE]
+[SIZE=3]Clone an existing item, set a new ID, name, description, stats, quality, optional custom icon / texture / model — save and ship in your asset pack.[/SIZE]
 [/LIST]
 
 [HR][/HR]
@@ -46,12 +77,28 @@ Full UI for creating and managing drop rules.[/SIZE]
 
 [TABLE]
 [TR]
-[TD]/itemmanager menu[/TD]
-[TD]Open the item management UI[/TD]
+[TD]/itemmanager[/TD]
+[TD]Open the management UI (Landing)[/TD]
 [/TR]
 [TR]
 [TD]/itemmanager drops[/TD]
 [TD]Open the drop rules UI[/TD]
+[/TR]
+[TR]
+[TD]/itemmanager tier <itemId> enable[/TD]
+[TD]Enable tier rolls on an item (auto-detects weapon/armor for defaults)[/TD]
+[/TR]
+[TR]
+[TD]/itemmanager tier <itemId> give[/TD]
+[TD]Give yourself one freshly rolled instance of the item[/TD]
+[/TR]
+[TR]
+[TD]/itemmanager tier <itemId> menu[/TD]
+[TD]Open the Tier Config editor[/TD]
+[/TR]
+[TR]
+[TD]/itemmanager perattack <itemId>[/TD]
+[TD]Open the per-attack damage editor[/TD]
 [/TR]
 [TR]
 [TD]/itemmanager reload[/TD]
@@ -60,10 +107,6 @@ Full UI for creating and managing drop rules.[/SIZE]
 [TR]
 [TD]/itemmanager setlang <code>[/TD]
 [TD]Set language (EN, FR, ES, IT, DE, PT)[/TD]
-[/TR]
-[TR]
-[TD]/itemmanager help[/TD]
-[TD]Display help[/TD]
 [/TR]
 [/TABLE]
 
@@ -74,13 +117,21 @@ Full UI for creating and managing drop rules.[/SIZE]
 [/CENTER]
 
 [LIST]
-[*][B]Platform:[/B] Hytale Server Plugin
+[*][B]Platform:[/B] Hytale Server Plugin (2026-03-26 or newer)
 [*][B]Java Version:[/B] 21
-[*][B]Dependencies:[/B] None
+[*][B]Dependencies:[/B] None — DynamicTooltipsLib is shaded in
 [*][B]Languages:[/B] EN, FR, ES, IT, DE, PT
-[*][B]Data Storage:[/B] JSON
+[*][B]Data Storage:[/B] JSON (overrides, tier configs) + BSON metadata (per-instance rolled tiers, survives restart)
 [*][B]Permissions:[/B] perfectitemmanager.command, .admin, .menu, .menu.stats, .menu.crafts, .menu.quality, .menu.drops
 [/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=5][COLOR=#FF6B00][B]// CREDITS[/B][/COLOR][/SIZE]
+[/CENTER]
+
+[SIZE=3]Per-instance tooltip & visual override system integrated and adapted from [B]DynamicTooltipsLib[/B] by [B]MineAndCraft[/B] (CurseForge id 1459711). Source is shaded — no external dependency required.[/SIZE]
 
 [HR][/HR]
 
