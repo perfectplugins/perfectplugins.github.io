@@ -48,8 +48,8 @@
       <li>Edit it: <code>/plc table edit starter</code>, hold an item and click <strong>Add entry from held item</strong>, then set quantities, weights and the rolls range</li>
       <li>Place any vanilla container (it can be empty, its real contents are not used)</li>
       <li>Get the wand: <code>/plc wand</code>, put it in your hotbar and select it</li>
-      <li>Right-click the container, then in the <strong>Loot</strong> tab pick your table</li>
-      <li>Switch to an empty hand and right-click the container to loot it</li>
+      <li>Press <strong>F</strong> (the use/interact key) on the container, then in the <strong>Loot</strong> tab pick your table</li>
+      <li>Switch to an empty hand and press <strong>F</strong> on the container to loot it</li>
     </ol>
 
     <h2 id="features">Features</h2>
@@ -59,7 +59,7 @@
       <li><strong>In-game table editor</strong> -- add from held item, tune quantity and weight per entry</li>
       <li><strong>Reset modes</strong> -- Cooldown (re-rolls after a delay) or One-time</li>
       <li><strong>Scope</strong> -- Per-player (own roll each) or Shared (one common pile)</li>
-      <li><strong>Loot Wand</strong> -- assign with a click, sneak-click to clone a config across many containers</li>
+      <li><strong>Loot Wand</strong> -- assign by pressing F, sneak + F to clone a config across many containers</li>
       <li><strong>Conditions</strong> -- world, hour range, gamemode, permission (invertable)</li>
       <li><strong>Gating</strong> -- require a permission and/or a key item (optional consume)</li>
       <li><strong>Glow particles</strong> -- proximity-culled, per-container color</li>
@@ -86,9 +86,9 @@
     <h3>Wand interactions</h3>
     <table>
       <tr><th>Action</th><th>Result</th></tr>
-      <tr><td>Right-click a container with the wand</td><td>Open the configuration menu</td></tr>
-      <tr><td>Sneak + right-click a configured container</td><td>Copy its config to your clipboard</td></tr>
-      <tr><td>Sneak + right-click an empty container</td><td>Paste the copied config onto it</td></tr>
+      <tr><td>Press F on a container (wand in hand)</td><td>Open the configuration menu</td></tr>
+      <tr><td>Sneak + F on a configured container</td><td>Copy its config to your clipboard</td></tr>
+      <tr><td>Sneak + F on an empty container</td><td>Paste the copied config onto it</td></tr>
     </table>
 
     <h2 id="permissions">Permissions</h2>
@@ -108,7 +108,7 @@
     <p>Editor controls: <strong>Min/Max</strong> rolls, <strong>Add entry from held item</strong>, per-entry <strong>-Q/+Q</strong> (quantity), <strong>-W/+W</strong> (weight), <strong>X</strong> (remove), and paging (6 entries per page).</p>
 
     <h2 id="configuring">Configuring Containers</h2>
-    <p>Right-click a container with the wand to open a tabbed menu (fixed size, footer always visible):</p>
+    <p>Press F on a container with the wand in hand to open a tabbed menu (fixed size, footer always visible):</p>
     <ul>
       <li><strong>Loot</strong> -- pick the loot table, jump to its editor</li>
       <li><strong>Rules</strong> -- reset mode (Cooldown / One-time), scope (Per-player / Shared), cooldown duration</li>
@@ -123,7 +123,7 @@
       <li><strong>One-time, shared</strong> -- looted once, then locked for everyone</li>
     </ul>
     <h3>Cloning a setup</h3>
-    <p>Configure one container, sneak + right-click it to copy, then sneak + right-click empty containers to paste the same config (table, mode, scope, cooldown, particles, color, permission, key, conditions). Ideal for placing many identical containers fast.</p>
+    <p>Configure one container, sneak + F on it to copy, then sneak + F on empty containers to paste the same config (table, mode, scope, cooldown, particles, color, permission, key, conditions). Ideal for placing many identical containers fast.</p>
 
     <h2 id="gating">Conditions &amp; Gating</h2>
     <p>Three independent gates stack (all must pass): permission, key item, and open conditions.</p>
@@ -152,7 +152,7 @@
     <p>State is written on chest close, on disconnect and on shutdown. Edit JSON only while the server is stopped, then use <code>/plc reload</code> or restart.</p>
 
     <h2 id="faq">FAQ</h2>
-    <h3>Nothing happens when I right-click with the wand</h3>
+    <h3>Nothing happens when I press F with the wand</h3>
     <p>The wand only works in your active hand. Move it to your hotbar and select it. Enable <code>/plc debug on</code> to see its location in the console.</p>
     <h3>The loot window is empty</h3>
     <p>The table has no entries, all weights are 0, or the rolls range is 0 to 0. Add entries and set a roll range of at least 1.</p>
