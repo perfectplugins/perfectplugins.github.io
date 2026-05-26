@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PerfectWaystones -- Wiki | Perfect Plugins</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a href="../../" class="nav-logo"><span>Perfect</span>Plugins</a>
+  <ul class="nav-links">
+      <li><a href="../../">Home</a></li>
+      <li><a href="../../#plugins">Plugins</a></li>
+      <li><a href="https://builtbybit.com/creators/katsuyatv.502728/">Store</a></li>
+  </ul>
+</div></nav>
+<div class="wiki-layout">
+  <aside class="wiki-sidebar">
+    <h3>PerfectWaystones</h3>
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#server-player">Server &amp; Player Waystones</a></li>
+      <li><a href="#discovery">Discovery</a></li>
+      <li><a href="#travel-menu">Travel Menu</a></li>
+      <li><a href="#settings-menu">Settings Menu</a></li>
+      <li><a href="#variants">Variants &amp; Colors</a></li>
+      <li><a href="#cross-world">Cross-World Travel</a></li>
+      <li><a href="#commands">Commands</a></li>
+      <li><a href="#permissions">Permissions</a></li>
+      <li><a href="#config">Configuration</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </aside>
+  <main class="wiki-content">
+    <h1 id="overview">PerfectWaystones</h1>
+    <p>Place waystone blocks around your world and fast travel between the ones you have discovered. Admins set up server waystones available to everyone, while players build their own public or private network. Includes a travel menu, a settings menu, per-player discovery and JSON persistence.</p>
+
+    <table>
+      <tr><th>Version</th><td>1.0.0</td></tr>
+      <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
+      <tr><th>Java</th><td>21+</td></tr>
+      <tr><th>Compatibility</th><td>Hytale Update 5 (Pre-Release 5)</td></tr>
+      <tr><th>Dependencies</th><td>None</td></tr>
+      <tr><th>Languages</th><td>EN, FR, ES, DE, IT</td></tr>
+    </table>
+    <p><a href="https://builtbybit.com/resources/perfectwaystones.109684/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Buy on BuiltByBit</a></p>
+
+    <h2 id="installation">Installation</h2>
+    <ol>
+      <li>Drop <code>PerfectWaystones-1.0.0.jar</code> in <code>UserData/Mods/</code></li>
+      <li>Start the server</li>
+      <li>Use <code>/pws give</code> to get a waystone block</li>
+      <li>Place it, then use it to start travelling</li>
+    </ol>
+
+    <h2 id="how-it-works">How It Works</h2>
+    <ol>
+      <li>Get a waystone with <code>/pws give</code> (add a color, e.g. <code>/pws give blue</code>) and place it.</li>
+      <li>Admins create <strong>server waystones</strong> for everyone; players create their own <strong>personal</strong> ones.</li>
+      <li>Walk up to a waystone and use it to <strong>discover</strong> it and open the travel menu.</li>
+      <li>Pick any discovered waystone and <strong>teleport</strong> instantly.</li>
+    </ol>
+
+    <h2 id="server-player">Server &amp; Player Waystones</h2>
+    <ul>
+      <li><strong>Server waystones</strong>: placed by an admin (with <code>perfectwaystones.admin</code>). Available to everyone once discovered.</li>
+      <li><strong>Player waystones</strong>: placed by a player, owned by that player, managed from the settings menu.</li>
+    </ul>
+
+    <h2 id="discovery">Discovery</h2>
+    <p>Players unlock a waystone by visiting it once. Every player keeps their own discovery list, so a waystone only appears in the travel menu after it has been discovered. Server waystones are visible to all, an owner always sees their own, public waystones appear once discovered, and private waystones are owner-only.</p>
+
+    <h2 id="travel-menu">Travel Menu</h2>
+    <p>Opened when you use a waystone. Lists every destination you can travel to, paginated. Select one and you are teleported one block above the target so you never spawn inside the block.</p>
+
+    <h2 id="settings-menu">Settings Menu</h2>
+    <p>Opened when you place a waystone (or use one you own). Lets the owner:</p>
+    <ul>
+      <li><strong>Rename</strong> the waystone</li>
+      <li>Toggle <strong>public / private</strong></li>
+      <li><strong>Delete</strong> the waystone</li>
+    </ul>
+
+    <h2 id="variants">Variants &amp; Colors</h2>
+    <p>21 waystone variants: 11 colors (Blue, Cyan, Green, Lightgreen, Lime, Orange, Pink, Red, Skyblue, Topaze, Yellow) plus an oak finish. Every variant has an <strong>emissive core</strong> that glows in the dark so waystones stand out at night.</p>
+
+    <h2 id="cross-world">Cross-World Travel</h2>
+    <p>Waystones store their own world, so you can travel between waystones located in different worlds, not only the one you are standing in.</p>
+
+    <h2 id="commands">Commands</h2>
+    <table>
+      <tr><th>Command</th><th>Description</th></tr>
+      <tr><td><code>/pws give &lt;color&gt;</code></td><td>Get a waystone block (optional color)</td></tr>
+      <tr><td><code>/pws list</code></td><td>List every waystone on the server</td></tr>
+      <tr><td><code>/pws reload</code></td><td>Reload the configuration</td></tr>
+      <tr><td><code>/pws setlang &lt;code&gt;</code></td><td>Set the language (EN, FR, ES, DE, IT)</td></tr>
+      <tr><td><code>/pws help</code></td><td>Show help</td></tr>
+    </table>
+
+    <h2 id="permissions">Permissions</h2>
+    <table>
+      <tr><th>Permission</th><th>Description</th></tr>
+      <tr><td><code>perfectwaystones.admin</code></td><td>Place server waystones, break any waystone, and use admin commands</td></tr>
+    </table>
+
+    <h2 id="config">Configuration</h2>
+    <p>File: <code>UserData/Saves/MODDING/mods/KatsuyaTV_PerfectWaystones/config.json</code></p>
+    <pre><code>{
+  "lang": "EN"
+}</code></pre>
+    <p>Waystones are stored in <code>waystones.json</code> and per-player discoveries in <code>discovery/&lt;uuid&gt;.json</code> inside the same folder.</p>
+
+    <h2 id="faq">FAQ</h2>
+    <h3>Why can't I see a waystone in the travel menu?</h3>
+    <p>You have to discover it first by visiting it. Private waystones you do not own never appear.</p>
+
+    <h3>Can players place their own waystones?</h3>
+    <p>Yes. Anyone can place a waystone, which becomes a personal waystone they own. Only admins (<code>perfectwaystones.admin</code>) create server waystones available to everyone.</p>
+
+    <h3>Who can break a waystone?</h3>
+    <p>The owner, or an admin. Server waystones can only be removed by an admin.</p>
+
+    <h3>Does travel work across different worlds?</h3>
+    <p>Yes, as long as the destination world is loaded.</p>
+  </main>
+</div>
+<footer><p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> -- Perfect Plugins 2026</p></footer>
+</body>
+</html>
