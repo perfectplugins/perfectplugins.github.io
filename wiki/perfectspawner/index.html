@@ -28,7 +28,9 @@
       <li><a href="#spawners">Spawner Types</a></li>
       <li><a href="#ui">Admin UI</a></li>
       <li><a href="#config">Configuration</a></li>
+      <li><a href="#skyblock">Skyblock Mode</a></li>
       <li><a href="#commands">Commands</a></li>
+      <li><a href="#diagnostics">Diagnostics</a></li>
       <li><a href="#performance">Performance</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
@@ -36,11 +38,12 @@
 
   <main class="wiki-content">
     <h1 id="overview">PerfectSpawner</h1>
-    <p>Configurable mob spawners with custom cage models, holograms, stacking, and a full admin UI. Place, configure, and manage spawners with ease.</p>
+    <p>Configurable mob spawner blocks with custom cage models, holograms, stacking, time-based rules and a full admin UI. Place, configure, and manage spawners with live diagnostics.</p>
 
     <table>
-      <tr><th>Version</th><td>1.5</td></tr>
+      <tr><th>Version</th><td>2.0.3</td></tr>
       <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
+      <tr><th>Hytale</th><td>Update 5 (Pre-Release 5)</td></tr>
       <tr><th>Java</th><td>21</td></tr>
       <tr><th>Dependencies</th><td>None</td></tr>
     </table>
@@ -48,68 +51,140 @@
 
     <h2 id="installation">Installation</h2>
     <ol>
-      <li>Download <code>PerfectSpawner-1.5.jar</code></li>
+      <li>Download <code>PerfectSpawner-2.0.3.jar</code></li>
       <li>Place it in your server's <code>UserData/Mods/</code> folder</li>
+      <li>If upgrading from v2.0.0, delete the old jar so you don't have two versions side by side</li>
       <li>Start the server</li>
-      <li>Give yourself a spawner: <code>/give Bear_Grizzly_Spawner</code></li>
+      <li>Give yourself a spawner via the in-game UI (<code>/spawner menu</code>) or with the existing item give workflow</li>
+      <li>If you were running v2.0.0, run <code>/spawner sweep</code> once in each affected world to clear leftover hologram entities</li>
     </ol>
 
     <h2 id="spawners">Spawner Types</h2>
-    <p>Each spawner comes with a custom cage model matching the mob. Works with all vanilla Hytale mobs including:</p>
+    <p>166 spawner types covering nearly every vanilla Hytale entity, organized by faction:</p>
     <ul>
-      <li>Animals: Bear (Grizzly, Polar), Boar, Deer, Wolf, Fox, Rabbit, Chicken, Cow, Sheep, Horse, Antelope, Bison</li>
-      <li>Hostile: Skeleton, Zombie, Goblin, Spider, Trork</li>
-      <li>Special: Dragon, Golem, Kweebec</li>
+      <li>Goblins (8), Trorks (10), Outlanders (9), Scarak (6), Feran (5), Kweebec (6), Hedera</li>
+      <li>Undead: Zombie (6), Skeleton variants (Burnt, Frost, Sand, Pirate, Incandescent), Risen, Wraith, Werewolf, Ghoul, Shadow Knight, Skeleton Hounds and Horses</li>
+      <li>Void entities, Crystal Golems (5 elements), Firesteel and Void Golem Guardians</li>
+      <li>Elemental Spirits (Ember, Frost, Root, Thunder)</li>
+      <li>Mythical: Emberwulf, Fen Stalker, Cactee, Yeti, Trillodon, Snapdragon, Hatworm, Spark Living</li>
+      <li>Beasts: bears, wolves, sabertooth, foxes, hyenas, deer, antelope, mosshorn</li>
+      <li>Reptiles: crocodile, sand lizard, cave rex, rhino toads, tortoise</li>
+      <li>Vermin: scorpion, snakes, spiders, magma slug, molerat, silk larva</li>
+      <li>Livestock: pigs, cows, chickens, sheep, rams, rabbits, goats, bison, turkey, warthog, horses</li>
+      <li>Bosses: Fire Dragon, Frost Dragon</li>
     </ul>
+    <p>Each spawner has its own configurable loot multiplier on top of the entity's vanilla drops.</p>
 
     <h2 id="ui">Admin UI</h2>
-    <p>Open with <code>/spawner</code>. The UI provides:</p>
+    <p>Open with <code>/spawner menu</code>. The UI provides:</p>
     <ul>
       <li>Paginated list of all placed spawners with ID, type, position, world</li>
       <li>Click to select and configure individual spawners</li>
-      <li>Spawner type editor: change mob type, spawn settings</li>
-      <li>Global settings: default radius, count, interval</li>
-      <li>Real-time status messages</li>
+      <li>Spawner type editor: change mob type, spawn settings, day/night restriction, drop multiplier</li>
+      <li>Multi-entity weighted picker so a single spawner can produce multiple entity types</li>
+      <li>Global settings page: holograms, stacking, drop on break, max stack size, activation radius, language, sync interval</li>
     </ul>
 
     <h2 id="config">Configuration</h2>
-    <p>Each spawner can be configured individually:</p>
+    <h3>Per-spawner-type settings (<code>spawner_types.json</code>)</h3>
     <table>
       <tr><th>Setting</th><th>Description</th><th>Default</th></tr>
-      <tr><td>Spawn Radius</td><td>How far from the spawner mobs spawn</td><td>5 blocks</td></tr>
-      <tr><td>Spawn Count</td><td>How many mobs per spawn cycle</td><td>2</td></tr>
-      <tr><td>Spawn Interval</td><td>Time between spawn cycles</td><td>30 seconds</td></tr>
-      <tr><td>Max Mobs</td><td>Maximum alive mobs from this spawner</td><td>8</td></tr>
-      <tr><td>Activation Range</td><td>Player must be within this range</td><td>32 blocks</td></tr>
+      <tr><td>entities</td><td>List of entity ids with weights</td><td>single entry per type</td></tr>
+      <tr><td>spawnDelaySeconds</td><td>Seconds between spawn cycles</td><td>30</td></tr>
+      <tr><td>spawnRadius</td><td>How far from the spawner mobs spawn</td><td>5 blocks</td></tr>
+      <tr><td>spawnCount</td><td>Mobs per spawn cycle</td><td>2</td></tr>
+      <tr><td>maxEntities</td><td>Max alive mobs from this spawner</td><td>256</td></tr>
+      <tr><td>timeRestriction</td><td>always / day / night</td><td>always</td></tr>
+      <tr><td>dropMultiplier</td><td>Multiplier applied to vanilla drops</td><td>1.0</td></tr>
+    </table>
+
+    <h3>Global plugin settings (<code>config.json</code>)</h3>
+    <table>
+      <tr><th>Setting</th><th>Description</th><th>Default</th></tr>
+      <tr><td>hologramsEnabled</td><td>Spawn hologram entities above each spawner</td><td>true</td></tr>
+      <tr><td>stackingEnabled</td><td>Allow stacking spawners of the same type</td><td>true</td></tr>
+      <tr><td>dropOnBreakEnabled</td><td>Drop the spawner item when broken</td><td>true</td></tr>
+      <tr><td>maxStackSize</td><td>Max number of stacked spawners on one block</td><td>5</td></tr>
+      <tr><td>activationRadius</td><td>Player must be within N blocks for mobs to spawn (-1 = always active)</td><td>32</td></tr>
+      <tr><td>requirePlayerNearby</td><td>If false, spawners ignore the proximity check entirely (skyblock mode)</td><td>true</td></tr>
+      <tr><td>hologramSyncIntervalSec</td><td>How often the hologram sync runs (seconds, minimum 10)</td><td>60</td></tr>
+      <tr><td>lang</td><td>Plugin language (EN, FR, ES, DE, IT)</td><td>EN</td></tr>
     </table>
 
     <h3>Holograms</h3>
-    <p>Each spawner displays a hologram above it showing the mob name and current status. Holograms update in real-time.</p>
+    <p>Each spawner displays a Nameplate hologram above it showing the mob name, stack count and spawn stats. Text auto-updates after stacking or language changes.</p>
 
     <h3>Stacking</h3>
-    <p>Multiple spawners of the same type can be stacked at one location to increase spawn rate.</p>
+    <p>Place a second spawner of the same type on top of an existing one to stack it. Each stack level multiplies <code>spawnCount</code> and <code>maxEntities</code>. Hologram reflects the current stack size.</p>
+
+    <h2 id="skyblock">Skyblock Mode</h2>
+    <p>By default, spawners only tick when a player is within <code>activationRadius</code>. This works for a regular open world, but on a Skyblock-style server with players on distant islands you typically want spawners to keep ticking regardless.</p>
+    <p>Set the following in <code>config.json</code>:</p>
+    <pre><code>"requirePlayerNearby": false</code></pre>
+    <p>With this off, the proximity check is skipped entirely. Mobs spawn even when no player is in the world. Combine with a sensible <code>maxEntities</code> per spawner to keep the entity count bounded.</p>
 
     <h2 id="commands">Commands</h2>
     <table>
       <tr><th>Command</th><th>Description</th></tr>
-      <tr><td><code>/spawner</code></td><td>Open the admin spawner management UI</td></tr>
-      <tr><td><code>/give [MobName]_Spawner</code></td><td>Give yourself a spawner</td></tr>
+      <tr><td><code>/spawner menu</code></td><td>Open the admin spawner management UI</td></tr>
+      <tr><td><code>/spawner list</code></td><td>List all placed spawners</td></tr>
+      <tr><td><code>/spawner remove</code></td><td>Remove a spawner</td></tr>
+      <tr><td><code>/spawner reload</code></td><td>Reload <code>config.json</code> and refresh holograms</td></tr>
+      <tr><td><code>/spawner setlang [code]</code></td><td>Change language (EN, FR, ES, DE, IT)</td></tr>
+      <tr><td><code>/spawner debug</code></td><td>Live diagnostic snapshot (see Diagnostics)</td></tr>
+      <tr><td><code>/spawner sweep</code></td><td>Delete orphan Nameplate entities near tracked spawners in the current world</td></tr>
+      <tr><td><code>/spawner help</code></td><td>Show all available subcommands</td></tr>
     </table>
+    <p>All admin commands require the <code>perfectspawner.admin</code> permission.</p>
+
+    <h2 id="diagnostics">Diagnostics</h2>
+    <p>v2.0.3 adds live diagnostics so server owners can verify the hologram subsystem is healthy without guesswork.</p>
+
+    <h3>/spawner debug</h3>
+    <p>Prints a snapshot to chat and console:</p>
+    <ul>
+      <li>Number of spawners registered</li>
+      <li>Number of holograms tracked by the manager (should equal registered)</li>
+      <li>Cumulative hologram spawn / remove / sync counters</li>
+      <li>Seconds since the last sync</li>
+      <li>Current config snapshot (sync interval, requirePlayerNearby, activation radius)</li>
+      <li>Live ECS scan: counts Nameplate entities within 3 blocks of each spawner whose UUID is not tracked - these are orphans</li>
+    </ul>
+    <p>A healthy server reports <code>tracked == registered</code> and <code>0 orphans</code>.</p>
+
+    <h3>/spawner sweep</h3>
+    <p>Scans the current world for the orphan entities reported by <code>/spawner debug</code> and deletes them. Use this once after upgrading from v2.0.0 to clear leftovers, or any time the debug output reports orphans.</p>
+
+    <h3>Background log</h3>
+    <p>Every 60 seconds the scheduler writes a one-liner to the console:</p>
+    <pre><code>[PerfectSpawner][1min] spawners=N tracked=N spawned=N(+delta) removed=N(+delta) syncs=N</code></pre>
+    <p>If the plugin detects a suspicious pattern (spawn growth without matching tracked count), the line is appended with <code>&lt;-- POSSIBLE LEAK</code> so admins notice without manually checking.</p>
 
     <h2 id="performance">Performance</h2>
     <ul>
-      <li>Event-driven: spawners only tick when a player is nearby</li>
-      <li>Distance-based activation: inactive spawners use zero resources</li>
-      <li>Efficient hologram updates: only refreshed when data changes</li>
-      <li>Stacking reduces entity count vs. placing multiple spawners</li>
+      <li>Throttled hologram sync (default once every 60 s, configurable)</li>
+      <li>Sync gated by chunk-loaded check: spawners in unloaded chunks are skipped entirely</li>
+      <li>Per-world dispatch: the sync runs once per world that actually has spawners</li>
+      <li>Per-world EntityStore resolution: multi-world setups (Skyblock, Nether, Jail, instances) work without cross-world errors</li>
+      <li>Stacking reduces entity count vs placing multiple separate spawners</li>
+      <li>Activation radius keeps inactive spawners at zero CPU cost</li>
     </ul>
 
     <h2 id="faq">FAQ</h2>
     <h3>Mobs aren't spawning</h3>
-    <p>Make sure you're within the activation range (default 32 blocks). Check the hologram for status.</p>
+    <p>Make sure you're within the activation range (default 32 blocks), or set <code>requirePlayerNearby</code> to <code>false</code>. Check <code>/spawner debug</code> for live state.</p>
+
+    <h3>I see floating text stacking above my spawner</h3>
+    <p>You are running an older version where holograms leaked. Upgrade to v2.0.3 and run <code>/spawner sweep</code> in the affected world to clean up.</p>
+
+    <h3>Spawners in my Skyblock instance don't work</h3>
+    <p>Two things to check. First, set <code>requirePlayerNearby</code> to <code>false</code> if players are far from their islands. Second, make sure you are on v2.0.3 or newer - earlier versions had a cross-world EntityStore bug that broke spawners in any world that wasn't the first one loaded.</p>
 
     <h3>Can I create custom mob types?</h3>
-    <p>PerfectSpawner works with all vanilla Hytale mobs. Custom mob support depends on your other mods.</p>
+    <p>PerfectSpawner works with all 166 vanilla Hytale entities out of the box. Custom mob support depends on your other mods. If a mod registers its NPC role correctly, you can edit <code>spawner_types.json</code> by hand to point a spawner at the new entity id.</p>
+
+    <h3>Can a single spawner produce multiple entity types?</h3>
+    <p>Yes. In the type editor, add multiple entries to the <code>entities</code> list, each with its own weight. The plugin picks one at random on every spawn cycle, weighted by your values.</p>
   </main>
 </div>
 
