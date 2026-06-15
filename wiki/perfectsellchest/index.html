@@ -3,44 +3,147 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PerfectSellChest -- Wiki | Perfect Plugins</title>
+  <title>PerfectSellChest — Wiki | Perfect Plugins</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
-<nav><div class="nav-inner">
-  <a href="../../" class="nav-logo"><span>Perfect</span>Plugins</a>
-      <ul class="nav-links">
+
+<nav>
+  <div class="nav-inner">
+    <a href="../../" class="nav-logo"><span>Perfect</span>Plugins</a>
+    <ul class="nav-links">
       <li><a href="../../">Home</a></li>
       <li><a href="../../#plugins">Plugins</a></li>
       <li><a href="https://builtbybit.com/creators/katsuyatv.502728/">Store</a></li>
     </ul>
-</div></nav>
+  </div>
+</nav>
+
 <div class="wiki-layout">
   <aside class="wiki-sidebar">
     <h3>PerfectSellChest</h3>
-    <ul><li><a href="#overview">Overview</a></li><li><a href="#installation">Installation</a></li>
-    <li><a href="#features">Features</a></li><li><a href="#commands">Commands</a></li>
-    <li><a href="#config">Configuration</a></li><li><a href="#economy">Economy</a></li><li><a href="#faq">FAQ</a></li></ul>
+    <ul>
+      <li><a href="#overview" class="active">Overview</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#commands">Commands</a></li>
+      <li><a href="#config">Configuration</a></li>
+      <li><a href="#languages">Languages</a></li>
+      <li><a href="#economy">Economy backends</a></li>
+      <li><a href="#prices">Sell prices</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
   </aside>
+
   <main class="wiki-content">
     <h1 id="overview">PerfectSellChest</h1>
-    <p>Automatic item selling from chests. Place a SellChest, items sell every 30 seconds. No commands, no menus, no hassle.</p>
-    <table><tr><th>Version</th><td>1.1</td></tr><tr><th>Platform</th><td>Hytale Server Plugin</td></tr><tr><th>Dependencies</th><td>Economy plugin</td></tr></table>
-    <p><a href="https://builtbybit.com/resources/perfect-auto-sell-chest.95956/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Buy on BuiltByBit</a></p>
+    <p>Automatic item selling from chests. Place a SellChest, items sell every 30 seconds. No commands, no menus, no hassle. Translated in 6 languages and compatible with PerfectEconomy or EliteEssentials Economy.</p>
+
+    <table>
+      <tr><th>Version</th><td>1.2.0</td></tr>
+      <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
+      <tr><th>Hytale</th><td>Update 5 (Pre-Release 5)</td></tr>
+      <tr><th>Java</th><td>21</td></tr>
+      <tr><th>Dependencies</th><td>One of: PerfectEconomy, EliteEssentials Economy</td></tr>
+    </table>
+    <p><a href="https://builtbybit.com/resources/perfectsellchest.108437/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Buy on BuiltByBit</a></p>
+
     <h2 id="installation">Installation</h2>
-    <ol><li>Drop <code>PerfectSellChest-1.1.jar</code> in <code>mods/</code></li><li>Install a compatible economy plugin</li><li>Start the server</li><li>Place a SellChest and <code>/sellchest</code></li></ol>
+    <ol>
+      <li>Drop <code>PerfectSellChest-1.2.0.jar</code> in <code>UserData/Mods/</code></li>
+      <li>Install one of: PerfectEconomy, EliteEssentials</li>
+      <li>Start the server</li>
+      <li>Edit the auto-generated <code>config.json</code> to pick your economy and language</li>
+      <li>Place a SellChest in-world, run <code>/sellchest</code> next to it to register</li>
+    </ol>
+
     <h2 id="features">Features</h2>
-    <ul><li><strong>Auto-Sell</strong> -- Every 30 seconds</li><li><strong>Multipliers</strong> -- 1x and 2x chest variants</li><li><strong>Per-Player Limits</strong> -- Max chests per player</li><li><strong>Notifications</strong> -- Toggleable sale messages</li><li><strong>Holograms</strong> -- Info display above chest</li></ul>
+    <ul>
+      <li><strong>Auto-sell</strong> every 30 seconds, no menus</li>
+      <li><strong>Two chest tiers</strong>: 1x and 2x multiplier</li>
+      <li><strong>Per-player limits</strong> on how many SellChests one player can own</li>
+      <li><strong>Toggleable notifications</strong> per player (<code>/sellchest notify</code>)</li>
+      <li><strong>Live holograms</strong> showing total earned + multiplier</li>
+      <li><strong>6 languages</strong> with live switching</li>
+      <li><strong>Economy bridges</strong> with reflection (no hard dependency)</li>
+    </ul>
+
     <h2 id="commands">Commands</h2>
-    <table><tr><th>Command</th><th>Description</th></tr><tr><td><code>/sellchest</code></td><td>Register nearby chest</td></tr><tr><td><code>/sellchest notify</code></td><td>Toggle notifications</td></tr><tr><td><code>/sellchest info</code></td><td>View stats</td></tr></table>
+    <table>
+      <tr><th>Command</th><th>Description</th></tr>
+      <tr><td><code>/sellchest</code></td><td>Register the chest you are standing next to</td></tr>
+      <tr><td><code>/sellchest notify</code></td><td>Toggle sell notifications for yourself</td></tr>
+      <tr><td><code>/sellchest info</code></td><td>Show your chest count and notify state</td></tr>
+      <tr><td><code>/sellchest setlang &lt;code&gt;</code></td><td>Change the language for everyone (admin)</td></tr>
+      <tr><td><code>/sellchest help</code></td><td>Show all subcommands</td></tr>
+    </table>
+
     <h2 id="config">Configuration</h2>
-    <pre><code>{"economyPlugin":"HTSkyBlock","defaultChestLimit":5}</code></pre>
-    <h2 id="economy">Compatible Economy Plugins</h2>
-    <ul><li>HTSkyBlock (native)</li><li>EconomySystem</li><li>Ecotale</li><li>Economy/Ryukazan</li></ul>
+    <p>Located at <code>UserData/Saves/&lt;world&gt;/mods/KatsuyaTV_PerfectSellChest/config.json</code>.</p>
+    <pre><code>{
+  "economyPlugin": "PerfectEconomy",
+  "defaultChestLimit": 5,
+  "lang": "EN",
+  "playerLimits": {}
+}</code></pre>
+    <table>
+      <tr><th>Field</th><th>Description</th><th>Default</th></tr>
+      <tr><td>economyPlugin</td><td>"PerfectEconomy" or "EliteEssentials"</td><td>PerfectEconomy</td></tr>
+      <tr><td>defaultChestLimit</td><td>Max SellChests per player (-1 = unlimited)</td><td>5</td></tr>
+      <tr><td>lang</td><td>Plugin language: EN, FR, ES, DE, IT, PT</td><td>EN</td></tr>
+      <tr><td>playerLimits</td><td>Per-UUID override map for chest limit</td><td>{}</td></tr>
+    </table>
+
+    <h2 id="languages">Languages</h2>
+    <p>v1.2.0 ships full translations for English, French, Spanish, German, Italian and Portuguese. English is the fallback when a key is missing in your chosen language. Diacritics are stripped because Hytale's font does not render them reliably.</p>
+    <p>Change the language permanently by editing <code>config.json</code>:</p>
+    <pre><code>"lang": "DE"</code></pre>
+    <p>Or live in-game (admin):</p>
+    <pre><code>/sellchest setlang DE</code></pre>
+    <p>Supported codes: <code>EN</code>, <code>FR</code>, <code>ES</code>, <code>DE</code>, <code>IT</code>, <code>PT</code>.</p>
+
+    <h2 id="economy">Economy backends</h2>
+    <p>PerfectSellChest auto-detects the configured economy plugin via reflection, so the jar still loads even if the chosen backend is missing (it falls back to a no-deposit "local prices" mode).</p>
+
+    <h3>PerfectEconomy</h3>
+    <p>Default. Set <code>"economyPlugin": "PerfectEconomy"</code>. Reads sell prices from PerfectEconomy's shop registry first, falls back to <code>prices.json</code> for items the shop does not list.</p>
+
+    <h3>EliteEssentials Economy</h3>
+    <p>Set <code>"economyPlugin": "EliteEssentials"</code> (or <code>"EliteEssentialsEconomy"</code>). The bridge calls EliteEssentials' public <code>EconomyAPI</code> for deposits and reads the currency symbol from its config so sell notifications use your custom currency.</p>
+    <p>EliteEssentials has no sell-price registry, so all sell prices come from your <code>prices.json</code>.</p>
+
+    <h2 id="prices">Sell prices</h2>
+    <p>The local price book is at <code>UserData/Saves/&lt;world&gt;/mods/KatsuyaTV_PerfectSellChest/prices.json</code>. Each entry is <code>itemId</code> mapped to price per unit:</p>
+    <pre><code>{
+  "Wood": 1.0,
+  "Stone": 0.5,
+  "Iron_Ingot": 5.0,
+  "Diamond": 50.0
+}</code></pre>
+    <p>The itemId must match exactly what <code>ItemStack.getItemId()</code> returns. Items not listed are simply not sold.</p>
+
     <h2 id="faq">FAQ</h2>
-    <h3>Items not selling?</h3><p>Register with <code>/sellchest</code> and check economy plugin is installed.</p>
+
+    <h3>The plugin output is in French / Spanish-looking / a language I do not speak</h3>
+    <p>Versions before 1.2.0 were hardcoded in French. Upgrade to v1.2.0 and set <code>"lang"</code> in <code>config.json</code> to <code>EN</code>, <code>FR</code>, <code>ES</code>, <code>DE</code>, <code>IT</code> or <code>PT</code>. Or run <code>/sellchest setlang &lt;code&gt;</code> in-game.</p>
+
+    <h3>Items not selling</h3>
+    <p>Make sure you ran <code>/sellchest</code> next to the chest to register it (check <code>/sellchest info</code> for your owned count). Also verify your economy plugin is loaded and your items are listed in <code>prices.json</code>.</p>
+
+    <h3>I use EliteEssentials Economy</h3>
+    <p>Set <code>"economyPlugin": "EliteEssentials"</code> in <code>config.json</code> and restart the server. Sell prices still come from <code>prices.json</code>.</p>
+
+    <h3>Can I disable the per-player chest limit?</h3>
+    <p>Set <code>"defaultChestLimit": -1</code> in <code>config.json</code>. You can also override individual players via the <code>playerLimits</code> map.</p>
+
+    <h3>Where is the data stored?</h3>
+    <p>Registered chests are in <code>sellchests.json</code>, prices in <code>prices.json</code>, settings in <code>config.json</code> all under <code>UserData/Saves/&lt;world&gt;/mods/KatsuyaTV_PerfectSellChest/</code>.</p>
   </main>
 </div>
-<footer><p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> -- Perfect Plugins 2026</p></footer>
+
+<footer>
+  <p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> &mdash; Perfect Plugins &copy; 2026</p>
+</footer>
+
 </body>
 </html>
