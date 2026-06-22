@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PerfectOptimizer — Wiki | Perfect Plugins</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="../../" class="nav-logo"><img src="../../assets/img/logo.png" alt="Perfect Plugin Series" class="nav-logo-img"><span>Perfect</span>Plugins</a>
+    <ul class="nav-links">
+      <li><a href="../../">Home</a></li>
+      <li><a href="../../#plugins">Plugins</a></li>
+      <li><a href="https://builtbybit.com/creators/katsuyatv.502728/">Store</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wiki-layout">
+  <aside class="wiki-sidebar">
+    <h3>PerfectOptimizer</h3>
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#dashboard">Live Dashboard</a></li>
+      <li><a href="#recommendations">Recommendations</a></li>
+      <li><a href="#auto-apply">Auto-Apply</a></li>
+      <li><a href="#flamegraph">CPU Flamegraph</a></li>
+      <li><a href="#heap-dumps">Heap Dumps</a></li>
+      <li><a href="#errors">Error Capture</a></li>
+      <li><a href="#heatmap">World Heatmap</a></li>
+      <li><a href="#anomalies">Anomaly Detection</a></li>
+      <li><a href="#active">Active Optimization</a></li>
+      <li><a href="#commands">Commands</a></li>
+      <li><a href="#admin-ui">In-Game Admin Panel</a></li>
+      <li><a href="#config">Configuration</a></li>
+      <li><a href="#discord-webhooks">Discord Webhooks</a></li>
+      <li><a href="#languages">Languages</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#troubleshooting">Troubleshooting</a></li>
+    </ul>
+  </aside>
+
+  <main class="wiki-content">
+    <h1 id="overview">PerfectOptimizer</h1>
+    <table>
+      <tr><th>Version</th><td>1.3.0</td></tr>
+      <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
+      <tr><th>Dashboard languages</th><td>EN, FR, ES, PT, DE</td></tr>
+      <tr><th>Dependencies</th><td>None (self-registering)</td></tr>
+      <tr><th>JVM requirements</th><td>Java 21+, HotSpot recommended</td></tr>
+      <tr><th>Plugin size</th><td>~150 KB</td></tr>
+      <tr><th>Permission node</th><td><code>perfectoptimizer.admin</code></td></tr>
+    </table>
+    <p>
+      PerfectOptimizer is an active server load manager paired with a private live web dashboard hosted at
+      <a href="https://analytics.perfect-plugins.com">analytics.perfect-plugins.com</a>.
+      Every server gets its own private URL with 19 pages of stats, 17 prescriptive rules, one-click auto-apply,
+      a CPU flamegraph profiler, a heap dump trigger, world entity heatmap, Sentry-style error capture and
+      statistical anomaly detection.
+    </p>
+    <p>
+      Most Hytale tools only <em>observe</em> your server. PerfectOptimizer <em>acts</em>: distant NPCs are
+      throttled or frozen, per-player chunk radius is tuned in real time, idle entity TTL is accelerated,
+      AFK player chunks shrink, tier hysteresis prevents flapping, and heap pressure triggers escalation.
+      Every recommendation can be applied to the live config with a single click from the dashboard,
+      with one-click rollback.
+    </p>
+
+    <h2 id="installation">Installation</h2>
+    <ol>
+      <li>Drop <code>PerfectOptimizer-1.3.0.jar</code> into your server's mods folder.</li>
+      <li>Start or restart the server.</li>
+      <li>The plugin auto-registers with the dashboard on first boot and prints your private URL in console.</li>
+      <li>Open the URL in any browser. The dashboard is live within seconds, no login required.</li>
+      <li>Run <code>/poptimizer dashboard</code> in-game any time to reprint your private URL as a clickable link.</li>
+    </ol>
+    <p>Config files are auto-generated under
+      <code>UserData/Saves/MODDING/mods/KatsuyaTV_PerfectOptimizer/</code>.
+      No manual setup required.</p>
+
+    <h2 id="dashboard">Live Dashboard</h2>
+    <p>
+      Once a server has registered, the dashboard streams metrics every 10 seconds and persists 14 days of
+      history. The URL is the auth: anyone with the URL has access, so treat it like a password.
+    </p>
+    <h3>19 pages</h3>
+    <table>
+      <tr><th>Page</th><th>What you see</th></tr>
+      <tr><td>Overview</td><td>Live KPIs: status, TPS, players, tier, memory, MSPT p95, CPU, lag spikes.</td></tr>
+      <tr><td>Recommendations</td><td>Active suggestions sorted by severity, with Apply / Snooze / Dismiss.</td></tr>
+      <tr><td>TPS history</td><td>10s / 1m / 5m TPS over selectable range. Red dots mark anomalies.</td></tr>
+      <tr><td>MSPT</td><td>avg / p50 / p95 / p99 / max milliseconds per tick.</td></tr>
+      <tr><td>Players</td><td>Player count history.</td></tr>
+      <tr><td>Memory</td><td>Heap used vs max with pool live snapshot.</td></tr>
+      <tr><td>Heap classes</td><td>Top 20 Java classes occupying heap, with % of total.</td></tr>
+      <tr><td>GC</td><td>Per-collector totals plus pause timeline (concurrent cycles separated from STW pauses).</td></tr>
+      <tr><td>CPU &amp; Threads</td><td>Process / system CPU history plus top threads by CPU time.</td></tr>
+      <tr><td>Worlds</td><td>Per-world entity count, loaded chunks, individual TPS and tick avg.</td></tr>
+      <tr><td>Ping</td><td>Player ping percentiles plus worst-ping leaderboard.</td></tr>
+      <tr><td>System</td><td>OS, JVM, disks, network interfaces and counters.</td></tr>
+      <tr><td>Tier history</td><td>Every optimizer tier change with from / to / timestamp.</td></tr>
+      <tr><td>Lag spikes</td><td>Individual spike events with world, tick avg, severity.</td></tr>
+      <tr><td>Activity log</td><td>Unified timeline: tier changes, lag spikes, GC pauses, memory states, escalations.</td></tr>
+      <tr><td>Errors</td><td>Captured warnings and exceptions grouped by signature.</td></tr>
+      <tr><td>Heap dumps</td><td>Trigger a live heap dump and review past dump metadata.</td></tr>
+      <tr><td>Flamegraph</td><td>CPU sampler sessions rendered as clickable SVG flamegraphs.</td></tr>
+      <tr><td>World heatmap</td><td>Per-chunk entity density visualized as a 2D grid per world.</td></tr>
+    </table>
+
+    <h2 id="recommendations">Smart Recommendations</h2>
+    <p>
+      17 prescriptive rules scan the last 24 hours of data continuously and surface actionable suggestions.
+      Each rule produces a card with severity (critical / warn / info), a plain-English explanation,
+      a suggested config change, the expected impact and a dismiss control with snooze options.
+    </p>
+    <h3>Rule categories</h3>
+    <ul>
+      <li><strong>TPS / CPU / scheduling</strong>: TPS low with idle CPU, host CPU contention, hidden MSPT spikes, per-world TPS divergence.</li>
+      <li><strong>Heap / memory</strong>: Old Gen pool saturated, slow heap growth trend over 24h.</li>
+      <li><strong>GC</strong>: frequent long stop-the-world pauses (concurrent cycles correctly excluded).</li>
+      <li><strong>Lag</strong>: spike count above threshold, spike cluster around the same hour of day.</li>
+      <li><strong>Tier hysteresis</strong>: yo-yo flapping, currently escalated emergency.</li>
+      <li><strong>ECS optimization features</strong>: NPC LOD off when populated, NPC population very high.</li>
+      <li><strong>Host / disk</strong>: disk usage above 85%, heap tight at peak players.</li>
+      <li><strong>Network</strong>: p95 player ping high.</li>
+      <li><strong>Threads</strong>: thread count grew abnormally vs early samples.</li>
+    </ul>
+    <p>
+      Rules are version-aware. If your plugin is older than the version that introduced a fix,
+      the recommendation suggests upgrading first.
+    </p>
+
+    <h2 id="auto-apply">One-Click Auto-Apply</h2>
+    <p>
+      Every applicable recommendation gets a green <strong>⚡ Apply now</strong> button. One click and the patch
+      travels to the plugin on its next push (≤ 10 seconds), gets applied to the live <code>OptimizerConfig</code>
+      via reflection, the file is saved and the scheduler reloads its tier. Zero downtime.
+    </p>
+    <h3>How the closed loop works</h3>
+    <ol>
+      <li>You click Apply now in the dashboard.</li>
+      <li>Backend queues a structured patch <code>{ fieldName: newValue }</code> in <code>pending_applies</code>.</li>
+      <li>Plugin's next ingest push pulls pending patches from the ingest response body.</li>
+      <li>Reflection sets the field on the live config object, then writes config.json.</li>
+      <li>Plugin reports back <code>appliedChanges</code> in its next push with the previous values for rollback.</li>
+      <li>Dashboard shows the entry under "Applied changes" with a <strong>↩ Rollback</strong> button.</li>
+    </ol>
+    <h3>Rollback</h3>
+    <p>
+      One click on Rollback enqueues a new pending apply with the previous values restored.
+      Original entry is marked rolled back. Same 10-second round-trip.
+    </p>
+    <h3>Kill-switch</h3>
+    <p>
+      Set <code>dashboardAutoApplyEnabled</code> to <code>false</code> in config.json to disable remote patching
+      entirely. Recommendations still appear in the dashboard but the Apply button has no effect.
+    </p>
+
+    <h2 id="flamegraph">CPU Flamegraph</h2>
+    <p>
+      In-game command <code>/poptimizer cpu &lt;sec&gt;</code> starts a sampling session.
+      The sampler wakes every 10 ms, dumps every live thread's stack via <code>ThreadMXBean</code>,
+      folds the frames into a call tree with per-node sample counts.
+      Result appears in the dashboard within ~10 seconds.
+    </p>
+    <ul>
+      <li><strong>Duration</strong>: 5 to 300 seconds (default 30).</li>
+      <li><strong>Sampling interval</strong>: 2 to 100 ms (default 10).</li>
+      <li><strong>Reading</strong>: wider rectangles = more time spent. Hover for sample percentage.</li>
+      <li><strong>Sessions kept</strong>: last 10 per server.</li>
+    </ul>
+    <p>
+      Use it to identify unexpected hot frames. Plugin slowdowns, runaway redstone, or AI tick contention
+      become obvious as wide bars in the flamegraph.
+    </p>
+
+    <h2 id="heap-dumps">Heap Dumps</h2>
+    <p>
+      One-click <strong>⚡ Live objects dump</strong> or <strong>Full heap (slower)</strong> from the dashboard calls
+      <code>HotSpotDiagnosticMXBean.dumpHeap()</code> on the live JVM.
+      The <code>.hprof</code> file is written to disk on the server (multi-GB possible, no upload).
+      The JVM pauses briefly during the write (1-30 s depending on heap size).
+    </p>
+    <p>
+      Open the file in <strong>Eclipse MAT</strong> or <strong>VisualVM</strong> to analyse what is eating your heap.
+      Dump metadata (path, size, status) appears in the dashboard history.
+    </p>
+
+    <h2 id="errors">Error Capture</h2>
+    <p>
+      A <code>java.util.logging</code> handler is attached to the root logger on plugin start.
+      Every <code>WARNING</code> and <code>SEVERE</code> record with a Throwable is hashed by signature
+      (exception class + normalized message + top 3 frames), grouped by occurrence count and shipped
+      with every ingest push.
+    </p>
+    <p>
+      The dashboard <strong>Errors</strong> page shows each unique error once with a <code>×N</code> count badge.
+      Plain logger warnings (without exception) are also captured so you see recurring "Took too long" messages.
+      Mark an error as resolved with a single click; it disappears from the active view until it reoccurs.
+    </p>
+
+    <h2 id="heatmap">World Heatmap</h2>
+    <p>
+      Every 30 seconds, the plugin iterates every entity with a <code>TransformComponent</code> across all
+      started worlds and tallies them per chunk (<code>x &gt;&gt; 4</code>, <code>z &gt;&gt; 4</code>).
+      The top 500 hottest chunks per world are pushed to the dashboard.
+    </p>
+    <p>
+      The frontend renders a 2D grid colored from cold (dark blue) to hot (bright red) where each cell
+      is one chunk. Hot spots equal chunks that probably need entity cleanup, lower spawn density,
+      or a stricter world tier override.
+    </p>
+
+    <h2 id="anomalies">Anomaly Detection</h2>
+    <p>
+      A backend z-score detector scans the last 24 hours of samples for TPS, MSPT p95, heap ratio and CPU.
+      Threshold is <strong>2.5 sigma</strong>, minimum window is 30 samples to avoid spurious markers.
+    </p>
+    <p>
+      Outliers appear as red dots overlaid on the TPS, MSPT, Memory and CPU charts.
+      They make sudden spikes visually obvious without scrolling through hours of charts.
+    </p>
+
+    <h2 id="active">Active Optimization (Always Running)</h2>
+    <p>
+      The optimizer adapts its behaviour to load in real time. Even with the dashboard disabled,
+      these subsystems run continuously.
+    </p>
+    <h3>NPC LOD</h3>
+    <p>
+      Iterates every NPC every 2 seconds. Distance to the nearest player is computed.
+      Beyond 160 blocks, NPCs are <strong>fully frozen</strong> (zero AI). Mid / far / very-far distance
+      tiers modulate the <code>StepComponent</code> tick interval (0.2 s / 0.5 s / 1.0 s).
+      Massive TPS win on NPC-heavy worlds.
+    </p>
+    <h3>Per-player ChunkTracker radius</h3>
+    <p>
+      For each player in each world, if TPS drops below 18, the player's hot radius shrinks by 2 chunks.
+      Hysteresis cooldown of 30 s prevents oscillation. Original radius restored once TPS recovers.
+    </p>
+    <h3>Despawn accelerator</h3>
+    <p>
+      Entities with a <code>DespawnComponent</code> and no player within 64 blocks for 30 seconds
+      see their remaining TTL multiplied by 0.5 (floor 30 s). Cleans up forgotten mob accumulations
+      without aggressive culling.
+    </p>
+    <h3>Idle player chunk shrink</h3>
+    <p>
+      An AFK player's loaded chunk radius collapses to a minimum. On return from AFK, the radius
+      is restored gradually (hot immediate, minLoaded after 15 s).
+    </p>
+    <h3>Tier hysteresis</h3>
+    <p>
+      Softening a tier requires both a 15-minute cooldown since the last degradation AND
+      a 25% drop in player count. Prevents yo-yo flapping when player count oscillates around a threshold.
+    </p>
+    <h3>Heap pressure escalation</h3>
+    <p>
+      Heap ratio is a second axis alongside TPS. Above 80% used, tier is forced to "high".
+      Above 92%, tier is forced to "emergency", independently of TPS.
+    </p>
+    <h3>Critical escalator</h3>
+    <p>
+      Sustained critical TPS locks all worlds to emergency tier with a global override.
+      Releases automatically when TPS recovers.
+    </p>
+    <h3>Console log noise filter</h3>
+    <p>
+      26 default regex patterns strip Hytale spam from the root logger ("Took too long",
+      "missing manifest", "overpopulation", etc.). Custom patterns can be added in config.
+    </p>
+
+    <h2 id="commands">Commands</h2>
+    <table>
+      <tr><th>Command</th><th>Description</th></tr>
+      <tr><td><code>/poptimizer</code></td><td>Show command help.</td></tr>
+      <tr><td><code>/poptimizer ui</code></td><td>Open the in-game admin panel.</td></tr>
+      <tr><td><code>/poptimizer status</code></td><td>Tier, TPS, active / idle / AFK viewer counts.</td></tr>
+      <tr><td><code>/poptimizer dashboard</code></td><td>Print a clickable link to your private dashboard.</td></tr>
+      <tr><td><code>/poptimizer apply</code></td><td>Force re-apply the current tier.</td></tr>
+      <tr><td><code>/poptimizer reload</code></td><td>Reload config.json from disk.</td></tr>
+      <tr><td><code>/poptimizer save</code></td><td>Save current config to disk.</td></tr>
+      <tr><td><code>/poptimizer cpu &lt;N&gt;</code></td><td>CPU flamegraph sampler for N seconds (default 30).</td></tr>
+      <tr><td><code>/poptimizer profile &lt;N&gt;</code></td><td>Profile session, exports TXT and JSON report.</td></tr>
+      <tr><td><code>/poptimizer lag</code></td><td>Lag spike counters.</td></tr>
+      <tr><td><code>/poptimizer memory</code></td><td>JVM heap status (live).</td></tr>
+      <tr><td><code>/poptimizer metrics</code></td><td>Public Prometheus metrics endpoint info.</td></tr>
+      <tr><td><code>/poptimizer npc</code></td><td>NPC LOD counters.</td></tr>
+      <tr><td><code>/poptimizer logfilter</code></td><td>Log noise filter status.</td></tr>
+    </table>
+    <p>All commands require the permission node <code>perfectoptimizer.admin</code>.</p>
+
+    <h2 id="admin-ui">In-Game Admin Panel</h2>
+    <p>
+      <code>/poptimizer ui</code> opens a live panel that shows the same KPIs as the dashboard:
+      tier, TPS, player count, LOD ratio, viewer breakdown, spawn pause state, NPC counts.
+      Sliders let you tune the medium and high tier thresholds, plus the force-high TPS threshold,
+      directly in-game. Changes auto-save and trigger a re-apply.
+    </p>
+
+    <h2 id="config">Configuration</h2>
+    <p>
+      Config file: <code>UserData/Saves/MODDING/mods/KatsuyaTV_PerfectOptimizer/config.json</code>.
+      Auto-generated on first run with sensible defaults. Edit then run <code>/poptimizer reload</code>.
+    </p>
+    <h3>Key fields</h3>
+    <table>
+      <tr><th>Field</th><th>Default</th><th>Notes</th></tr>
+      <tr><td><code>enabled</code></td><td>true</td><td>Master switch.</td></tr>
+      <tr><td><code>updateIntervalSec</code></td><td>5</td><td>Scheduler tick.</td></tr>
+      <tr><td><code>tpsForceHighThreshold</code></td><td>17.0</td><td>Force tier high below this TPS.</td></tr>
+      <tr><td><code>tpsCriticalThreshold</code></td><td>12.0</td><td>Force tier emergency below this TPS.</td></tr>
+      <tr><td><code>tierHysteresisEnabled</code></td><td>true</td><td>Anti-flapping on tier transitions.</td></tr>
+      <tr><td><code>heapPressureEscalateEnabled</code></td><td>true</td><td>Use heap ratio as a 2nd axis for tier.</td></tr>
+      <tr><td><code>heapPressureHigh</code></td><td>0.80</td><td>Force tier high above this heap ratio.</td></tr>
+      <tr><td><code>heapPressureCritical</code></td><td>0.92</td><td>Force tier emergency above this heap ratio.</td></tr>
+      <tr><td><code>npcLodEnabled</code></td><td>true</td><td>Distance-based NPC tick throttling and freeze.</td></tr>
+      <tr><td><code>npcLodFreezeDistance</code></td><td>160</td><td>Blocks beyond which NPCs are frozen.</td></tr>
+      <tr><td><code>perPlayerRadiusEnabled</code></td><td>true</td><td>Tune chunk radius per player based on TPS.</td></tr>
+      <tr><td><code>despawnAcceleratorEnabled</code></td><td>true</td><td>Accelerate idle entity despawn.</td></tr>
+      <tr><td><code>idlePlayerActionsEnabled</code></td><td>true</td><td>Shrink AFK player chunks.</td></tr>
+      <tr><td><code>memoryWatchdogEnabled</code></td><td>true</td><td>Heap warn / critical thresholds.</td></tr>
+      <tr><td><code>memoryWarnRatio</code></td><td>0.75</td><td>Warn above this heap ratio.</td></tr>
+      <tr><td><code>memoryCriticalRatio</code></td><td>0.90</td><td>Critical above this heap ratio.</td></tr>
+      <tr><td><code>lagProfilerEnabled</code></td><td>true</td><td>Detect and log tick spikes.</td></tr>
+      <tr><td><code>lagSpikeMs</code></td><td>100.0</td><td>Tick threshold to count a spike.</td></tr>
+      <tr><td><code>lagSevereSpikeMs</code></td><td>250.0</td><td>Tick threshold for severe spikes.</td></tr>
+      <tr><td><code>criticalEscalatorEnabled</code></td><td>true</td><td>Lock all worlds to emergency on sustained low TPS.</td></tr>
+      <tr><td><code>gcMonitorEnabled</code></td><td>true</td><td>Capture GC events live.</td></tr>
+      <tr><td><code>heapSummaryEnabled</code></td><td>true</td><td>Capture class histogram every minute.</td></tr>
+      <tr><td><code>worldHeatmapEnabled</code></td><td>true</td><td>Capture per-chunk entity density every 30 s.</td></tr>
+      <tr><td><code>logNoiseFilterEnabled</code></td><td>true</td><td>26 default regex strip patterns on root logger.</td></tr>
+      <tr><td><code>dashboardPushEnabled</code></td><td>true</td><td>Stream metrics to analytics.perfect-plugins.com.</td></tr>
+      <tr><td><code>dashboardPushIntervalSec</code></td><td>10</td><td>Push frequency.</td></tr>
+      <tr><td><code>dashboardAutoApplyEnabled</code></td><td>true</td><td>Allow remote config patches from the dashboard.</td></tr>
+    </table>
+    <p>Per-world overrides are supported via the <code>worldOverrides</code> map (mode: <code>stricter</code>, <code>relaxed</code>, <code>force-tier</code>, <code>disabled</code>).</p>
+
+    <h2 id="discord-webhooks">Discord Webhooks</h2>
+    <p>
+      Set <code>discordWebhookUrl</code> in config to receive alerts. Five event types are configurable:
+    </p>
+    <ul>
+      <li><code>webhookOnTierChange</code> — when the optimizer changes tier.</li>
+      <li><code>webhookOnTpsAlert</code> — when TPS drops below the critical threshold.</li>
+      <li><code>webhookOnLagSpike</code> — on severe lag spikes (cooldown enforced).</li>
+      <li><code>webhookOnMemoryAlert</code> — on heap critical transitions.</li>
+      <li><code>webhookOnSustainedCritical</code> — when the critical escalator locks all worlds.</li>
+      <li><code>webhookOnGcPause</code> — on long stop-the-world pauses (concurrent cycles excluded since v1.3.0).</li>
+    </ul>
+
+    <h2 id="languages">Dashboard Languages</h2>
+    <p>
+      The dashboard supports five languages with per-user preference stored in browser localStorage.
+      Flag picker is at the bottom of the sidebar.
+    </p>
+    <ul>
+      <li>🇬🇧 English</li>
+      <li>🇫🇷 French</li>
+      <li>🇪🇸 Spanish</li>
+      <li>🇵🇹 Portuguese</li>
+      <li>🇩🇪 German</li>
+    </ul>
+    <p>Every page has an inline help banner explaining the metric, the safe range and what to do when values go red.</p>
+
+    <h2 id="faq">FAQ</h2>
+    <h3>Does the plugin send any data outside my server?</h3>
+    <p>
+      Yes, performance metrics are streamed every 10 seconds to <code>analytics.perfect-plugins.com</code>.
+      Only operational metrics are sent (TPS, MSPT, heap pool sizes, GC events, error groups,
+      per-world counters, ping summaries). No player data, no chat, no inventory contents, no positions.
+      Set <code>dashboardPushEnabled</code> to <code>false</code> to disable the stream entirely;
+      the plugin still works as a local optimizer.
+    </p>
+    <h3>Who can access my dashboard?</h3>
+    <p>
+      Anyone with the private URL (token-in-URL auth, 192-bit randomness). Treat it like a password.
+      Sharing it with your staff team is the intended workflow.
+    </p>
+    <h3>What if my JVM is not HotSpot?</h3>
+    <p>
+      The plugin still runs and active optimization works. Two features are limited on non-HotSpot JVMs:
+      heap class summary (no <code>DiagnosticCommand</code> MBean) and heap dumps (no
+      <code>HotSpotDiagnosticMXBean</code>). The relevant pages will say "unavailable" instead of crashing.
+    </p>
+    <h3>How long are metrics kept?</h3>
+    <p>
+      14 days of samples, lag events, GC events and activity log entries. Cleared every 6 hours by
+      a background sweep. Recommendations history, applied changes history and heap dump metadata
+      are kept indefinitely.
+    </p>
+    <h3>Can I disable auto-apply but keep the dashboard?</h3>
+    <p>Yes, set <code>dashboardAutoApplyEnabled</code> to <code>false</code>. The dashboard stays fully functional, only the Apply now buttons stop having effect.</p>
+    <h3>What about Hytale Update 5 / JOML?</h3>
+    <p>Fully compatible. All vector math has been ported to <code>org.joml</code>.</p>
+    <h3>Multi-server setups?</h3>
+    <p>
+      Each server is registered independently with its own fingerprint and gets its own dashboard URL.
+      Restart preserves the token. There is no cross-server shared dashboard yet.
+    </p>
+
+    <h2 id="troubleshooting">Troubleshooting</h2>
+    <h3>Dashboard URL never appears in console</h3>
+    <p>Check that <code>dashboardPushEnabled</code> is true. Verify the server has outbound HTTPS access. Run <code>/poptimizer dashboard</code> to force-print the URL once registration completes.</p>
+    <h3>No metrics on the dashboard</h3>
+    <p>Run <code>/poptimizer dashboard</code> to confirm you have the right URL. Check console for "Dashboard push failed" entries. First sample appears within 10 seconds of plugin start.</p>
+    <h3>Heap classes page says "Histogram unavailable"</h3>
+    <p>Your JVM is not HotSpot (e.g. OpenJ9). The histogram requires the HotSpot diagnostic MBean. Other pages keep working.</p>
+    <h3>Apply now button does nothing</h3>
+    <p>Check that <code>dashboardAutoApplyEnabled</code> is true and the plugin can write to its config folder. Reports failures with <code>error_message</code> in the Applied changes history.</p>
+    <h3>Recommendations include "Upgrade to vX first"</h3>
+    <p>Your installed plugin version is below the version that introduced the field the rule wants to set. Update the JAR.</p>
+
+    <p style="margin-top:32px;color:#888;font-size:13px">
+      Documentation for PerfectOptimizer v1.3.0. Generated by PerfectPlugins.
+      For support, open a ticket on the <a href="https://discord.gg/DuqSZKrpyM">PerfectPlugins Discord</a>.
+    </p>
+  </main>
+</div>
+</body>
+</html>
