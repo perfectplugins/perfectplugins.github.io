@@ -21,137 +21,168 @@
     <ul>
       <li><a href="#overview">Overview</a></li>
       <li><a href="#installation">Installation</a></li>
-      <li><a href="#tier-system">Tier System</a></li>
+      <li><a href="#interface">The interface</a></li>
+      <li><a href="#items">Items: rarity &amp; stats</a></li>
+      <li><a href="#tier-system">Roll tiers</a></li>
       <li><a href="#affixes">Affixes</a></li>
-      <li><a href="#damage-variance">Damage Variance</a></li>
-      <li><a href="#per-attack">Per-Attack Damage</a></li>
-      <li><a href="#features">Other Features</a></li>
+      <li><a href="#crafts">Crafts</a></li>
+      <li><a href="#drops">Drops</a></li>
+      <li><a href="#restrictions">Restrictions</a></li>
+      <li><a href="#settings">Settings</a></li>
       <li><a href="#commands">Commands</a></li>
       <li><a href="#permissions">Permissions</a></li>
-      <li><a href="#config">Configuration</a></li>
+      <li><a href="#config">Data files</a></li>
       <li><a href="#credits">Credits</a></li>
+      <li><a href="#changelog">Changelog</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
   </aside>
   <main class="wiki-content">
     <h1 id="overview">PerfectItemManager</h1>
-    <p>The most powerful item management tool for Hytale servers. Override stats, crafting recipes, quality, drop rules, and now roll per-instance tiers with random affixes on weapons and armor -- Common to Legendary, with colored borders and styled tooltips.</p>
+    <p><img src="img/cover.jpg" alt="PerfectItemManager 2.0" style="width:100%;border-radius:8px;"></p>
+    <p>Edit every item of your Hytale server in game: <strong>stats, rarity, random roll tiers with affixes, crafting recipes and benches, NPC and block drops, restrictions</strong> -- live, without restarting. Version 2.0 brings a brand new admin interface with one search for everything, one Save button and a confirmation before anything is deleted.</p>
     <table>
-      <tr><th>Version</th><td>1.9.2</td></tr>
-      <tr><th>Platform</th><td>Hytale Server Plugin (2026-03-26 or newer)</td></tr>
+      <tr><th>Version</th><td>2.0.1</td></tr>
+      <tr><th>Platform</th><td>Hytale Update 7 (server 0.7.6) -- dedicated server and singleplayer</td></tr>
       <tr><th>Languages</th><td>EN, FR, ES, IT, DE, PT</td></tr>
       <tr><th>Dependencies</th><td>None (DynamicTooltipsLib is shaded in)</td></tr>
+      <tr><th>Price</th><td>$14.99</td></tr>
     </table>
-    <p><a href="https://builtbybit.com/resources/perfect-itemmanager-dropmanager.97194/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Buy on BuiltByBit</a></p>
+    <p><a href="https://builtbybit.com/resources/perfectitemmanager-full-item-control.97194/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Buy on BuiltByBit</a></p>
 
     <h2 id="installation">Installation</h2>
     <ol>
-      <li>Drop <code>PerfectItemManager-1.9.2.jar</code> in <code>UserData/Mods/</code></li>
-      <li>Start the server</li>
-      <li>Use <code>/itemmanager</code> to open the Landing page</li>
+      <li>Put <code>PerfectItemManager-2.0.1.jar</code> in your server's <code>mods</code> folder (singleplayer: enable it in your world's mod list)</li>
+      <li>Start or restart the server</li>
+      <li>Type <code>/itemmanager</code> in game</li>
     </ol>
+    <p><strong>Updating from 1.x?</strong> Just replace the jar: your overrides, recipes, drop rules, tiers and settings are kept.</p>
 
-    <h2 id="tier-system">Tier System (new in v1.9)</h2>
-    <p>Every weapon and armor can roll a tier at drop / pickup / craft. Each rolled instance carries:</p>
+    <h2 id="interface">The interface (new in 2.0)</h2>
+    <p><img src="img/crafts-tab.jpg" alt="The CRAFTS tab in game" style="width:100%;border-radius:8px;"></p>
     <ul>
-      <li>A <strong>colored slot border</strong> from the tier (Common &rarr; Legendary visual progression)</li>
-      <li>A <strong>damage multiplier</strong> applied at combat time</li>
-      <li>A pool of <strong>random affixes</strong> with min/max ranges shown in the tooltip</li>
-      <li>A <strong>styled per-stack tooltip</strong> with section headers, colored bullets, and roll-range hints</li>
+      <li><strong>Home</strong> -- one search for items, recipes, NPCs and blocks, a card per section with live counters, and your recent changes (kept after a restart).</li>
+      <li><strong>Five tabs, always visible</strong> -- HOME, CRAFTS, ITEMS, DROPS, SETTINGS. "Back" always returns exactly where you were (search, filter, page, selected item).</li>
+      <li><strong>One save model</strong> -- every change is a draft with a counter, Cancel and Save. Close with Esc and the draft is restored next time. Leaving an item with unsaved changes asks Save / Discard / Stay.</li>
+      <li><strong>Safe by design</strong> -- every dangerous action (reset an item, clear tiers, restore a vanilla recipe, remove drops, multiply all items, reset all) asks first and says exactly what will be deleted.</li>
     </ul>
-    <p>Enable on any item via <code>/itemmanager tier &lt;itemId&gt; enable</code> (auto-detects weapon vs armor for default affix pool), then configure via the in-game Tier Config UI (probability per tier, damage multiplier, min/max affixes, affix pool with editable min/max values).</p>
-    <p>Test rolls with <code>/itemmanager tier &lt;itemId&gt; give</code> -- each call produces a fresh random instance.</p>
+
+    <h2 id="items">Items: rarity &amp; stats</h2>
+    <p>ITEMS lists every item of the game, not only craftable ones. Each item has one card with 5 tabs: <em>Rarity &amp; stats</em>, <em>Roll tiers</em>, <em>Recipe</em>, <em>Drops</em>, <em>Restrictions</em>.</p>
+    <ul>
+      <li><strong>Stats</strong> -- Durability, Damage, Armor, Tool speed and Damage variance, shown as vanilla / current / new value / change, with presets +10 %, +25 %, +50 %, x2 and Vanilla, and a live preview of the player tooltip.</li>
+      <li><strong>Damage variance</strong> -- 0-100 % random spread on every hit, using Hytale's native <code>randomPercentageModifier</code>.</li>
+      <li><strong>Per-attack damage</strong> -- give each attack of a weapon its own value (stab, thrust, swings, signature...); the others follow the item damage.</li>
+      <li><strong>Item rarity</strong> -- Common to Legendary, applied to every copy of the item (not to be confused with roll tiers below).</li>
+    </ul>
+
+    <h2 id="tier-system">Roll tiers</h2>
+    <p>Weapons and armor can roll their own tier on each copy (drop, pickup, craft, <code>/give</code>). Each rolled copy carries:</p>
+    <ul>
+      <li>a <strong>tier</strong>: Common, Uncommon, Rare, Epic or Legendary, with its own colored border</li>
+      <li>a <strong>damage multiplier</strong> applied in combat</li>
+      <li>a set of <strong>random affixes</strong>, shown in its own tooltip with their roll ranges</li>
+    </ul>
+    <p>In the <em>Roll tiers</em> tab: turn tiers on, set each tier's chance (the total must be 100 %), damage multiplier and number of affixes, edit the affix pool, or start from the Weapon / Armor presets. "Give 1 rolled" hands you a fresh copy to test. Rolls are stored on the item itself and survive drops, chests, restarts and world changes.</p>
 
     <h2 id="affixes">Affixes</h2>
+    <p>All affixes below work in game since 2.0.1.</p>
     <h3>Weapon affixes (offensive)</h3>
     <table>
       <tr><th>Affix</th><th>Effect</th></tr>
-      <tr><td>Damage Boost</td><td>Additive % bonus damage on every hit (multiple instances stack additively)</td></tr>
-      <tr><td>Critical Chance</td><td>% chance to land a critical hit (stacks additively, capped at 100%)</td></tr>
-      <tr><td>Critical Damage</td><td>Damage multiplier applied on a successful crit</td></tr>
-      <tr><td>Lifesteal</td><td>Heal a % of damage dealt (tooltip only in v1.9.2, hook coming)</td></tr>
-      <tr><td>Predator</td><td>Bonus damage multiplier against low-HP targets</td></tr>
-      <tr><td>Speed Boost</td><td>Movement speed bonus (tooltip only in v1.9.2)</td></tr>
-      <tr><td>Knockback Bonus</td><td>Increases knockback dealt</td></tr>
+      <tr><td>Damage Boost</td><td>+% damage on every hit (several instances add up)</td></tr>
+      <tr><td>Critical Chance</td><td>% chance to land a critical hit (adds up, capped at 100 %)</td></tr>
+      <tr><td>Critical Damage</td><td>Damage multiplier on a critical hit</td></tr>
+      <tr><td>Lifesteal</td><td>Heals you for a % of the damage you deal (never above max health)</td></tr>
+      <tr><td>Predator</td><td>Damage multiplier against targets under 30 % health</td></tr>
+      <tr><td>Speed Boost</td><td>+% movement speed while the weapon is in hand</td></tr>
+      <tr><td>Knockback Bonus</td><td>+% knockback dealt</td></tr>
     </table>
     <h3>Armor affixes (defensive)</h3>
     <table>
       <tr><th>Affix</th><th>Effect</th></tr>
-      <tr><td>Damage Reduction</td><td>Reduces incoming damage (capped at 80% combined across all armor pieces)</td></tr>
-      <tr><td>Health Bonus</td><td>Flat bonus to max HP, applied via a stat modifier on equip</td></tr>
-      <tr><td>Thorns</td><td>Reflects a % of incoming damage back to the attacker</td></tr>
-      <tr><td>Knockback Resistance</td><td>Reduces incoming knockback velocity</td></tr>
-      <tr><td>Regeneration</td><td>+X HP/s -- a 1Hz tick heals the player while armor is equipped</td></tr>
+      <tr><td>Damage Reduction</td><td>Reduces incoming damage (capped at 80 % across all armor pieces)</td></tr>
+      <tr><td>Health Bonus</td><td>Flat bonus to max health while equipped</td></tr>
+      <tr><td>Thorns</td><td>Reflects a % of incoming damage to the attacker</td></tr>
+      <tr><td>Knockback Resistance</td><td>Reduces incoming knockback</td></tr>
+      <tr><td>Regeneration</td><td>+X health per second while equipped</td></tr>
     </table>
-    <h3>Common affix</h3>
+    <h3>Both</h3>
     <table>
       <tr><th>Affix</th><th>Effect</th></tr>
-      <tr><td>Durability Bonus</td><td>Bumps the rolled item's max durability by X% (applied at roll time)</td></tr>
+      <tr><td>Durability Bonus</td><td>+% max durability, applied when the item is rolled</td></tr>
     </table>
 
-    <h2 id="damage-variance">Damage Variance (new in v1.9)</h2>
-    <p>Per-item slider (0-100%) that drives Hytale's native <code>randomPercentageModifier</code>. Each hit deals &plusmn;X% random damage spread. Set it from the Stats tab &rarr; Damage Substats section.</p>
-
-    <h2 id="per-attack">Per-Attack Damage editor (new in v1.9)</h2>
-    <p>Override individual attacks of any weapon independently. A sword exposes Stab / Thrust / Swing Down / Swing Down Left/Right / Signature attacks, and you can set distinct damage values for each.</p>
-    <p>Open via <code>/itemmanager perattack &lt;itemId&gt;</code> or the EDIT&hellip; button in the Stats tab's Damage Substats section.</p>
-
-    <h2 id="features">Other Features</h2>
+    <h2 id="crafts">Crafts</h2>
     <ul>
-      <li><strong>Item Stats Override</strong> -- Modify damage, durability, armor, attack speed, knockback, armor toughness</li>
-      <li><strong>Crafting Override</strong> -- Change or remove crafting recipes; control which benches can craft what</li>
-      <li><strong>Quality Override</strong> -- Set custom quality levels per item</li>
-      <li><strong>Block Drop Rules</strong> -- Customize what drops when any block is broken</li>
-      <li><strong>Entity Drop Rules</strong> -- Customize what any mob drops on death</li>
-      <li><strong>Restrictions</strong> -- Block use, drop, equip or place of items, with optional per-permission gating</li>
-      <li><strong>Weapon Tooltips</strong> -- Display damage values in tooltips (toggleable). Layers cleanly with the per-instance tier tooltip.</li>
-      <li><strong>Bulk Edit &amp; Global Overrides</strong> -- Apply changes to multiple items, set global multipliers</li>
-      <li><strong>Item Creator</strong> -- <em>Coming in v1.9.3</em> -- clone an item, set new ID/name/stats/quality/icon and ship it in your asset pack</li>
+      <li>Benches with recipe counters, every recipe with an <strong>Active</strong> box, <strong>Disable all</strong> / <strong>Enable all</strong>.</li>
+      <li>The recipe card edits bench tier, craft time, quantity made, required permission and ingredients (add, replace, change the amount, remove, restore).</li>
+      <li><strong>New in 2.0:</strong> create a recipe for an item that has none, move a recipe to another bench, change the quantity made, replace an ingredient.</li>
+    </ul>
+
+    <h2 id="drops">Drops</h2>
+    <ul>
+      <li>Custom drops for any NPC or block: item, min / max quantity, chance.</li>
+      <li><strong>Replace vanilla drops</strong> ON: only your drops fall. OFF: they are added to the vanilla drops.</li>
+      <li>From an item card, see and edit which NPCs and blocks drop that item. "+ Add items" always brings you back to the same source.</li>
+    </ul>
+
+    <h2 id="restrictions">Restrictions</h2>
+    <p>Block dropping or placing an item, with an optional required permission. Players with <code>perfectitemmanager.bypass</code> ignore restrictions. "Block use" and "Block equip" are hidden: Hytale no longer supports them since Update 6.</p>
+
+    <h2 id="settings">Settings</h2>
+    <ul>
+      <li><strong>Language</strong> of the interface and tooltips, for the whole server (EN, FR, ES, IT, DE, PT).</li>
+      <li><strong>Weapon stat tooltips</strong> on / off (damage, speed and roll tier lines). When you save a change, every connected player sees the new tooltip instantly.</li>
+      <li><strong>Global actions</strong> -- no durability loss for every item, multiply all stats (x2, x5, x10), reset everything. All confirmed first.</li>
     </ul>
 
     <h2 id="commands">Commands</h2>
     <table>
       <tr><th>Command</th><th>Description</th></tr>
-      <tr><td><code>/itemmanager</code></td><td>Open the Landing page (Item Manager / Drop Manager / Item Creator)</td></tr>
-      <tr><td><code>/itemmanager drops</code></td><td>Open the drop rules UI</td></tr>
-      <tr><td><code>/itemmanager tier &lt;itemId&gt; enable</code></td><td>Enable tier rolls on an item (auto-detects weapon vs armor for defaults)</td></tr>
-      <tr><td><code>/itemmanager tier &lt;itemId&gt; disable</code></td><td>Disable tier rolls</td></tr>
-      <tr><td><code>/itemmanager tier &lt;itemId&gt; info</code></td><td>Print the current tier config</td></tr>
-      <tr><td><code>/itemmanager tier &lt;itemId&gt; give</code></td><td>Give one freshly rolled instance of the item</td></tr>
-      <tr><td><code>/itemmanager tier &lt;itemId&gt; menu</code></td><td>Open the Tier Config editor</td></tr>
-      <tr><td><code>/itemmanager perattack &lt;itemId&gt;</code></td><td>Open the per-attack damage editor</td></tr>
-      <tr><td><code>/itemmanager reload</code></td><td>Reload all overrides from disk</td></tr>
-      <tr><td><code>/itemmanager setlang &lt;code&gt;</code></td><td>Set language (EN, FR, ES, IT, DE, PT)</td></tr>
-      <tr><td><code>/itemmanager help</code></td><td>Display help</td></tr>
+      <tr><td><code>/itemmanager</code></td><td>Open the Home screen</td></tr>
+      <tr><td><code>/itemmanager &lt;itemId&gt;</code></td><td>Open the card of an item</td></tr>
+      <tr><td><code>/itemmanager crafts [bench]</code></td><td>Open CRAFTS (optionally on a bench)</td></tr>
+      <tr><td><code>/itemmanager drops [npc or block]</code></td><td>Open DROPS (optionally on a source)</td></tr>
+      <tr><td><code>/itemmanager tier &lt;itemId&gt; enable|disable|info|give|menu</code></td><td>Manage the roll tiers of an item</td></tr>
+      <tr><td><code>/itemmanager perattack &lt;itemId&gt;</code></td><td>Open the per-attack damage section</td></tr>
+      <tr><td><code>/itemmanager reload</code></td><td>Reload the configuration from disk</td></tr>
+      <tr><td><code>/itemmanager setlang &lt;EN|FR|ES|IT|DE|PT&gt;</code></td><td>Change the language</td></tr>
+      <tr><td><code>/itemmanager help</code></td><td>Show help</td></tr>
     </table>
 
     <h2 id="permissions">Permissions</h2>
     <table>
       <tr><th>Permission</th><th>Description</th></tr>
-      <tr><td><code>perfectitemmanager.command</code></td><td>Base access to the command</td></tr>
-      <tr><td><code>perfectitemmanager.admin</code></td><td>Reload, setlang, tier config</td></tr>
-      <tr><td><code>perfectitemmanager.menu</code></td><td>Access the UI</td></tr>
-      <tr><td><code>perfectitemmanager.menu.stats</code></td><td>Edit item stats and per-attack damage</td></tr>
-      <tr><td><code>perfectitemmanager.menu.crafts</code></td><td>Edit crafting overrides</td></tr>
-      <tr><td><code>perfectitemmanager.menu.quality</code></td><td>Edit quality overrides</td></tr>
-      <tr><td><code>perfectitemmanager.menu.drops</code></td><td>Edit drop rules</td></tr>
-      <tr><td><code>perfectitemmanager.menu.global</code></td><td>Global overrides and multipliers</td></tr>
-      <tr><td><code>perfectitemmanager.menu.bulk</code></td><td>Bulk edit mode</td></tr>
+      <tr><td><code>perfectitemmanager.admin</code></td><td>Everything</td></tr>
+      <tr><td><code>perfectitemmanager.menu.crafts</code></td><td>CRAFTS</td></tr>
+      <tr><td><code>perfectitemmanager.menu.stats</code> or <code>.menu.quality</code></td><td>ITEMS</td></tr>
+      <tr><td><code>perfectitemmanager.menu.drops</code></td><td>DROPS</td></tr>
+      <tr><td><code>perfectitemmanager.menu.global</code></td><td>SETTINGS and global actions</td></tr>
+      <tr><td><code>perfectitemmanager.bypass</code></td><td>Ignore item restrictions</td></tr>
     </table>
+    <p>Sections a player cannot use are locked in the interface.</p>
 
-    <h2 id="config">Configuration</h2>
-    <pre><code>{"lang": "EN", "weaponTooltips": true}</code></pre>
-    <p>Override data lives in <code>UserData/Saves/&lt;world&gt;/mods/KatsuyaTV_PerfectItemManager/</code> as JSON, plus per-instance rolled tiers stored as BSON metadata on each ItemStack (survives restart).</p>
+    <h2 id="config">Data files</h2>
+    <p>Everything is saved as JSON in the plugin's data folder (<code>mods/KatsuyaTV_PerfectItemManager/</code>): <code>config.json</code> (language, tooltips), <code>item_overrides.json</code>, <code>craft_overrides.json</code>, <code>drop_rules.json</code>, <code>global_override.json</code> and <code>history.json</code> (recent changes). Rolled tiers are stored on each item.</p>
 
     <h2 id="credits">Credits</h2>
-    <p>Per-instance tooltip and visual override system integrated and adapted from <strong>DynamicTooltipsLib</strong> by <strong>MineAndCraft</strong> (CurseForge id 1459711). Source is shaded -- no external dependency required.</p>
+    <p>Per-copy tooltip and visual override system integrated and adapted from <strong>DynamicTooltipsLib</strong> by <strong>MineAndCraft</strong> (CurseForge id 1459711). It is built into the jar -- no external dependency required.</p>
+
+    <h2 id="changelog">Changelog</h2>
+    <ul>
+      <li><strong>2.0.1</strong> -- Lifesteal, Predator, Speed Boost and Knockback Bonus now work in game.</li>
+      <li><strong>2.0.0</strong> -- Brand new admin interface; create recipes, move recipes to another bench, change the quantity made, replace ingredients; new commands; rolled items no longer block actions on Update 7; "Block use" / "Block equip" and the Item Creator card removed.</li>
+      <li><strong>1.9.3</strong> -- Hytale Update 7; farmed items were refused as crafting ingredients (repaired automatically).</li>
+      <li><strong>1.9.2</strong> -- Roll tiers, armor effects, damage variance, per-attack damage.</li>
+    </ul>
 
     <h2 id="faq">FAQ</h2>
-    <h3>Changes don't appear in-game?</h3><p>Use <code>/itemmanager reload</code>. Some changes (asset reloads) may require a server restart.</p>
-    <h3>Can I override vanilla items?</h3><p>Yes, any item in the game can be overridden.</p>
-    <h3>Why does my item not roll a tier?</h3><p>Tier rolls only apply to weapons and armor by default. Make sure the item override exists and the tier config is enabled. Items already in inventories don't re-roll -- use <code>/itemmanager tier &lt;itemId&gt; give</code> to test with a fresh instance.</p>
-    <h3>Do rolled tiers persist across restarts?</h3><p>Yes. Each item's rolled tier is stored in BSON metadata on the ItemStack itself, so it survives drops, container moves, server restarts, and world transfers.</p>
-    <h3>Can multiple Critical Chance affixes stack?</h3><p>Yes -- as of v1.9.2 they stack additively (capped at 100%). Same for Damage Boost.</p>
+    <h3>Changes don't appear in game?</h3><p>Press <strong>Save</strong>: changes are a draft until saved. Tooltips update instantly for every connected player. Use <code>/itemmanager reload</code> after editing the JSON files by hand.</p>
+    <h3>Can I edit vanilla items?</h3><p>Yes, every item of the game is listed in ITEMS.</p>
+    <h3>Why does my item not roll a tier?</h3><p>Roll tiers apply to weapons and armor. Turn them on in the item's <em>Roll tiers</em> tab and save. Copies already in inventories keep their roll: use "Give 1 rolled" to test a fresh copy.</p>
+    <h3>Do rolled tiers persist across restarts?</h3><p>Yes. The roll is stored on the item itself, so it survives drops, chests, restarts and world changes.</p>
+    <h3>Do several Critical Chance affixes stack?</h3><p>Yes, they add up (capped at 100 %). Same for Damage Boost.</p>
   </main>
 </div>
 <footer><p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> -- Perfect Plugins 2026</p></footer>
