@@ -1,0 +1,89 @@
+[CENTER][SIZE=7][B][COLOR=#FF6B00]P E R F E C T[/COLOR] [COLOR=#FFFFFF]OPTIMIZER[/COLOR][/B][/SIZE]
+[SIZE=4][COLOR=#AAAAAA]Keep your Hytale server smooth, automatically[/COLOR][/SIZE]
+
+[IMG height="25px"]https://img.shields.io/badge/Hytale-Server%20Plugin-orange?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/Hytale-Update%207-blue?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/v1.3.2-STABLE-green?style=for-the-badge[/IMG]
+[/CENTER]
+
+[HR][/HR]
+
+[CENTER][SIZE=5][COLOR=#FF6B00][B]// WHY PERFECTOPTIMIZER?[/B][/COLOR][/SIZE][/CENTER]
+
+[SIZE=3]Lag spikes, too many NPCs, AFK players loading chunks for nothing... [B]PerfectOptimizer[/B] watches your server every few seconds and adapts it live: it lowers the load where nobody plays, keeps full quality where players are, and tells you exactly what is going on - from a clean in-game panel.[/SIZE]
+
+[HR][/HR]
+
+[CENTER][SIZE=5][COLOR=#FF6B00][B]// THE IN-GAME PANEL (NEW IN 1.3.2)[/B][/COLOR][/SIZE][/CENTER]
+
+[LIST]
+[*][B]Overview[/B] - live server speed (TPS) with its health color, optimization level (Normal / Medium / High / Emergency) and why, players (active / idle / AFK), memory, NPCs (full speed / slowed / frozen), natural spawns. [B]Apply now[/B] and [B]Pause[/B] buttons. Refreshes every 3 seconds.
+[*][B]Features[/B] - one card per feature with its ON/OFF switch, what it does and a live counter.
+[*][B]Settings[/B] - every threshold with -/+ buttons, one Save button, Cancel, and your draft is kept if you close the panel. Inconsistent values are refused before saving.
+[/LIST]
+
+[HR][/HR]
+
+[CENTER][SIZE=5][COLOR=#FF6B00][B]// FEATURES[/B][/COLOR][/SIZE][/CENTER]
+
+[LIST]
+[*][SIZE=4][COLOR=#55FF55][B]SMART OPTIMIZATION LEVELS[/B][/COLOR][/SIZE]
+[SIZE=3]Four levels picked from the number of players, the server speed and memory pressure, with anti-flapping. [B]Each world uses its own TPS[/B]: one laggy world no longer slows everybody down. Per-world overrides (disabled, stricter, relaxed, forced level).[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]NPC LOD[/B][/COLOR][/SIZE]
+[SIZE=3]NPCs far from every player think less often, very far ones are frozen, and they come back to full speed as soon as a player gets close. NPCs frozen by an admin or builder tools are never touched.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]PER-PLAYER VIEW RADIUS & AFK REDUCTION[/B][/COLOR][/SIZE]
+[SIZE=3]In a lagging world, each player's active chunk radius is reduced (never below a safe floor). AFK players get a smaller radius and get it back the moment they move.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]SPAWN CONTROL & DESPAWN ACCELERATOR[/B][/COLOR][/SIZE]
+[SIZE=3]Natural spawns pause at the heaviest levels; entities far from players despawn sooner.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]MONITORING[/B][/COLOR][/SIZE]
+[SIZE=3]Lag spike profiler, memory watchdog, garbage collection monitor, CPU sampler, profile sessions saved as TXT + JSON reports, console noise filter, Discord webhook alerts, optional local JSON metrics endpoint.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]WEB DASHBOARD (OPTIONAL)[/B][/COLOR][/SIZE]
+[SIZE=3]Live graphs, anomalies and tuning tips at analytics.perfect-plugins.com. [B]Off by default[/B]: turn it on in the panel (Settings). It sends player names, pings and machine info. Auto-apply of tips is opt-in too and can only change performance values.[/SIZE]
+[/LIST]
+
+[HR][/HR]
+
+[CENTER][SIZE=5][COLOR=#FF6B00][B]// COMMANDS[/B][/COLOR][/SIZE][/CENTER]
+
+[LIST]
+[*][B]/poptimizer ui[/B] - open the panel ([B]/poptimizer ui settings[/B] opens a tab directly)
+[*][B]/poptimizer status[/B] - current level, TPS and players in chat
+[*][B]/poptimizer apply[/B] - re-apply the current level now
+[*][B]/poptimizer reload[/B] / [B]save[/B] - reload or save the configuration
+[*][B]/poptimizer lag[/B], [B]memory[/B], [B]npc[/B], [B]cpu[/B], [B]profile[/B] - reports
+[*][B]/poptimizer dashboard[/B] - your dashboard link
+[/LIST]
+[SIZE=3]Permission: [B]perfectoptimizer.admin[/B][/SIZE]
+
+[HR][/HR]
+
+[CENTER][SIZE=5][COLOR=#FF6B00][B]// INSTALLATION[/B][/COLOR][/SIZE][/CENTER]
+
+[LIST=1]
+[*]Put [B]PerfectOptimizer-1.3.2.jar[/B] in your server's [B]mods[/B] folder (singleplayer: enable it in your world's mod list).
+[*]Start or restart the server.
+[*]Type [B]/poptimizer ui[/B] in game.
+[/LIST]
+[SIZE=3]Updating? Just replace the jar: your configuration is kept (it now lives in [B]mods/KatsuyaTV_PerfectOptimizer/[/B] and is moved there automatically).[/SIZE]
+
+[HR][/HR]
+
+[CENTER][SIZE=5][COLOR=#FF6B00][B]// CHANGELOG[/B][/COLOR][/SIZE][/CENTER]
+
+[B]v1.3.2 - Hytale Update 7, new panel, multi-world[/B]
+[LIST]
+[*][B]NEW[/B] In-game panel with Overview, Features and Settings
+[*][B]NEW[/B] Each world uses its own TPS for view radius and forced levels
+[*][B]FIX[/B] Per-player radius and AFK reduction work again, no longer fight each other, and run safely on Update 7
+[*][B]FIX[/B] AFK detection refreshed every few seconds
+[*][B]FIX[/B] A level raised by low TPS or memory goes back down once the load recovers
+[*][B]FIX[/B] NPC LOD respects admin-frozen NPCs, restores full speed near players, always releases the NPCs it froze
+[*][B]FIX[/B] /poptimizer reload no longer drops the console filter or duplicates services
+[*][B]CHANGE[/B] Web dashboard and auto-apply are now opt-in
+[/LIST]
+[B]v1.3.1[/B] Safe minimum view radius  ·  [B]v1.3.0[/B] Anomaly detection, heap dumps, error capture, CPU sampler, world heatmap
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=4]Developed by [B]KatsuyaTV[/B]  ·  PerfectPlugins[/SIZE]
+[SIZE=3]Issues or feature requests? DM or discussion tab.[/SIZE]
+[/CENTER]

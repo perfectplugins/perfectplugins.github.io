@@ -45,11 +45,12 @@
 
   <main class="wiki-content">
     <h1 id="overview">PerfectOptimizer</h1>
+    <p><img src="img/cover.jpg" alt="PerfectOptimizer" style="width:100%;border-radius:8px;"></p>
     <table>
-      <tr><th>Version</th><td>1.3.0</td></tr>
-      <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
+      <tr><th>Version</th><td>1.3.2</td></tr>
+      <tr><th>Platform</th><td>Hytale Server Plugin -- Update 7 (server 0.7.6)</td></tr>
       <tr><th>Dashboard languages</th><td>EN, FR, ES, PT, DE</td></tr>
-      <tr><th>Dependencies</th><td>None (self-registering)</td></tr>
+      <tr><th>Dependencies</th><td>None</td></tr>
       <tr><th>JVM requirements</th><td>Java 21+, HotSpot recommended</td></tr>
       <tr><th>Plugin size</th><td>~150 KB</td></tr>
       <tr><th>Permission node</th><td><code>perfectoptimizer.admin</code></td></tr>
@@ -68,18 +69,23 @@
       Every recommendation can be applied to the live config with a single click from the dashboard,
       with one-click rollback.
     </p>
+    <p><strong>New in 1.3.2:</strong> a full in-game panel (<code>/poptimizer ui</code>), each world uses its own TPS
+      (one laggy world no longer slows everybody down), and the web dashboard is now <strong>opt-in</strong>:
+      turn on <em>Send data to the dashboard</em> in the panel's Settings tab to use it.</p>
 
     <h2 id="installation">Installation</h2>
     <ol>
-      <li>Drop <code>PerfectOptimizer-1.3.0.jar</code> into your server's mods folder.</li>
-      <li>Start or restart the server.</li>
-      <li>The plugin auto-registers with the dashboard on first boot and prints your private URL in console.</li>
-      <li>Open the URL in any browser. The dashboard is live within seconds, no login required.</li>
+      <li>Drop <code>PerfectOptimizer-1.3.2.jar</code> into your server's mods folder.</li>
+      <li>Start or restart the server. All the active optimizations run right away.</li>
+      <li>Type <code>/poptimizer ui</code> in game to open the panel.</li>
+      <li><strong>Web dashboard (optional):</strong> in the panel's <em>Settings</em> tab, turn on <em>Send data to the dashboard</em> and save
+        (or set <code>dashboardPushEnabled</code> to <code>true</code> in config.json). The server registers itself and prints your private URL in console.
+        It sends player names, pings and machine info to analytics.perfect-plugins.com.</li>
       <li>Run <code>/poptimizer dashboard</code> in-game any time to reprint your private URL as a clickable link.</li>
     </ol>
     <p>Config files are auto-generated under
-      <code>mods/KatsuyaTV_PerfectOptimizer/</code>.
-      No manual setup required.</p>
+      <code>mods/KatsuyaTV_PerfectOptimizer/</code> (an older config is moved there automatically).
+      No manual setup required. Updating from 1.3.x? Just replace the jar.</p>
 
     <h2 id="dashboard">Live Dashboard</h2>
     <p>
@@ -234,12 +240,15 @@
       Iterates every NPC every 2 seconds. Distance to the nearest player is computed.
       Beyond 160 blocks, NPCs are <strong>fully frozen</strong> (zero AI). Mid / far / very-far distance
       tiers modulate the <code>StepComponent</code> tick interval (0.2 s / 0.5 s / 1.0 s).
-      Massive TPS win on NPC-heavy worlds.
+      NPCs get full speed back as soon as a player comes near. NPCs frozen by an admin or builder tools
+      (<code>/npc freeze</code>) are never touched, and the NPCs the optimizer froze are always released --
+      after a restart and when you turn NPC LOD off. Massive TPS win on NPC-heavy worlds.
     </p>
     <h3>Per-player ChunkTracker radius</h3>
     <p>
-      For each player in each world, if TPS drops below 18, the player's hot radius shrinks by 2 chunks.
-      Hysteresis cooldown of 30 s prevents oscillation. Original radius restored once TPS recovers.
+      For each player, if <strong>the TPS of that player's world</strong> drops below 18, the player's hot radius shrinks
+      by 2 chunks, never below a safe floor (8 chunks by default). Hysteresis cooldown of 30 s prevents oscillation.
+      Original radius restored once TPS recovers. Players shrunk for AFK are left to the AFK reduction.
     </p>
     <h3>Despawn accelerator</h3>
     <p>
@@ -254,8 +263,9 @@
     </p>
     <h3>Tier hysteresis</h3>
     <p>
-      Softening a tier requires both a 15-minute cooldown since the last degradation AND
-      a 25% drop in player count. Prevents yo-yo flapping when player count oscillates around a threshold.
+      Softening a tier requires a 15-minute cooldown since the last degradation, plus a 25% drop in player count
+      when the player count caused it. A tier raised by low TPS or memory comes back down after the cooldown once
+      the load has recovered. Levels forced by low TPS only apply to the worlds that actually lag.
     </p>
     <h3>Heap pressure escalation</h3>
     <p>
@@ -294,12 +304,24 @@
     <p>All commands require the permission node <code>perfectoptimizer.admin</code>.</p>
 
     <h2 id="admin-ui">In-Game Admin Panel</h2>
-    <p>
-      <code>/poptimizer ui</code> opens a live panel that shows the same KPIs as the dashboard:
-      tier, TPS, player count, LOD ratio, viewer breakdown, spawn pause state, NPC counts.
-      Sliders let you tune the medium and high tier thresholds, plus the force-high TPS threshold,
-      directly in-game. Changes auto-save and trigger a re-apply.
-    </p>
+    <p><code>/poptimizer ui</code> (or <code>/poptimizer ui features</code>, <code>/poptimizer ui settings</code>) opens a live panel
+      with three tabs. Overview and Features refresh every 3 seconds.</p>
+    <p><img src="img/overview.jpg" alt="Overview tab" style="width:100%;border-radius:8px;"></p>
+    <ul>
+      <li><strong>Overview</strong> -- server speed (TPS) with its health color, 1 / 5 minute averages and ms per tick; the
+        optimization level (Normal, Medium, High, Emergency) and why; players (active / idle / AFK); memory; NPCs at full speed,
+        slowed and frozen; natural spawns. <em>Apply now</em> re-applies the level, <em>Pause optimizer</em> stops every feature (confirmed first).</li>
+    </ul>
+    <p><img src="img/features.jpg" alt="Features tab" style="width:100%;border-radius:8px;"></p>
+    <ul>
+      <li><strong>Features</strong> -- one card per feature (NPC LOD, per-player radius, AFK reduction, despawn accelerator,
+        spawn control, lag profiler, memory watchdog, GC monitor, console filter) with its switch, what it does and a live counter.</li>
+    </ul>
+    <p><img src="img/settings.jpg" alt="Settings tab" style="width:100%;border-radius:8px;"></p>
+    <ul>
+      <li><strong>Settings</strong> -- every threshold with -/+ buttons, the dashboard and auto-apply switches. Changes are a draft
+        with a counter, Cancel and Save; closing the panel keeps the draft. Inconsistent values are refused before saving.</li>
+    </ul>
 
     <h2 id="config">Configuration</h2>
     <p>The plugin auto-generates its config file on first run with sensible defaults. Edit it then reload in-game with <code>/poptimizer reload</code> to apply changes without a restart.</p>
