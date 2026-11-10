@@ -2,141 +2,116 @@
 [SIZE=7][B][COLOR=#FF6B00]P E R F E C T[/COLOR] [COLOR=#FFFFFF]GUARD[/COLOR][/B][/SIZE]
 [SIZE=4][COLOR=#AAAAAA]The all-in-one anti-cheat & moderation solution[/COLOR][/SIZE]
 
-[IMG height="25px"]https://img.shields.io/badge/Hytale-Server%20Plugin-orange?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/Java-21-blue?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/v2.1-STABLE-green?style=for-the-badge[/IMG]
+[IMG height="25px"]https://img.shields.io/badge/Hytale-Server%20Plugin-orange?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/Hytale-Update%207-blue?style=for-the-badge[/IMG] [IMG height="25px"]https://img.shields.io/badge/v2.4.1-STABLE-green?style=for-the-badge[/IMG]
 [/CENTER]
 
 [HR][/HR]
 
-[CENTER]
-[SIZE=5][COLOR=#FF6B00][B]// WHY PERFECTGUARD?[/B][/COLOR][/SIZE]
-[/CENTER]
+[CENTER][SIZE=5][COLOR=#FF6B00][B]// WHY PERFECTGUARD?[/B][/COLOR][/SIZE][/CENTER]
 
-[SIZE=3]Protect your server with [B]7 anti-cheat detections[/B], a full [B]moderation toolkit[/B], and an [B]in-game admin panel[/B]. Ban, mute, freeze, jail, warn, vanish — everything you need to keep your community safe, in one plugin.[/SIZE]
+[SIZE=3]Protect your server with [B]7 anti-cheat detections[/B] tuned to avoid false positives, a full [B]moderation toolkit[/B] and a brand new [B]in-game staff panel[/B]. Ban, mute, freeze, jail, warn, vanish, inspect - everything you need to keep your community safe, in one plugin.[/SIZE]
 
 [HR][/HR]
 
-[CENTER]
-[SIZE=5][COLOR=#FF6B00][B]// FEATURES[/B][/COLOR][/SIZE]
-[/CENTER]
+[CENTER][SIZE=5][COLOR=#FF6B00][B]// NEW STAFF PANEL (2.4.1)[/B][/COLOR][/SIZE][/CENTER]
+
+[LIST]
+[*][B]Home[/B] - players online, reports, violations and active sanctions at a glance, latest violations and sanctions, your staff alerts and vanish switches. Updates live.
+[*][B]Players[/B] - search, then a player file with status, violation level per check, warnings, reports, notes and history. Every action from one place.
+[*][B]Reports[/B] - player reports and bug reports with their details.
+[*][B]Anti-Cheat[/B] - recent violations by check, every threshold and switch with one Save button.
+[*][B]Chat[/B] - word blacklist and muted players with Unmute.
+[*][B]Announce[/B] - chat, title and notification announcements with a preview to yourself first.
+[*][B]Settings[/B] - auto-freeze / auto-jail levels, jail position, language, reload.
+[/LIST]
+[SIZE=3]Every sanction asks for confirmation and says who, what and for how long. Each button checks the same permission as its command.[/SIZE]
+
+[HR][/HR]
+
+[CENTER][SIZE=5][COLOR=#FF6B00][B]// FEATURES[/B][/COLOR][/SIZE][/CENTER]
 
 [LIST]
 [*][SIZE=4][COLOR=#55FF55][B]7 Anti-Cheat Detections[/B][/COLOR][/SIZE]
-[SIZE=3]— [B]Speed[/B] — Detects abnormal movement speed
-— [B]Fly[/B] — Detects unauthorized flight
-— [B]FastBreak[/B] — Impossibly fast block breaking
-— [B]FastPlace[/B] — Impossibly fast block placing
-— [B]Reach[/B] — Attacks beyond normal range
-— [B]Nuker[/B] — Mass block destruction
-— [B]AutoClick[/B] — Inhuman click rates
-All thresholds are fully configurable. VL (violation level) system with auto-freeze and auto-jail.[/SIZE]
+[SIZE=3]- [B]Speed[/B] - abnormal movement speed (the limit follows the player's real speed: effects and gear bonuses never trigger it)
+- [B]Fly[/B] - unauthorized flight (falling, climbing, swimming, gliders, mounts and creative are ignored)
+- [B]FastBreak[/B] / [B]FastPlace[/B] - impossibly fast block breaking / placing
+- [B]Reach[/B] - melee hits beyond normal range (bows, projectiles and effects are never counted)
+- [B]Nuker[/B] - mass block destruction
+- [B]AutoClick[/B] - inhuman, too regular click patterns
+All thresholds configurable. Violation levels with optional auto-freeze and auto-jail. Players with [B]perfectguard.bypass[/B] are ignored.[/SIZE]
 [*][SIZE=4][COLOR=#55FF55][B]Ban System[/B][/COLOR][/SIZE]
-[SIZE=3]Permanent bans, temporary bans with duration, IP bans. All with reasons and history tracking.[/SIZE]
+[SIZE=3]Permanent bans, temporary bans (1 hour to 30 days), IP bans. All with reasons and history.[/SIZE]
 [*][SIZE=4][COLOR=#55FF55][B]Mute System[/B][/COLOR][/SIZE]
 [SIZE=3]Permanent and temporary mutes. Word blacklist with auto-blocking.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Jail[/B][/COLOR][/SIZE]
+[SIZE=3]Jailed players are teleported to your jail, kept there, and [B]lose every permission[/B] until released - their own permissions come back exactly as before on release, instantly.[/SIZE]
 [*][SIZE=4][COLOR=#55FF55][B]Staff Tools[/B][/COLOR][/SIZE]
-[SIZE=3]— [B]Vanish[/B] — Invisible staff mode
-— [B]Freeze[/B] — Stop player movement
-— [B]Jail[/B] — Teleport cheaters to configurable jail
-— [B]Inventory Inspect[/B] — View any player's inventory
-— [B]Teleport[/B] — TP to player or bring player to you
-— [B]Warnings[/B] — Issue, view, and clear warnings
-— [B]Player Notes[/B] — Private admin notes per player[/SIZE]
-[*][SIZE=4][COLOR=#55FF55][B]Reports & Alerts[/B][/COLOR][/SIZE]
-[SIZE=3]Players can submit reports. Staff receive real-time violation alerts. Full report management UI.[/SIZE]
+[SIZE=3]- [B]Vanish[/B] - invisible staff mode
+- [B]Freeze[/B] - stop player movement
+- [B]Inventory & armor inspect[/B]
+- [B]Teleport[/B] - go to a player or bring a player to you
+- [B]Warnings[/B] - issue, view and clear
+- [B]Player notes[/B] - private staff notes per player
+- [B]Staff alerts[/B] - real-time violation alerts[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Reports[/B][/COLOR][/SIZE]
+[SIZE=3]Players report other players and bugs; staff handle them from the panel.[/SIZE]
 [*][SIZE=4][COLOR=#55FF55][B]Announcements[/B][/COLOR][/SIZE]
-[SIZE=3]Title, notification, and chat announcements from the admin panel.[/SIZE]
-[*][SIZE=4][COLOR=#55FF55][B]Admin UI[/B][/COLOR][/SIZE]
-[SIZE=3]12 UI pages covering players, violations, reports, settings, bans, mutes, blacklist, and more. All via [B]/pg menu[/B].[/SIZE]
+[SIZE=3]Title, notification and chat announcements from the panel.[/SIZE]
+[*][SIZE=4][COLOR=#55FF55][B]Safe data[/B][/COLOR][/SIZE]
+[SIZE=3]Bans, mutes, reports, notes and logs are saved crash-safe (a crash during a save can never empty them).[/SIZE]
 [/LIST]
 
 [HR][/HR]
 
-[CENTER]
-[SIZE=5][COLOR=#FF6B00][B]// COMMANDS[/B][/COLOR][/SIZE]
-[/CENTER]
+[CENTER][SIZE=5][COLOR=#FF6B00][B]// COMMANDS[/B][/COLOR][/SIZE][/CENTER]
 
 [TABLE]
-[TR]
-[TD]/pg menu[/TD]
-[TD]Open moderation UI[/TD]
-[/TR]
-[TR]
-[TD]/pg alerts[/TD]
-[TD]Toggle violation alerts[/TD]
-[/TR]
-[TR]
-[TD]/pg vanish[/TD]
-[TD]Toggle vanish mode[/TD]
-[/TR]
-[TR]
-[TD]/pg freeze <player>[/TD]
-[TD]Freeze/unfreeze player[/TD]
-[/TR]
-[TR]
-[TD]/pg ban <player> <reason>[/TD]
-[TD]Permanent ban[/TD]
-[/TR]
-[TR]
-[TD]/pg tempban <player> <dur> <reason>[/TD]
-[TD]Temporary ban[/TD]
-[/TR]
-[TR]
-[TD]/pg mute <player> <reason>[/TD]
-[TD]Mute player[/TD]
-[/TR]
-[TR]
-[TD]/pg kick <player> <reason>[/TD]
-[TD]Kick player[/TD]
-[/TR]
-[TR]
-[TD]/pg jail <player>[/TD]
-[TD]Send to jail[/TD]
-[/TR]
-[TR]
-[TD]/pg warn <player> <reason>[/TD]
-[TD]Issue warning[/TD]
-[/TR]
-[TR]
-[TD]/pg tp <player>[/TD]
-[TD]Teleport to player[/TD]
-[/TR]
-[TR]
-[TD]/pg invsee <player>[/TD]
-[TD]View player inventory[/TD]
-[/TR]
-[TR]
-[TD]/pg report <player> <reason>[/TD]
-[TD]File report (player cmd)[/TD]
-[/TR]
-[TR]
-[TD]/pg reload[/TD]
-[TD]Reload config[/TD]
-[/TR]
+[TR][TD]/pg menu[/TD][TD]Open the staff panel[/TD][/TR]
+[TR][TD]/pg alerts[/TD][TD]Toggle violation alerts[/TD][/TR]
+[TR][TD]/pg vanish[/TD][TD]Toggle vanish mode[/TD][/TR]
+[TR][TD]/pg freeze <player>[/TD][TD]Freeze / unfreeze a player[/TD][/TR]
+[TR][TD]/pg ban <player> <reason>[/TD][TD]Permanent ban[/TD][/TR]
+[TR][TD]/pg tempban <player> <dur> <reason>[/TD][TD]Temporary ban[/TD][/TR]
+[TR][TD]/pg mute <player> <reason>[/TD][TD]Mute a player[/TD][/TR]
+[TR][TD]/pg kick <player> <reason>[/TD][TD]Kick a player[/TD][/TR]
+[TR][TD]/pg jail <player> [minutes][/TD][TD]Send to jail (no duration = until released)[/TD][/TR]
+[TR][TD]/pg warn <player> <reason>[/TD][TD]Issue a warning[/TD][/TR]
+[TR][TD]/pg tp <player>[/TD][TD]Teleport to a player[/TD][/TR]
+[TR][TD]/pg invsee <player>[/TD][TD]View a player's inventory[/TD][/TR]
+[TR][TD]/pg report <player> <reason>[/TD][TD]Report a player (player command)[/TD][/TR]
+[TR][TD]/pg reload[/TD][TD]Reload the configuration[/TD][/TR]
 [/TABLE]
 
 [HR][/HR]
 
-[CENTER]
-[SIZE=5][COLOR=#FF6B00][B]// TECHNICAL DETAILS[/B][/COLOR][/SIZE]
-[/CENTER]
+[CENTER][SIZE=5][COLOR=#FF6B00][B]// INSTALLATION[/B][/COLOR][/SIZE][/CENTER]
 
+[LIST=1]
+[*]Put [B]PerfectGuard-2.4.1.jar[/B] in your server's [B]mods[/B] folder.
+[*]Start or restart the server.
+[*]Set your jail with the panel (Settings > Set jail here) or [B]/pg setjail[/B], then open [B]/pg menu[/B].
+[/LIST]
+[SIZE=3]Updating? Just replace the jar: configs, bans, mutes, jails, reports and logs are kept.[/SIZE]
+
+[HR][/HR]
+
+[CENTER][SIZE=5][COLOR=#FF6B00][B]// CHANGELOG[/B][/COLOR][/SIZE][/CENTER]
+
+[B]v2.4.1 - Hytale Update 7, new staff panel[/B]
 [LIST]
-[*][B]Platform:[/B] Hytale Server Plugin
-[*][B]Java Version:[/B] 21
-[*][B]Dependencies:[/B] None
-[*][B]Languages:[/B] EN, FR, ES, DE, IT
-[*][B]Data Storage:[/B] JSON
-[*][B]Performance:[/B] Lightweight polling system
+[*][B]NEW[/B] Staff panel rebuilt from scratch (7 tabs), confirmations, per-action permissions
+[*][B]NEW[/B] Jailed players lose every permission until released (restored instantly)
+[*][B]FIX[/B] No more false positives for archers and effect damage (reach / autoclick)
+[*][B]FIX[/B] Speed and Fly checks work again; creative, gliders and mounts ignored
+[*][B]FIX[/B] Jail and freeze teleports work on Update 7; jail point always up to date
+[*][B]FIX[/B] Crash-safe saves, pending saves finished on shutdown
 [/LIST]
 
 [HR][/HR]
 
-[CENTER]
-[SIZE=5][COLOR=#FF6B00][B]// DOCUMENTATION[/B][/COLOR][/SIZE]
-[/CENTER]
+[CENTER][SIZE=5][COLOR=#FF6B00][B]// DOCUMENTATION[/B][/COLOR][/SIZE][/CENTER]
 
-[SIZE=3]Full documentation, permissions list, and configuration guide:
-[URL='https://perfectplugins.github.io/wiki/perfectguard/'][B]perfectplugins.github.io/wiki/perfectguard[/B][/URL][/SIZE]
+[SIZE=3]Full documentation, permissions and configuration: [URL='https://perfectplugins.github.io/wiki/perfectguard/'][B]perfectplugins.github.io/wiki/perfectguard[/B][/URL][/SIZE]
 
 [HR][/HR]
 
