@@ -7,11 +7,10 @@
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
-
 <nav>
   <div class="nav-inner">
-    <a href="../../" class="nav-logo"><span>Perfect</span>Plugins</a>
-        <ul class="nav-links">
+    <a href="../../" class="nav-logo"><img src="../../assets/img/logo.png" alt="Perfect Plugin Series" class="nav-logo-img"><span>Perfect</span>Plugins</a>
+    <ul class="nav-links">
       <li><a href="../../">Home</a></li>
       <li><a href="../../#plugins">Plugins</a></li>
       <li><a href="https://builtbybit.com/creators/katsuyatv.502728/">Store</a></li>
@@ -23,15 +22,20 @@
   <aside class="wiki-sidebar">
     <h3>PerfectNPC</h3>
     <ul>
-      <li><a href="#overview" class="active">Overview</a></li>
+      <li><a href="#overview">Overview</a></li>
       <li><a href="#installation">Installation</a></li>
-      <li><a href="#types">NPC Types</a></li>
-      <li><a href="#dialogue">Dialogue System</a></li>
-      <li><a href="#quests">Quest System</a></li>
+      <li><a href="#first-npc">Your first NPC</a></li>
+      <li><a href="#dialogs">Conversations</a></li>
+      <li><a href="#conditions">Conditions &amp; rewards</a></li>
+      <li><a href="#quests">Quests</a></li>
       <li><a href="#shops">Shops</a></li>
-      <li><a href="#equipment">Equipment</a></li>
-      <li><a href="#faceme">Face-Me Rotation</a></li>
+      <li><a href="#economy">Money</a></li>
+      <li><a href="#exchanger">Example: currency exchanger</a></li>
+      <li><a href="#editor">Manager &amp; editor</a></li>
       <li><a href="#commands">Commands</a></li>
+      <li><a href="#permissions">Permissions</a></li>
+      <li><a href="#config">Configuration</a></li>
+      <li><a href="#upgrade">Updating from 2.x</a></li>
       <li><a href="#changelog">Changelog</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
@@ -39,141 +43,213 @@
 
   <main class="wiki-content">
     <h1 id="overview">PerfectNPC</h1>
-    <p>Custom NPCs with multi-page dialogues, quests, shops, equipment, face-me rotation, and a full in-game admin UI. Bring your server world to life.</p>
-
     <table>
-      <tr><th>Version</th><td>2.5</td></tr>
-      <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
-      <tr><th>Java</th><td>21</td></tr>
-      <tr><th>Dependencies</th><td>None</td></tr>
-      <tr><th>Languages</th><td>EN, FR, ES, DE, IT</td></tr>
+      <tr><th>Version</th><td>3.0.0</td></tr>
+      <tr><th>Platform</th><td>Hytale Server Plugin (Update 7)</td></tr>
+      <tr><th>Languages</th><td>Pages in English; chat messages in EN, FR, ES, DE, IT, PT (<code>/pnpc lang</code>)</td></tr>
+      <tr><th>Dependencies</th><td>None (PerfectEconomy, Ecotale or EliteEssentials optional)</td></tr>
     </table>
+    <p>NPCs that talk, trade and give quests. A dialog window with answers that do things, quest cards and a quest journal, a shop with daily offers, barter and selling that pays, and a full in-game editor: no file to edit, no code to type.</p>
     <p><a href="https://builtbybit.com/resources/perfectnpcs-shop-quest-big-update.97952/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Buy on BuiltByBit</a></p>
 
     <h2 id="installation">Installation</h2>
     <ol>
-      <li>Download <code>PerfectNPC-2.5.jar</code></li>
-      <li>Place it in your server's <code>UserData/Mods/</code> folder</li>
-      <li>Start the server</li>
-      <li>Use <code>/pnpc</code> to open the admin panel</li>
+      <li>Drop <code>PerfectNPC-3.0.0.jar</code> into your server's <code>mods/</code> folder</li>
+      <li>Start or restart the server</li>
+      <li>Admins type <code>/pnpc</code>; players type <code>/quests</code> for their journal</li>
     </ol>
 
-    <h2 id="types">NPC Types</h2>
+    <h2 id="first-npc">Your first NPC</h2>
+    <ol>
+      <li>Stand where the NPC should be and type <code>/pnpc</code>.</li>
+      <li>Pick a template at the bottom: <strong>Blank, Trader, Quest Giver, Guard, Banker, Lore</strong>. The NPC appears where you stand.</li>
+      <li>Click edit (the pencil). The editor has five tabs: Identity, Conversation, Shop, Quests, Behavior.</li>
+      <li>Change what you want. Every change is a <strong>draft</strong>: <strong>Save</strong> applies it at once for your players, <strong>Cancel</strong> drops it.</li>
+    </ol>
+
+    <h2 id="dialogs">Conversations</h2>
+    <p>The dialog window sits at the bottom of the screen and is sized to its text. It shows the NPC's name and title, the text with a short typewriter effect (click the text to show it all) and numbered answers with an icon for what they do.</p>
+    <p>An NPC has <strong>pages</strong>; each page has text and a list of <strong>answers</strong>. Every answer has an <strong>action</strong>:</p>
     <table>
-      <tr><th>Type</th><th>Description</th></tr>
-      <tr><td>Shopkeeper</td><td>Sells and buys items via interactive UI</td></tr>
-      <tr><td>Quest Giver</td><td>Assigns quests with objectives and rewards</td></tr>
-      <tr><td>Dialogue</td><td>Displays multi-page conversation text with up to 6 answers per page</td></tr>
-      <tr><td>Ambient</td><td>Decorative NPC, no interaction</td></tr>
+      <tr><th>Action</th><th>What it does</th></tr>
+      <tr><td>Go to page</td><td>Jumps to the page you choose</td></tr>
+      <tr><td>Next page / Previous page</td><td>Moves in the page order</td></tr>
+      <tr><td>Open shop</td><td>Opens the NPC's shop</td></tr>
+      <tr><td>Offer quest</td><td>Shows the quest card (Accept / Decline)</td></tr>
+      <tr><td>Turn in quest</td><td>Checks the objectives, takes the items, gives the rewards</td></tr>
+      <tr><td>Run a command</td><td>As the player, or as the console (<code>{player}</code> is the player's name)</td></tr>
+      <tr><td>Open a link</td><td>Opens a web address</td></tr>
+      <tr><td>Close</td><td>Closes the window</td></tr>
     </table>
+    <p>Pages can have a title and a typewriter option. Texts accept the variables <code>{username}</code> (the player) and <code>{npcname}</code>, and the colour tags <code>{b}</code>, <code>{i}</code>, <code>{#rrggbb}</code>, <code>{/}</code>.</p>
 
-    <p>All NPCs support:</p>
-    <ul>
-      <li>Custom model with rescale (<code>Model.createScaledModel</code>)</li>
-      <li>Nameplate display (single line)</li>
-      <li>Frozen / idle animations</li>
-      <li>Chunk-based spawning (auto-spawn when chunks load)</li>
-      <li>Equipment (helmet, chest, leggings, gloves, main hand, off hand)</li>
-      <li>JSON persistence</li>
-    </ul>
+    <h2 id="conditions">Conditions &amp; rewards</h2>
+    <p>Both are picked from lists in the editor. Under the hood they are readable texts in <code>npcs.json</code>.</p>
+    <h3>Conditions (on an answer)</h3>
+    <p>When it is not met, the answer is <strong>greyed with the reason</strong> ("Requires: Ember Guild member") or <strong>hidden</strong>, as you choose.</p>
+    <table>
+      <tr><th>Condition</th><th>Text form</th></tr>
+      <tr><td>Quest state (not started, active, ready, completed, not completed, available)</td><td><code>quest:&lt;state&gt;:&lt;questId&gt;</code></td></tr>
+      <tr><td>Player has / has not a tag</td><td><code>tag:has:&lt;tag&gt;</code>, <code>tag:not:&lt;tag&gt;</code></td></tr>
+      <tr><td>Variable compared to a value</td><td><code>variable:&lt;name&gt;:&lt;op&gt;:&lt;value&gt;</code></td></tr>
+      <tr><td>Carries items</td><td><code>item:&lt;itemId&gt;:&lt;amount&gt;</code></td></tr>
+      <tr><td>Balance at least</td><td><code>money:&lt;amount&gt;</code></td></tr>
+      <tr><td>Already talked to another NPC</td><td><code>talked:&lt;npcId&gt;</code></td></tr>
+    </table>
+    <h3>Rewards (on an answer or a quest)</h3>
+    <table>
+      <tr><th>Reward</th><th>Text form</th></tr>
+      <tr><td>Money</td><td><code>money:&lt;amount&gt;</code></td></tr>
+      <tr><td>Give items</td><td><code>item:&lt;itemId&gt;:&lt;amount&gt;</code></td></tr>
+      <tr><td>Take items</td><td><code>take:&lt;itemId&gt;:&lt;amount&gt;</code></td></tr>
+      <tr><td>Add / remove a tag</td><td><code>tag:add:&lt;tag&gt;</code>, <code>tag:remove:&lt;tag&gt;</code></td></tr>
+      <tr><td>Set / add to / subtract from a variable</td><td><code>variable:&lt;name&gt;:set|add|subtract:&lt;value&gt;</code></td></tr>
+      <tr><td>Start or complete a quest</td><td><code>quest:start:&lt;id&gt;</code>, <code>quest:complete:&lt;id&gt;</code></td></tr>
+      <tr><td>Console command</td><td><code>command:&lt;command&gt;|&lt;label&gt;</code> (<code>{player}</code> = player name)</td></tr>
+      <tr><td>End this NPC's story</td><td><code>finish</code> (the NPC then shows its "Already finished" page)</td></tr>
+    </table>
+    <p>Other plugins can add their own conditions and rewards through the API (<code>RequirementChecker</code>, <code>RewardProvider</code>).</p>
 
-    <h2 id="dialogue">Dialogue System</h2>
-    <p>NPCs can run multi-page dialogues with branching choices, conditions, and command execution.</p>
+    <h2 id="quests">Quests</h2>
     <ul>
-      <li>Up to <strong>6 answer choices</strong> per page</li>
-      <li><strong>Multiline content</strong>: press Enter in the editor to add a new line</li>
-      <li><strong>Typewriter animation</strong>: text appears character by character at a configurable speed</li>
-      <li>Per-page conditions to gate visibility</li>
-      <li>Per-answer commands (server console or player permission bypass)</li>
-      <li>Navigation buttons (Previous, Next, Custom)</li>
-      <li>Variable substitution: <code>{player}</code>, <code>{npc}</code>, custom variables</li>
-    </ul>
-
-    <h2 id="quests">Quest System</h2>
-    <p>Create quests with objectives and rewards. Players interact with Quest Giver NPCs to accept, track, and complete quests.</p>
-    <p><strong>Objective types tracked live:</strong></p>
-    <ul>
-      <li><code>KILL_ENTITY</code>: kill N entities matching a role name</li>
-      <li><code>COLLECT_ITEM</code>: pick up N items by item ID</li>
-      <li><code>BREAK_BLOCK</code>: break N blocks of a given type</li>
-      <li><code>PLACE_BLOCK</code>: place N blocks of a given type</li>
-    </ul>
-    <ul>
-      <li>Item and XP rewards on completion</li>
-      <li>Per-player progress tracked, persisted across restarts</li>
-      <li>Quest log UI for players</li>
-      <li>Daily / weekly variables and tags for soft state</li>
+      <li><strong>Objectives</strong>: kill creatures of a role, collect items, break blocks, place blocks.</li>
+      <li><strong>Quest card</strong>: the player sees the objectives and the rewards with icons, then Accept or Decline.</li>
+      <li><strong>Turn in</strong> at the NPC: the objectives are checked again, collected items are taken, then every reward is given (items, money, commands, tags, variables). "Collect" counts the items in the player's bag.</li>
+      <li><strong>Markers</strong> over the NPC's head: <code>[!]</code> a quest to take, <code>[?]</code> a quest to turn in. Name plates are shared by all players, so the marker is the same for everyone.</li>
+      <li><strong>Daily and weekly quests</strong>: weekly quests reset on <code>weeklyResetDay</code> (Monday by default) at the hour of <code>dailyShopResetHour</code>.</li>
+      <li><strong>Journal: <code>/quests</code></strong> - Active, Daily &amp; weekly (with the time before reset) and Done. Progress bars, who to return to and where, rewards, and a button to abandon a quest.</li>
     </ul>
 
     <h2 id="shops">Shops</h2>
-    <p>Shopkeeper NPCs open a trade UI where players can buy and sell items.</p>
     <ul>
-      <li>Configurable item list, prices, and stock</li>
-      <li>Buy and sell in the same UI</li>
-      <li>Category tabs for large shops</li>
-      <li>Daily reset option (per-player stock)</li>
+      <li><strong>Buy and Sell</strong> tabs, categories with the number of articles, your balance, and a "Back to &lt;NPC&gt;" button.</li>
+      <li><strong>Today's offers</strong>: a rotating selection of articles. Off by default: set <code>dailyShopEnabled</code> to <code>true</code> in config.json; <code>dailyShopItemCount</code> is how many, <code>dailyShopResetHour</code> the reset hour.</li>
+      <li><strong>Barter</strong>: an article can cost items instead of coins; the shop shows "you have" for each ingredient.</li>
+      <li><strong>Quantity</strong> x1, x10 or Max, with the total and a confirmation.</li>
+      <li><strong>Selling pays</strong>: each article has a sell price per item. Articles priced in coins with nothing to give back get half their buy price as sell price when a 2.x shop is converted.</li>
+      <li><strong>Daily purchase limits</strong> per player, shown as "0 / 1 bought".</li>
+      <li>An NPC can open its shop directly when talked to (option "Open directly"), or through an answer with the action "Open shop".</li>
     </ul>
 
-    <h2 id="equipment">Equipment</h2>
-    <p>Dress your NPCs with armor and weapons via the Equipment tab in the admin UI.</p>
-    <ul>
-      <li>Helmet, Chest, Leggings, Gloves</li>
-      <li>Main hand and off hand</li>
-      <li>Visible in-world after spawn</li>
-    </ul>
+    <h2 id="economy">Money</h2>
+    <p>The shop (buy and sell), the <code>money</code> condition and the <code>money</code> reward work with <strong>no other plugin</strong>. The provider is chosen in the <code>economy</code> block of config.json (added at the first start of 3.0):</p>
+<pre>"economy": {
+  "provider": "auto",
+  "itemCurrency": { "itemId": "Ingredient_Bar_Gold", "displayName": "Gold", "symbol": "G" }
+}</pre>
+    <table>
+      <tr><th>provider</th><th>Meaning</th></tr>
+      <tr><td><code>auto</code></td><td>PerfectEconomy, then Ecotale, then EliteEssentials, then items</td></tr>
+      <tr><td><code>perfecteconomy</code>, <code>ecotale</code>, <code>eliteessentials</code></td><td>Force that plugin</td></tr>
+      <tr><td><code>items</code></td><td>Money is an item (gold ingot by default): 1 item = 1 unit</td></tr>
+      <tr><td><code>none</code></td><td>No money</td></tr>
+    </table>
+    <p>The server log tells at startup which provider is used. With item money, prices are whole numbers (rounded <strong>up</strong> when the player pays, <strong>down</strong> when they receive; a sale worth less than one item is refused), your balance is the number of those items in your bag, and what you are owed when the bag is full waits in a per-player reserve (<code>shop/itemReserve.json</code>) until login or until there is room. It is never dropped and never lost.</p>
 
-    <h2 id="faceme">Face-Me Rotation</h2>
-    <p>NPCs can rotate to face the nearest player. Due to Hytale limitations, this works via despawn / respawn:</p>
-    <ul>
-      <li>Calculates yaw: <code>atan2(dx, dz) + PI</code> (in radians)</li>
-      <li>Despawns and respawns the NPC entity with the new rotation</li>
-      <li>Re-applies interactions after 500ms delay</li>
-    </ul>
+    <h2 id="exchanger">Example: a currency exchanger</h2>
+    <p>An NPC can swap any currency or item for another. Here, a money changer who turns 10 gold bars into 100 gems of PerfectEconomy (create a currency with the id <code>gems</code> in <code>/eco</code> first, or use your own id):</p>
+    <ol>
+      <li><code>/pnpc</code>, create an NPC from the <strong>Blank</strong> template and open the editor, tab <strong>Conversation</strong>.</li>
+      <li>Add an answer: "Exchange 10 gold bars for 100 gems". Action: <strong>Close</strong> (or Go to page, to a "Done" page).</li>
+      <li>Condition: <strong>Item</strong>, <code>Ingredient_Bar_Gold</code>, amount 10. Show the answer greyed, so the player reads "Requires: 10 x Gold Bar".</li>
+      <li>Reward 1: <strong>Take items</strong>, <code>Ingredient_Bar_Gold</code>, amount 10.</li>
+      <li>Reward 2: <strong>Console command</strong>: <code>eco give {player} 100 gems</code>, label "100 gems".</li>
+      <li>Save. Add one answer per rate (5 bars for 50 gems, and so on).</li>
+    </ol>
+    <p>The same recipe works with any item and any command: pay items for a rank, a key, a kit, or a balance in another plugin. The condition guarantees the player carries the items; the first reward takes them before the command runs.</p>
+    <p>Not possible: the other way round (a balance for items) with a balance check, because there is no "take money" reward; use the shop with a coin price for that.</p>
+
+    <h2 id="editor">Manager &amp; editor</h2>
+    <p><code>/pnpc</code> opens the manager: a list of your NPCs with search, type filter and world, and for each one <strong>edit, teleport, duplicate, delete</strong> (with a confirmation; a copy is kept in <code>backups/deleted</code>). <strong>Six templates</strong> create a ready NPC where you stand.</p>
+    <table>
+      <tr><th>Tab</th><th>What you set</th></tr>
+      <tr><td>Identity</td><td>Name, title, name plate, interaction hint, model, equipment (armor and weapons), position, preview</td></tr>
+      <tr><td>Conversation</td><td>Pages and answers, each with an action, a condition and a reward</td></tr>
+      <tr><td>Shop</td><td>Articles (picked in a searchable item list), categories, prices, barter ingredients, sell prices, daily offers, daily limits</td></tr>
+      <tr><td>Quests</td><td>Name, repeat, turn-in at the NPC, description, start condition, objectives (kill, collect, break, place), rewards, head marker</td></tr>
+      <tr><td>Behavior</td><td>Frozen, invulnerable, non hostile, attitude, idle animation, commands and messages when a player comes near</td></tr>
+    </table>
+    <p>Tags and variables are typed in text fields so you can create new ones. Long lists use pages with arrows.</p>
 
     <h2 id="commands">Commands</h2>
     <table>
-      <tr><th>Command</th><th>Description</th></tr>
-      <tr><td><code>/pnpc</code></td><td>Open the NPC admin panel</td></tr>
-      <tr><td><code>/pnpc help</code></td><td>Show help</td></tr>
+      <tr><th>Command</th><th>Description</th><th>Permission</th></tr>
+      <tr><td><code>/quests</code></td><td>Open your quest journal</td><td>everyone</td></tr>
+      <tr><td><code>/pnpc</code></td><td>Open the NPC manager and editor</td><td>perfectnpc.admin</td></tr>
+      <tr><td><code>/pnpc help</code></td><td>List the commands</td><td>perfectnpc.admin</td></tr>
+      <tr><td><code>/pnpc reload</code></td><td>Reload the NPC data</td><td>perfectnpc.admin</td></tr>
+      <tr><td><code>/pnpc lang &lt;code&gt;</code></td><td>Change the plugin language (EN FR DE ES IT PT)</td><td>perfectnpc.admin and perfectnpc.lang</td></tr>
+      <tr><td><code>/pnpc duplicate &lt;npc id&gt;</code></td><td>Copy an NPC</td><td>perfectnpc.admin</td></tr>
     </table>
 
+    <h2 id="permissions">Permissions</h2>
+    <table>
+      <tr><th>Permission</th><th>Effect</th></tr>
+      <tr><td><code>perfectnpc.admin</code></td><td>The <code>/pnpc</code> command, manager and editor</td></tr>
+      <tr><td><code>perfectnpc.lang</code></td><td>Change the plugin language with <code>/pnpc lang</code></td></tr>
+    </table>
+    <p>Talking to NPCs, shops and <code>/quests</code> are open to every player. A dialog command runs as the player (with their permissions) or as the console; the plugin no longer grants a temporary permission.</p>
+
+    <h2 id="config">Configuration</h2>
+    <p>Settings are in <code>config.json</code> in the plugin's data folder (<code>UserData/Saves/MODDING/mods/KatsuyaTV_PerfectNPC/</code>); NPCs, shops and quests are edited in game.</p>
+    <table>
+      <tr><th>Key</th><th>Default</th><th>Meaning</th></tr>
+      <tr><td><code>enableEntityInteraction</code></td><td>true</td><td>NPCs react to interaction</td></tr>
+      <tr><td><code>dailyShopEnabled</code></td><td>false</td><td>Today's offers rotation</td></tr>
+      <tr><td><code>dailyShopItemCount</code></td><td>6</td><td>Number of offers</td></tr>
+      <tr><td><code>dailyShopResetHour</code></td><td>0</td><td>Hour of the daily (and weekly) reset</td></tr>
+      <tr><td><code>weeklyResetDay</code></td><td>MONDAY</td><td>Day weekly quests reset (MONDAY to SUNDAY)</td></tr>
+      <tr><td><code>economy.provider</code></td><td>auto</td><td>See Money</td></tr>
+      <tr><td><code>economy.itemCurrency</code></td><td>gold ingot</td><td>Item used as money when no economy plugin is found</td></tr>
+    </table>
+
+    <h2 id="upgrade">Updating from 2.x</h2>
+    <p>Replace the jar and restart. At the first start every data file is copied to <code>backups/before_3.0_&lt;date&gt;/</code>, then converted once (nothing is converted again at the next start):</p>
+    <ul>
+      <li>The five fixed dialog buttons (Next, Previous, Close, Custom 1, Custom 2) and the link button become normal answers, with their texts, player commands, console commands, requirements (items, consumed items, NPC prerequisites, custom checks), rewards and "last button" setting. Old answers keep their target page and command.</li>
+      <li>A merchant that opened its shop directly still does.</li>
+      <li>Coin-priced articles with nothing to give back get half their buy price as sell price.</li>
+      <li>The API (<code>RequirementChecker</code>, <code>RewardProvider</code>, <code>QuestHandler</code>) is unchanged.</li>
+    </ul>
+
     <h2 id="changelog">Changelog</h2>
-
-    <h3>v2.5 - Quality of Life update</h3>
+    <h3>v3.0.0 - conversations, quests, shop and editor</h3>
     <ul>
-      <li>Multiline dialog content (Enter creates a new line in the editor)</li>
-      <li>All four quest objective types now fully tracked: KILL, COLLECT, BREAK, PLACE (previously only KILL was wired up)</li>
-      <li>Typewriter animation now actually renders character by character at the configured speed (was UI-only before)</li>
-      <li>Fixed client crash when navigating between admin tabs after saving</li>
+      <li>New dialog window; answers with action, condition and reward (conditions and rewards now really work)</li>
+      <li>Quest cards; every reward given on turn-in; <code>/quests</code> journal; weekly reset day; <code>[!]</code> and <code>[?]</code> markers no longer swapped</li>
+      <li>New shop window: today's offers, barter, x1 / x10 / Max, selling that pays, daily limits</li>
+      <li>New manager and 5-tab editor with drafts, 6 templates and pickers</li>
+      <li>Money with no economy plugin; the <code>economy</code> block in config.json</li>
+      <li>Automatic upgrade of 2.x data with a full backup</li>
+      <li>34 bugs fixed: quest item rewards never given, answer conditions and rewards never applied, config files not saved on Windows, a leftover temporary permission, the edit button doing nothing on an NPC without a title, and more</li>
     </ul>
-
-    <h3>v2.4</h3>
-    <ul>
-      <li>V2 admin UI: tab-based layout (Info, Dialog, Shop, Quest, Equip, Advanced)</li>
-      <li>Equipment section to dress NPCs with armor and weapons</li>
-      <li>Quest item collection check tick</li>
-    </ul>
-
-    <h3>v2.1</h3>
-    <ul>
-      <li>Multi-page dialogues with up to 6 answers per page</li>
-      <li>Quest system with objectives and rewards</li>
-      <li>Shop with category tabs</li>
-    </ul>
+    <h3>v2.6.1</h3>
+    <ul><li>Hytale Update 7 compatibility (new inventory and player APIs)</li></ul>
+    <h3>v2.6</h3>
+    <ul><li>NPC presets, redesigned admin interface</li></ul>
 
     <h2 id="faq">FAQ</h2>
 
-    <h3>NPC nameplate doesn't support line breaks</h3>
-    <p>This is a Hytale limitation. All nameplate text must be on a single line.</p>
+    <h3>Does it need an economy plugin?</h3>
+    <p>No. Without one, money is paid in gold ingots (editable in <code>economy.itemCurrency</code>). With PerfectEconomy (free), Ecotale or EliteEssentials it uses their balances.</p>
 
-    <h3>NPC doesn't rotate smoothly</h3>
-    <p>Face-me uses despawn / respawn which causes a brief flicker. This is the only reliable method in the current Hytale API.</p>
+    <h3>Will my 2.x NPCs survive?</h3>
+    <p>Yes. They are converted at the first start after a full copy in <code>backups/before_3.0_&lt;date&gt;/</code>. If something looks wrong, stop the server, restore the copy and send me the log.</p>
+
+    <h3>My shop has no "Today's offers".</h3>
+    <p>The rotation is off by default. Set <code>dailyShopEnabled</code> to <code>true</code> in config.json and mark the articles that may rotate as daily in the Shop tab.</p>
+
+    <h3>Can an answer be shown only after a quest?</h3>
+    <p>Yes: give it the condition "Quest state: completed", and choose greyed or hidden.</p>
+
+    <h3>Why do the markers look the same for all players?</h3>
+    <p>Hytale name plates are shared by every player, so <code>[!]</code> and <code>[?]</code> are the same for everyone.</p>
+
+    <h3>NPC name plate doesn't support line breaks</h3>
+    <p>This is a Hytale limitation: a name plate is a single line.</p>
 
     <h3>Player skin NPCs (humanoid characters)</h3>
-    <p>Not currently supported. NPCs use Hytale's built-in entity roles. Custom player-like NPCs would require Hytale to expose a player-model API, which is not yet available.</p>
-
-    <h3>Daily / weekly quests, quest tree, multi-reward choice</h3>
-    <p>Planned for the v3.0 quest rework. Available now: variables and tags can be used to build manual daily-reset logic via dialogue conditions.</p>
+    <p>Not supported: NPCs use the game's own models, picked in the Identity tab.</p>
   </main>
 </div>
 
