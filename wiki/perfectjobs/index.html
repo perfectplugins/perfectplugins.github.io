@@ -25,15 +25,21 @@
       <li><a href="#overview">Overview</a></li>
       <li><a href="#installation">Installation</a></li>
       <li><a href="#features">Features</a></li>
-      <li><a href="#professions">Professions</a></li>
-      <li><a href="#progression">Progression</a></li>
-      <li><a href="#specializations">Specializations</a></li>
-      <li><a href="#tools">Evolving Tools</a></li>
-      <li><a href="#quests">Daily Quests</a></li>
+      <li><a href="#professions">The five jobs</a></li>
+      <li><a href="#progression">Levels &amp; titles</a></li>
+      <li><a href="#talents">Talent trees</a></li>
+      <li><a href="#milestones">Milestones &amp; titles</a></li>
+      <li><a href="#boosts">Boosts &amp; events</a></li>
+      <li><a href="#fishing">Fishing</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#quests">Daily quests</a></li>
+      <li><a href="#economy">Economy</a></li>
       <li><a href="#commands">Commands</a></li>
-      <li><a href="#admin">Admin Panel</a></li>
-      <li><a href="#api">API & Placeholders</a></li>
+      <li><a href="#permissions">Permissions</a></li>
+      <li><a href="#admin">Admin panel</a></li>
+      <li><a href="#api">API &amp; placeholders</a></li>
       <li><a href="#config">Configuration</a></li>
+      <li><a href="#upgrade">Updating from 1.x</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
   </aside>
@@ -41,88 +47,51 @@
   <main class="wiki-content">
     <h1 id="overview">PerfectJobs</h1>
     <table>
-      <tr><th>Version</th><td>1.0.1</td></tr>
-      <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
-      <tr><th>Languages</th><td>EN, FR, ES, DE, IT, PT</td></tr>
-      <tr><th>Dependencies</th><td>None (PerfectEconomy optional for money rewards)</td></tr>
+      <tr><th>Version</th><td>2.0.0</td></tr>
+      <tr><th>Platform</th><td>Hytale Server Plugin (Update 7)</td></tr>
+      <tr><th>Languages</th><td>Pages in English; /jobs setlang EN, FR, ES, DE, IT, PT for the older texts</td></tr>
+      <tr><th>Dependencies</th><td>None (PerfectEconomy, Ecotale or EliteEssentials optional)</td></tr>
     </table>
-    <p>Complete job and profession system with 4 professions, 100 levels, evolving tools, specializations, daily quests, leaderboards, HUD tracker, and a full admin panel.</p>
+    <p>A complete job system: five jobs with 100 levels each, talent trees, milestone rewards and titles, boost potions and server events, daily quests, leaderboards and records, 20 hand-made tools, and a fishing game of its own (31 original fish, hook fight, journal, contests, treasures).</p>
 
     <h2 id="installation">Installation</h2>
     <ol>
-      <li>Drop <code>PerfectJobs-1.0.jar</code> into your server's <code>mods/</code> folder</li>
+      <li>Drop <code>PerfectJobs-2.0.0.jar</code> into your server's <code>mods/</code> folder</li>
       <li>Start or restart the server</li>
-      <li>Config files are auto-generated on first run</li>
-      <li>Players can start working immediately by mining, chopping, hunting, or farming</li>
+      <li>Config files are generated on first run</li>
+      <li>Players type <code>/jobs</code>; admins type <code>/jobs admin</code></li>
     </ol>
 
     <h2 id="features">Features</h2>
     <ul>
-      <li><strong>4 professions</strong>: Miner, Lumberjack, Hunter, Farmer</li>
-      <li><strong>100 levels</strong> per job with exponential XP curve</li>
-      <li><strong>Evolving tools</strong> in 4 tiers, awarded based on job level</li>
-      <li><strong>Specializations</strong> unlocked at level 25 with +50% XP bonus</li>
-      <li><strong>Daily quests</strong> (5 per job) that scale with player level</li>
-      <li><strong>HUD tracker</strong> showing XP progress for all 4 jobs</li>
-      <li><strong>Leaderboards</strong> per job and global (total level)</li>
-      <li><strong>Admin UI</strong> with quest templates, XP sources, player editor, and XP boost</li>
-      <li><strong>PerfectEconomy integration</strong> for money rewards on quest completion</li>
-      <li><strong>Independent progress</strong> in all 4 jobs simultaneously</li>
-      <li><strong>Auto-save</strong> every 5 minutes</li>
+      <li><strong>5 jobs</strong>: Miner, Lumberjack, Hunter, Farmer, Fisherman, 100 levels each</li>
+      <li><strong>Talent trees</strong>: 3 columns x 4 tiers per job, one point every 2 levels, real effects</li>
+      <li><strong>Milestones</strong> every 10 levels: money, items, commands and a job title</li>
+      <li><strong>Boosts</strong>: server events and drinkable potions</li>
+      <li><strong>Fishing</strong>: fish by zone, water, time and weather (lava too), tension fight, journal, contests, treasures</li>
+      <li><strong>20 hand-made tools</strong> in 4 ranks, 31 original fish, bobber and boost bottles</li>
+      <li><strong>Daily quests</strong> (5 per job), specializations at level 25</li>
+      <li><strong>Leaderboards and records</strong> per job and global</li>
+      <li><strong>HUD</strong> in any of the 4 corners, <strong>admin panel</strong> in game</li>
+      <li><strong>Economy</strong>: PerfectEconomy, Ecotale, EliteEssentials, or an item as money</li>
+      <li><strong>Anti-exploit</strong> and crash-safe saves</li>
     </ul>
 
-    <h2 id="professions">Professions</h2>
-
-    <h3>Miner</h3>
-    <p>Earn XP by mining rocks and ores. Higher-tier ores give more XP.</p>
+    <h2 id="professions">The five jobs</h2>
     <table>
-      <tr><th>Block</th><th>XP</th></tr>
-      <tr><td>Stone, Sandstone, Basalt</td><td>2-4</td></tr>
-      <tr><td>Copper Ore</td><td>8</td></tr>
-      <tr><td>Iron Ore</td><td>15</td></tr>
-      <tr><td>Gold Ore</td><td>30</td></tr>
-      <tr><td>Cobalt Ore</td><td>35</td></tr>
-      <tr><td>Mithril Ore</td><td>45</td></tr>
-      <tr><td>Adamantite Ore</td><td>70</td></tr>
-      <tr><td>Onyxium Ore</td><td>80</td></tr>
+      <tr><th>Job</th><th>Earns XP by</th><th>Tool</th></tr>
+      <tr><td>Miner</td><td>Breaking rocks and ores (richer ores give more)</td><td>Pickaxe (ruby)</td></tr>
+      <tr><td>Lumberjack</td><td>Chopping wood</td><td>Hatchet (emerald)</td></tr>
+      <tr><td>Hunter</td><td>Killing creatures (read from the real death; arrows count for the shooter)</td><td>Hunting knife (amethyst)</td></tr>
+      <tr><td>Farmer</td><td>Harvesting crops, flowers, mushrooms</td><td>Hoe (topaz)</td></tr>
+      <tr><td>Fisherman</td><td>Catching fish (and fishing treasures)</td><td>Fishing rod (sapphire)</td></tr>
     </table>
+    <p>XP values per block, creature or fish are editable in the admin panel (XP tab) or in <code>jobs.json</code>. A player can work in several jobs; by default a player can join <strong>1</strong> job (see <a href="#permissions">Permissions</a>).</p>
 
-    <h3>Lumberjack</h3>
-    <p>Earn XP by chopping wood. Rare woods give more XP.</p>
+    <h2 id="progression">Levels &amp; titles</h2>
+    <p>XP for a level: <code>50 x level^1.8</code>. Max level 100.</p>
     <table>
-      <tr><th>Block</th><th>XP</th></tr>
-      <tr><td>Oak, Birch, Pine</td><td>5-6</td></tr>
-      <tr><td>Maple, Willow, Ash</td><td>6-8</td></tr>
-      <tr><td>Redwood, Cedar, Jungle</td><td>8-10</td></tr>
-      <tr><td>Planks</td><td>2</td></tr>
-    </table>
-
-    <h3>Hunter</h3>
-    <p>Earn XP by slaying mobs. Hostile and boss mobs give the most XP.</p>
-    <table>
-      <tr><th>Entity</th><th>XP</th></tr>
-      <tr><td>Passive mobs (Chicken, Rabbit, Pig)</td><td>3-8</td></tr>
-      <tr><td>Predators (Wolf, Bear)</td><td>15-25</td></tr>
-      <tr><td>Hostile factions (Goblin, Trork)</td><td>20-40</td></tr>
-      <tr><td>Undead (Skeleton, Zombie)</td><td>20-50</td></tr>
-      <tr><td>Bosses (Fire/Frost Dragon)</td><td>500</td></tr>
-    </table>
-
-    <h3>Farmer</h3>
-    <p>Earn XP by harvesting crops, flowers, and mushrooms.</p>
-    <table>
-      <tr><th>Block</th><th>XP</th></tr>
-      <tr><td>Common plants</td><td>2-4</td></tr>
-      <tr><td>Flowers</td><td>3-5</td></tr>
-      <tr><td>Mushrooms</td><td>6-15</td></tr>
-      <tr><td>Crops (Berry, Chilli)</td><td>8-10</td></tr>
-    </table>
-
-    <h2 id="progression">Progression</h2>
-    <h3>Levels & Titles</h3>
-    <p>XP formula: <code>50 x Level^1.8</code> (exponential curve). Max level: 100.</p>
-    <table>
-      <tr><th>Level Range</th><th>Title</th></tr>
+      <tr><th>Level</th><th>Rank</th></tr>
       <tr><td>1 - 9</td><td>Novice</td></tr>
       <tr><td>10 - 24</td><td>Apprentice</td></tr>
       <tr><td>25 - 49</td><td>Journeyman</td></tr>
@@ -130,115 +99,152 @@
       <tr><td>75 - 99</td><td>Master</td></tr>
       <tr><td>100</td><td>Grand Master</td></tr>
     </table>
+    <p><strong>Specializations:</strong> at level 25 each job offers two branches with +50% XP on specific targets.</p>
 
-    <h2 id="specializations">Specializations</h2>
-    <p>At level 25, players choose one of two specializations per job. The choice is permanent and grants +50% XP on specific targets.</p>
+    <h2 id="talents">Talent trees</h2>
+    <p>One tree per job, 3 columns x 4 tiers (12 talents). Tiers open at levels 1 / 10 / 25 / 50. You earn <strong>one talent point every 2 levels</strong> (admins can add bonus points). Talents have ranks and prerequisites. Reset costs money (default 500; free when there is no economy).</p>
     <table>
-      <tr><th>Job</th><th>Option A</th><th>Option B</th></tr>
-      <tr><td>Miner</td><td><strong>Excavator</strong> (+50% on rocks)</td><td><strong>Prospector</strong> (+50% on ores)</td></tr>
-      <tr><td>Lumberjack</td><td><strong>Sawyer</strong> (+50% on common woods)</td><td><strong>Arborist</strong> (+50% on rare woods)</td></tr>
-      <tr><td>Hunter</td><td><strong>Tracker</strong> (+50% on passive mobs)</td><td><strong>Warrior</strong> (+50% on hostile mobs)</td></tr>
-      <tr><td>Farmer</td><td><strong>Cultivator</strong> (+50% on crops)</td><td><strong>Herbalist</strong> (+50% on mushrooms/flowers)</td></tr>
+      <tr><th>Effect</th><th>What it does</th></tr>
+      <tr><td>XP +%</td><td>More job XP</td></tr>
+      <tr><td>Money +%</td><td>More money from the job</td></tr>
+      <tr><td>Quest reward +%</td><td>Bigger daily quest rewards</td></tr>
+      <tr><td>Gathering speed</td><td>Faster breaking of the job's blocks (Miner, Lumberjack)</td></tr>
+      <tr><td>Double harvest</td><td>The block's own drops are dropped a second time</td></tr>
+      <tr><td>Rare finds</td><td>Chance of gems, crystals, sap, seeds... (list per job, editable)</td></tr>
+      <tr><td>Hunter: damage, loot</td><td>More damage to creatures; second loot roll on the kill</td></tr>
+      <tr><td>Fisherman: bite speed, rare fish, double catch</td><td>Faster bites, more rare fish, a second fish</td></tr>
+    </table>
+    <p>All talents, costs, ranks and values are in <code>talents.json</code> and in the admin panel (Talents tab).</p>
+
+    <h2 id="milestones">Milestones &amp; titles</h2>
+    <p>A milestone every 10 levels (interval editable, <code>milestones.json</code>): money, items, console commands and a job title. Rewards are given at level-up when they fit; otherwise they wait in <strong>/jobs &gt; Rewards</strong> (never dropped, never lost). Players choose which title to show: placeholder <code>{job_title}</code>.</p>
+
+    <h2 id="boosts">Boosts &amp; events</h2>
+    <ul>
+      <li><strong>Server event</strong>: <code>/jobs event start &lt;xp&gt; [money] &lt;minutes&gt; [name]</code>. XP and/or money multiplier for a duration, announced to everyone (title and chat) at start and end, survives a restart. <code>/jobs event stop</code> ends it.</li>
+      <li><strong>Potions</strong> (right-click to drink): XP Tonic (XP x1.5, 30 min), Greater XP Tonic (XP x2, 60 min), Merchant's Draught (money x1.5, 30 min). Item ids <code>Jobs_Boost_XP</code>, <code>Jobs_Boost_XP_Major</code>, <code>Jobs_Boost_Money</code>; values in <code>boosts.json</code>. Give them with <code>/jobs giveboost &lt;player&gt; &lt;item&gt; [amount]</code>.</li>
+      <li>Active boosts are shown in <code>/jobs</code> and in the HUD with the time left.</li>
+    </ul>
+
+    <h2 id="fishing">Fishing</h2>
+    <h3>What bites, where and when</h3>
+    <p>31 original fish in six rarities (commons, freshwater rares, tropicals, jellyfish, crustaceans, legendaries) and sizes XS to XXL, each with a weight in kg. The catch depends on the <strong>zone</strong> of the world (Emerald Wilds, Howling Sands, Whisperfrost Frontiers, Devastated Lands, open ocean, and regions such as The Fens), <strong>sea or fresh water</strong>, <strong>depth</strong>, <strong>night or day</strong> and <strong>rain or snow</strong>. You can also <strong>fish in lava</strong> (Embertrout, Magma Stonefin, and in the Devastated Lands the Cinderfang Pike and the Sunswallower). Commons bite everywhere, so a spot is never empty. Worlds without the Hytale world generator (flat, void) have no zone: only species without a zone condition bite there. Every condition is editable per species in <code>fishing.json</code>.</p>
+    <h3>The hook fight</h3>
+    <p>At the bite, right-click to hook, then right-click at the right rhythm to reel in (gauge under the crosshair). Too fast: the tension climbs and the line snaps. Too slow: the line goes slack and the fish escapes. When the fish runs, let it go. Rare, legendary and big fish fight harder; commons can never snap. Set <code>"hookMode": "simple"</code> in <code>fishing.json</code> for the old one-click catch.</p>
+    <h3>Angler's journal</h3>
+    <p><code>/jobs journal</code> or the Journal tab: the 31 species, a silhouette until caught, then name, habitat, size record, number caught and where you caught the first. Completing a category gives a reward (editable).</p>
+    <h3>Fishing contests</h3>
+    <p><code>/jobs contest start &lt;minutes&gt; &lt;biggest|most&gt; [name]</code>, <code>/jobs contest stop</code> (rewards for the first 3) or <code>cancel</code>, or from <code>/jobs admin</code> &gt; Boosts. Live ranking on screen, announcements at start and end. A contest survives a restart; one that ended while the server was off is closed at the next start. Prizes are kept until the winner is online with room in the inventory. <code>/jobs contest</code> shows the contest in progress.</p>
+    <h3>Treasures and junk</h3>
+    <p>A small chance to fish up junk, a message in a bottle (lore notes of the game), lost equipment or a sunken treasure (a loot roll of the game's chests for that zone, better with a better rod), depending on sea, fresh water or lava. Chances are editable in <code>fishing.json</code>.</p>
+    <h3>Rods</h3>
+    <table>
+      <tr><th>Rod</th><th>Bite time</th><th>Rare fish weight</th><th>Double catch</th><th>No wear</th></tr>
+      <tr><td>T1</td><td>x1.00</td><td>x1.00</td><td>-</td><td>-</td></tr>
+      <tr><td>T2</td><td>x0.85</td><td>x1.05</td><td>-</td><td>40%</td></tr>
+      <tr><td>T3</td><td>x0.70</td><td>x1.10</td><td>2%</td><td>75%</td></tr>
+      <tr><td>T4</td><td>x0.50</td><td>x1.20</td><td>5%</td><td>100%</td></tr>
     </table>
 
-    <h2 id="tools">Evolving Tools</h2>
-    <p>Each job has a unique tool that upgrades as you level up. Claim tools from the Jobs UI.</p>
-    <table>
-      <tr><th>Tier</th><th>Level</th><th>Durability</th><th>Power</th></tr>
-      <tr><td>Tier 1</td><td>1 - 24</td><td>Low</td><td>0.4x</td></tr>
-      <tr><td>Tier 2</td><td>25 - 49</td><td>Medium</td><td>0.7x</td></tr>
-      <tr><td>Tier 3</td><td>50 - 74</td><td>High</td><td>1.0x</td></tr>
-      <tr><td>Tier 4</td><td>75 - 100</td><td>Very High</td><td>1.5x</td></tr>
-    </table>
-    <p>Tools: Jobs_Pickaxe (Miner), Jobs_Axe (Lumberjack), Jobs_Sword (Hunter), Jobs_Hoe (Farmer).</p>
+    <h2 id="tools">Tools</h2>
+    <p>Each job has a hand-made tool in 4 ranks: T1 wood and stone, T2 iron, T3 ornate steel, T4 precious metal with a gem. Players claim or upgrade their tool in the Jobs page when they reach level 1 / 25 / 50 / 75. Item ids: <code>Jobs_Pickaxe_T1..T4</code>, <code>Jobs_Axe_T1..T4</code>, <code>Jobs_Sword_T1..T4</code>, <code>Jobs_Hoe_T1..T4</code>, <code>Jobs_FishingRod_T1..T4</code>.</p>
 
-    <h2 id="quests">Daily Quests</h2>
-    <p>Each job generates 5 daily quests that reset at midnight. Quests scale with your job level:</p>
-    <table>
-      <tr><th>Rank</th><th>Level</th><th>Difficulty</th><th>XP Reward</th></tr>
-      <tr><td>Novice</td><td>1-9</td><td>1x</td><td>1x</td></tr>
-      <tr><td>Apprentice</td><td>10-24</td><td>2x</td><td>2.5x</td></tr>
-      <tr><td>Journeyman</td><td>25-49</td><td>4x</td><td>5x</td></tr>
-      <tr><td>Expert</td><td>50-74</td><td>7x</td><td>10x</td></tr>
-      <tr><td>Master</td><td>75-100</td><td>12x</td><td>20x</td></tr>
-    </table>
-    <p>Admins can define custom quest templates or let them auto-generate from XP sources.</p>
+    <h2 id="quests">Daily quests</h2>
+    <p>Each job generates 5 daily quests, scaled to your level, rewarding XP and money. Quest money is paid for every job. Admins can write their own templates (<code>quest_templates.json</code> or the admin panel). The fisherman's quests only ask for species that bite in any water.</p>
+
+    <h2 id="economy">Economy</h2>
+    <p>Provider setting <code>economy.provider</code> in <code>config.json</code>: <code>auto</code> (default), <code>perfecteconomy</code>, <code>ecotale</code>, <code>eliteessentials</code>, <code>items</code> or <code>none</code>. Auto picks PerfectEconomy &gt; Ecotale &gt; EliteEssentials &gt; items. <strong>With no economy plugin</strong>, money is paid as an item (default Gold Ingot, <code>Ingredient_Bar_Gold</code>, 1 item = 1 money): fractions add up per player, a full item is given as soon as it reaches 1, and items that do not fit wait in /jobs &gt; Rewards. <code>none</code> = XP only.</p>
 
     <h2 id="commands">Commands</h2>
     <table>
       <tr><th>Command</th><th>Description</th><th>Permission</th></tr>
-      <tr><td><code>/jobs</code></td><td>Open the main jobs UI</td><td>None</td></tr>
-      <tr><td><code>/jobs stats</code></td><td>Display job stats in chat</td><td>None</td></tr>
-      <tr><td><code>/jobs top [job]</code></td><td>View leaderboard (global or per job)</td><td>None</td></tr>
-      <tr><td><code>/jobs setlang &lt;code&gt;</code></td><td>Change language</td><td>None</td></tr>
-      <tr><td><code>/jobs admin</code></td><td>Open admin control panel</td><td>Admin</td></tr>
-      <tr><td><code>/jobs reload</code></td><td>Reload configuration</td><td>Admin</td></tr>
-      <tr><td><code>/jobs help</code></td><td>Display help text</td><td>None</td></tr>
+      <tr><td><code>/jobs</code></td><td>Your jobs page (Jobs, Talents, Rewards, Leaderboard, Records, Journal)</td><td>Everyone</td></tr>
+      <tr><td><code>/jobs talents [job]</code></td><td>Talent trees</td><td>Everyone</td></tr>
+      <tr><td><code>/jobs rewards</code></td><td>Milestone rewards and titles</td><td>Everyone</td></tr>
+      <tr><td><code>/jobs journal</code></td><td>Angler's journal</td><td>Everyone</td></tr>
+      <tr><td><code>/jobs stats</code></td><td>Your levels in chat</td><td>Everyone</td></tr>
+      <tr><td><code>/jobs top [job]</code></td><td>Leaderboard in chat</td><td>Everyone</td></tr>
+      <tr><td><code>/jobs join &lt;job&gt;</code>, <code>/jobs leave &lt;job&gt;</code></td><td>Join or leave a job</td><td>Everyone</td></tr>
+      <tr><td><code>/jobs hud</code></td><td>Hide or show YOUR HUD</td><td>Everyone</td></tr>
+      <tr><td><code>/jobs contest</code></td><td>Contest in progress</td><td>Everyone</td></tr>
+      <tr><td><code>/jobs help</code></td><td>Command list</td><td>Everyone</td></tr>
+      <tr><td><code>/jobs admin</code></td><td>Admin panel</td><td>perfectjobs.admin</td></tr>
+      <tr><td><code>/jobs event start|stop</code></td><td>Server XP / money event</td><td>perfectjobs.admin</td></tr>
+      <tr><td><code>/jobs contest start|stop|cancel</code></td><td>Fishing contest</td><td>perfectjobs.admin</td></tr>
+      <tr><td><code>/jobs giveboost &lt;player&gt; &lt;item&gt; [amount]</code></td><td>Give boost potions</td><td>perfectjobs.admin</td></tr>
+      <tr><td><code>/jobs reload</code></td><td>Reload the files</td><td>perfectjobs.admin</td></tr>
+      <tr><td><code>/jobs setlang &lt;code&gt;</code></td><td>Plugin language</td><td>perfectjobs.admin</td></tr>
     </table>
 
-    <h2 id="admin">Admin Panel</h2>
-    <p>Access with <code>/jobs admin</code>. Contains 5 tabs:</p>
-    <ul>
-      <li><strong>Quest Templates</strong> - Create, edit, and delete custom quest templates per job</li>
-      <li><strong>Players</strong> - Browse players, edit levels/XP, reset progress</li>
-      <li><strong>XP Sources</strong> - View, add, adjust, or remove XP sources per job</li>
-      <li><strong>XP Boost</strong> - Set global XP multiplier (0.1x to 10x, quick buttons: 1x/2x/3x/5x)</li>
-      <li><strong>Global Stats</strong> - Total players, total XP earned, average level, per-job breakdowns</li>
-    </ul>
+    <h2 id="permissions">Permissions</h2>
+    <table>
+      <tr><th>Permission</th><th>Effect</th></tr>
+      <tr><td>(none)</td><td>/jobs and the player commands are open to the Adventurer group, i.e. every player by default</td></tr>
+      <tr><td><code>perfectjobs.admin</code></td><td>Admin panel and admin sub-commands</td></tr>
+      <tr><td><code>perfectjobs.jobs.max.&lt;N&gt;</code></td><td>Join up to N jobs at once</td></tr>
+      <tr><td><code>perfectjobs.jobs.max.unlimited</code></td><td>No limit</td></tr>
+    </table>
+    <p>Without these permissions the limit is <code>maxJobsPerPlayer</code> in <code>config.json</code> (default 1; 0 = unlimited for everyone).</p>
 
-    <h2 id="api">API & Placeholders</h2>
-    <p>PerfectJobs provides a static API for other plugins:</p>
-    <pre><code>JobAPI.getLevel(uuid, "miner")         // Player's level
-JobAPI.getXp(uuid, "miner")            // Player's XP
-JobAPI.getTotalLevel(uuid)             // Total level across all jobs
-JobAPI.getTitle(uuid, "miner")         // Player's title
-JobAPI.getSpecialization(uuid, "miner") // A, B, or null</code></pre>
+    <h2 id="admin">Admin panel</h2>
+    <p>Open with <code>/jobs admin</code> (steel-blue pages): XP per action, talent trees, milestones, boosts and server event (and fishing contests), players (levels, joined jobs, talent points, resets), settings, and a button to reload the files.</p>
 
-    <h3>Placeholders</h3>
+    <h2 id="api">API &amp; placeholders</h2>
+    <p>Static <code>fr.katsuyatv.perfectjobs.JobAPI</code>: levels, XP, titles, total level, talent points and <code>resolvePlaceholders</code>.</p>
     <table>
       <tr><th>Placeholder</th><th>Output</th></tr>
-      <tr><td><code>{job_level_miner}</code></td><td>Player's Miner level</td></tr>
-      <tr><td><code>{job_xp_miner}</code></td><td>Player's Miner XP</td></tr>
-      <tr><td><code>{job_title_miner}</code></td><td>Player's Miner title</td></tr>
-      <tr><td><code>{job_spec_miner}</code></td><td>Player's Miner specialization</td></tr>
-      <tr><td><code>{job_total_level}</code></td><td>Total level across all jobs</td></tr>
+      <tr><td><code>{job_level_&lt;job&gt;}</code></td><td>Level in the job</td></tr>
+      <tr><td><code>{job_xp_&lt;job&gt;}</code></td><td>Total XP in the job</td></tr>
+      <tr><td><code>{job_title_&lt;job&gt;}</code></td><td>Rank (Novice ... Grand Master)</td></tr>
+      <tr><td><code>{job_jobtitle_&lt;job&gt;}</code></td><td>Milestone title of the job</td></tr>
+      <tr><td><code>{job_spec_&lt;job&gt;}</code></td><td>Specialization</td></tr>
+      <tr><td><code>{job_points_&lt;job&gt;}</code></td><td>Unspent talent points</td></tr>
+      <tr><td><code>{job_total_level}</code></td><td>Total level of all jobs</td></tr>
+      <tr><td><code>{job_title}</code></td><td>Title the player chose to show</td></tr>
+      <tr><td><code>{job_boost}</code></td><td>Active XP boost ("XP x2") or empty</td></tr>
     </table>
-    <p>Replace <code>miner</code> with <code>lumberjack</code>, <code>hunter</code>, or <code>farmer</code> for other jobs.</p>
+    <p>Job ids: <code>miner</code>, <code>lumberjack</code>, <code>hunter</code>, <code>farmer</code>, <code>fisherman</code>.</p>
 
     <h2 id="config">Configuration</h2>
-    <h3>config.json</h3>
+    <p>Files are stored in the plugin's data folder (<code>UserData/Saves/MODDING/mods/KatsuyaTV_PerfectJobs/</code>): <code>config.json</code>, <code>jobs.json</code>, <code>quest_templates.json</code>, <code>talents.json</code>, <code>milestones.json</code>, <code>boosts.json</code>, <code>boost_event.json</code>, <code>fishing.json</code>, <code>fishing_contest.json</code>, <code>players.json</code>, <code>records/</code>, <code>backups/</code>.</p>
+    <h3>config.json (main settings)</h3>
     <pre><code>{
   "lang": "EN",
-  "xpBoost": 1.0
+  "xpBoost": 1.0,
+  "maxJobsPerPlayer": 1,
+  "hudEnabled": true,
+  "hudPosition": "TopRight",
+  "creativeGivesXp": false,
+  "ignorePlacedBlocks": true,
+  "levelUpAnnounce": false,
+  "antiExploitEnabled": true,
+  "economy": { "provider": "auto",
+               "itemCurrency": { "itemId": "Ingredient_Bar_Gold", "displayName": "Gold", "symbol": "G" } }
 }</code></pre>
+    <p><code>hudPosition</code>: TopLeft, TopRight, BottomLeft or BottomRight. <code>ignorePlacedBlocks</code>: no XP for a block you just placed (stops place / break loops).</p>
 
-    <h3>jobs.json</h3>
-    <p>Defines all 4 jobs with their XP sources, specializations, and tool IDs. Auto-generated on first run with default values.</p>
-
-    <h3>quest_templates.json</h3>
-    <p>Custom quest definitions per job. If empty, quests auto-generate from XP sources.</p>
-
-    <h3>players.json</h3>
-    <p>Player progress data (XP, levels, specializations, stats, quests). Auto-saved every 5 minutes.</p>
-
-    <p>All config files are stored in <code>UserData/Saves/MODDING/mods/KatsuyaTV_PerfectJobs/</code></p>
+    <h2 id="upgrade">Updating from 1.x</h2>
+    <p>Replace the jar and restart. At the first start your 1.x data is converted after a <strong>full copy in <code>backups/before_2.0_&lt;date&gt;/</code></strong>: levels, XP, specializations, stats, tools, daily quests and records are kept. Milestones already passed are marked as reached (titles unlocked, past rewards not handed out) and talent points are given for your current level. The records files get the fishing journal keys at the first start, after a copy in <code>backups/before_journal_&lt;date&gt;/</code>; a category already complete before the update can be claimed in the journal.</p>
 
     <h2 id="faq">FAQ</h2>
 
-    <h3>Can players progress in multiple jobs at the same time?</h3>
-    <p>Yes! All 4 jobs have independent progress. A player can be level 50 Miner, level 30 Lumberjack, etc.</p>
+    <h3>Does it need an economy plugin?</h3>
+    <p>No. Without one, money is paid as an item (gold ingots by default). With PerfectEconomy (free), Ecotale or EliteEssentials it pays real money.</p>
 
-    <h3>Can I change the specialization after choosing?</h3>
-    <p>No, specialization choice is permanent. Admins can reset a player's job via the admin panel.</p>
+    <h3>Why can my players only join one job?</h3>
+    <p>The default limit is 1. Raise <code>maxJobsPerPlayer</code> or give <code>perfectjobs.jobs.max.2</code>, <code>.3</code> ... or <code>.unlimited</code> to a rank.</p>
 
-    <h3>How does the XP boost work?</h3>
-    <p>The global XP multiplier (default 1.0x) is applied to all XP gains and quest rewards server-wide. Set it from the admin panel or config.</p>
+    <h3>Nothing bites in my fishing world.</h3>
+    <p>Worlds without the Hytale world generator (flat, void) have no zones: only species with no zone condition bite. Edit <code>fishing.json</code> to change conditions.</p>
 
-    <h3>Does it work with PerfectEconomy?</h3>
-    <p>Yes! If PerfectEconomy is installed, quest completions can award money rewards alongside XP.</p>
+    <h3>Can I go back to the one-click fishing?</h3>
+    <p>Yes: <code>"hookMode": "simple"</code> in <code>fishing.json</code>.</p>
 
-    <h3>How do tools upgrade?</h3>
-    <p>Tools upgrade automatically when you reach the required level. Claim the new tier from the Jobs UI.</p>
+    <h3>Can I change talents, rewards and XP?</h3>
+    <p>Yes, everything in the admin panel or in the JSON files; use <code>/jobs reload</code> after editing files by hand.</p>
+
+    <h3>Can players farm XP by placing and breaking blocks?</h3>
+    <p>No: a block placed by a player gives no XP when broken (setting <code>ignorePlacedBlocks</code>). No XP in Creative either (<code>creativeGivesXp</code>), and none when a protection plugin refuses the break.</p>
   </main>
 </div>
 
