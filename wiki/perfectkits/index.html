@@ -19,28 +19,39 @@
   <aside class="wiki-sidebar">
     <h3>PerfectKits</h3>
     <ul><li><a href="#overview">Overview</a></li><li><a href="#installation">Installation</a></li>
-    <li><a href="#features">Features</a></li><li><a href="#commands">Commands</a></li>
-    <li><a href="#config">Configuration</a></li><li><a href="#faq">FAQ</a></li></ul>
+    <li><a href="#features">Features</a></li><li><a href="#player">Player menu</a></li>
+    <li><a href="#admin">Admin panel</a></li><li><a href="#commands">Commands</a></li>
+    <li><a href="#permissions">Permissions</a></li><li><a href="#data">Data &amp; update</a></li>
+    <li><a href="#faq">FAQ</a></li></ul>
   </aside>
   <main class="wiki-content">
     <h1 id="overview">PerfectKits</h1>
-    <p>Create, distribute, and manage kits with full UI support. Cooldowns, permissions, auto-give on first join, broadcast notifications, and command execution.</p>
-    <table><tr><th>Version</th><td>1.1</td></tr><tr><th>Platform</th><td>Hytale Server Plugin</td></tr><tr><th>Languages</th><td>EN, FR, ES, DE, IT</td></tr></table>
+    <p>Starter kits, daily rewards and rank kits with a real player menu and a full admin panel. Cooldowns, uses per player and in total, permissions, first-join kits, announcements and console commands, all built in game from your own inventory.</p>
+    <table><tr><th>Version</th><td>1.2.0</td></tr><tr><th>Platform</th><td>Hytale Server Plugin (Update 7)</td></tr><tr><th>Languages</th><td>EN, FR (everything); ES, DE, IT (commands and old texts, new pages in English)</td></tr><tr><th>Dependencies</th><td>None</td></tr></table>
     <p><a href="https://builtbybit.com/resources/perfectkits.96995/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Buy on BuiltByBit</a></p>
     <h2 id="installation">Installation</h2>
-    <ol><li>Drop <code>PerfectKits-1.1.jar</code> in <code>mods/</code></li><li>Start the server</li><li>Use <code>/kit admin</code></li></ol>
+    <ol><li>Drop <code>PerfectKits-1.2.0.jar</code> in <code>mods/</code></li><li>Start the server</li><li>Admins use <code>/kit admin</code> to build a kit; players use <code>/kit</code></li></ol>
     <h2 id="features">Features</h2>
-    <ul><li><strong>Kit Builder</strong> -- Create kits via inventory picker UI</li><li><strong>Cooldowns</strong> -- Per-player cooldown tracking</li><li><strong>Permissions</strong> -- Optional permission per kit</li><li><strong>Auto-give</strong> -- Give kits on first join</li><li><strong>Broadcast</strong> -- Announce kit claims</li><li><strong>Commands</strong> -- Execute commands on claim</li><li><strong>Custom Icons</strong> -- Per-kit display icons</li><li><strong>Priority Sorting</strong> -- Control display order</li></ul>
+    <ul><li><strong>Player menu</strong> -- every kit with its state: ready, countdown, or locked with the reason</li><li><strong>Exact item copies</strong> -- items taken from your inventory keep stats, enchantments, durability and custom data (PerfectItemManager weapons keep their stats)</li><li><strong>Cooldown</strong> -- seconds, minutes, hours or days</li><li><strong>Uses</strong> -- per player (0 = unlimited, 1 = once ever) and in total on the server</li><li><strong>Permission</strong> -- optional, one per kit</li><li><strong>First-join kit</strong> -- given when the player joins</li><li><strong>Announce</strong> -- tell everybody when a kit is claimed</li><li><strong>Commands on claim</strong> -- up to 6 console commands, with %player% / {player} and %kit% / {kit}</li><li><strong>Bag full</strong> -- items wait in the menu (Collect), never dropped or lost</li><li><strong>Safe</strong> -- crash-safe saves, no double claim</li></ul>
+    <h2 id="player">Player menu</h2>
+    <p><code>/kit</code> opens the menu, <code>/kit &lt;kit&gt;</code> claims a kit directly. Open to every player by default. The menu shows, for each kit: its state (ready, ready in 3 h 10 min, locked with the reason: needs a rank, used up, all claimed on the server), its content (click an item to see its name, special items are marked), your uses left, the server stock, extra rewards and a Claim button. Countdowns update by themselves. Items that do not fit in the bag wait in the menu (Collect button) and the player is reminded when he joins.</p>
+    <h2 id="admin">Admin panel</h2>
+    <p><code>/kit admin</code> (permission <code>perfectkits.admin</code>). You edit a draft and press Save or Cancel; leaving with unsaved changes asks first.</p>
+    <ul><li><strong>Kits tab</strong> -- list of kits and the editor: display name, command name, description, icon, cooldown, sort order, uses per player, total uses, first-join kit, announce, claims count (with reset), one-line preview. Duplicate and Delete (asks first).</li><li><strong>Items</strong> -- up to 42 per kit, from your inventory (exact copies) or from the list of every game item; quantity, order, remove.</li><li><strong>Commands</strong> -- up to 6 console commands run at each claim.</li><li><strong>Players tab</strong> -- search, every kit of a player (uses, last claim, next claim), reset one kit or all, give a kit to an online player.</li><li><strong>Settings tab</strong> -- language, max kits waiting at once, show or hide locked kits.</li></ul>
     <h2 id="commands">Commands</h2>
     <h3>Player</h3>
-    <table><tr><th>Command</th><th>Description</th></tr><tr><td><code>/kit list</code></td><td>List kits</td></tr><tr><td><code>/kit claim &lt;kit&gt;</code></td><td>Claim kit</td></tr><tr><td><code>/kit menu</code></td><td>Kit menu</td></tr></table>
+    <table><tr><th>Command</th><th>Description</th></tr><tr><td><code>/kit</code></td><td>Open the kits menu</td></tr><tr><td><code>/kit &lt;kit&gt;</code></td><td>Claim a kit directly</td></tr><tr><td><code>/kit list</code></td><td>List kits in chat</td></tr><tr><td><code>/kit info &lt;kit&gt;</code></td><td>Details of a kit</td></tr><tr><td><code>/kit claim &lt;kit&gt;</code></td><td>Claim a kit (use it for a kit named like a sub-command)</td></tr><tr><td><code>/kit menu</code></td><td>Open the menu</td></tr></table>
     <h3>Admin</h3>
-    <table><tr><th>Command</th><th>Description</th></tr><tr><td><code>/kit create &lt;name&gt;</code></td><td>Create kit</td></tr><tr><td><code>/kit delete &lt;name&gt;</code></td><td>Delete kit</td></tr><tr><td><code>/kit additem &lt;kit&gt; [item] [qty]</code></td><td>Add item</td></tr><tr><td><code>/kit setcooldown &lt;kit&gt; &lt;sec&gt;</code></td><td>Set cooldown</td></tr><tr><td><code>/kit setperm &lt;kit&gt; &lt;perm&gt;</code></td><td>Set permission</td></tr><tr><td><code>/kit setautogive &lt;kit&gt; &lt;bool&gt;</code></td><td>Auto-give</td></tr><tr><td><code>/kit give &lt;player&gt; &lt;kit&gt;</code></td><td>Give to player</td></tr><tr><td><code>/kit admin</code></td><td>Admin UI</td></tr><tr><td><code>/kit reload</code></td><td>Reload</td></tr></table>
-    <h2 id="config">Configuration</h2>
-    <pre><code>{"lang": "EN", "maxKitsPerPlayer": 0}</code></pre>
-    <p><code>maxKitsPerPlayer: 0</code> = unlimited.</p>
+    <table><tr><th>Command</th><th>Description</th></tr><tr><td><code>/kit admin</code></td><td>Admin panel</td></tr><tr><td><code>/kit create &lt;name&gt;</code> / <code>delete &lt;name&gt;</code> / <code>copy</code></td><td>Create, delete, duplicate</td></tr><tr><td><code>/kit additem &lt;kit&gt; [item] [qty]</code> / <code>removeitem</code></td><td>Edit items from the chat</td></tr><tr><td><code>/kit addcommand &lt;kit&gt; &lt;command...&gt;</code> / <code>removecommand</code></td><td>Edit claim commands</td></tr><tr><td><code>/kit setname</code>, <code>setdesc</code>, <code>seticon</code>, <code>setpriority</code>, <code>setcooldown</code>, <code>setperm</code>, <code>setautogive</code>, <code>setbroadcast</code></td><td>Edit the settings of a kit</td></tr><tr><td><code>/kit give &lt;kit&gt; &lt;player&gt;</code></td><td>Give a kit to any online player (also from the console)</td></tr><tr><td><code>/kit resetcooldown &lt;kit&gt; [player]</code></td><td>Reset a cooldown, even for an offline player</td></tr><tr><td><code>/kit setmaxkits</code>, <code>reload</code>, <code>setlang &lt;EN|FR|ES|DE|IT&gt;</code></td><td>Settings, reload, language</td></tr></table>
+    <h2 id="permissions">Permissions</h2>
+    <table><tr><th>Permission</th><th>Effect</th></tr><tr><td>(none)</td><td><code>/kit</code> and the player commands are open to every player by default</td></tr><tr><td><code>perfectkits.admin</code></td><td>Admin panel and every admin command</td></tr><tr><td>the permission of a kit</td><td>You choose it per kit; players without it see the kit locked</td></tr></table>
+    <h2 id="data">Data &amp; update</h2>
+    <p>Files in <code>mods/KatsuyaTV_PerfectKits/</code>: <code>kits.json</code> (kits), <code>players.json</code> (uses, last claims, waiting items), <code>config.json</code>. Writes go through a temporary file. Updating from 1.1: replace the jar; kits and cooldowns are converted at the first start after a copy in <code>backups/before_1.2_&lt;date&gt;/</code>. One-time kits become "1 use per player"; each 1.1 cooldown counts as one claim at that time; players known by 1.1 do not get first-join kits again. <code>cooldowns.json</code> is kept but no longer read.</p>
     <h2 id="faq">FAQ</h2>
-    <h3>Cooldown not working?</h3><p>Set in seconds: <code>/kit setcooldown starter 3600</code> = 1 hour.</p>
+    <h3>/kit only shows an error on Update 7?</h3><p>Update 7 ships developer macro commands (<code>/kit iron</code>, <code>/kit workbench1</code>...) that take over <code>/kit</code>. PerfectKits 1.2.0 takes it back at startup and after every reload of those macros (log line: "/kit taken back from MacroCommandCollection"). The macros are hidden while the plugin runs.</p>
+    <h3>A kit is named like a sub-command (list, give...)?</h3><p>Claim it with <code>/kit claim &lt;kit&gt;</code>.</p>
+    <h3>The bag is full?</h3><p>Nothing is lost: the items wait in the menu, press Collect when there is room.</p>
+    <h3>How do I make a one-time starter kit?</h3><p>In the editor set uses per player to 1 and tick first-join kit.</p>
   </main>
 </div>
 <footer><p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> -- Perfect Plugins 2026</p></footer>
