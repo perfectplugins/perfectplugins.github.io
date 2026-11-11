@@ -26,7 +26,7 @@
       <li><a href="#installation">Installation</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#commands">Commands</a></li>
-      <li><a href="#shop">Shop System</a></li>
+      <li><a href="#shop">What happened to /shop?</a></li>
       <li><a href="#api">API for Developers</a></li>
       <li><a href="#placeholders">Placeholders</a></li>
       <li><a href="#config">Configuration</a></li>
@@ -37,85 +37,70 @@
   <main class="wiki-content">
     <h1 id="overview">PerfectEconomy</h1>
     <table>
-      <tr><th>Version</th><td>1.0.1</td></tr>
+      <tr><th>Version</th><td>2.0.0</td></tr>
+      <tr><th>Price</th><td>Free</td></tr>
       <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
       <tr><th>Languages</th><td>EN, FR, ES, DE, IT, PT</td></tr>
       <tr><th>Dependencies</th><td>None</td></tr>
     </table>
-    <p>Complete server economy system with balance management, player-to-player payments, a configurable shop with categories, daily stock limits, admin UI, and a cross-plugin API with placeholders.</p>
+    <p>The free money base of the PerfectPlugins series: wallets, several currencies, a bank with daily interest, paper bank notes, transaction history, a leaderboard, an admin panel, and an API and placeholders for other plugins. PerfectJobs, PerfectNPC, PerfectSellChest and PerfectOneBlock use it; PerfectShop (coming soon) will too.</p>
 
     <h2 id="installation">Installation</h2>
     <ol>
-      <li>Drop <code>PerfectEconomy-1.0.1.jar</code> into your server's <code>mods/</code> folder</li>
+      <li>Drop <code>PerfectEconomy-2.0.0.jar</code> into your server's <code>mods/</code> folder</li>
       <li>Start or restart the server</li>
-      <li>Config files are auto-generated on first run</li>
-      <li>Customize the shop via <code>/eco shop</code> (admin)</li>
+      <li>Config files are generated on first run</li>
+      <li>Players use <code>/money</code>; admins use <code>/eco</code></li>
     </ol>
+    <p><strong>Updating from 1.x:</strong> replace the jar. Balances, shop and settings are converted automatically on the first start; a copy of every file is kept in <code>backups/before_2.0_&lt;date&gt;/</code>.</p>
 
     <h2 id="features">Features</h2>
     <ul>
-      <li><strong>Balance system</strong> with customizable currency symbol and name</li>
-      <li><strong>Player-to-player payments</strong> with toast notifications</li>
-      <li><strong>Configurable shop</strong> with multiple categories and custom icons</li>
-      <li><strong>Buy and sell</strong> mechanics per item, with enable/disable toggle</li>
-      <li><strong>Daily stock limits</strong> per player per item (resets at midnight)</li>
-      <li><strong>Admin UI</strong> for managing the shop (categories, items, prices, stock)</li>
-      <li><strong>Starting balance</strong> configurable for new players (default: $100)</li>
-      <li><strong>Cross-plugin API</strong> with static methods for deposit, withdraw, balance check</li>
-      <li><strong>Placeholders</strong> for scoreboards and other plugins (balance, leaderboard, currency)</li>
-      <li><strong>6 languages</strong> supported with runtime switching</li>
-      <li><strong>JSON-based storage</strong> with pretty-printed config files</li>
+      <li><strong>/money page</strong>: Wallet, History, Send, Top, Bank, Notes</li>
+      <li><strong>Several currencies</strong>: id, name, symbol, format, decimals, starting balance, one default</li>
+      <li><strong>Bank</strong> with daily interest (rate, daily cap, bank limit, payout hour, minimum balance)</li>
+      <li><strong>Bank notes</strong>: paper notes to give or trade, cashed with a right-click; copies pay nothing; minimum, maximum and fee configurable</li>
+      <li><strong>Transaction history</strong> with reason and source plugin; small payments from the same plugin are grouped</li>
+      <li><strong>Leaderboard</strong> per currency (wallet + bank, configurable)</li>
+      <li><strong>Admin panel</strong>: any player, online or not; give / take / set with a reason; reset; edit currencies, bank, notes, history</li>
+      <li><strong>Atomic operations</strong> and crash-safe saves; every player gets an account on join</li>
+      <li><strong>Cross-plugin API</strong> and <strong>placeholders</strong></li>
+      <li><strong>6 languages</strong> with runtime switching</li>
     </ul>
 
     <h2 id="commands">Commands</h2>
     <table>
       <tr><th>Command</th><th>Description</th><th>Permission</th></tr>
-      <tr><td><code>/balance</code></td><td>Show your current balance</td><td>perfecteconomy.command</td></tr>
-      <tr><td><code>/pay &lt;player&gt; &lt;amount&gt;</code></td><td>Transfer money to another player</td><td>perfecteconomy.pay</td></tr>
-      <tr><td><code>/shop</code></td><td>Open the shop interface</td><td>perfecteconomy.shop</td></tr>
-      <tr><td><code>/eco give &lt;player&gt; &lt;amount&gt;</code></td><td>Add money to a player's balance</td><td>perfecteconomy.admin</td></tr>
-      <tr><td><code>/eco take &lt;player&gt; &lt;amount&gt;</code></td><td>Remove money from a player's balance</td><td>perfecteconomy.admin</td></tr>
-      <tr><td><code>/eco set &lt;player&gt; &lt;amount&gt;</code></td><td>Set exact balance for a player</td><td>perfecteconomy.admin</td></tr>
-      <tr><td><code>/eco reset &lt;player&gt;</code></td><td>Reset a player's balance to starting amount</td><td>perfecteconomy.admin</td></tr>
-      <tr><td><code>/eco shop</code></td><td>Open the shop editor (admin UI)</td><td>perfecteconomy.admin.shop</td></tr>
-      <tr><td><code>/eco reload</code></td><td>Reload all config files from disk</td><td>perfecteconomy.admin</td></tr>
+      <tr><td><code>/money</code></td><td>Your money page (wallet, history, send, top, bank, notes)</td><td>perfecteconomy.command</td></tr>
+      <tr><td><code>/balance [currency]</code></td><td>Show your balance</td><td>perfecteconomy.command</td></tr>
+      <tr><td><code>/pay &lt;player&gt; &lt;amount&gt; [currency]</code></td><td>Send money to a player</td><td>perfecteconomy.pay</td></tr>
+      <tr><td><code>/baltop [currency] [page]</code></td><td>Richest players</td><td>perfecteconomy.command</td></tr>
+      <tr><td><code>/bank</code></td><td>Open your bank</td><td>perfecteconomy.command</td></tr>
+      <tr><td><code>/eco</code></td><td>Admin panel</td><td>perfecteconomy.admin</td></tr>
+      <tr><td><code>/eco give|take|set &lt;player&gt; &lt;amount&gt; [currency] [reason]</code></td><td>Change a balance (offline players too)</td><td>perfecteconomy.admin</td></tr>
+      <tr><td><code>/eco reset &lt;player&gt; [currency]</code></td><td>Reset to the starting balance</td><td>perfecteconomy.admin</td></tr>
+      <tr><td><code>/eco interest</code></td><td>Pay one day of interest now</td><td>perfecteconomy.admin</td></tr>
+      <tr><td><code>/eco reload</code></td><td>Save, then reload the config</td><td>perfecteconomy.admin</td></tr>
       <tr><td><code>/eco setlang &lt;code&gt;</code></td><td>Change plugin language</td><td>perfecteconomy.admin</td></tr>
     </table>
 
-    <h2 id="shop">Shop System</h2>
-    <h3>Player View</h3>
-    <ol>
-      <li>Open the shop with <code>/shop</code></li>
-      <li>Browse categories (up to 8 displayed)</li>
-      <li>View items with buy/sell prices and daily stock remaining</li>
-      <li>Click to buy or sell items</li>
-    </ol>
-    <p>The shop checks for sufficient funds, inventory space, and daily stock limits before processing transactions.</p>
-
-    <h3>Admin Shop Editor</h3>
-    <p>Access with <code>/eco shop</code>. Allows you to:</p>
-    <ul>
-      <li>Create and manage categories with custom icons</li>
-      <li>Add items with buy/sell prices</li>
-      <li>Set daily stock limits per item (-1 for unlimited)</li>
-      <li>Enable/disable individual items</li>
-      <li>Save all changes with "SAVE ALL" button</li>
-    </ul>
-
-    <h3>Default Shop</h3>
-    <p>On first run, a default shop is created with 4 categories: Blocks, Ores, Tools, and Food.</p>
+    <h2 id="shop">What happened to /shop?</h2>
+    <p>The small built-in <code>/shop</code> was removed in 2.0. Selling and buying now belong to PerfectShop (server shop, auction house, player shops), which is coming soon and imports your old <code>shop.json</code>. The file is kept untouched and its sell prices remain readable through <code>EconomyAPI.getSellPrice(itemId)</code>.</p>
 
     <h2 id="api">API for Developers</h2>
-    <p>PerfectEconomy exposes a static API that other plugins can call directly or via reflection:</p>
-    <pre><code>// Direct import
-double balance = EconomyAPI.getBalance(playerUuid);
-EconomyAPI.deposit(playerUuid, 500.0);
-EconomyAPI.withdraw(playerUuid, 100.0);
-EconomyAPI.setBalance(playerUuid, 1000.0);
-String formatted = EconomyAPI.format(1234.56); // "$1,234"
-double sellPrice = EconomyAPI.getSellPrice("Iron_Ore");
-
-// Via reflection (no compile dependency)
+    <p>Static methods of <code>fr.katsuyatv.perfecteconomy.EconomyAPI</code>:</p>
+    <table>
+      <tr><th>Method</th><th>Description</th></tr>
+      <tr><td><code>getBalance(UUID)</code>, <code>deposit(UUID, double)</code>, <code>withdraw(UUID, double)</code>, <code>setBalance(UUID, double)</code></td><td>Default currency (1.x API, unchanged)</td></tr>
+      <tr><td><code>format(double)</code>, <code>getSymbol()</code>, <code>getCurrencyName()</code>, <code>getSellPrice(String)</code></td><td>Formatting and legacy shop prices</td></tr>
+      <tr><td><code>getCurrencies()</code>, <code>hasCurrency(c)</code>, <code>getDefaultCurrency()</code></td><td>List currencies</td></tr>
+      <tr><td><code>getBalance(UUID, c)</code>, <code>getBankBalance(UUID, c)</code>, <code>has(UUID, c, amount)</code></td><td>Read balances</td></tr>
+      <tr><td><code>deposit(UUID, c, amount, reason)</code>, <code>withdraw(...)</code>, <code>setBalance(...)</code></td><td>Change a balance with a reason for the history</td></tr>
+      <tr><td><code>transfer(from, to, c, amount, reason)</code></td><td>Atomic transfer</td></tr>
+      <tr><td><code>format(c, amount)</code>, <code>getCurrencySymbol(c)</code>, <code>getCurrencyName(c)</code></td><td>Per-currency formatting</td></tr>
+      <tr><td><code>isAvailable()</code>, <code>getVersion()</code>, <code>resolvePlaceholders(UUID, text)</code></td><td>Utilities</td></tr>
+    </table>
+    <pre><code>// Soft integration through reflection
 Class&lt;?&gt; api = Class.forName("fr.katsuyatv.perfecteconomy.EconomyAPI");
 Method m = api.getMethod("getBalance", UUID.class);
 double bal = (double) m.invoke(null, playerUuid);</code></pre>
@@ -125,63 +110,41 @@ double bal = (double) m.invoke(null, playerUuid);</code></pre>
     <table>
       <tr><th>Placeholder</th><th>Output</th></tr>
       <tr><td><code>{eco_balance}</code></td><td>Raw balance (e.g., 1234.56)</td></tr>
-      <tr><td><code>{eco_balance_formatted}</code></td><td>Formatted with symbol (e.g., $1,234)</td></tr>
-      <tr><td><code>{eco_balance_short}</code></td><td>Short format (e.g., $1.2K, $5.3M)</td></tr>
-      <tr><td><code>{eco_currency}</code></td><td>Currency name (e.g., Coins)</td></tr>
-      <tr><td><code>{eco_symbol}</code></td><td>Currency symbol (e.g., $)</td></tr>
-      <tr><td><code>{eco_top_N_name}</code></td><td>Name of Nth richest player (1-10)</td></tr>
-      <tr><td><code>{eco_top_N_balance}</code></td><td>Balance of Nth richest player (1-10)</td></tr>
+      <tr><td><code>{eco_balance_formatted}</code></td><td>Formatted with symbol</td></tr>
+      <tr><td><code>{eco_balance_short}</code></td><td>Short format (e.g., $1.2K)</td></tr>
+      <tr><td><code>{eco_currency}</code>, <code>{eco_symbol}</code></td><td>Default currency name and symbol</td></tr>
+      <tr><td><code>{eco_bank}</code>, <code>{eco_bank_formatted}</code></td><td>Bank balance</td></tr>
+      <tr><td><code>{eco_rank}</code></td><td>Rank on the leaderboard</td></tr>
+      <tr><td><code>{eco_balance_&lt;currency&gt;}</code>, <code>{eco_bank_&lt;currency&gt;}</code></td><td>Wallet / bank of a given currency</td></tr>
+      <tr><td><code>{eco_top_N_name}</code>, <code>{eco_top_N_balance}</code></td><td>Nth richest player (1-10)</td></tr>
     </table>
 
     <h2 id="config">Configuration</h2>
-    <h3>economy.json</h3>
-    <pre><code>{
-  "currencySymbol": "$",
-  "currencyName": "Coins",
-  "startingBalance": 100.0,
-  "players": {}
-}</code></pre>
-
-    <h3>shop.json</h3>
-    <pre><code>{
-  "categories": [
-    {
-      "id": "blocks",
-      "name": "Blocks",
-      "icon": "Stone",
-      "items": [
-        {
-          "itemId": "Stone",
-          "buyPrice": 5.0,
-          "sellPrice": 2.0,
-          "dailyStock": -1,
-          "enabled": true
-        }
-      ]
-    }
-  ]
-}</code></pre>
-
+    <p>Files are stored in <code>UserData/Saves/MODDING/mods/KatsuyaTV_PerfectEconomy/</code>: <code>currencies.json</code>, <code>economy.json</code>, <code>history.json</code>, <code>notes.json</code>, <code>config.json</code>, and the legacy <code>shop.json</code>. Most settings are edited in game from <code>/eco</code>.</p>
     <h3>config.json</h3>
     <pre><code>{
-  "lang": "EN"
+  "lang": "EN",
+  "historyPerPlayer": 50,
+  "baltopIncludesBank": true,
+  "payMinimum": 0,
+  "bank": { "enabled": true, "interestPercent": 1.0, "maxInterestPerDay": 1000,
+            "maxBankBalance": 0, "payoutHour": 0, "minBalanceForInterest": 0 },
+  "notes": { "enabled": true, "minimum": 10, "maximum": 0, "feePercent": 0 }
 }</code></pre>
-
-    <p>All config files are stored in <code>UserData/Saves/MODDING/mods/KatsuyaTV_PerfectEconomy/</code></p>
 
     <h2 id="faq">FAQ</h2>
 
-    <h3>Can I change the currency symbol?</h3>
-    <p>Yes, edit <code>currencySymbol</code> in <code>economy.json</code> and reload with <code>/eco reload</code>.</p>
+    <h3>Is PerfectEconomy really free?</h3>
+    <p>Yes, since 2.0.0. It is the money base the other PerfectPlugins plug into.</p>
 
-    <h3>How do daily stock limits work?</h3>
-    <p>Each item can have a daily purchase limit per player. Set to -1 for unlimited. Stock resets automatically at midnight.</p>
+    <h3>Can I add more currencies?</h3>
+    <p>Yes: <code>/eco</code>, Currencies tab. Each has its own id, name, symbol, format, decimals and starting balance.</p>
 
-    <h3>How do other plugins integrate with PerfectEconomy?</h3>
-    <p>Use the static <code>EconomyAPI</code> class. Call methods directly if you have the dependency, or use reflection for soft integration. See the API section above.</p>
+    <h3>Can players duplicate a bank note?</h3>
+    <p>No. Every note has an id registered on the server: a copied note pays nothing and is removed.</p>
 
-    <h3>What happens if a player's inventory is full?</h3>
-    <p>The purchase is rejected and the player is notified. No money is deducted.</p>
+    <h3>Do my other plugins need an update?</h3>
+    <p>No. The 1.x API is unchanged: PerfectJobs, PerfectNPC, PerfectSellChest and PerfectOneBlock keep working.</p>
   </main>
 </div>
 
