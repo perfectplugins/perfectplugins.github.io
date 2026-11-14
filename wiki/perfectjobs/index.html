@@ -47,16 +47,16 @@
   <main class="wiki-content">
     <h1 id="overview">PerfectJobs</h1>
     <table>
-      <tr><th>Version</th><td>2.0.0</td></tr>
+      <tr><th>Version</th><td>2.1.0</td></tr>
       <tr><th>Platform</th><td>Hytale Server Plugin (Update 7)</td></tr>
-      <tr><th>Languages</th><td>Pages in English; /jobs setlang EN, FR, ES, DE, IT, PT for the older texts</td></tr>
+      <tr><th>Languages</th><td>English, French, Spanish, Portuguese (Brazil), Russian, Ukrainian, Simplified Chinese. Each player sees the plugin in the language of their own game.</td></tr>
       <tr><th>Dependencies</th><td>None (PerfectEconomy, Ecotale or EliteEssentials optional)</td></tr>
     </table>
     <p>A complete job system: five jobs with 100 levels each, talent trees, milestone rewards and titles, boost potions and server events, daily quests, leaderboards and records, 20 hand-made tools, and a fishing game of its own (31 original fish, hook fight, journal, contests, treasures).</p>
 
     <h2 id="installation">Installation</h2>
     <ol>
-      <li>Drop <code>PerfectJobs-2.0.0.jar</code> into your server's <code>mods/</code> folder</li>
+      <li>Drop <code>PerfectJobs-2.1.0.jar</code> into your server's <code>mods/</code> folder</li>
       <li>Start or restart the server</li>
       <li>Config files are generated on first run</li>
       <li>Players type <code>/jobs</code>; admins type <code>/jobs admin</code></li>
@@ -173,7 +173,7 @@
       <tr><td><code>/jobs contest start|stop|cancel</code></td><td>Fishing contest</td><td>perfectjobs.admin</td></tr>
       <tr><td><code>/jobs giveboost &lt;player&gt; &lt;item&gt; [amount]</code></td><td>Give boost potions</td><td>perfectjobs.admin</td></tr>
       <tr><td><code>/jobs reload</code></td><td>Reload the files</td><td>perfectjobs.admin</td></tr>
-      <tr><td><code>/jobs setlang &lt;code&gt;</code></td><td>Plugin language</td><td>perfectjobs.admin</td></tr>
+      <tr><td><code>/jobs lang &lt;language&gt;</code></td><td>Default language (console and offline players); players always see their own game language</td><td>perfectjobs.admin</td></tr>
     </table>
 
     <h2 id="permissions">Permissions</h2>
@@ -225,6 +225,9 @@
 
     <h2 id="upgrade">Updating from 1.x</h2>
     <p>Replace the jar and restart. At the first start your 1.x data is converted after a <strong>full copy in <code>backups/before_2.0_&lt;date&gt;/</code></strong>: levels, XP, specializations, stats, tools, daily quests and records are kept. Milestones already passed are marked as reached (titles unlocked, past rewards not handed out) and talent points are given for your current level. The records files get the fishing journal keys at the first start, after a copy in <code>backups/before_journal_&lt;date&gt;/</code>; a category already complete before the update can be claimed in the journal.</p>
+
+    <h2 id="upgrade21">Updating from 2.0</h2>
+    <p>Replace the jar and restart: data and settings are kept. Since 2.1.0 every page, HUD and message follows each player's game language, item names are translated too, and the job axe is called a Hatchet like the game names it. An old <code>"lang"</code> value (EN, FR, ES, PT) is still understood; DE and IT fall back to English.</p>
 
     <h2 id="faq">FAQ</h2>
 
