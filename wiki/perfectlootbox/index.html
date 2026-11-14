@@ -3,45 +3,175 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PerfectLootbox -- Wiki | Perfect Plugins</title>
+  <title>PerfectLootbox &mdash; Wiki | Perfect Plugins</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
-<nav><div class="nav-inner">
-  <a href="../../" class="nav-logo"><span>Perfect</span>Plugins</a>
-      <ul class="nav-links">
+
+<nav>
+  <div class="nav-inner">
+    <a href="../../" class="nav-logo"><span>Perfect</span>Plugins</a>
+        <ul class="nav-links">
       <li><a href="../../">Home</a></li>
       <li><a href="../../#plugins">Plugins</a></li>
       <li><a href="https://builtbybit.com/creators/katsuyatv.502728/">Store</a></li>
     </ul>
-</div></nav>
+  </div>
+</nav>
+
 <div class="wiki-layout">
   <aside class="wiki-sidebar">
     <h3>PerfectLootbox</h3>
-    <ul><li><a href="#overview">Overview</a></li><li><a href="#installation">Installation</a></li>
-    <li><a href="#features">Features</a></li><li><a href="#items">Variants</a></li>
-    <li><a href="#commands">Commands</a></li><li><a href="#permissions">Permissions</a></li><li><a href="#faq">FAQ</a></li></ul>
+    <ul>
+      <li><a href="#overview" class="active">Overview</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#page">The crate page</a></li>
+      <li><a href="#opening">Opening modes</a></li>
+      <li><a href="#rewards">Rewards and conditions</a></li>
+      <li><a href="#guarantee">Guarantee</a></li>
+      <li><a href="#keys">Keys</a></li>
+      <li><a href="#holograms">Holograms</a></li>
+      <li><a href="#variants">Crates and keys</a></li>
+      <li><a href="#safety">Never lost</a></li>
+      <li><a href="#commands">Commands</a></li>
+      <li><a href="#permissions">Permissions</a></li>
+      <li><a href="#languages">Languages</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
   </aside>
+
   <main class="wiki-content">
     <h1 id="overview">PerfectLootbox</h1>
-    <p>Create, customize, and distribute lootboxes with stunning 3D opening animations. 10 chest + 10 key models, weighted drop pools, holograms.</p>
-    <table><tr><th>Version</th><td>1.0</td></tr><tr><th>Platform</th><td>Hytale Server Plugin</td></tr><tr><th>Languages</th><td>EN, FR, ES, DE, IT</td></tr></table>
+    <p>Crates and keys for Hytale servers: 10 animated 3D crate models and 10 key models, a page that shows every reward with your own chance, a reel that stops on the reward, a guarantee you can see, and an admin editor with a draft.</p>
+
+    <table>
+      <tr><th>Version</th><td>2.0.0</td></tr>
+      <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
+      <tr><th>Hytale</th><td>Update 7</td></tr>
+      <tr><th>Java</th><td>21</td></tr>
+      <tr><th>Dependencies</th><td>None. PerfectHolograms, PerfectEconomy, Ecotale, EliteEssentials and PerfectItemManager are optional</td></tr>
+    </table>
     <p><a href="https://builtbybit.com/resources/perfectlootbox-10-crates-keys.96725/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Buy on BuiltByBit</a></p>
+
     <h2 id="installation">Installation</h2>
-    <ol><li>Drop <code>PerfectLootbox-1.0.jar</code> in <code>mods/</code></li><li>Start the server</li><li>Use <code>/plb menu</code></li></ol>
-    <h2 id="features">Features</h2>
-    <ul><li><strong>Custom Lootboxes</strong> -- Unlimited types with custom names</li><li><strong>Drop Pools</strong> -- Weighted random drops</li><li><strong>3D Models</strong> -- 10 chests + 10 keys included</li><li><strong>Holograms</strong> -- Display above placed lootboxes</li><li><strong>Animations</strong> -- Opening animation</li><li><strong>Key System</strong> -- Matching key required</li><li><strong>Protection</strong> -- Placed lootboxes protected</li></ul>
-    <h2 id="items">Chest &amp; Key Variants</h2>
-    <p><strong>Chests (10):</strong> Gold (Blue, Green, Pink, Red, Silver) + Silver (Blue, Green, Pink, Red, Yellow)</p>
-    <p><strong>Keys (10):</strong> Gold (Blue, Green, Pink, Red, Silver) + Silver (Blue, Green, Pink, Red, Yellow)</p>
+    <ol>
+      <li>Put <code>PerfectLootbox-2.0.0.jar</code> in your server's <code>mods</code> folder and start the server.</li>
+      <li>Type <code>/plb admin</code>, create a crate, add rewards and a key.</li>
+      <li>Place the crate (<code>perfectlootbox.place</code>), then players press F on it.</li>
+    </ol>
+    <p><strong>Updating from 1.x:</strong> replace the jar and restart. At the first start every old file of the plugin folder is copied to <code>backup_1.3.x_&lt;date&gt;</code>, then converted. Crates, placed crates, guarantee counters, stats and keys waiting by player name are kept (those keys become virtual keys when the player joins). German and Italian are gone because Hytale has neither; an old DE or IT setting falls back to English.</p>
+
+    <h2 id="page">The crate page</h2>
+    <p>Press F on a placed crate. The page shows:</p>
+    <ul>
+      <li>every reward with <strong>your own chance</strong>, rarity by colour and by diamonds, and the chance of each rarity. A reward you cannot get (a condition not met) is shown locked and is never rolled for you;</li>
+      <li>the guarantee bar, your keys, and the recent big rewards of the server;</li>
+      <li>the Open button, Open x5 and x10, the Quick open option, and the Collect button for rewards waiting for room in your bag;</li>
+      <li>a key shop, if the admin sells keys for this crate.</li>
+    </ul>
+
+    <h2 id="opening">Opening modes</h2>
+    <p>Chosen per crate in <code>/plb admin</code>, Opening tab.</p>
+    <ul>
+      <li><strong>Reel</strong> (default): the opening happens in a page, the reel slows down and stops on the reward. Skip and Esc show the result at once. Skip and the x5 / x10 buttons can be turned off per crate.</li>
+      <li><strong>Quick</strong>: the result is shown at once. Each player can also pick quick open for themselves, remembered after a restart.</li>
+      <li><strong>World show</strong>: the 3D carousel above the crate. At most 4 shows at the same time and 8 items shown. The reward is handed over at the end of the show; until then it waits in the player's pending rewards, so leaving or a server stop during the show loses nothing.</li>
+    </ul>
+    <p>You also choose the reel duration (2 to 6 seconds), whether the crate lid opens, particles, the sound, and from which rarity a win is announced to everyone.</p>
+
+    <h2 id="rewards">Rewards and conditions</h2>
+    <ul>
+      <li>Add a reward from your bag in one click: you get an exact copy (tier, custom name, durability). A reward can also be a console command.</li>
+      <li>Five rarities: Common, Uncommon, Rare, Epic, Legendary. You set the weight and the plugin shows the resulting chance in %.</li>
+      <li>Up to 3 conditions per reward, all must match: <strong>permission</strong>, <strong>world</strong>, <strong>real-time hours</strong> (<code>22-2</code> goes past midnight) and <strong>game mode</strong>. Each one can be inverted.</li>
+      <li>With PerfectItemManager installed, a reward can roll a tier on the item.</li>
+    </ul>
+
+    <h2 id="guarantee">Guarantee</h2>
+    <p>After a number of openings without the chosen rarity, the next one gives it. You set the threshold and the rarity; Save is refused if no reward of the crate can satisfy it.</p>
+    <ul>
+      <li><strong>Personal</strong>: each player has their own counter.</li>
+      <li><strong>Community</strong>: one counter for the whole server. When it is reached, the opening gives the guaranteed rarity and every contributor also gets a community reward (item or command), even when offline.</li>
+    </ul>
+    <p>The guarantee is decided when the reward is rolled, so on a community crate two players opening at the same time cannot both receive it.</p>
+
+    <h2 id="keys">Keys</h2>
+    <ul>
+      <li>Per crate: key items, virtual keys, or both. Virtual keys are kept per player and never lost.</li>
+      <li>A key marked for one crate never opens another crate.</li>
+      <li>Key shop on the crate page: price, currency and a daily limit per player. Prices go through PerfectEconomy (several currencies), Ecotale or EliteEssentials, found automatically. With none of them, the price is paid in gold ingots.</li>
+      <li>From the console, for votes, shops and events: <code>/plbkey give &lt;player|all&gt; &lt;crate&gt; [amount]</code>. A player who is offline gets the keys at their next join.</li>
+    </ul>
+
+    <h2 id="holograms">Holograms</h2>
+    <p>With PerfectHolograms, the hologram above a crate is created once, when you place the crate, then you edit it freely in <code>/ph</code>. It faces the front of the crate. The Reset hologram button in the Opening tab rewrites it. Without PerfectHolograms, simple name tags are used. Holograms are shared by everyone, so they are written in the server language (<code>lang</code> in <code>config.json</code>).</p>
+
+    <h2 id="variants">Crates and keys</h2>
+    <p>10 crates and 10 keys, 3D and animated: the lid opens and closes, the gem glows, light leaks from under the lid, and the key is held in hand.</p>
+    <p><strong>Crates (10):</strong> Gold Chest (Blue), Gold Chest (Green), Gold Chest (Pink), Gold Chest (Red), Gold Chest (Silver), Silver Chest (Blue), Silver Chest (Green), Silver Chest (Pink), Silver Chest (Red), Silver Chest (Yellow)</p>
+    <p><strong>Keys (10):</strong> Gold Key (Blue, Green, Pink, Red, Silver) and Silver Key (Blue, Green, Pink, Red, Yellow)</p>
+    <p>If Custom Crates or CrateKeys are installed, their crate and key items also appear in the editor's menus. PerfectLootbox works without them.</p>
+
+    <h2 id="safety">Never lost, never duplicated</h2>
+    <ul>
+      <li>A reward that does not fit in the bag is kept for you: Collect button, <code>/plb claim</code>, or automatically when you have room or at your next join.</li>
+      <li>Leaving, closing the page or a server stop during an opening loses nothing: the reward is given when the key is taken, the reel only shows it.</li>
+      <li>A double click on Open uses one key and gives one reward.</li>
+      <li>Data files that cannot be read are kept as a copy instead of being overwritten, and every save is crash-safe.</li>
+    </ul>
+
     <h2 id="commands">Commands</h2>
-    <table><tr><th>Command</th><th>Description</th></tr><tr><td><code>/plb list</code></td><td>List lootboxes</td></tr><tr><td><code>/plb claim &lt;name&gt;</code></td><td>Claim with key</td></tr><tr><td><code>/plb menu</code></td><td>Admin UI</td></tr><tr><td><code>/plb create &lt;name&gt;</code></td><td>Create lootbox</td></tr><tr><td><code>/plb adddrop &lt;name&gt; &lt;item&gt; [weight] [qty]</code></td><td>Add drop</td></tr><tr><td><code>/plb get &lt;name&gt; [qty]</code></td><td>Give lootbox</td></tr><tr><td><code>/plb getkey &lt;name&gt; [qty]</code></td><td>Give key</td></tr><tr><td><code>/plb givekey &lt;player&gt; &lt;key&gt; [qty]</code></td><td>Give key to player</td></tr><tr><td><code>/plb reload</code></td><td>Reload</td></tr></table>
+    <table>
+      <tr><th>Command</th><th>Description</th></tr>
+      <tr><td><code>/plb help</code></td><td>Commands you can use</td></tr>
+      <tr><td><code>/plb list</code></td><td>List the crates</td></tr>
+      <tr><td><code>/plb info &lt;crate&gt;</code>, <code>/plb drops &lt;crate&gt;</code>, <code>/plb preview &lt;crate&gt;</code></td><td>Look at a crate</td></tr>
+      <tr><td><code>/plb keys</code></td><td>Your pending keys</td></tr>
+      <tr><td><code>/plb claim</code></td><td>Collect the rewards and keys waiting for room in your bag</td></tr>
+      <tr><td><code>/plb history</code></td><td>Your last 50 openings</td></tr>
+      <tr><td><code>/plb admin</code></td><td>Admin editor (<code>/plb menu</code> still works)</td></tr>
+      <tr><td><code>/plb create</code>, <code>delete</code>, <code>setchest</code>, <code>setkey</code>, <code>setname</code>, <code>adddrop</code>, <code>removedrop</code></td><td>Edit crates from chat</td></tr>
+      <tr><td><code>/plb reload</code>, <code>/plb setlang &lt;language&gt;</code></td><td>Reload, server language</td></tr>
+      <tr><td><code>/plb get &lt;crate&gt;</code>, <code>/plb getkey &lt;crate&gt;</code></td><td>Get the crate or key item</td></tr>
+      <tr><td><code>/plb givekey &lt;player|all&gt; &lt;crate&gt; [qty]</code></td><td>Give keys</td></tr>
+      <tr><td><code>/plbkey give &lt;player|all&gt; &lt;crate&gt; [n]</code>, <code>/plbkey list &lt;player&gt;</code></td><td>Give or list keys, works from the console</td></tr>
+      <tr><td><code>/plb remove</code></td><td>Remove the placed crate you look at</td></tr>
+      <tr><td><code>/plb import &lt;file.json&gt;</code></td><td>Import crates from an OPCrates <code>crates.json</code> (put it in the <code>imports</code> folder)</td></tr>
+    </table>
+
     <h2 id="permissions">Permissions</h2>
-    <table><tr><th>Permission</th><th>Description</th></tr><tr><td><code>perfectlootbox.command</code></td><td>Base (list, claim)</td></tr><tr><td><code>perfectlootbox.admin</code></td><td>Admin commands</td></tr><tr><td><code>perfectlootbox.place</code></td><td>Place lootboxes</td></tr></table>
+    <table>
+      <tr><th>Permission</th><th>Description</th></tr>
+      <tr><td><code>perfectlootbox.command</code></td><td>Use <code>/plb</code> and its player commands</td></tr>
+      <tr><td><code>perfectlootbox.place</code></td><td>Place a crate</td></tr>
+      <tr><td><code>perfectlootbox.admin</code></td><td><code>/plb admin</code> and crate editing</td></tr>
+      <tr><td><code>perfectlootbox.give</code></td><td><code>/plb get</code>, <code>/plb getkey</code></td></tr>
+      <tr><td><code>perfectlootbox.givekey</code></td><td><code>/plb givekey</code>, <code>/plbkey</code></td></tr>
+      <tr><td><code>perfectlootbox.remove</code></td><td><code>/plb remove</code></td></tr>
+      <tr><td><code>perfectlootbox.import</code></td><td><code>/plb import</code></td></tr>
+    </table>
+
+    <h2 id="languages">Languages</h2>
+    <p>English, French, Spanish, Portuguese (Brazil), Russian, Ukrainian and Simplified Chinese. Each player sees pages and messages in the language of their game. <code>lang</code> in <code>config.json</code> is the server language, used by the console, offline players and holograms.</p>
+
     <h2 id="faq">FAQ</h2>
-    <h3>Player can't open?</h3><p>They need the matching key in inventory.</p>
+    <h3>A player cannot open a crate</h3>
+    <p>They need a key for that crate: a virtual key (see <code>/plb keys</code>) or the key item, depending on the crate's key setting. A key marked for another crate does not work.</p>
+
+    <h3>My reward did not arrive</h3>
+    <p>If the bag was full, it waits for you. Use the Collect button on the crate page or <code>/plb claim</code>.</p>
+
+    <h3>Can players see what they can win?</h3>
+    <p>Yes, press F on the crate. Rewards with a condition they do not meet are shown locked and are never rolled for them.</p>
+
+    <h3>Does it work without PerfectHolograms or an economy plugin?</h3>
+    <p>Yes. Without PerfectHolograms you get name tags; without an economy plugin key prices are paid in gold ingots.</p>
   </main>
 </div>
-<footer><p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> -- Perfect Plugins 2026</p></footer>
+
+<footer>
+  <p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> &mdash; Perfect Plugins &copy; 2026</p>
+</footer>
+
 </body>
 </html>
