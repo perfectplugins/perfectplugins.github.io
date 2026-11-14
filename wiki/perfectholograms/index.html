@@ -3,136 +3,187 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PerfectHolograms -- Wiki | Perfect Plugins</title>
+  <title>PerfectHolograms — Wiki | Perfect Plugins</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
-<nav><div class="nav-inner">
-  <a href="../../" class="nav-logo"><span>Perfect</span>Plugins</a>
-      <ul class="nav-links">
+<nav>
+  <div class="nav-inner">
+    <a href="../../" class="nav-logo"><img src="../../assets/img/logo.png" alt="Perfect Plugin Series" class="nav-logo-img"><span>Perfect</span>Plugins</a>
+    <ul class="nav-links">
       <li><a href="../../">Home</a></li>
       <li><a href="../../#plugins">Plugins</a></li>
       <li><a href="https://builtbybit.com/creators/katsuyatv.502728/">Store</a></li>
     </ul>
-</div></nav>
+  </div>
+</nav>
+
 <div class="wiki-layout">
   <aside class="wiki-sidebar">
     <h3>PerfectHolograms</h3>
     <ul>
       <li><a href="#overview">Overview</a></li>
       <li><a href="#installation">Installation</a></li>
-      <li><a href="#richtext">Rich Text</a></li>
-      <li><a href="#fonts">Fonts</a></li>
-      <li><a href="#images">Image Support</a></li>
+      <li><a href="#editor">The editor</a></li>
+      <li><a href="#lines">Line types</a></li>
+      <li><a href="#richtext">Rich text &amp; fonts</a></li>
+      <li><a href="#size">Size &amp; facing</a></li>
+      <li><a href="#personal">Personal lines</a></li>
+      <li><a href="#click">Clickable holograms</a></li>
+      <li><a href="#visibility">Visibility</a></li>
       <li><a href="#placeholders">Placeholders</a></li>
+      <li><a href="#languages">Languages</a></li>
       <li><a href="#commands">Commands</a></li>
-      <li><a href="#gui">GUI Editor</a></li>
+      <li><a href="#permissions">Permissions</a></li>
+      <li><a href="#config">Configuration</a></li>
+      <li><a href="#api">For developers</a></li>
+      <li><a href="#upgrade">Updating from 2.x</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
   </aside>
+
   <main class="wiki-content">
     <h1 id="overview">PerfectHolograms</h1>
-    <p>The most advanced hologram plugin for Hytale servers. Rich text with hex colors, gradients, bold/italic/underline, 8 fonts, image support, dynamic placeholders, and a full interactive GUI editor.</p>
-
     <table>
-      <tr><th>Version</th><td>2.0.1</td></tr>
-      <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
-      <tr><th>Java</th><td>21+</td></tr>
-      <tr><th>Dependencies</th><td>None</td></tr>
-      <tr><th>Languages</th><td>EN, FR, ES, DE, IT, PT</td></tr>
+      <tr><th>Version</th><td>3.0.0</td></tr>
+      <tr><th>Platform</th><td>Hytale Server Plugin (Update 7)</td></tr>
+      <tr><th>Languages</th><td>Menus and messages in English, French, Spanish, Portuguese (Brazil), Russian, Ukrainian and Chinese, each player in his game language</td></tr>
+      <tr><th>Dependencies</th><td>None (PerfectEconomy, PerfectJobs and PerfectScoreboard optional)</td></tr>
     </table>
+    <p>Floating text, items and leaderboards for your server, edited in game. Letters are 3D models, so you get hex colours, gradients, bold, italic, underline and 8 fonts, plus images, pages, animations, per-player lines and clickable holograms.</p>
     <p><a href="https://builtbybit.com/resources/perfectholograms.96569/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Buy on BuiltByBit</a></p>
 
     <h2 id="installation">Installation</h2>
     <ol>
-      <li>Drop <code>PerfectHolograms-1.3.jar</code> in <code>mods/</code></li>
-      <li>Start the server</li>
-      <li>Use <code>/ph create myhologram</code> or <code>/ph menu</code></li>
+      <li>Drop <code>PerfectHolograms-3.0.0.jar</code> into your server's <code>mods/</code> folder, in place of the old jar</li>
+      <li>Start or restart the server</li>
+      <li>Type <code>/ph</code> in game</li>
+      <li>Images: put the PNG (or animated GIF) in the plugin's <code>images/</code> folder, add it to a hologram, and restart the server once so the image assets load</li>
     </ol>
 
-    <h2 id="richtext">Rich Text Formatting</h2>
-    <p>Holograms support rich text markup for stunning visuals:</p>
+    <h2 id="editor">The editor</h2>
+    <p><code>/ph</code> (or <code>/ph menu</code>) opens the list of every hologram. It has a search box, filters (this world, near me, leaderboards, clickable, personal lines, created by plugins, hidden), sorting, a coloured preview, and the server cost: entities used against a budget (<code>entityBudget</code>). Per hologram: Edit, Teleport, Bring here, Copy here, Hide, Delete. <strong>+ New</strong> starts from a template: blank, welcome sign, rules, richest players, top jobs, shop sign, event. Templates are written in the language of the admin who creates them.</p>
+    <p>The editor docks on the right and leaves the world visible. You edit a <strong>draft that only you see</strong>: players keep seeing the saved hologram until you press <strong>Save</strong>, and <strong>Cancel</strong> brings the saved version back. A new hologram appears in front of you at eye height, its text turned toward you. <code>/ph edit &lt;name&gt;</code> opens one hologram directly.</p>
+
+    <h2 id="lines">Line types</h2>
+    <table>
+      <tr><th>Type</th><th>What it is</th></tr>
+      <tr><td>Text</td><td>Rich text, see below</td></tr>
+      <tr><td>Item</td><td>A floating game item, spinning or still, in 3 sizes</td></tr>
+      <tr><td>Leaderboard</td><td>PerfectEconomy richest players, or PerfectJobs total level or XP of a job. 3, 5 or 10 rows, podium colours, your own row format (<code>{rank}</code>, <code>{name}</code>, <code>{value}</code>), refreshed every 30 s, 1 min or 5 min</td></tr>
+      <tr><td>Image</td><td>A PNG or animated GIF from <code>images/</code>, or a link</td></tr>
+      <tr><td>Blank</td><td>An empty line for spacing</td></tr>
+    </table>
+    <p><strong>Pages:</strong> up to 6 per hologram, rotating every 5, 8, 10, 15 or 30 seconds (or not at all). <strong>Animations</strong> (colour wave, blink, typewriter, pulse) apply to one line, at slow, normal or fast speed, and run only while a player is near.</p>
+
+    <h2 id="richtext">Rich text &amp; fonts</h2>
     <table>
       <tr><th>Syntax</th><th>Effect</th></tr>
-      <tr><td><code>&lt;#FF6B00&gt;text&lt;/&gt;</code></td><td>Hex color</td></tr>
-      <tr><td><code>&lt;gradient:#FF0000,#0000FF&gt;text&lt;/&gt;</code></td><td>Color gradient</td></tr>
-      <tr><td><code>&lt;rainbow&gt;text&lt;/rainbow&gt;</code></td><td>Rainbow effect</td></tr>
-      <tr><td><code>&lt;b&gt;text&lt;/b&gt;</code></td><td>Bold</td></tr>
-      <tr><td><code>&lt;i&gt;text&lt;/i&gt;</code></td><td>Italic</td></tr>
-      <tr><td><code>&lt;u&gt;text&lt;/u&gt;</code></td><td>Underline</td></tr>
+      <tr><td><code>&lt;#FF6B00&gt;text&lt;/&gt;</code></td><td>Hex colour</td></tr>
+      <tr><td><code>&lt;gradient:#FF0000,#0000FF&gt;text&lt;/&gt;</code></td><td>Gradient between two or more colours</td></tr>
+      <tr><td><code>&lt;rainbow&gt;text&lt;/rainbow&gt;</code></td><td>Rainbow</td></tr>
+      <tr><td><code>&lt;b&gt;</code> <code>&lt;i&gt;</code> <code>&lt;u&gt;</code></td><td>Bold, italic, underline</td></tr>
     </table>
+    <p>Eight fonts, chosen per hologram: Default, Sans, Serif, Thin, Cursive, Impact, Comic, Mono. The letters come from the plugin's glyph models: A-Z, digits, punctuation and the usual Western accents. Cyrillic and Chinese characters cannot be drawn inside a hologram.</p>
 
-    <h2 id="fonts">Fonts (8)</h2>
+    <h2 id="size">Size &amp; facing</h2>
+    <p>Size goes from <strong>2 to 100</strong>, 4 by default (<code>defaultSize</code> in config.json). The line spacing follows the size. Set it in the editor or with <code>/ph size &lt;name&gt; &lt;2-100&gt;</code>. Holograms made in 2.x keep their size: the number is the old scale value. <strong>Face me</strong> turns the text toward you, and <code>/ph tp &lt;name&gt;</code> puts you in front of a hologram, looking at it.</p>
+
+    <h2 id="personal">Personal lines</h2>
+    <p>A line that contains <code>{player}</code>, <code>{eco_balance...}</code>, <code>{eco_bank...}</code>, <code>{eco_rank}</code> or a <code>{job_...}</code> placeholder shows each player his own value. The plugin spawns one copy of that line per player within 24 blocks. Limits in config.json: <code>personalMaxPlayers</code> (20) and <code>personalMaxLines</code> (8 per server). The editor shows the cost.</p>
+
+    <h2 id="click">Clickable holograms</h2>
+    <p>Players press <strong>F</strong> on the hologram. Actions: run a command as the player, run a command as the console (<code>%player%</code> is replaced by the name), show the next page, send a message, send a link. Each hologram has a cooldown, an optional permission and a hint text next to the F key. With an empty hint, players see the game's own "Press F to interact" in their language.</p>
+
+    <h2 id="visibility">Visibility</h2>
     <ul>
-      <li><strong>Default</strong> -- Standard Hytale font</li>
-      <li><strong>Sans</strong> -- Clean sans-serif</li>
-      <li><strong>Serif</strong> -- Classic serif</li>
-      <li><strong>Thin</strong> -- Lightweight</li>
-      <li><strong>Cursive</strong> -- Handwritten style</li>
-      <li><strong>Impact</strong> -- Bold display</li>
-      <li><strong>Comic</strong> -- Casual</li>
-      <li><strong>Mono</strong> -- Monospaced / code</li>
+      <li>View distance per hologram, 4 to 64 blocks, 32 by default</li>
+      <li>Show only to players <strong>with</strong> or <strong>without</strong> a permission</li>
+      <li>Hide a hologram without deleting it</li>
+      <li>Nothing is spawned for a hologram that nobody can see; images are only sent to players within 80 blocks</li>
     </ul>
 
-    <h2 id="images">Image Support</h2>
-    <ol>
-      <li>Place a PNG file in the <code>images/</code> folder inside the plugin data</li>
-      <li>Use <code>/ph addimage &lt;name&gt; &lt;file.png&gt; [width]</code></li>
-      <li>Restart the server for assets to load</li>
-    </ol>
-    <p>Images render as pixel art using colored block characters. Scale is adjustable independently from text.</p>
-
-    <h2 id="placeholders">Dynamic Placeholders</h2>
-    <p>Auto-updated every 30 seconds:</p>
+    <h2 id="placeholders">Placeholders</h2>
     <table>
       <tr><th>Placeholder</th><th>Value</th></tr>
-      <tr><td><code>{online}</code></td><td>Players in world</td></tr>
-      <tr><td><code>{time}</code></td><td>Server time (HH:mm)</td></tr>
-      <tr><td><code>{date}</code></td><td>Server date (yyyy-MM-dd)</td></tr>
-      <tr><td><code>{world}</code></td><td>World name</td></tr>
+      <tr><td><code>{online}</code></td><td>Players in the hologram's world</td></tr>
+      <tr><td><code>{server_online}</code></td><td>Players on the whole server</td></tr>
+      <tr><td><code>{world}</code>, <code>{time}</code>, <code>{date}</code></td><td>World name, server time (HH:mm), server date (yyyy-MM-dd)</td></tr>
+      <tr><td><code>{player}</code></td><td>The viewer's name (personal line)</td></tr>
+      <tr><td><code>{eco_balance_formatted}</code>, <code>{eco_rank}</code></td><td>With PerfectEconomy, the viewer's balance and rank (personal)</td></tr>
+      <tr><td><code>{eco_top_1_name}</code>, <code>{eco_top_1_balance}</code></td><td>With PerfectEconomy, the top rows</td></tr>
+      <tr><td><code>{job_level_miner}</code>, <code>{job_xp_miner}</code>, <code>{job_total_level}</code></td><td>With PerfectJobs, see its page for the full list (personal)</td></tr>
+      <tr><td>PerfectScoreboard values</td><td>The custom placeholders that other plugins publish through PerfectScoreboard</td></tr>
     </table>
+    <p>Without the plugin behind them, these placeholders stay as typed.</p>
+
+    <h2 id="languages">Languages</h2>
+    <p>Every player reads the menus and messages in the language of his game: English, French, Spanish, Portuguese (Brazil), Russian, Ukrainian and Chinese. The <code>lang</code> key of config.json (and <code>/ph setlang en-US</code>, <code>fr-FR</code>...) is the language of the console and of the few texts shown in the world to everybody, such as the "level" and "XP" of a leaderboard row. The text you write inside a hologram stays as you wrote it. German and Italian are no longer offered because the game does not have them; an old config set to DE or IT uses English.</p>
 
     <h2 id="commands">Commands</h2>
     <table>
       <tr><th>Command</th><th>Description</th></tr>
-      <tr><td><code>/ph create &lt;name&gt;</code></td><td>Create hologram at your position</td></tr>
-      <tr><td><code>/ph delete &lt;name&gt;</code></td><td>Delete hologram</td></tr>
+      <tr><td><code>/ph</code>, <code>/ph menu</code></td><td>Open the editor</td></tr>
+      <tr><td><code>/ph edit &lt;name&gt;</code></td><td>Open the editor on one hologram</td></tr>
+      <tr><td><code>/ph tp &lt;name&gt;</code></td><td>Teleport in front of a hologram</td></tr>
+      <tr><td><code>/ph create &lt;name&gt;</code></td><td>Create a hologram in front of you</td></tr>
+      <tr><td><code>/ph delete &lt;name&gt;</code></td><td>Delete a hologram</td></tr>
+      <tr><td><code>/ph copy &lt;name&gt; &lt;new&gt;</code></td><td>Duplicate a hologram</td></tr>
       <tr><td><code>/ph addline &lt;name&gt; &lt;text&gt;</code></td><td>Add a line</td></tr>
+      <tr><td><code>/ph insertline &lt;name&gt; &lt;#&gt; &lt;text&gt;</code></td><td>Insert a line at a position</td></tr>
       <tr><td><code>/ph setline &lt;name&gt; &lt;#&gt; &lt;text&gt;</code></td><td>Replace a line</td></tr>
       <tr><td><code>/ph removeline &lt;name&gt; &lt;#&gt;</code></td><td>Remove a line</td></tr>
-      <tr><td><code>/ph clearlines &lt;name&gt;</code></td><td>Clear all lines</td></tr>
+      <tr><td><code>/ph clearlines &lt;name&gt;</code></td><td>Remove all lines</td></tr>
       <tr><td><code>/ph move &lt;name&gt; &lt;x&gt; &lt;y&gt; &lt;z&gt;</code></td><td>Move to coordinates</td></tr>
-      <tr><td><code>/ph movehere &lt;name&gt;</code></td><td>Move to your position</td></tr>
-      <tr><td><code>/ph adjust &lt;name&gt; &lt;dx&gt; &lt;dy&gt; &lt;dz&gt;</code></td><td>Adjust by offset</td></tr>
-      <tr><td><code>/ph spacing &lt;name&gt; &lt;value&gt;</code></td><td>Set line spacing</td></tr>
-      <tr><td><code>/ph addimage &lt;name&gt; &lt;file&gt; [width]</code></td><td>Add image</td></tr>
-      <tr><td><code>/ph copy &lt;src&gt; &lt;new&gt;</code></td><td>Duplicate hologram</td></tr>
-      <tr><td><code>/ph near [radius]</code></td><td>List nearby holograms</td></tr>
-      <tr><td><code>/ph list</code></td><td>List all holograms</td></tr>
-      <tr><td><code>/ph info &lt;name&gt;</code></td><td>Show details</td></tr>
-      <tr><td><code>/ph menu</code></td><td>Open GUI editor</td></tr>
-      <tr><td><code>/ph reload</code></td><td>Reload from disk</td></tr>
+      <tr><td><code>/ph movehere &lt;name&gt;</code></td><td>Move it in front of you</td></tr>
+      <tr><td><code>/ph adjust &lt;name&gt; &lt;dx&gt; &lt;dy&gt; &lt;dz&gt;</code></td><td>Shift by an offset</td></tr>
+      <tr><td><code>/ph spacing &lt;name&gt; &lt;value&gt;</code></td><td>Line spacing</td></tr>
+      <tr><td><code>/ph size &lt;name&gt; &lt;2-100&gt;</code></td><td>Size</td></tr>
+      <tr><td><code>/ph addimage &lt;name&gt; &lt;file&gt; [width]</code></td><td>Add an image line</td></tr>
+      <tr><td><code>/ph list</code></td><td>List the holograms in chat</td></tr>
+      <tr><td><code>/ph near [radius]</code></td><td>Holograms around you</td></tr>
+      <tr><td><code>/ph info &lt;name&gt;</code></td><td>Details of a hologram</td></tr>
+      <tr><td><code>/ph setlang &lt;language&gt;</code></td><td>Console language</td></tr>
+      <tr><td><code>/ph reload</code></td><td>Reload config and holograms</td></tr>
+      <tr><td><code>/ph help</code></td><td>Command list and a rich text example</td></tr>
     </table>
 
-    <h2 id="gui">Interactive GUI Editor</h2>
-    <p>Open with <code>/ph menu</code>. The GUI provides:</p>
-    <ul>
-      <li>Hologram list with pagination (5 per page)</li>
-      <li>Position editor with move/adjust controls</li>
-      <li>Rotation editor (yaw + "Face Me" mode)</li>
-      <li>Scale adjustment (text: 1-20x, image: independent)</li>
-      <li>Line spacing tuning</li>
-      <li>Font selector (8 options, instant switch)</li>
-      <li>Rich text line editor</li>
-      <li>Image insertion</li>
-      <li>Copy and delete operations</li>
-    </ul>
+    <h2 id="permissions">Permissions</h2>
+    <table>
+      <tr><th>Permission</th><th>Gives</th></tr>
+      <tr><td><code>perfectholograms.admin</code></td><td>Everything</td></tr>
+      <tr><td><code>perfectholograms.edit</code></td><td>Create and edit holograms, but not delete, reload or change the language</td></tr>
+      <tr><td><code>perfectholograms.command.hologram</code></td><td>The 2.x permission, still gives everything</td></tr>
+    </table>
+
+    <h2 id="config">Configuration</h2>
+    <p><code>config.json</code> in the plugin's data folder. Missing keys are added with their default at startup.</p>
+    <table>
+      <tr><th>Key</th><th>Default</th><th>Meaning</th></tr>
+      <tr><td><code>lang</code></td><td>en-US</td><td>Console language and texts shown in the world</td></tr>
+      <tr><td><code>refreshSeconds</code></td><td>5</td><td>How often placeholders are refreshed</td></tr>
+      <tr><td><code>personalMaxPlayers</code></td><td>20</td><td>Players per personal line</td></tr>
+      <tr><td><code>personalMaxLines</code></td><td>8</td><td>Personal lines per server</td></tr>
+      <tr><td><code>entityBudget</code></td><td>6000</td><td>Entities shown against in the list's cost readout</td></tr>
+      <tr><td><code>defaultSize</code></td><td>4</td><td>Size of a new hologram</td></tr>
+    </table>
+    <p>Holograms are stored in <code>holograms.json</code>. A wrong value no longer wipes the file; a broken file is kept aside and never overwritten, and saves are crash-safe.</p>
+
+    <h2 id="api">For developers</h2>
+    <p>Other plugins can create and control holograms through the plugin's manager, by reflection and without a dependency: <code>create</code>, <code>setLines</code>, <code>setSize</code>, <code>getSize</code>, <code>setRotation</code>, <code>faceTowards</code>, <code>setSpacing</code>, <code>setOwner</code>, <code>delete</code>. The 2.x methods keep their names and types. <code>yaw</code> follows the game's block rotation: 0 faces -Z, 90 faces -X, 180 faces +Z, 270 faces +X. Size is 2 to 100, and the line spacing follows it. A hologram created with <code>setOwner</code> carries a "Created by &lt;plugin&gt;" tag in the list; PerfectLootbox uses this for crate holograms (keep their <code>plb_</code> name).</p>
+
+    <h2 id="upgrade">Updating from 2.x</h2>
+    <p>Replace the jar with <code>PerfectHolograms-3.0.0.jar</code> and restart. Your <code>holograms.json</code> is converted at the first save, and the 2.0.3 file is kept as <code>holograms.json.2.0.3-backup</code>. Existing holograms keep their look and size. The 2.x commands and the 2.x permission still work.</p>
 
     <h2 id="faq">FAQ</h2>
     <h3>Image not showing?</h3>
-    <p>Images require a server restart after placing the PNG in the <code>images/</code> folder. The asset pack is generated at boot.</p>
-    <h3>How many characters per hologram?</h3>
-    <p>Each character is an individual ECS entity. Very long holograms (100+ characters) may impact performance.</p>
+    <p>Images need one server restart after you add them, so the image assets load. Only players within 80 blocks receive them. Images are not shown in the editor's draft.</p>
+    <h3>Can I write Russian or Chinese in a hologram?</h3>
+    <p>No. Letters in a hologram are models for Latin letters, digits, punctuation and Western accents. The menus themselves are translated.</p>
+    <h3>How many holograms can I have?</h3>
+    <p>Each letter is an entity. The list shows what your holograms use against <code>entityBudget</code>, and a hologram nobody can see spawns nothing.</p>
+    <h3>The text of my hologram is turned the wrong way.</h3>
+    <p>Open it in the editor and press Face me while you stand where players will read it.</p>
   </main>
 </div>
 <footer><p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> -- Perfect Plugins 2026</p></footer>
