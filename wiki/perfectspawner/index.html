@@ -25,166 +25,173 @@
     <ul>
       <li><a href="#overview" class="active">Overview</a></li>
       <li><a href="#installation">Installation</a></li>
-      <li><a href="#spawners">Spawner Types</a></li>
-      <li><a href="#ui">Admin UI</a></li>
+      <li><a href="#page">The spawner page</a></li>
+      <li><a href="#modes">Modes</a></li>
+      <li><a href="#upgrades">Upgrades</a></li>
+      <li><a href="#access">Pick-up and access</a></li>
+      <li><a href="#types">Spawner types</a></li>
+      <li><a href="#holograms">Holograms</a></li>
+      <li><a href="#admin">Admin panel</a></li>
       <li><a href="#config">Configuration</a></li>
-      <li><a href="#skyblock">Skyblock Mode</a></li>
+      <li><a href="#skyblock">Skyblock mode</a></li>
       <li><a href="#commands">Commands</a></li>
-      <li><a href="#diagnostics">Diagnostics</a></li>
-      <li><a href="#performance">Performance</a></li>
+      <li><a href="#permissions">Permissions</a></li>
+      <li><a href="#languages">Languages</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
   </aside>
 
   <main class="wiki-content">
     <h1 id="overview">PerfectSpawner</h1>
-    <p>Configurable mob spawner blocks with custom cage models, holograms, stacking, time-based rules and a full admin UI. Place, configure, and manage spawners with live diagnostics.</p>
+    <p>Mob spawners for Hytale servers: a cage for each of 237 creatures, a page on F with storage and paid upgrades, a Loot only mode with no creature at all, and an admin panel to tune everything.</p>
 
     <table>
-      <tr><th>Version</th><td>2.0.3</td></tr>
+      <tr><th>Version</th><td>3.0.0</td></tr>
       <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
-      <tr><th>Hytale</th><td>Update 5 (Pre-Release 5)</td></tr>
+      <tr><th>Hytale</th><td>Update 7</td></tr>
       <tr><th>Java</th><td>21</td></tr>
-      <tr><th>Dependencies</th><td>None</td></tr>
+      <tr><th>Dependencies</th><td>None. PerfectEconomy, Ecotale, EliteEssentials and PerfectHolograms 3.0 are optional</td></tr>
     </table>
-    <p><a href="https://builtbybit.com/resources/perfectspawner-mob-spawner.96337/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Buy on BuiltByBit</a></p>
+    <p><a href="https://builtbybit.com/resources/perfectspawner-mob-spawner-system.96337/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Buy on BuiltByBit</a></p>
 
     <h2 id="installation">Installation</h2>
     <ol>
-      <li>Download <code>PerfectSpawner-2.0.3.jar</code></li>
-      <li>Place it in your server's <code>UserData/Mods/</code> folder</li>
-      <li>If upgrading from v2.0.0, delete the old jar so you don't have two versions side by side</li>
-      <li>Start the server</li>
-      <li>Give yourself a spawner via the in-game UI (<code>/spawner menu</code>) or with the existing item give workflow</li>
-      <li>If you were running v2.0.0, run <code>/spawner sweep</code> once in each affected world to clear leftover hologram entities</li>
+      <li>Put <code>PerfectSpawner-3.0.0.jar</code> in your server's <code>mods</code> folder and start the server.</li>
+      <li>Give yourself a spawner: <code>/spawner give &lt;you&gt; Goblin_Miner</code>, then place it and press F on it.</li>
+      <li>Admins open <code>/spawner admin</code> to tune types, loot, upgrades and limits.</li>
     </ol>
+    <p><strong>Updating from 2.0:</strong> replace the jar, nothing else. Spawners, stacks, owners, types and settings are kept, after a full copy of the data folder in <code>backup-2.0.x-&lt;date&gt;</code> on the first start. Spawners placed under 2.0 have no mode saved, so they start in Loot only: the owner switches them back to Living mobs on their page, or you change the mode new spawners start in, per type, in the admin panel (Types).</p>
 
-    <h2 id="spawners">Spawner Types</h2>
-    <p>166 spawner types covering nearly every vanilla Hytale entity, organized by faction:</p>
+    <h2 id="page">The spawner page</h2>
+    <p>Press F on a spawner. Four tabs:</p>
     <ul>
-      <li>Goblins (8), Trorks (10), Outlanders (9), Scarak (6), Feran (5), Kweebec (6), Hedera</li>
-      <li>Undead: Zombie (6), Skeleton variants (Burnt, Frost, Sand, Pirate, Incandescent), Risen, Wraith, Werewolf, Ghoul, Shadow Knight, Skeleton Hounds and Horses</li>
-      <li>Void entities, Crystal Golems (5 elements), Firesteel and Void Golem Guardians</li>
-      <li>Elemental Spirits (Ember, Frost, Root, Thunder)</li>
-      <li>Mythical: Emberwulf, Fen Stalker, Cactee, Yeti, Trillodon, Snapdragon, Hatworm, Spark Living</li>
-      <li>Beasts: bears, wolves, sabertooth, foxes, hyenas, deer, antelope, mosshorn</li>
-      <li>Reptiles: crocodile, sand lizard, cave rex, rhino toads, tortoise</li>
-      <li>Vermin: scorpion, snakes, spiders, magma slug, molerat, silk larva</li>
-      <li>Livestock: pigs, cows, chickens, sheep, rams, rabbits, goats, bison, turkey, warthog, horses</li>
-      <li>Bosses: Fire Dragon, Frost Dragon</li>
+      <li><strong>Overview</strong>: what the spawner does and why it waits (night only, full, storage full, chunk limit, no water...), the wave size, delay, creatures alive and the mode.</li>
+      <li><strong>Storage</strong>: collect all, take one stack, sell all at the server's sell prices.</li>
+      <li><strong>Upgrades</strong>: four tracks, five levels each, with the effect shown before you pay.</li>
+      <li><strong>Access</strong>: owner, trusted players and their rights, hologram on or off, pick-up.</li>
     </ul>
-    <p>Each spawner has its own configurable loot multiplier on top of the entity's vanilla drops.</p>
 
-    <h2 id="ui">Admin UI</h2>
-    <p>Open with <code>/spawner menu</code>. The UI provides:</p>
+    <h2 id="modes">Modes</h2>
+    <p><strong>Living mobs</strong>: creatures appear within the spawn radius on a free spot (ground plus two blocks of air) and drop their loot when killed. Creatures made by a spawner are marked: counts stay exact after restarts and chunk unloads, and they are removed when their spawner is gone.</p>
+    <p><strong>Loot only</strong>: no creature. Each wave rolls the creature's drops straight into the storage, 75 % of them by default (<code>lootOnlyRatePercent</code>, overridable per type). A full bag never drops anything on the ground: what does not fit stays in the spawner.</p>
+    <p>New spawners start in Loot only; the owner switches on the page. Flying and aquatic creatures start in Loot only. Aquatic creatures in Living mobs need water around the spawner (lava for the Lava Coelacanth); the page says how much is missing. At startup every creature is checked against the game: one that cannot be spawned in your game version is switched to Loot only, one that does not exist is disabled, and one console line lists them.</p>
+
+    <h2 id="upgrades">Upgrades</h2>
+    <table>
+      <tr><th>Track</th><th>Levels 2 to 5 (default)</th></tr>
+      <tr><td>Speed</td><td>Waves 15 / 30 / 45 / 60 % faster</td></tr>
+      <tr><td>Amount</td><td>+1 / +2 / +3 / +4 creatures per wave</td></tr>
+      <tr><td>Storage</td><td>512 / 1024 / 2048 / 4096 items (256 at level 1)</td></tr>
+      <tr><td>Loot</td><td>Drops x1.25 / x1.5 / x1.75 / x2</td></tr>
+    </table>
+    <p>Prices to reach levels 2 to 5: 500, 1200, 2500, 5000 (<code>upgradePrices</code>). Money comes from PerfectEconomy, then Ecotale, then EliteEssentials, then an item (Gold Ingot by default). Everything is editable in the admin panel (Upgrades tab) or switched off with <code>upgradesEnabled</code>.</p>
+
+    <h2 id="access">Pick-up and access</h2>
     <ul>
-      <li>Paginated list of all placed spawners with ID, type, position, world</li>
-      <li>Click to select and configure individual spawners</li>
-      <li>Spawner type editor: change mob type, spawn settings, day/night restriction, drop multiplier</li>
-      <li>Multi-entity weighted picker so a single spawner can produce multiple entity types</li>
-      <li>Global settings page: holograms, stacking, drop on break, max stack size, activation radius, language, sync interval</li>
+      <li><strong>Stacking</strong>: place the same spawner on top of another, held in your main hand. A stack multiplies the wave size and the creature cap. <code>maxStackSize</code> is 8 by default (1 to 64).</li>
+      <li><strong>Pick up</strong> from the page: one item that keeps its level, upgrades, stack and storage.</li>
+      <li><strong>Breaking with a tool</strong> does the same for the owner and trusted players. <code>breakRule</code> decides for everyone else: <code>owner</code> (default), <code>anyone</code>, <code>lost</code> (destroyed, nothing comes back) or <code>deny</code>.</li>
+      <li><strong>Trusted players</strong> per spawner, each with rights: collect and sell, upgrade, switch mode, pick up.</li>
+      <li><strong>Limits</strong>: 10 spawners per player by default (<code>perfectspawner.limit.N</code> raises it), 6 active spawners per chunk, 40 creatures per chunk, 400 per world.</li>
+    </ul>
+
+    <h2 id="types">Spawner types</h2>
+    <p>237 types, each with its own cage model: goblins, trorks, outlanders, skeletons, zombies, ferans, kweebecs, scarak, golems and spirits, animals, birds, fish and sea life, critters, and bosses. The admin panel groups them by family and has a search.</p>
+    <ul>
+      <li>Boss spawners (Gobliterator, Feastmaster, Void Dragon, Shrouded Figure) are <em>Admin only</em>: <code>/spawner give</code> refuses them without <code>perfectspawner.admin</code>. They wait 300 seconds for a single creature by default.</li>
+      <li>Cinematic and placeholder creatures (Void Dragon, Shrouded Figure, Void Crystal, Tuluk Fisherman) work in Loot only and are tagged <em>Experimental</em>.</li>
+      <li>Goblin Scavenger, Goblin Hermit and Goblin Ogre no longer exist in the game. Spawners already placed keep working with the nearest goblin (Scrapper, Miner, Duke) and are tagged <em>Legacy</em>.</li>
+    </ul>
+    <p>The cage shows its state from a distance: glowing embers when working, a red glow when full or blocked, dark when waiting.</p>
+
+    <h2 id="holograms">Holograms</h2>
+    <p>With PerfectHolograms 3.0 installed, the status hologram is a PerfectHolograms one: three lines (name, level and stack, state), turned to the front of the cage. Without it, a built-in nameplate is used. <code>holograms</code> can be <code>auto</code>, <code>own</code> or <code>off</code>. A hologram is shared by everyone, so it is written in the server language (English for a line the hologram font cannot draw).</p>
+
+    <h2 id="admin">Admin panel</h2>
+    <p>Open with <code>/spawner admin</code>. Changes are a draft until you press Save.</p>
+    <ul>
+      <li><strong>Types</strong>: delay, creatures per wave, max alive, radius, day or night only, allowed modes, mode for new spawners, worlds, weighted creature list, tags.</li>
+      <li><strong>Loot</strong>: source (game drop list, custom table or both), multiplier, Loot only yield, sell price of every item.</li>
+      <li><strong>Upgrades</strong>: values, prices, currency.</li>
+      <li><strong>World</strong>: every placed spawner, teleport, remove, clean orphan creatures.</li>
+      <li><strong>Limits</strong> and <strong>Stats</strong>.</li>
     </ul>
 
     <h2 id="config">Configuration</h2>
-    <h3>Per-spawner-type settings (<code>spawner_types.json</code>)</h3>
+    <h3>Global settings (<code>config.json</code>)</h3>
     <table>
       <tr><th>Setting</th><th>Description</th><th>Default</th></tr>
-      <tr><td>entities</td><td>List of entity ids with weights</td><td>single entry per type</td></tr>
-      <tr><td>spawnDelaySeconds</td><td>Seconds between spawn cycles</td><td>30</td></tr>
-      <tr><td>spawnRadius</td><td>How far from the spawner mobs spawn</td><td>5 blocks</td></tr>
-      <tr><td>spawnCount</td><td>Mobs per spawn cycle</td><td>2</td></tr>
-      <tr><td>maxEntities</td><td>Max alive mobs from this spawner</td><td>256</td></tr>
-      <tr><td>timeRestriction</td><td>always / day / night</td><td>always</td></tr>
-      <tr><td>dropMultiplier</td><td>Multiplier applied to vanilla drops</td><td>1.0</td></tr>
+      <tr><td>lang</td><td>Language for the console and holograms</td><td>en-US</td></tr>
+      <tr><td>hologramsEnabled</td><td>Show holograms</td><td>true</td></tr>
+      <tr><td>holograms</td><td>auto, own or off</td><td>auto</td></tr>
+      <tr><td>stackingEnabled</td><td>Allow stacking</td><td>true</td></tr>
+      <tr><td>maxStackSize</td><td>Max spawners in one stack (1 to 64)</td><td>8</td></tr>
+      <tr><td>activationRadius</td><td>A player must be within N blocks (-1 = always active)</td><td>32</td></tr>
+      <tr><td>requirePlayerNearby</td><td>false = ignore the proximity check</td><td>true</td></tr>
+      <tr><td>hologramSyncIntervalSec</td><td>Hologram sync interval, minimum 10</td><td>60</td></tr>
+      <tr><td>spawnersPerPlayer</td><td>Spawners one player may place</td><td>10</td></tr>
+      <tr><td>activeSpawnersPerChunk</td><td>Active spawners per chunk</td><td>6</td></tr>
+      <tr><td>creaturesPerChunk / creaturesPerWorld</td><td>Living creatures from spawners</td><td>40 / 400</td></tr>
+      <tr><td>lootOnlyRatePercent</td><td>Share of the drops kept in Loot only</td><td>75</td></tr>
+      <tr><td>breakRule</td><td>owner, anyone, lost or deny</td><td>owner</td></tr>
+      <tr><td>keepOnPickup</td><td>all, stack or none</td><td>all</td></tr>
+      <tr><td>upgradesEnabled</td><td>Paid upgrades</td><td>true</td></tr>
+      <tr><td>upgradeCurrency</td><td>PerfectEconomy currency id (empty = default)</td><td>empty</td></tr>
+      <tr><td>upgradePrices / upgradeValues</td><td>Prices and effects per level</td><td>see Upgrades</td></tr>
+      <tr><td>sellPrices</td><td>Sell price per item</td><td>defaults by item family</td></tr>
+      <tr><td>economy</td><td>provider (auto, perfecteconomy, ecotale, elite, item) and the item currency</td><td>auto, Ingredient_Bar_Gold</td></tr>
     </table>
+    <h3>Per type (<code>spawner_types.json</code>)</h3>
+    <p>Entities with weights, <code>spawnDelaySeconds</code> (20), <code>spawnRadius</code> (5), <code>spawnCount</code> (1), <code>maxEntities</code> (8, times the stack), <code>timeRestriction</code> (always, day or night), <code>dropMultiplier</code>, <code>modes</code> (both, mobs or loot), <code>defaultMode</code> (loot), <code>lootSource</code> (own, custom or both), <code>lootOnlyRatePercent</code>, <code>worlds</code>, <code>dropList</code> and the custom loot table. The admin panel edits all of them.</p>
 
-    <h3>Global plugin settings (<code>config.json</code>)</h3>
-    <table>
-      <tr><th>Setting</th><th>Description</th><th>Default</th></tr>
-      <tr><td>hologramsEnabled</td><td>Spawn hologram entities above each spawner</td><td>true</td></tr>
-      <tr><td>stackingEnabled</td><td>Allow stacking spawners of the same type</td><td>true</td></tr>
-      <tr><td>dropOnBreakEnabled</td><td>Drop the spawner item when broken</td><td>true</td></tr>
-      <tr><td>maxStackSize</td><td>Max number of stacked spawners on one block</td><td>5</td></tr>
-      <tr><td>activationRadius</td><td>Player must be within N blocks for mobs to spawn (-1 = always active)</td><td>32</td></tr>
-      <tr><td>requirePlayerNearby</td><td>If false, spawners ignore the proximity check entirely (skyblock mode)</td><td>true</td></tr>
-      <tr><td>hologramSyncIntervalSec</td><td>How often the hologram sync runs (seconds, minimum 10)</td><td>60</td></tr>
-      <tr><td>lang</td><td>Plugin language (EN, FR, ES, DE, IT)</td><td>EN</td></tr>
-    </table>
-
-    <h3>Holograms</h3>
-    <p>Each spawner displays a Nameplate hologram above it showing the mob name, stack count and spawn stats. Text auto-updates after stacking or language changes.</p>
-
-    <h3>Stacking</h3>
-    <p>Place a second spawner of the same type on top of an existing one to stack it. Each stack level multiplies <code>spawnCount</code> and <code>maxEntities</code>. Hologram reflects the current stack size.</p>
-
-    <h2 id="skyblock">Skyblock Mode</h2>
-    <p>By default, spawners only tick when a player is within <code>activationRadius</code>. This works for a regular open world, but on a Skyblock-style server with players on distant islands you typically want spawners to keep ticking regardless.</p>
-    <p>Set the following in <code>config.json</code>:</p>
-    <pre><code>"requirePlayerNearby": false</code></pre>
-    <p>With this off, the proximity check is skipped entirely. Mobs spawn even when no player is in the world. Combine with a sensible <code>maxEntities</code> per spawner to keep the entity count bounded.</p>
+    <h2 id="skyblock">Skyblock mode</h2>
+    <p>Spawners only work when a player is within <code>activationRadius</code>. On a Skyblock-style server with players on distant islands, set <code>"requirePlayerNearby": false</code> in <code>config.json</code> and keep a sensible max alive per type.</p>
 
     <h2 id="commands">Commands</h2>
     <table>
       <tr><th>Command</th><th>Description</th></tr>
-      <tr><td><code>/spawner menu</code></td><td>Open the admin spawner management UI</td></tr>
-      <tr><td><code>/spawner list</code></td><td>List all placed spawners</td></tr>
-      <tr><td><code>/spawner remove</code></td><td>Remove a spawner</td></tr>
-      <tr><td><code>/spawner reload</code></td><td>Reload <code>config.json</code> and refresh holograms</td></tr>
-      <tr><td><code>/spawner setlang [code]</code></td><td>Change language (EN, FR, ES, DE, IT)</td></tr>
-      <tr><td><code>/spawner debug</code></td><td>Live diagnostic snapshot (see Diagnostics)</td></tr>
-      <tr><td><code>/spawner sweep</code></td><td>Delete orphan Nameplate entities near tracked spawners in the current world</td></tr>
-      <tr><td><code>/spawner help</code></td><td>Show all available subcommands</td></tr>
+      <tr><td><code>/spawner</code></td><td>Help. F on a spawner opens its page</td></tr>
+      <tr><td><code>/spawner admin</code></td><td>Admin panel (also <code>/spawner menu</code>)</td></tr>
+      <tr><td><code>/spawner give &lt;player&gt; &lt;type&gt; [amount] [level]</code></td><td>Give spawners; works from the console</td></tr>
+      <tr><td><code>/spawner list</code></td><td>List placed spawners</td></tr>
+      <tr><td><code>/spawner remove</code></td><td>Pick up the nearest spawner</td></tr>
+      <tr><td><code>/spawner reload</code></td><td>Reload <code>config.json</code></td></tr>
+      <tr><td><code>/spawner setlang &lt;language&gt;</code></td><td>Server language (console and holograms)</td></tr>
+      <tr><td><code>/spawner debug</code></td><td>Spawner and creature counts, waves in the last minute, time per pass, hologram provider</td></tr>
+      <tr><td><code>/spawner sweep</code></td><td>Remove orphan hologram entities in your world</td></tr>
     </table>
-    <p>All admin commands require the <code>perfectspawner.admin</code> permission.</p>
 
-    <h2 id="diagnostics">Diagnostics</h2>
-    <p>v2.0.3 adds live diagnostics so server owners can verify the hologram subsystem is healthy without guesswork.</p>
+    <h2 id="permissions">Permissions</h2>
+    <table>
+      <tr><th>Permission</th><th>Description</th></tr>
+      <tr><td><code>perfectspawner.command</code></td><td>Use <code>/spawner</code></td></tr>
+      <tr><td><code>perfectspawner.place</code></td><td>Place spawners</td></tr>
+      <tr><td><code>perfectspawner.list</code></td><td><code>/spawner list</code></td></tr>
+      <tr><td><code>perfectspawner.remove</code></td><td><code>/spawner remove</code></td></tr>
+      <tr><td><code>perfectspawner.give</code></td><td><code>/spawner give</code> (boss spawners still need admin)</td></tr>
+      <tr><td><code>perfectspawner.admin</code></td><td>Admin panel, reload, setlang, debug, sweep, boss spawners, no spawner limit</td></tr>
+      <tr><td><code>perfectspawner.limit.&lt;N&gt;</code></td><td>Spawners a player may place (1 to 500, see the BuiltByBit page for the steps)</td></tr>
+      <tr><td><code>perfectspawner.limit.unlimited</code></td><td>No limit</td></tr>
+    </table>
 
-    <h3>/spawner debug</h3>
-    <p>Prints a snapshot to chat and console:</p>
-    <ul>
-      <li>Number of spawners registered</li>
-      <li>Number of holograms tracked by the manager (should equal registered)</li>
-      <li>Cumulative hologram spawn / remove / sync counters</li>
-      <li>Seconds since the last sync</li>
-      <li>Current config snapshot (sync interval, requirePlayerNearby, activation radius)</li>
-      <li>Live ECS scan: counts Nameplate entities within 3 blocks of each spawner whose UUID is not tracked - these are orphans</li>
-    </ul>
-    <p>A healthy server reports <code>tracked == registered</code> and <code>0 orphans</code>.</p>
-
-    <h3>/spawner sweep</h3>
-    <p>Scans the current world for the orphan entities reported by <code>/spawner debug</code> and deletes them. Use this once after upgrading from v2.0.0 to clear leftovers, or any time the debug output reports orphans.</p>
-
-    <h3>Background log</h3>
-    <p>Every 60 seconds the scheduler writes a one-liner to the console:</p>
-    <pre><code>[PerfectSpawner][1min] spawners=N tracked=N spawned=N(+delta) removed=N(+delta) syncs=N</code></pre>
-    <p>If the plugin detects a suspicious pattern (spawn growth without matching tracked count), the line is appended with <code>&lt;-- POSSIBLE LEAK</code> so admins notice without manually checking.</p>
-
-    <h2 id="performance">Performance</h2>
-    <ul>
-      <li>Throttled hologram sync (default once every 60 s, configurable)</li>
-      <li>Sync gated by chunk-loaded check: spawners in unloaded chunks are skipped entirely</li>
-      <li>Per-world dispatch: the sync runs once per world that actually has spawners</li>
-      <li>Per-world EntityStore resolution: multi-world setups (Skyblock, Nether, Jail, instances) work without cross-world errors</li>
-      <li>Stacking reduces entity count vs placing multiple separate spawners</li>
-      <li>Activation radius keeps inactive spawners at zero CPU cost</li>
-    </ul>
+    <h2 id="languages">Languages</h2>
+    <p>English, French, Spanish, Portuguese (Brazil), Russian, Ukrainian and Simplified Chinese. Each player sees pages, messages and creature names in the language of their game. A config left on German or Italian falls back to English.</p>
 
     <h2 id="faq">FAQ</h2>
-    <h3>Mobs aren't spawning</h3>
-    <p>Make sure you're within the activation range (default 32 blocks), or set <code>requirePlayerNearby</code> to <code>false</code>. Check <code>/spawner debug</code> for live state.</p>
+    <h3>My spawners from 2.0 stopped spawning creatures</h3>
+    <p>They are in Loot only after the update (2.0 saved no mode). Press F on the spawner and switch to Living mobs, or set the mode for new spawners per type in <code>/spawner admin</code> (Types).</p>
 
-    <h3>I see floating text stacking above my spawner</h3>
-    <p>You are running an older version where holograms leaked. Upgrade to v2.0.3 and run <code>/spawner sweep</code> in the affected world to clean up.</p>
+    <h3>A spawner is not producing anything</h3>
+    <p>Press F: the Overview tab says why it waits (night only, storage full, creature limit, no player nearby, no water...). The cage is dark when it waits and red when it is blocked.</p>
 
-    <h3>Spawners in my Skyblock instance don't work</h3>
-    <p>Two things to check. First, set <code>requirePlayerNearby</code> to <code>false</code> if players are far from their islands. Second, make sure you are on v2.0.3 or newer - earlier versions had a cross-world EntityStore bug that broke spawners in any world that wasn't the first one loaded.</p>
+    <h3>The hologram text looks wrong</h3>
+    <p>Check <code>/spawner debug</code> for the hologram provider. PerfectHolograms older than 3.0 is not used: the built-in nameplate takes over.</p>
 
-    <h3>Can I create custom mob types?</h3>
-    <p>PerfectSpawner works with all 166 vanilla Hytale entities out of the box. Custom mob support depends on your other mods. If a mod registers its NPC role correctly, you can edit <code>spawner_types.json</code> by hand to point a spawner at the new entity id.</p>
+    <h3>Can I use a custom creature?</h3>
+    <p>Edit <code>spawner_types.json</code> by hand to point a type at another NPC role id, as long as the game can spawn it.</p>
 
-    <h3>Can a single spawner produce multiple entity types?</h3>
-    <p>Yes. In the type editor, add multiple entries to the <code>entities</code> list, each with its own weight. The plugin picks one at random on every spawn cycle, weighted by your values.</p>
+    <h3>Can one spawner produce several creatures?</h3>
+    <p>Yes. Add several entries to the type's creature list with their weights; one is picked at random each wave.</p>
   </main>
 </div>
 
