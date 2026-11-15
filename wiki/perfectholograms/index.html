@@ -37,7 +37,7 @@
       <li><a href="#permissions">Permissions</a></li>
       <li><a href="#config">Configuration</a></li>
       <li><a href="#api">For developers</a></li>
-      <li><a href="#upgrade">Updating from 2.x</a></li>
+      <li><a href="#upgrade">Updating</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
   </aside>
@@ -45,17 +45,17 @@
   <main class="wiki-content">
     <h1 id="overview">PerfectHolograms</h1>
     <table>
-      <tr><th>Version</th><td>3.0.0</td></tr>
+      <tr><th>Version</th><td>3.1.0</td></tr>
       <tr><th>Platform</th><td>Hytale Server Plugin (Update 7)</td></tr>
       <tr><th>Languages</th><td>Menus and messages in English, French, Spanish, Portuguese (Brazil), Russian, Ukrainian and Chinese, each player in his game language</td></tr>
       <tr><th>Dependencies</th><td>None (PerfectEconomy, PerfectJobs and PerfectScoreboard optional)</td></tr>
     </table>
-    <p>Floating text, items and leaderboards for your server, edited in game. Letters are 3D models, so you get hex colours, gradients, bold, italic, underline and 8 fonts, plus images, pages, animations, per-player lines and clickable holograms.</p>
+    <p>Floating text, items and leaderboards for your server, edited in game. Letters are 3D models, so you get hex colours, gradients, bold, italic, underline and 12 fonts (with an optional dark outline or dark background), plus images, pages, animations, per-player lines and clickable holograms.</p>
     <p><a href="https://builtbybit.com/resources/perfectholograms.96569/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Buy on BuiltByBit</a></p>
 
     <h2 id="installation">Installation</h2>
     <ol>
-      <li>Drop <code>PerfectHolograms-3.0.0.jar</code> into your server's <code>mods/</code> folder, in place of the old jar</li>
+      <li>Drop <code>PerfectHolograms-3.1.0.jar</code> into your server's <code>mods/</code> folder, in place of the old jar</li>
       <li>Start or restart the server</li>
       <li>Type <code>/ph</code> in game</li>
       <li>Images: put the PNG (or animated GIF) in the plugin's <code>images/</code> folder, add it to a hologram, and restart the server once so the image assets load</li>
@@ -84,7 +84,9 @@
       <tr><td><code>&lt;rainbow&gt;text&lt;/rainbow&gt;</code></td><td>Rainbow</td></tr>
       <tr><td><code>&lt;b&gt;</code> <code>&lt;i&gt;</code> <code>&lt;u&gt;</code></td><td>Bold, italic, underline</td></tr>
     </table>
-    <p>Eight fonts, chosen per hologram: Default, Sans, Serif, Thin, Cursive, Impact, Comic, Mono. The letters come from the plugin's glyph models: A-Z, digits, punctuation and the usual Western accents. Cyrillic and Chinese characters cannot be drawn inside a hologram.</p>
+    <p>Twelve fonts, chosen per hologram: Default, Sans, Serif, Thin, Cursive, Impact, Comic, Mono, plus the four fonts of the game's own menus: Lexend, Nunito, Noto Sans and Noto Mono. Each letter takes its own width, with the font's kerning.</p>
+    <p>Two options in the editor's Style tab, off by default: <strong>Dark outline</strong> puts a dark border around every letter and stays dark on coloured text (it doubles the entities used by the letters), and <strong>Dark background</strong> puts a dark plate behind the text. Both keep a hologram readable against the sky, snow or sand.</p>
+    <p>The letters come from the plugin's glyph models: A-Z, digits, punctuation, the usual Western accents and the Russian and Ukrainian alphabets (Lexend takes its Cyrillic letters from Noto Sans). Chinese characters cannot be drawn inside a hologram.</p>
 
     <h2 id="size">Size &amp; facing</h2>
     <p>Size goes from <strong>2 to 100</strong>, 4 by default (<code>defaultSize</code> in config.json). The line spacing follows the size. Set it in the editor or with <code>/ph size &lt;name&gt; &lt;2-100&gt;</code>. Holograms made in 2.x keep their size: the number is the old scale value. <strong>Face me</strong> turns the text toward you, and <code>/ph tp &lt;name&gt;</code> puts you in front of a hologram, looking at it.</p>
@@ -172,8 +174,9 @@
     <h2 id="api">For developers</h2>
     <p>Other plugins can create and control holograms through the plugin's manager, by reflection and without a dependency: <code>create</code>, <code>setLines</code>, <code>setSize</code>, <code>getSize</code>, <code>setRotation</code>, <code>faceTowards</code>, <code>setSpacing</code>, <code>setOwner</code>, <code>delete</code>. The 2.x methods keep their names and types. <code>yaw</code> follows the game's block rotation: 0 faces -Z, 90 faces -X, 180 faces +Z, 270 faces +X. Size is 2 to 100, and the line spacing follows it. A hologram created with <code>setOwner</code> carries a "Created by &lt;plugin&gt;" tag in the list; PerfectLootbox uses this for crate holograms (keep their <code>plb_</code> name).</p>
 
-    <h2 id="upgrade">Updating from 2.x</h2>
-    <p>Replace the jar with <code>PerfectHolograms-3.0.0.jar</code> and restart. Your <code>holograms.json</code> is converted at the first save, and the 2.0.3 file is kept as <code>holograms.json.2.0.3-backup</code>. Existing holograms keep their look and size. The 2.x commands and the 2.x permission still work.</p>
+    <h2 id="upgrade">Updating</h2>
+    <p><strong>From 3.0:</strong> replace the jar with <code>PerfectHolograms-3.1.0.jar</code> and restart. Nothing is converted: holograms keep their font, size and colours. Only the space between letters changes, so lines get narrower (about half as wide in Mono). <code>holograms.json</code> gets two fields, <code>outline</code> and <code>background</code>.</p>
+    <p><strong>From 2.x:</strong> replace the jar with <code>PerfectHolograms-3.1.0.jar</code> and restart. Your <code>holograms.json</code> is converted at the first save, and the 2.0.3 file is kept as <code>holograms.json.2.0.3-backup</code>. Existing holograms keep their look and size. The 2.x commands and the 2.x permission still work.</p>
 
     <h2 id="faq">FAQ</h2>
     <h3>Image not showing?</h3>
