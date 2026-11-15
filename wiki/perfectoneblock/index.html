@@ -3,233 +3,203 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PerfectOneBlock -- Wiki | Perfect Plugins</title>
+  <title>PerfectOneBlock — Wiki | Perfect Plugins</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
-<nav><div class="nav-inner">
-  <a href="../../" class="nav-logo"><span>Perfect</span>Plugins</a>
-      <ul class="nav-links">
+<nav>
+  <div class="nav-inner">
+    <a href="../../" class="nav-logo"><img src="../../assets/img/logo.png" alt="Perfect Plugin Series" class="nav-logo-img"><span>Perfect</span>Plugins</a>
+    <ul class="nav-links">
       <li><a href="../../">Home</a></li>
       <li><a href="../../#plugins">Plugins</a></li>
       <li><a href="https://builtbybit.com/creators/katsuyatv.502728/">Store</a></li>
     </ul>
-</div></nav>
+  </div>
+</nav>
+
 <div class="wiki-layout">
   <aside class="wiki-sidebar">
     <h3>PerfectOneBlock</h3>
     <ul>
       <li><a href="#overview">Overview</a></li>
       <li><a href="#installation">Installation</a></li>
-      <li><a href="#features">Features</a></li>
+      <li><a href="#upgrade">Updating from 1.x</a></li>
       <li><a href="#phases">Phases</a></li>
+      <li><a href="#guardians">Guardians</a></li>
+      <li><a href="#chests">Chests and lucky block</a></li>
+      <li><a href="#island">Island, value, upgrades</a></li>
+      <li><a href="#prestige">Prestige and daily streak</a></li>
+      <li><a href="#team">Team and visitors</a></li>
+      <li><a href="#economy">Economy and other plugins</a></li>
+      <li><a href="#menus">Menus, HUD and admin editor</a></li>
+      <li><a href="#languages">Languages</a></li>
       <li><a href="#commands">Commands</a></li>
       <li><a href="#permissions">Permissions</a></li>
       <li><a href="#config">Configuration</a></li>
-      <li><a href="#shop">Shop Setup</a></li>
-      <li><a href="#quests">Quests Setup</a></li>
-      <li><a href="#luckyblocks">Lucky Blocks</a></li>
-      <li><a href="#scoreboard">Scoreboard</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
   </aside>
+
   <main class="wiki-content">
     <h1 id="overview">PerfectOneBlock</h1>
-    <p>The ultimate OneBlock gamemode for Hytale servers. Break one block, a new one spawns. Progress through 5 phases, earn money, upgrade your island, and compete with other players. Everything built-in: economy, shop, quests, auction house, prestige, scoreboard, teams.</p>
     <table>
-      <tr><th>Version</th><td>1.0</td></tr>
-      <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
-      <tr><th>Java</th><td>21+</td></tr>
-      <tr><th>Dependencies</th><td>None (standalone)</td></tr>
+      <tr><th>Version</th><td>2.0.0</td></tr>
+      <tr><th>Platform</th><td>Hytale Server Plugin (Update 7)</td></tr>
+      <tr><th>Languages</th><td>English, French, Spanish, Portuguese (Brazil), Russian, Ukrainian and Chinese, each player in his game language</td></tr>
+      <tr><th>Dependencies</th><td>None (PerfectEconomy, Ecotale, EliteEssentials, PerfectHolograms 3.x and PerfectShop optional)</td></tr>
     </table>
-    <p><a href="https://builtbybit.com/creators/katsuyatv.502728/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Buy on BuiltByBit</a></p>
+    <p>A complete OneBlock gamemode: break the one block, a new one takes its place. 10 phases that follow the regions of the game, a guardian at the end of each phase, real chests in four rarities, a visible lucky block, prestige, quests, a shop, an auction house and teams. Everything is built in: drop the JAR and play.</p>
+    <p><a href="https://builtbybit.com/resources/perfectoneblock.100461/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Buy on BuiltByBit</a></p>
 
     <h2 id="installation">Installation</h2>
     <ol>
-      <li>Drop <code>PerfectOneBlock-1.0.jar</code> into your <code>UserData/Mods/</code> folder</li>
-      <li>Start the server -- a void world is created automatically</li>
-      <li>Players type <code>/ob create</code> to get their island</li>
-      <li>Break the center block and play!</li>
+      <li>Stop the server and put <code>PerfectOneBlock-2.0.0.jar</code> in your server's <code>mods/</code> folder, in place of the old jar if you are updating</li>
+      <li>Start the server. The void world for the islands is created for you</li>
+      <li>Players type <code>/ob</code>, create their island and break the block</li>
     </ol>
 
-    <h2 id="features">Features</h2>
+    <h2 id="upgrade">Updating from 1.x</h2>
     <ul>
-      <li><strong>5-Phase Progression</strong> -- Each phase has weighted block pools, mob spawns, and chest loot</li>
-      <li><strong>Built-in Economy</strong> -- Player balances, island bank, transfers, daily rewards</li>
-      <li><strong>Grid Shop</strong> -- 5x3 grid with icons, categories, x1/x10 toggle</li>
-      <li><strong>Auction House</strong> -- Player-to-player trading with auto-expiry</li>
-      <li><strong>Quest System</strong> -- Daily rotation + milestone quests, 7 types</li>
-      <li><strong>Prestige</strong> -- 6 levels with sell multipliers (x1.0 to x3.0)</li>
-      <li><strong>Island Upgrades</strong> -- 6 tiers expanding build area (50 to 300 blocks)</li>
-      <li><strong>Team System</strong> -- Invite, kick, promote, demote, shared bank</li>
-      <li><strong>Live Scoreboard</strong> -- HUD with level, phase, money, fly timer, combo, quest progress</li>
-      <li><strong>Combo System</strong> -- Break fast for x1.5 to x3.0 multiplier</li>
-      <li><strong>Island Level</strong> -- Based on blocks mined + prestige + tier</li>
-      <li><strong>Lucky Blocks</strong> -- Coin jackpots, rare items, configurable</li>
-      <li><strong>Purchasable Fly</strong> -- Timed flight, auto-reactivates on rejoin</li>
-      <li><strong>Island Protection</strong> -- Boundaries, void protection, PvP, visitor build, mob spawning toggles</li>
-      <li><strong>Homes, Warps & Spawn</strong> -- Multiple homes, warps, custom island spawn</li>
-      <li><strong>Holograms</strong> -- Floating info above center block, auto-respawn</li>
-      <li><strong>Leaderboard & Visiting</strong> -- Top islands, visit public islands</li>
-      <li><strong>13 Custom UI Pages</strong> -- Full in-game UI for every feature</li>
+      <li>Islands, balances, quests and settings of 1.1 and 1.2 are kept. On the first start the whole data folder is copied to <code>backup-before-2.0-&lt;date&gt;</code> before anything is converted.</li>
+      <li>Islands of the 5 old phases move to the matching phase of the 10, never backward: an island halfway through Borea starts halfway through Frostmarch Tundra. The guardians of the phases before are counted as beaten, and an island that could prestige still can.</li>
+      <li>A <code>phases.json</code>, <code>shop.json</code> or <code>lucky_rewards.json</code> you changed is kept. The 2.0 files are written next to it (<code>phases.default.json</code>, <code>shop.default.json</code>). Island sizes, upgrade costs, prestige multipliers and the daily reward you had changed are carried into the new files.</li>
+      <li>The 1.x shop sold and bought blocks that breaking never gives (breaking Ore_Copper_Stone gives Ore_Copper). The 2.0 shop buys what you really mine.</li>
+      <li>Prestige no longer clears the island, only the run of phases starts again.</li>
+      <li>A file the plugin cannot read is never overwritten: a copy is kept next to it and the console says so.</li>
     </ul>
 
     <h2 id="phases">Phases</h2>
-    <p>The plugin comes with 5 default phases. Each phase is defined in <code>phases.json</code> and can be fully customized.</p>
+    <p>One phase per region of the game, in the order of the zones. The name is the game's own, in each player's language. Each phase has its blocks (two of them rare), its creatures, its guardian and its chest chances. After the last phase the island starts again at phase 1 in cycle 2, with stronger guardians and a few more chests.</p>
     <table>
-      <tr><th>Phase</th><th>Threshold</th><th>Description</th></tr>
-      <tr><td>Emerald Grove</td><td>0 blocks</td><td>Passive mobs, basic ores, wood, soil</td></tr>
-      <tr><td>Underground</td><td>200 blocks</td><td>Goblins, spiders, stone, iron, coal</td></tr>
-      <tr><td>Howling Sands</td><td>500 blocks</td><td>Scorpions, sand worms, sandstone, gold</td></tr>
-      <tr><td>Borea</td><td>1,000 blocks</td><td>Wolves, bears, yetis, ice, diamond</td></tr>
-      <tr><td>Devastated Lands</td><td>2,000 blocks</td><td>Lava mobs, dragons, demons, rare ores</td></tr>
+      <tr><th>#</th><th>Phase</th><th>Guardian</th></tr>
+      <tr><td>1</td><td>Drifting Plains</td><td>Trork Chieftain</td></tr>
+      <tr><td>2</td><td>Seedling Woods</td><td>Grizzly Bear</td></tr>
+      <tr><td>3</td><td>The Fens</td><td>Burnt Skeleton Praetorian</td></tr>
+      <tr><td>4</td><td>Underground</td><td>Firesteel Golem</td></tr>
+      <tr><td>5</td><td>Golden Steppes</td><td>Sandswept Golem</td></tr>
+      <tr><td>6</td><td>Desolate Basin</td><td>Scarak Broodmother</td></tr>
+      <tr><td>7</td><td>Frostmarch Tundra</td><td>Yeti</td></tr>
+      <tr><td>8</td><td>The Everfrost</td><td>Frost Golem</td></tr>
+      <tr><td>9</td><td>Cinder Wastes</td><td>Emberwulf</td></tr>
+      <tr><td>10</td><td>Charred Woodlands</td><td>Cave Rex</td></tr>
     </table>
-    <p>Each phase contains:</p>
+    <p>Every creature of a phase is a real Hytale creature and appears next to the block. Phases, blocks, creatures and chances are in <code>phases.json</code> and in the admin editor. The next block is shown in the HUD and above the block (two blocks from prestige 2). <code>/ob skip</code> replaces a block you cannot break, once every 2 minutes. Sounds, particles and a region title mark new blocks, rare blocks, chests, new phases and prestige; each player can turn them off for himself.</p>
+
+    <h2 id="guardians">Guardians</h2>
+    <p>A red crystal seal takes the place of the block at the end of a phase. Break it to call the guardian (it has more health with more teammates around), or postpone it for 100 blocks with <code>/ob guardian postpone</code>. Beat it for an Epic chest (Legendary for the last phase) and coins shared by the team. The guardians of phases 8 and 9 also give the pickaxe the next ores need.</p>
+
+    <h2 id="chests">Chests and lucky block</h2>
+    <p>Real chests in four rarities (Common, Rare, Epic, Legendary) appear on the block, with the game's loot for the region and coins. Open them, or hit one once to take everything. Legendary chests roll the region's loot twice and add one bonus line (onyxium, prisma, mithril or a gem): onyxium and prisma come from them only. The lucky block is a glowing yellow crystal: items, coins, farm animals, a trap or a chest. Items that do not fit in your bag go to your loot box (54 stacks), <code>/ob collect</code>.</p>
+    <p>Rarities and loot are in <code>chests.json</code>, lucky block rewards in <code>lucky_block.json</code>, guardians in <code>guardians.json</code>. New islands get a starter kit (crude pickaxe, hatchet, shovel and bread); the 15th block is a chest and the 60th a lucky block.</p>
+
+    <h2 id="island">Island, value, upgrades</h2>
     <ul>
-      <li><strong>Blocks</strong> -- Weighted pool of blocks that can spawn (e.g. <code>"Ore_Iron_Stone": 15</code>)</li>
-      <li><strong>Mobs</strong> -- Weighted pool of mobs with a spawn chance percentage</li>
-      <li><strong>Chest Loot</strong> -- Items given every N blocks with min/max quantities</li>
+      <li><strong>Island value</strong>: every block you build counts (gold bricks and gems a lot, dirt very little). Two rankings: island value and blocks mined. <code>/ob value recount</code> counts again.</li>
+      <li><strong>Five upgrades</strong>: island size, team size, chest luck, creature loot and a visible island border. Some levels need a prestige. Costs and levels are in <code>upgrades.json</code>.</li>
+      <li><strong>Protection</strong>: chests, doors and benches are protected from visitors; the one block can only be broken by the island's team. PvP follows the island where the hit player stands. Falling into the void brings you back to your island.</li>
+      <li><strong>Reset</strong>: <code>/ob reset</code> starts your island again on the same spot; your team, bank and quests stay.</li>
     </ul>
 
+    <h2 id="prestige">Prestige and daily streak</h2>
+    <p>Prestige has 10 levels. It keeps your island and your upgrades: only the run of phases starts again. Each level raises sell prices and loot and unlocks something (bigger islands, a second preview block, better guardian chests). Prestige X is announced to the whole server. <code>/ob prestige</code> asks first, <code>/ob prestige confirm</code> does it. Levels are in <code>prestige.json</code>.</p>
+    <p>The daily streak goes up to x2.5 on the 7th day, with a chest on day 7; a missed day only takes one day off the streak. The daily reward belongs to the player, so resetting or changing island does not give it again. See <code>daily.json</code>.</p>
+
+    <h2 id="team">Team and visitors</h2>
+    <p>Rights for Member, Trusted and Visitor (<code>team_permissions.json</code>, or the Team page), team chat with <code>/ob tc</code>, and <code>/ob kick</code>, <code>/ob ban</code>, <code>/ob unban</code>, <code>/ob bans</code> for visitors. You can invite any online player; the invitation lasts 5 minutes. Members can build, break and open chests on their island.</p>
+
+    <h2 id="economy">Economy and other plugins</h2>
+    <p>No other plugin is needed. PerfectEconomy is used first, then Ecotale, then EliteEssentials, then OneBlock's own money. A server coming from 1.1 that has OneBlock balances keeps OneBlock's money; set <code>"economyProvider": "auto"</code> in <code>config.json</code> to switch. Money is counted in cents.</p>
+    <ul>
+      <li><strong>PerfectHolograms 3.x</strong> draws the text above the block, updated in place at most once a second. Without it OneBlock uses its own text.</li>
+      <li><strong>PerfectShop</strong>: its auction house (<code>/ah</code>) is the one players use. The Auction house tab goes away and <code>/ob auction</code> opens <code>/ah</code>. Listings already made in OneBlock can still be listed, cancelled and collected (<code>/ob auction my</code>, <code>cancel</code>, <code>claim</code>). The OneBlock shop stays.</li>
+      <li>Without PerfectShop, <code>/ob auction sell &lt;price&gt;</code> lists the stack in your hand. It leaves your bag, keeps its wear and quality, and comes back if the listing is cancelled or expires. What does not fit in your bag waits for <code>/ob auction claim</code>.</li>
+      <li>The shop takes the items before paying when you sell, and checks there is room in your bag when you buy. Buy by category in x1, x10 or x64; sell one, a stack or everything.</li>
+    </ul>
+
+    <h2 id="menus">Menus, HUD and admin editor</h2>
+    <p><code>/ob</code> opens one window with a menu on the left: Island, Phases, Quests, Upgrades, Shop, Auction house, Team, Islands and Settings. <code>/ob shop</code>, <code>/ob quests</code>, <code>/ob auction</code>, <code>/ob settings</code> and <code>/ob team</code> open it on that tab.</p>
+    <p>The HUD is top left by default. Admins choose its position (top-left, top-right, bottom-left, bottom-right, center-right, or hidden) with <code>/ob admin hud &lt;position&gt;</code>; each player can hide it with <code>/ob hud</code>.</p>
+    <p><code>/ob admin</code> opens the admin editor. Phases, chests, lucky block, guardians, shop, upgrades, prestige, daily streak and island value can be changed in game, checked, saved and applied without a restart. An Islands tab finds an island and can teleport you to it, recount its value, change its phase, reset its guardian, give or take money, or delete it.</p>
+
+    <h2 id="languages">Languages</h2>
+    <p>Every chat message, the HUD and the menus follow the language of each player's game: English, French, Spanish, Portuguese (Brazil), Russian, Ukrainian and Simplified Chinese. Item and creature names come from the game. The text above the block uses the server language (<code>lang</code> in <code>config.json</code>, or <code>/ob setlang en-US</code>, <code>fr-FR</code>, <code>es-ES</code>, <code>pt-BR</code>, <code>ru-RU</code>, <code>uk-UA</code>, <code>zh-CN</code>; EN, FR and ES still work).</p>
+
     <h2 id="commands">Commands</h2>
-    <h3>Player Commands</h3>
+    <h3>Player commands</h3>
     <table>
       <tr><th>Command</th><th>Description</th></tr>
-      <tr><td><code>/ob</code></td><td>Open the main menu UI</td></tr>
+      <tr><td><code>/ob</code>, <code>/ob menu</code></td><td>Open the menu</td></tr>
       <tr><td><code>/ob create</code></td><td>Create your island</td></tr>
-      <tr><td><code>/ob home [name]</code></td><td>Teleport to a home</td></tr>
-      <tr><td><code>/ob sethome [name]</code></td><td>Set a home point</td></tr>
-      <tr><td><code>/ob setspawn</code></td><td>Set island spawn (owner only)</td></tr>
-      <tr><td><code>/ob level</code></td><td>View island level</td></tr>
-      <tr><td><code>/ob balance</code></td><td>Check your balance</td></tr>
-      <tr><td><code>/ob pay &lt;player&gt; &lt;amount&gt;</code></td><td>Send money to another player</td></tr>
-      <tr><td><code>/ob daily</code></td><td>Claim daily reward</td></tr>
-      <tr><td><code>/ob fly</code></td><td>Purchase temporary flight</td></tr>
-      <tr><td><code>/ob shop</code></td><td>Open the shop (grid UI)</td></tr>
-      <tr><td><code>/ob quests</code></td><td>View your quests</td></tr>
-      <tr><td><code>/ob prestige</code></td><td>Prestige your island</td></tr>
-      <tr><td><code>/ob upgrade</code></td><td>Upgrade island tier</td></tr>
-      <tr><td><code>/ob top</code></td><td>View leaderboard</td></tr>
-      <tr><td><code>/ob visit &lt;player&gt;</code></td><td>Visit another island</td></tr>
-      <tr><td><code>/ob name &lt;name&gt;</code></td><td>Rename your island</td></tr>
-      <tr><td><code>/ob team</code></td><td>invite / kick / leave / list / promote / demote</td></tr>
-      <tr><td><code>/ob auction</code></td><td>list / sell / buy / cancel / my</td></tr>
-      <tr><td><code>/ob settings</code></td><td>pvp / visibility / mobs / welcome</td></tr>
-      <tr><td><code>/ob warp</code></td><td>set / delete / list / &lt;name&gt;</td></tr>
-      <tr><td><code>/ob bank</code></td><td>deposit / withdraw / bal</td></tr>
+      <tr><td><code>/ob home [name]</code>, <code>sethome</code>, <code>delhome</code>, <code>homes</code></td><td>Homes</td></tr>
+      <tr><td><code>/ob setspawn</code></td><td>Set the island spawn point (owner)</td></tr>
+      <tr><td><code>/ob level</code>, <code>/ob score</code>, <code>/ob top</code></td><td>Island level, score and rankings</td></tr>
+      <tr><td><code>/ob value [recount]</code></td><td>Island value</td></tr>
+      <tr><td><code>/ob balance</code>, <code>/ob pay &lt;player&gt; &lt;amount&gt;</code>, <code>/ob bank</code></td><td>Money and island bank</td></tr>
+      <tr><td><code>/ob daily</code></td><td>Claim the daily reward</td></tr>
+      <tr><td><code>/ob shop</code>, <code>/ob quests</code>, <code>/ob upgrade</code></td><td>Open that tab</td></tr>
+      <tr><td><code>/ob prestige [confirm]</code></td><td>Prestige</td></tr>
+      <tr><td><code>/ob skip</code></td><td>Replace a block you cannot break</td></tr>
+      <tr><td><code>/ob guardian [summon|postpone]</code></td><td>Call the guardian or postpone it</td></tr>
+      <tr><td><code>/ob collect</code></td><td>Take what is in your loot box</td></tr>
+      <tr><td><code>/ob fly</code></td><td>Buy temporary flight (OneBlock world only)</td></tr>
+      <tr><td><code>/ob visit &lt;player&gt;</code>, <code>/ob name &lt;name&gt;</code>, <code>/ob warp</code></td><td>Visits, island name, warps</td></tr>
+      <tr><td><code>/ob team</code>, <code>/ob tc [message]</code></td><td>Team and team chat</td></tr>
+      <tr><td><code>/ob kick</code>, <code>ban</code>, <code>unban &lt;player&gt;</code>, <code>/ob bans</code></td><td>Visitors on your island</td></tr>
+      <tr><td><code>/ob auction [sell &lt;price&gt;|my|cancel|claim]</code>, <code>/ob ah</code></td><td>Auction house</td></tr>
+      <tr><td><code>/ob settings</code>, <code>/ob hud</code>, <code>/ob reset</code></td><td>Island rules, your HUD, start the island again</td></tr>
     </table>
-    <h3>Admin Commands</h3>
+    <h3>Admin commands</h3>
     <table>
       <tr><th>Command</th><th>Description</th></tr>
-      <tr><td><code>/ob reload</code></td><td>Reload configuration</td></tr>
-      <tr><td><code>/ob delete &lt;player&gt;</code></td><td>Delete a player's island</td></tr>
-      <tr><td><code>/ob setbalance &lt;player&gt; &lt;amount&gt;</code></td><td>Set player balance</td></tr>
-      <tr><td><code>/ob setphase &lt;player&gt; &lt;phase&gt;</code></td><td>Set player phase</td></tr>
-      <tr><td><code>/ob setlang &lt;lang&gt;</code></td><td>Change language</td></tr>
+      <tr><td><code>/ob admin</code></td><td>The admin editor</td></tr>
+      <tr><td><code>/ob admin hud &lt;position&gt;</code></td><td>HUD position for everyone</td></tr>
+      <tr><td><code>/ob reload</code></td><td>Reload config, phases.json and the other content files</td></tr>
+      <tr><td><code>/ob delete &lt;player&gt;</code></td><td>Delete an island and clear it</td></tr>
+      <tr><td><code>/ob setbalance &lt;player&gt; &lt;amount&gt;</code></td><td>Set a balance</td></tr>
+      <tr><td><code>/ob setphase &lt;player&gt; &lt;phase&gt;</code></td><td>Put an island at the start of a phase (counted from 1)</td></tr>
+      <tr><td><code>/ob setlang &lt;language&gt;</code></td><td>Server language</td></tr>
     </table>
 
     <h2 id="permissions">Permissions</h2>
+    <p><code>/ob</code> works for every player without a permissions plugin. The team, shop, prestige, auction and fly permissions are allowed unless you remove them.</p>
     <table>
       <tr><th>Permission</th><th>Description</th></tr>
-      <tr><td><code>perfectoneblock.team</code></td><td>Access team commands</td></tr>
-      <tr><td><code>perfectoneblock.shop</code></td><td>Access the shop</td></tr>
-      <tr><td><code>perfectoneblock.prestige</code></td><td>Use prestige</td></tr>
-      <tr><td><code>perfectoneblock.auction</code></td><td>Access auction house</td></tr>
-      <tr><td><code>perfectoneblock.fly</code></td><td>Purchase fly</td></tr>
-      <tr><td><code>perfectoneblock.admin</code></td><td>Admin commands</td></tr>
+      <tr><td><code>perfectoneblock.admin</code></td><td>Admin commands and the admin editor</td></tr>
+      <tr><td><code>perfectoneblock.team</code></td><td>Team commands</td></tr>
+      <tr><td><code>perfectoneblock.shop</code></td><td>The shop</td></tr>
+      <tr><td><code>perfectoneblock.prestige</code></td><td>Prestige</td></tr>
+      <tr><td><code>perfectoneblock.auction</code></td><td>The auction house</td></tr>
+      <tr><td><code>perfectoneblock.fly</code></td><td>Buying fly time</td></tr>
+      <tr><td><code>perfectoneblock.bypass</code></td><td>Enter islands that banned you</td></tr>
     </table>
 
     <h2 id="config">Configuration</h2>
-    <p>All files are in the plugin data folder: <code>UserData/Saves/MODDING/mods/KatsuyaTV_PerfectOneBlock/</code></p>
-    <h3>config.json</h3>
-    <pre><code>{
-  "lang": "EN",
-  "worldName": "oneblock_world",
-  "islandSpacing": 1000,
-  "islandY": 100,
-  "luckyBlockChance": 0.5,
-  "prestigeMultipliers": [1.0, 1.2, 1.5, 1.8, 2.2, 3.0],
-  "upgradeCosts": [0, 10000, 30000, 75000, 150000, 300000],
-  "upgradeSizes": [50, 75, 100, 150, 200, 300],
-  "dailyRewardAmount": 500,
-  "flyCost": 1000,
-  "flyDurationMinutes": 30
-}</code></pre>
-
-    <h2 id="shop">Shop Setup</h2>
-    <p>Edit <code>shop.json</code> to add categories and items:</p>
-    <pre><code>{
-  "Blocks": [
-    { "itemId": "Wood_Softwood_Log", "displayName": "Softwood Log", "buyPrice": 50, "sellPrice": 10 },
-    { "itemId": "Rock_Stone", "displayName": "Stone", "buyPrice": 25, "sellPrice": 5 }
-  ],
-  "Ores": [
-    { "itemId": "Ore_Iron_Stone", "displayName": "Iron Ore", "buyPrice": 200, "sellPrice": 50 }
-  ]
-}</code></pre>
-
-    <h2 id="quests">Quests Setup</h2>
-    <p>Edit <code>quests.json</code> to customize quests. Supported types:</p>
+    <p>Files are in the plugin's data folder. Everything can also be changed in game with <code>/ob admin</code>.</p>
     <table>
-      <tr><th>Type</th><th>Description</th></tr>
-      <tr><td><code>MINE_BLOCKS</code></td><td>Mine X blocks</td></tr>
-      <tr><td><code>KILL_MOBS</code></td><td>Kill X mobs</td></tr>
-      <tr><td><code>SELL_ITEMS</code></td><td>Sell X items in the shop</td></tr>
-      <tr><td><code>REACH_PHASE</code></td><td>Reach phase X</td></tr>
-      <tr><td><code>EARN_MONEY</code></td><td>Earn X coins total</td></tr>
-      <tr><td><code>UPGRADE_ISLAND</code></td><td>Upgrade island X times</td></tr>
-      <tr><td><code>PRESTIGE</code></td><td>Prestige X times</td></tr>
+      <tr><th>File</th><th>Content</th></tr>
+      <tr><td><code>config.json</code></td><td>Language, world name, island spacing, fly cost and duration, economyProvider, effects, next-block preview, skip delay, team chat colour, HUD position, features on or off, starter kit</td></tr>
+      <tr><td><code>phases.json</code></td><td>The 10 phases: blocks, creatures, chest chances</td></tr>
+      <tr><td><code>chests.json</code>, <code>guardians.json</code>, <code>lucky_block.json</code></td><td>Rarities and loot, the 10 guardians, lucky block rewards</td></tr>
+      <tr><td><code>upgrades.json</code>, <code>prestige.json</code>, <code>daily.json</code>, <code>island_value.json</code></td><td>Upgrade levels and costs, the 10 prestige levels, the streak, the value of each block</td></tr>
+      <tr><td><code>shop.json</code>, <code>quests.json</code>, <code>team_permissions.json</code>, <code>effects.json</code></td><td>Shop prices, quests, rights per rank, sounds and particles</td></tr>
     </table>
-    <p>Example quest definition:</p>
-    <pre><code>{
-  "id": "daily_mine_50",
-  "name": "Mine 50 Blocks",
-  "type": "MINE_BLOCKS",
-  "target": 50,
-  "reward": 200,
-  "daily": true
-}</code></pre>
-
-    <h2 id="luckyblocks">Lucky Blocks</h2>
-    <p>Edit <code>lucky_blocks.json</code> to configure rewards. Supported types: <code>COINS</code>, <code>ITEM</code>, <code>NOTHING</code>.</p>
-    <pre><code>{
-  "chance": 0.5,
-  "rewards": [
-    { "type": "COINS", "amount": 500, "weight": 30, "message": "You found 500 coins!" },
-    { "type": "COINS", "amount": 5000, "weight": 5, "message": "MEGA JACKPOT! 5,000 coins!" },
-    { "type": "ITEM", "itemId": "Ore_Diamond", "amount": 1, "weight": 10, "message": "You found a diamond!" },
-    { "type": "NOTHING", "weight": 20, "message": "Better luck next time!" }
-  ]
-}</code></pre>
-
-    <h2 id="scoreboard">Scoreboard</h2>
-    <p>The scoreboard is built-in and shows automatically when a player joins the OneBlock world. It displays:</p>
-    <ul>
-      <li><strong>Island Level</strong> -- Calculated from blocks + prestige + tier</li>
-      <li><strong>Phase</strong> -- Current phase name</li>
-      <li><strong>Blocks</strong> -- Total blocks mined + progress to next phase</li>
-      <li><strong>Money</strong> -- Player balance with separator formatting</li>
-      <li><strong>Prestige</strong> -- Current prestige level</li>
-      <li><strong>Fly Timer</strong> -- Minutes and seconds remaining (if active)</li>
-      <li><strong>Combo</strong> -- Current combo streak and multiplier (if >= 5)</li>
-      <li><strong>Quest</strong> -- Active quest name and progress</li>
-      <li><strong>Border Warning</strong> -- Shows distance when near island edge</li>
-    </ul>
-    <p>The scoreboard refreshes every second automatically.</p>
+    <p>Quests have 7 types (mine, sell, earn, kill, reach a phase, upgrade, prestige) and all of them count. Daily quests change at the hour set in <code>quests.json</code>.</p>
 
     <h2 id="faq">FAQ</h2>
-    <h3>The void world doesn't create?</h3>
-    <p>Make sure the server has write access to the worlds folder. Check <code>config.json</code> for the <code>worldName</code> setting.</p>
-    <h3>Can I add more phases?</h3>
-    <p>Yes! Edit <code>phases.json</code> and add new entries with a higher threshold. Reload with <code>/ob reload</code>.</p>
-    <h3>Can multiple players play simultaneously?</h3>
-    <p>Yes. Each player gets their own island on a grid spaced 1000 blocks apart (configurable). They can also form teams.</p>
-    <h3>How does prestige work?</h3>
-    <p>When you complete the final phase, use <code>/ob prestige</code> to reset your island. You keep your team but get a permanent sell multiplier bonus.</p>
-    <h3>Items don't appear in shop?</h3>
-    <p>Make sure the <code>itemId</code> in <code>shop.json</code> matches a valid Hytale item ID. Check with <code>/give</code> to verify the item exists.</p>
+    <h3>Can I keep my own phases?</h3>
+    <p>Yes. A phases.json you changed is kept when you update from 1.x. The 2.0 phases are written next to it as <code>phases.default.json</code>.</p>
+    <h3>Do I need PerfectEconomy?</h3>
+    <p>No. OneBlock has its own money. If PerfectEconomy, Ecotale or EliteEssentials is installed, it is used instead.</p>
+    <h3>Where did my auction listings go after installing PerfectShop?</h3>
+    <p>They are still there. Use <code>/ob auction my</code>, <code>cancel</code> and <code>claim</code>; new listings go through <code>/ah</code>.</p>
+    <h3>A file was not loaded, what happened?</h3>
+    <p>A file the plugin cannot read is never overwritten. A copy is kept next to it and the console tells you which one.</p>
   </main>
 </div>
-<footer><p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> -- Perfect Plugins 2026</p></footer>
+
+<footer>
+  <p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> — Perfect Plugins 2026</p>
+</footer>
 </body>
 </html>
