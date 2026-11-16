@@ -25,106 +25,185 @@
       <li><a href="#server-player">Server &amp; Player Waystones</a></li>
       <li><a href="#discovery">Discovery</a></li>
       <li><a href="#travel-menu">Travel Menu</a></li>
-      <li><a href="#settings-menu">Settings Menu</a></li>
-      <li><a href="#variants">Variants &amp; Colors</a></li>
+      <li><a href="#settings-menu">Settings Window</a></li>
+      <li><a href="#costs">Costs, Cooldown &amp; Warmup</a></li>
+      <li><a href="#variants">The 62 Waystones</a></li>
+      <li><a href="#crafting">Crafting</a></li>
+      <li><a href="#admin">Admin Panel</a></li>
       <li><a href="#cross-world">Cross-World Travel</a></li>
       <li><a href="#commands">Commands</a></li>
       <li><a href="#permissions">Permissions</a></li>
       <li><a href="#config">Configuration</a></li>
+      <li><a href="#updating">Updating from 1.x</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
   </aside>
   <main class="wiki-content">
     <h1 id="overview">PerfectWaystones</h1>
-    <p>Place waystone blocks around your world and fast travel between the ones you have discovered. Admins set up server waystones available to everyone, while players build their own public or private network. Includes a travel menu, a settings menu, per-player discovery and JSON persistence.</p>
+    <p>Place waystones around your world, discover them and travel between them. Admins set up server waystones for everyone, players place their own, public or private. Travel can cost Waystone Orbs or money, wait a few seconds and have a cooldown. Found waystones show on the world map. There are 62 waystones in 10 styles.</p>
 
     <table>
-      <tr><th>Version</th><td>1.0.0</td></tr>
+      <tr><th>Version</th><td>2.0.0</td></tr>
       <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
-      <tr><th>Java</th><td>21+</td></tr>
-      <tr><th>Compatibility</th><td>Hytale Update 5 (Pre-Release 5)</td></tr>
+      <tr><th>Compatibility</th><td>Hytale Update 7 (server 0.7.6)</td></tr>
       <tr><th>Dependencies</th><td>None</td></tr>
-      <tr><th>Languages</th><td>EN, FR, ES, DE, IT</td></tr>
+      <tr><th>Optional</th><td>PerfectEconomy, Ecotale or EliteEssentials for money prices</td></tr>
+      <tr><th>Languages</th><td>English, French, Spanish, Portuguese (Brazil), Russian, Ukrainian, Simplified Chinese (each player reads his own game language)</td></tr>
     </table>
     <p><a href="https://builtbybit.com/resources/perfectwaystones.109684/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Buy on BuiltByBit</a></p>
 
     <h2 id="installation">Installation</h2>
     <ol>
-      <li>Drop <code>PerfectWaystones-1.0.0.jar</code> in <code>UserData/Mods/</code></li>
-      <li>Start the server</li>
-      <li>Use <code>/pws give</code> to get a waystone block</li>
-      <li>Place it, then use it to start travelling</li>
+      <li>Stop the server and put <code>PerfectWaystones-2.0.0.jar</code> in your mods folder (in place of the old jar if you are updating).</li>
+      <li>Start the server.</li>
+      <li>Type <code>/pws give blue</code> and place the waystone. Its settings window opens.</li>
+      <li>Place a second one somewhere else and use it (F) to start travelling.</li>
     </ol>
 
     <h2 id="how-it-works">How It Works</h2>
     <ol>
-      <li>Get a waystone with <code>/pws give</code> (add a color, e.g. <code>/pws give blue</code>) and place it.</li>
-      <li>Admins create <strong>server waystones</strong> for everyone; players create their own <strong>personal</strong> ones.</li>
-      <li>Walk up to a waystone and use it to <strong>discover</strong> it and open the travel menu.</li>
-      <li>Pick any discovered waystone and <strong>teleport</strong> instantly.</li>
+      <li>Get a waystone with <code>/pws give</code> (add a name, e.g. <code>/pws give red_oak</code>) or craft it, and place it.</li>
+      <li>Admins create <strong>server waystones</strong> for everyone; players create their own.</li>
+      <li>Press <strong>F</strong> on a waystone to find it and open the travel menu.</li>
+      <li>Pick any waystone you can reach and travel.</li>
     </ol>
 
     <h2 id="server-player">Server &amp; Player Waystones</h2>
     <ul>
-      <li><strong>Server waystones</strong>: placed by an admin (with <code>perfectwaystones.admin</code>). Available to everyone once discovered.</li>
-      <li><strong>Player waystones</strong>: placed by a player, owned by that player, managed from the settings menu.</li>
+      <li><strong>Server waystones</strong>: placed by an admin (<code>perfectwaystones.admin</code>), who chooses in the settings window whether a waystone is a server waystone or his own. Visible to everyone.</li>
+      <li><strong>Player waystones</strong>: placed by a player, owned by him, public or private, managed from the settings window. Player waystones are capped at 10 orbs and 300 seconds of cooldown (config.json) so nobody can lock visitors out.</li>
+      <li>You can limit how many waystones a player may place, and give ranks their own limit (see Configuration).</li>
+      <li>Only the owner and admins can break a waystone. A stone waystone is broken with a pickaxe, an oak one with an axe.</li>
     </ul>
 
     <h2 id="discovery">Discovery</h2>
-    <p>Players unlock a waystone by visiting it once. Every player keeps their own discovery list, so a waystone only appears in the travel menu after it has been discovered. Server waystones are visible to all, an owner always sees their own, public waystones appear once discovered, and private waystones are owner-only.</p>
+    <p>Every player keeps his own list of found waystones. A "Waystone discovered" title shows when you find one. Public player waystones appear once found; private ones are for their owner only. Server waystones are visible to everyone unless <code>serverWaystonesNeedDiscovery</code> is on (off by default). Found waystones show on the world map (<code>showOnMap</code>).</p>
 
     <h2 id="travel-menu">Travel Menu</h2>
-    <p>Opened when you use a waystone. Lists every destination you can travel to, paginated. Select one and you are teleported one block above the target so you never spawn inside the block.</p>
+    <p>Opened with F on a waystone. Filters on the left: All, Favorites, Mine, Server and one entry per world. Search and sort (nearest first or A to Z) on top, eight destinations per page. Each row shows the colour of the waystone, its distance (or its world), the trip cost and the cooldown. A destination you cannot reach right now is greyed out and says why: cooldown, missing orbs or money, world not loaded.</p>
+    <p>You arrive in front of the waystone, looking at it, on free ground, whatever its height.</p>
 
-    <h2 id="settings-menu">Settings Menu</h2>
-    <p>Opened when you place a waystone (or use one you own). Lets the owner:</p>
+    <h2 id="settings-menu">Settings Window</h2>
+    <p>Opens when you place a waystone, and from the Settings button of the waystone you stand at (owner and admins). It has the name (24 characters at most), public or private, orb cost and cooldown with + and - buttons, how many players found it, and <strong>Pick up waystone</strong>, which gives the block back. Admins also set the money price and the server toggle.</p>
+
+    <h2 id="costs">Costs, Cooldown &amp; Warmup</h2>
     <ul>
-      <li><strong>Rename</strong> the waystone</li>
-      <li>Toggle <strong>public / private</strong></li>
-      <li><strong>Delete</strong> the waystone</li>
+      <li><strong>Orbs</strong>: each waystone can ask for Waystone Orbs per trip.</li>
+      <li><strong>Money</strong>: optional price per waystone, set by admins. Paid with PerfectEconomy, Ecotale or EliteEssentials when one is installed, otherwise with an item (gold bars by default).</li>
+      <li><strong>Cooldown</strong>: per waystone, in seconds. Leaving the server does not reset it.</li>
+      <li><strong>Warmup</strong>: <code>warmupSeconds</code> for the whole server (0 by default). A countdown "TRAVELLING TO" shows under the crosshair. Moving or taking a hit cancels the trip.</li>
+    </ul>
+    <p>Orbs and money are taken when you really leave, after the warmup. A cancelled trip costs nothing, and starting a second trip cancels the first.</p>
+
+    <h2 id="variants">The 62 Waystones</h2>
+    <p>10 styles. Each waystone glows in its own colour at night. The 8 new families are animated at rest, and each has its own collision box (from 1.4 to 3 blocks high) and its own light.</p>
+    <table>
+      <tr><th>Style</th><th>Waystones</th><th>Look</th></tr>
+      <tr><td>Classic stone</td><td>10: Blue, Cyan, Green, Light Green, Lime, Orange, Red, Sky Blue, Topaz, Yellow</td><td>Dark stone pillar with a glowing carved core</td></tr>
+      <tr><td>Classic oak base</td><td>11: the same ten, plus Pink</td><td>Same pillar on an oak base</td></tr>
+      <tr><td>Floating crystal</td><td>6: Amethyst, Emerald, Ruby, Sapphire, Topaz, Diamond</td><td>A cut gem floats and turns above a chalice base</td></tr>
+      <tr><td>Northern cairn</td><td>5: Frost, Basalt, Dawn, Lichen, Spectral</td><td>Stacked pebbles with carved runes and a small aurora</td></tr>
+      <tr><td>Rune obelisk</td><td>5: Granite, Sandstone, Obsidian, Marble, Basalt</td><td>A tall monolith with a turning ring of runes</td></tr>
+      <tr><td>Sea shrine</td><td>5: Nacre, Rose, Azure, Abyss, Golden</td><td>A shell and a pearl on a pole</td></tr>
+      <tr><td>Forest totem</td><td>5: Oak, Birch, Maple, Ebony, Cherry</td><td>A carved guardian with glowing eyes, moving leaves</td></tr>
+      <tr><td>Lantern post</td><td>5: Ash, Burnt, Oak, Pine, Walnut</td><td>A wooden post with a swaying lantern</td></tr>
+      <tr><td>Gear pillar</td><td>5: Black Iron, Brass, Copper, Steel, Verdigris</td><td>Turning gears and gauges</td></tr>
+      <tr><td>Travel brazier</td><td>5: Amethyst, Azure, Crimson, Emerald, Gold</td><td>A magic flame in a stone cup</td></tr>
+    </table>
+    <p>Only these 62 count as waystones: a block of another mod with "Waystone" in its name does not. <code>/pws give</code> knows them all: <code>blue</code>, <code>red_oak</code>, <code>crystal_ruby</code>, <code>cairn_frost</code>, <code>pillar_black_iron</code>...</p>
+
+    <h2 id="crafting">Crafting</h2>
+    <ul>
+      <li><strong>Waystone Orb</strong>: 1 Void Essence + 1 Life Essence = 4 orbs, at a workbench.</li>
+      <li><strong>Classic waystone</strong> (stone or oak): 2 Smooth Stone Brick Half + 10 Smooth Stone Brick + 10 Void Essence, at a workbench.</li>
+      <li><strong>New families</strong>: each has a recipe in its own theme (gems, ice, rune shards, rope and shells, tree sap, an iron lantern, iron and copper bars, charcoal) plus 10 Void Essence, at a workbench.</li>
     </ul>
 
-    <h2 id="variants">Variants &amp; Colors</h2>
-    <p>21 waystone variants: 11 colors (Blue, Cyan, Green, Lightgreen, Lime, Orange, Pink, Red, Skyblue, Topaze, Yellow) plus an oak finish. Every variant has an <strong>emissive core</strong> that glows in the dark so waystones stand out at night.</p>
+    <h2 id="admin">Admin Panel</h2>
+    <p><code>/pws admin</code> has three tabs:</p>
+    <ul>
+      <li><strong>Waystones</strong>: every waystone, private ones too, with filters (All, Server, Players, Private, Missing) and search. Go there for free, edit or delete any of them (with a confirmation), check for waystones whose block is gone and remove them.</li>
+      <li><strong>Settings</strong>: config.json edited in game, with Revert and Save and a line that says "Unsaved changes." or "Same as the file on the server."</li>
+      <li><strong>Tools</strong>: pick a family, then the waystone to give yourself, or orbs; reload the files.</li>
+    </ul>
 
     <h2 id="cross-world">Cross-World Travel</h2>
-    <p>Waystones store their own world, so you can travel between waystones located in different worlds, not only the one you are standing in.</p>
+    <p>Waystones store their own world, so you can travel between worlds. A destination whose world is not loaded is refused instead of sending you to the same coordinates in your current world.</p>
 
     <h2 id="commands">Commands</h2>
+    <p>Players have no command: they place a waystone and press F. <code>/pws</code> is for admins; <code>give</code> and <code>orb</code> also work from the console (quest and shop rewards).</p>
     <table>
       <tr><th>Command</th><th>Description</th></tr>
-      <tr><td><code>/pws give &lt;color&gt;</code></td><td>Get a waystone block (optional color)</td></tr>
-      <tr><td><code>/pws list</code></td><td>List every waystone on the server</td></tr>
-      <tr><td><code>/pws reload</code></td><td>Reload the configuration</td></tr>
-      <tr><td><code>/pws setlang &lt;code&gt;</code></td><td>Set the language (EN, FR, ES, DE, IT)</td></tr>
+      <tr><td><code>/pws admin</code></td><td>Open the admin panel</td></tr>
+      <tr><td><code>/pws give &lt;waystone&gt; [player] [amount]</code></td><td>Give a waystone (blue, red_oak, crystal_ruby, cairn_frost, pillar_black_iron...). A wrong name lists them, family by family</td></tr>
+      <tr><td><code>/pws orb [amount] [player]</code></td><td>Give Waystone Orbs</td></tr>
+      <tr><td><code>/pws list</code></td><td>List every waystone of the server</td></tr>
+      <tr><td><code>/pws reload</code></td><td>Reload config.json and the data files</td></tr>
+      <tr><td><code>/pws setlang</code></td><td>Only says that the plugin follows each player's game language</td></tr>
       <tr><td><code>/pws help</code></td><td>Show help</td></tr>
     </table>
 
     <h2 id="permissions">Permissions</h2>
+    <p><code>use</code> and <code>place</code> are given to everyone; take them away with <code>-perfectwaystones.use</code> or <code>-perfectwaystones.place</code>.</p>
     <table>
       <tr><th>Permission</th><th>Description</th></tr>
-      <tr><td><code>perfectwaystones.admin</code></td><td>Place server waystones, break any waystone, and use admin commands</td></tr>
+      <tr><td><code>perfectwaystones.use</code></td><td>Use waystones (everyone by default)</td></tr>
+      <tr><td><code>perfectwaystones.place</code></td><td>Place waystones (everyone by default)</td></tr>
+      <tr><td><code>perfectwaystones.admin</code></td><td>/pws, admin panel, server waystones, break and edit any waystone, no limits</td></tr>
+      <tr><td><code>perfectwaystones.bypass.cost</code></td><td>Travel without orbs or money</td></tr>
+      <tr><td><code>perfectwaystones.bypass.cooldown</code></td><td>No cooldown</td></tr>
+      <tr><td><code>perfectwaystones.bypass.warmup</code></td><td>No warmup</td></tr>
+      <tr><td><code>perfectwaystones.limit.&lt;rank&gt;</code></td><td>The waystone limit of that rank</td></tr>
     </table>
 
     <h2 id="config">Configuration</h2>
-    <p>File: <code>UserData/Saves/MODDING/mods/KatsuyaTV_PerfectWaystones/config.json</code></p>
+    <p>File: <code>config.json</code> in the plugin's data folder (<code>mods/KatsuyaTV_PerfectWaystones</code>). Waystones are in <code>waystones.json</code>; discoveries and favorites are per player in the same folder.</p>
     <pre><code>{
-  "lang": "EN"
+  "dataVersion": 2,
+  "warmupSeconds": 0,
+  "cancelOnMove": true,
+  "cancelOnHit": true,
+  "effects": true,
+  "particle": "Teleport",
+  "sound": "SFX_Portal_Neutral_Teleport_Local",
+  "orbItemId": "Waystonium_Orb",
+  "serverWaystonesNeedDiscovery": false,
+  "showOnMap": true,
+  "playerWaystones": {
+    "maxOrbCost": 10,
+    "maxCooldownSeconds": 300,
+    "limit": 0,
+    "limitsByRank": { "vip": 10 }
+  },
+  "economy": {
+    "provider": "auto",
+    "itemCurrency": { "itemId": "Ingredient_Bar_Gold", "displayName": "Gold", "symbol": "G" }
+  }
 }</code></pre>
-    <p>Waystones are stored in <code>waystones.json</code> and per-player discoveries in <code>discovery/&lt;uuid&gt;.json</code> inside the same folder.</p>
+    <p><code>limit</code> 0 = no limit. <code>limitsByRank</code> pairs with the permission <code>perfectwaystones.limit.&lt;rank&gt;</code>. <code>economy.provider</code> is <code>auto</code>, <code>perfecteconomy</code>, <code>ecotale</code>, <code>eliteessentials</code> or <code>items</code>.</p>
+
+    <h2 id="updating">Updating from 1.x</h2>
+    <ul>
+      <li>Waystones, discoveries and favorites are kept. On the first start the data folder is copied to <code>backup-1.x-&lt;date&gt;</code> and config.json is rewritten with all the new settings.</li>
+      <li>Player waystones above the new limits (10 orbs, 300 seconds) are brought down to them; the console says how many.</li>
+      <li>German and Italian are gone: the game does not have them. The old <code>lang</code> setting is no longer used.</li>
+    </ul>
 
     <h2 id="faq">FAQ</h2>
     <h3>Why can't I see a waystone in the travel menu?</h3>
-    <p>You have to discover it first by visiting it. Private waystones you do not own never appear.</p>
+    <p>Player waystones have to be found first, by pressing F on them. Private waystones you do not own never appear.</p>
 
     <h3>Can players place their own waystones?</h3>
-    <p>Yes. Anyone can place a waystone, which becomes a personal waystone they own. Only admins (<code>perfectwaystones.admin</code>) create server waystones available to everyone.</p>
+    <p>Yes, unless you take away <code>perfectwaystones.place</code>. Only admins create server waystones.</p>
 
     <h3>Who can break a waystone?</h3>
     <p>The owner, or an admin. Server waystones can only be removed by an admin.</p>
 
-    <h3>Does travel work across different worlds?</h3>
-    <p>Yes, as long as the destination world is loaded.</p>
+    <h3>I broke a waystone with a world edit and it is still in the list.</h3>
+    <p>It is removed the first time someone tries to travel to it. You can also use the Missing filter of the admin panel and remove them all.</p>
+
+    <h3>How do I give waystones or orbs as a quest reward?</h3>
+    <p>Run <code>pws give &lt;waystone&gt; &lt;player&gt; &lt;amount&gt;</code> or <code>pws orb &lt;amount&gt; &lt;player&gt;</code> from any plugin that can run a console command.</p>
   </main>
 </div>
 <footer><p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> -- Perfect Plugins 2026</p></footer>
