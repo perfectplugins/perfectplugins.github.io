@@ -7,10 +7,9 @@
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
-
 <nav>
   <div class="nav-inner">
-    <a href="../../" class="nav-logo"><span>Perfect</span>Plugins</a>
+    <a href="../../" class="nav-logo"><img src="../../assets/img/logo.png" alt="Perfect Plugin Series" class="nav-logo-img"><span>Perfect</span>Plugins</a>
     <ul class="nav-links">
       <li><a href="../../">Home</a></li>
       <li><a href="../../#plugins">Plugins</a></li>
@@ -23,127 +22,170 @@
   <aside class="wiki-sidebar">
     <h3>PerfectSellChest</h3>
     <ul>
-      <li><a href="#overview" class="active">Overview</a></li>
+      <li><a href="#overview">Overview</a></li>
       <li><a href="#installation">Installation</a></li>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#commands">Commands</a></li>
-      <li><a href="#config">Configuration</a></li>
+      <li><a href="#upgrade">Updating from 1.x</a></li>
+      <li><a href="#chests">The chests</a></li>
+      <li><a href="#selling">How selling works</a></li>
+      <li><a href="#menus">Player menu and admin panel</a></li>
+      <li><a href="#economy">Money and other plugins</a></li>
+      <li><a href="#prices">Prices</a></li>
       <li><a href="#languages">Languages</a></li>
-      <li><a href="#economy">Economy backends</a></li>
-      <li><a href="#prices">Sell prices</a></li>
+      <li><a href="#commands">Commands</a></li>
+      <li><a href="#permissions">Permissions</a></li>
+      <li><a href="#config">Configuration</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
   </aside>
 
   <main class="wiki-content">
     <h1 id="overview">PerfectSellChest</h1>
-    <p>Automatic item selling from chests. Place a SellChest, items sell every 30 seconds. No commands, no menus, no hassle. Translated in 6 languages and compatible with PerfectEconomy or EliteEssentials Economy.</p>
-
     <table>
-      <tr><th>Version</th><td>1.2.0</td></tr>
-      <tr><th>Platform</th><td>Hytale Server Plugin</td></tr>
-      <tr><th>Hytale</th><td>Update 5 (Pre-Release 5)</td></tr>
-      <tr><th>Java</th><td>21</td></tr>
-      <tr><th>Dependencies</th><td>One of: PerfectEconomy, EliteEssentials Economy</td></tr>
+      <tr><th>Version</th><td>2.0.0</td></tr>
+      <tr><th>Platform</th><td>Hytale Server Plugin (Update 7)</td></tr>
+      <tr><th>Languages</th><td>English, French, Spanish, Portuguese (Brazil), Russian, Ukrainian and Simplified Chinese, each player in his game language</td></tr>
+      <tr><th>Dependencies</th><td>None (PerfectEconomy, Ecotale, EliteEssentials and PerfectShop optional)</td></tr>
     </table>
-    <p><a href="https://builtbybit.com/resources/perfectsellchest.108437/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Buy on BuiltByBit</a></p>
+    <p>Place a Sell Chest, fill it, and it sells what is inside every 30 seconds. The money goes to the player who placed the chest. The money is paid first and only then do the items leave the chest, so nothing is lost. It works with an economy plugin or without one.</p>
+    <p><a href="https://builtbybit.com/resources/perfect-auto-sell-chest.95956/" style="display:inline-block;padding:0.5rem 1.5rem;background:#ff6b00;color:#fff;border-radius:8px;font-weight:600;margin-top:0.5rem;">Buy on BuiltByBit</a></p>
 
     <h2 id="installation">Installation</h2>
     <ol>
-      <li>Drop <code>PerfectSellChest-1.2.0.jar</code> in <code>UserData/Mods/</code></li>
-      <li>Install one of: PerfectEconomy, EliteEssentials</li>
-      <li>Start the server</li>
-      <li>Edit the auto-generated <code>config.json</code> to pick your economy and language</li>
-      <li>Place a SellChest in-world, run <code>/sellchest</code> next to it to register</li>
+      <li>Stop the server and put <code>PerfectSellChest-2.0.0.jar</code> in your server's <code>mods/</code> folder, in place of the old jar if you are updating</li>
+      <li>Start the server. <code>config.json</code> and <code>prices.json</code> are created, with a starter price list</li>
+      <li>Give yourself chests with <code>/sellchest give &lt;you&gt; 2</code>, or craft them at the Furniture bench</li>
+      <li>Place a chest, put items in it and wait 30 seconds</li>
     </ol>
 
-    <h2 id="features">Features</h2>
+    <h2 id="upgrade">Updating from 1.x</h2>
     <ul>
-      <li><strong>Auto-sell</strong> every 30 seconds, no menus</li>
-      <li><strong>Two chest tiers</strong>: 1x and 2x multiplier</li>
-      <li><strong>Per-player limits</strong> on how many SellChests one player can own</li>
-      <li><strong>Toggleable notifications</strong> per player (<code>/sellchest notify</code>)</li>
-      <li><strong>Live holograms</strong> showing total earned + multiplier</li>
-      <li><strong>6 languages</strong> with live switching</li>
-      <li><strong>Economy bridges</strong> with reflection (no hard dependency)</li>
+      <li><strong><code>/sellchest</code> now opens the menu.</strong> In 1.x it claimed the chest next to you. That is now <code>/sellchest register</code>, or the button "Claim the chest next to me" in the menu. Chests you place are still registered on their own, so the command is only for a chest that was there before the plugin was installed, or pasted with a prefab.</li>
+      <li><code>/sellchest setlang</code> is gone: every player reads the plugin in the language of his game.</li>
+      <li>The conversion is automatic and happens once, on the first start. The 1.x files are copied to <code>backup-1.2</code> first. Chests, earnings, limits, muted players and your prices are kept. The sell prices of the old PerfectEconomy shop are copied into the price list.</li>
+      <li>Owner protection is switched <strong>off</strong> on a server coming from 1.x, so nothing changes for your players, and <strong>on</strong> on a new server. Each part has its own switch in the settings.</li>
+      <li>Everybody can use <code>/sellchest</code> now. In 1.x only operators could.</li>
+      <li>A file with a typo in it no longer stops the server: it is set aside as <code>.broken</code> and the plugin starts with defaults.</li>
     </ul>
+
+    <h2 id="chests">The chests</h2>
+    <ul>
+      <li><strong>Sell Chest</strong>: a merchant's chest in oak and brass, with a coin slot and a coin on the lid, a pair of scales on the front and a purse on the side. Recipe at the Furniture bench: 4 hardwood planks, 2 gold bars, 2 iron bars.</li>
+      <li><strong>Sell Chest x2</strong>: ebony and gold with sapphire padding, two coins, two purses and a glowing sapphire, easy to tell from the simple chest in your hand, in your bag and in the world. Recipe: 1 Sell Chest, 6 gold bars, 1 ruby. It pays double (<code>x2Multiplier</code>).</li>
+      <li>Both chests are models made for the plugin, with their own animations: at rest the scales sway and a glint runs over the coin, the lid opens and shuts, and the chest goes back to rest once closed.</li>
+      <li>Admins can give chests with <code>/sellchest give &lt;player&gt; [x2] [amount]</code>. A setting turns crafting off, for servers that sell chests in a shop or a crate.</li>
+      <li>Only the owner can open and break his sell chests; staff with <code>perfectsellchest.bypass</code> or <code>perfectsellchest.admin</code> always can. Two switches in the settings.</li>
+      <li>A hologram above each chest, clear of the open lid, shows the owner and what it earned, in the language chosen by the admin.</li>
+      <li>Each player has a limit of chests (5 by default). Your own limit for a player is set in the admin panel; ranks use <code>perfectsellchest.limit.&lt;n&gt;</code> or <code>perfectsellchest.limit.unlimited</code>.</li>
+    </ul>
+
+    <h2 id="selling">How selling works</h2>
+    <ul>
+      <li>Every 30 seconds (setting, 5 to 3600) each chest is worked out: the money is paid first, then the items leave the chest. If the economy refuses the payment, the items stay, the owner gets one message, and the chest tries again at the next round.</li>
+      <li>An item with no price stays in the chest. The owner gets one message naming it, and the chest shows "1 item with no price" in the menu.</li>
+      <li>Worn tools and armor are paid by durability. Broken ones stay in the chest.</li>
+      <li>Items with custom data (rolled weapons, bank notes) stay in the chest (<code>keepItemsWithData</code>).</li>
+      <li>The money goes to the owner even when he is offline. When he comes back, one line tells him what his chests earned while he was away.</li>
+      <li>Sale messages are grouped: one per round for all your chests. Each player picks chat, pop-up or off with <code>/sellchest notify</code> or in the menu.</li>
+      <li>With gold bars as money, a gold bar that does not fit in the owner's bag waits for him: Collect in <code>/sellchest</code>. Gold bars put in a chest are never sold.</li>
+    </ul>
+
+    <h2 id="menus">Player menu and admin panel</h2>
+    <h3>/sellchest</h3>
+    <ul>
+      <li><strong>My chests</strong>: each chest, where it is, what it earned, its last sale, its state, and the items nobody buys. "Forget this chest" for a chest in a deleted world, and "Claim the chest next to me".</li>
+      <li><strong>Prices</strong>: what sells and for how much, in a Sell Chest and in a Sell Chest x2, with search and sorting.</li>
+      <li><strong>History</strong>: your last 30 sales and the last 7 days.</li>
+    </ul>
+    <h3>/sellchest admin</h3>
+    <ul>
+      <li><strong>Overview</strong>: chests, money paid today, in 7 days and in total, top sellers, and things to check (items with an unknown id, PerfectShop counting in another money).</li>
+      <li><strong>Chests</strong>: every chest of the server, with search, teleport and "Remove from list".</li>
+      <li><strong>Prices</strong>: edit the price list with an item picker, import the sell prices of PerfectShop, go back to the starter list.</li>
+      <li><strong>Limits</strong>: the default limit, and players with their own limit, picked by name.</li>
+      <li><strong>Settings</strong>: sell interval, x2 multiplier, money source, /shop cap, protection, crafting, holograms and their language, default message mode.</li>
+    </ul>
+
+    <h2 id="economy">Money and other plugins</h2>
+    <p>The money comes from the first of these that is installed: <strong>PerfectEconomy</strong>, <strong>Ecotale</strong>, <strong>EliteEssentials</strong>. If none is, chests pay in items: <strong>gold bars</strong> by default (<code>economy.itemCurrency</code>). Set <code>economy.provider</code> to <code>perfecteconomy</code>, <code>ecotale</code>, <code>eliteessentials</code> or <code>items</code> to force one. With PerfectEconomy 2 you choose the currency the chests pay in (<code>perfectEconomyCurrency</code>).</p>
+    <p>Every amount (menus, chat, pop-up, holograms, history) uses the symbol and the decimals of the economy in use, or the symbol of the item currency, and is written the way the reader's language writes numbers (1,250 in English, 1 250 in French, 1.250 in Spanish).</p>
+    <h3>PerfectShop</h3>
+    <p>With PerfectShop installed, a chest never pays more than 90 % of what the <code>/shop</code> asks for the same item, the x2 chest included (<code>shopCap.factor</code>, between 0.1 and 0.99). Buying in the shop and selling in a chest can no longer make money. The admin panel can import the sell prices of PerfectShop. If PerfectShop counts in another money than the chests, there is no cap and no import, and the admin overview says so.</p>
+
+    <h2 id="prices">Prices</h2>
+    <p>A new server gets a starter list of 37 common items: ores, bars, gems, crops, wood, stone, hides and food. With gold bars as money the starter prices are divided by 10 (<code>itemCurrencyPriceDivider</code>), never below 0.01, and the fractions of a bar add up for each owner and are paid in whole bars.</p>
+    <p>The list is <code>prices.json</code>, a price per unit for each item id. It is easier to change it in game with <code>/sellchest admin</code>, Prices tab, which uses an item picker. Items not listed are not bought.</p>
+<pre><code>{
+  "Ore_Iron": 4,
+  "Ingredient_Bar_Gold": 50,
+  "Plant_Crop_Pumpkin_Item": 6
+}</code></pre>
+
+    <h2 id="languages">Languages</h2>
+    <p>Menus and messages follow the language of each player's game; there is no language command. The plugin ships English, French, Spanish, Portuguese (Brazil), Russian, Ukrainian and Simplified Chinese. The hologram above a chest is seen by everybody, so it uses one language chosen by the admin (<code>holograms.language</code> in <code>config.json</code>, or the Settings tab). Item names come from the game.</p>
 
     <h2 id="commands">Commands</h2>
     <table>
       <tr><th>Command</th><th>Description</th></tr>
-      <tr><td><code>/sellchest</code></td><td>Register the chest you are standing next to</td></tr>
-      <tr><td><code>/sellchest notify</code></td><td>Toggle sell notifications for yourself</td></tr>
-      <tr><td><code>/sellchest info</code></td><td>Show your chest count and notify state</td></tr>
-      <tr><td><code>/sellchest setlang &lt;code&gt;</code></td><td>Change the language for everyone (admin)</td></tr>
-      <tr><td><code>/sellchest help</code></td><td>Show all subcommands</td></tr>
+      <tr><td><code>/sellchest</code></td><td>Open the menu: My chests, Prices, History</td></tr>
+      <tr><td><code>/sellchest register</code></td><td>Claim the free sell chest nearest to you</td></tr>
+      <tr><td><code>/sellchest notify [chat|popup|off]</code></td><td>Choose how sale messages reach you. Without a word it goes to the next mode</td></tr>
+      <tr><td><code>/sellchest info</code></td><td>Your chests, your limit, what you earned today and your message mode</td></tr>
+      <tr><td><code>/sellchest help</code></td><td>Show the commands</td></tr>
+      <tr><td><code>/sellchest admin</code></td><td>The admin panel</td></tr>
+      <tr><td><code>/sellchest give &lt;player&gt; [x2] [amount]</code></td><td>Give sell chests (admin)</td></tr>
+      <tr><td><code>/sellchest reload</code></td><td>Reload config.json and prices.json (admin)</td></tr>
+    </table>
+
+    <h2 id="permissions">Permissions</h2>
+    <table>
+      <tr><th>Permission</th><th>Description</th></tr>
+      <tr><td><code>perfectsellchest.use</code></td><td>Use <code>/sellchest</code>. Every player has it by default</td></tr>
+      <tr><td><code>perfectsellchest.admin</code></td><td>Admin panel, give, reload</td></tr>
+      <tr><td><code>perfectsellchest.bypass</code></td><td>Open and break the chests of other players</td></tr>
+      <tr><td><code>perfectsellchest.limit.&lt;n&gt;</code></td><td>Allow n chests. It can only raise the limit</td></tr>
+      <tr><td><code>perfectsellchest.limit.unlimited</code></td><td>No limit on chests</td></tr>
     </table>
 
     <h2 id="config">Configuration</h2>
-    <p>Located at <code>UserData/Saves/&lt;world&gt;/mods/KatsuyaTV_PerfectSellChest/config.json</code>.</p>
-    <pre><code>{
-  "economyPlugin": "PerfectEconomy",
-  "defaultChestLimit": 5,
-  "lang": "EN",
-  "playerLimits": {}
-}</code></pre>
+    <p>Files are in the plugin's data folder. Everything can also be changed in game with <code>/sellchest admin</code>.</p>
     <table>
-      <tr><th>Field</th><th>Description</th><th>Default</th></tr>
-      <tr><td>economyPlugin</td><td>"PerfectEconomy" or "EliteEssentials"</td><td>PerfectEconomy</td></tr>
-      <tr><td>defaultChestLimit</td><td>Max SellChests per player (-1 = unlimited)</td><td>5</td></tr>
-      <tr><td>lang</td><td>Plugin language: EN, FR, ES, DE, IT, PT</td><td>EN</td></tr>
-      <tr><td>playerLimits</td><td>Per-UUID override map for chest limit</td><td>{}</td></tr>
+      <tr><th>Key in config.json</th><th>Description</th><th>Default</th></tr>
+      <tr><td><code>economy.provider</code></td><td>auto, perfecteconomy, ecotale, eliteessentials or items</td><td>auto</td></tr>
+      <tr><td><code>economy.itemCurrency</code></td><td>Item used as money (<code>itemId</code>, <code>displayName</code>, <code>symbol</code>)</td><td>Ingredient_Bar_Gold, Gold, G</td></tr>
+      <tr><td><code>perfectEconomyCurrency</code></td><td>Currency used with PerfectEconomy 2</td><td>empty (its default)</td></tr>
+      <tr><td><code>itemCurrencyPriceDivider</code></td><td>Starter prices are divided by this with item money</td><td>10</td></tr>
+      <tr><td><code>sellIntervalSeconds</code></td><td>Seconds between two sales (5 to 3600)</td><td>30</td></tr>
+      <tr><td><code>x2Multiplier</code></td><td>What the Sell Chest x2 pays compared to a Sell Chest (1 to 10)</td><td>2</td></tr>
+      <tr><td><code>defaultChestLimit</code></td><td>Chests per player (-1 = no limit)</td><td>5</td></tr>
+      <tr><td><code>playerLimits</code></td><td>Own limit by player id</td><td>empty</td></tr>
+      <tr><td><code>payWornByDurability</code></td><td>Pay worn items by durability</td><td>true</td></tr>
+      <tr><td><code>keepItemsWithData</code></td><td>Leave items with custom data in the chest</td><td>true</td></tr>
+      <tr><td><code>shopCap.enabled</code>, <code>shopCap.factor</code></td><td>Cap at a share of the /shop price</td><td>true, 0.9</td></tr>
+      <tr><td><code>protection.ownerOnlyOpen</code>, <code>ownerOnlyBreak</code></td><td>Only the owner opens / breaks his chests</td><td>true, true (false after a 1.x conversion)</td></tr>
+      <tr><td><code>crafting</code></td><td>Players can craft sell chests</td><td>true</td></tr>
+      <tr><td><code>holograms.enabled</code>, <code>holograms.language</code></td><td>Hologram above each chest and its language</td><td>true, en-US</td></tr>
+      <tr><td><code>saleMessages</code></td><td>Default mode for new players: chat, popup or off</td><td>chat</td></tr>
     </table>
-
-    <h2 id="languages">Languages</h2>
-    <p>v1.2.0 ships full translations for English, French, Spanish, German, Italian and Portuguese. English is the fallback when a key is missing in your chosen language. Diacritics are stripped because Hytale's font does not render them reliably.</p>
-    <p>Change the language permanently by editing <code>config.json</code>:</p>
-    <pre><code>"lang": "DE"</code></pre>
-    <p>Or live in-game (admin):</p>
-    <pre><code>/sellchest setlang DE</code></pre>
-    <p>Supported codes: <code>EN</code>, <code>FR</code>, <code>ES</code>, <code>DE</code>, <code>IT</code>, <code>PT</code>.</p>
-
-    <h2 id="economy">Economy backends</h2>
-    <p>PerfectSellChest auto-detects the configured economy plugin via reflection, so the jar still loads even if the chosen backend is missing (it falls back to a no-deposit "local prices" mode).</p>
-
-    <h3>PerfectEconomy</h3>
-    <p>Default. Set <code>"economyPlugin": "PerfectEconomy"</code>. Reads sell prices from PerfectEconomy's shop registry first, falls back to <code>prices.json</code> for items the shop does not list.</p>
-
-    <h3>EliteEssentials Economy</h3>
-    <p>Set <code>"economyPlugin": "EliteEssentials"</code> (or <code>"EliteEssentialsEconomy"</code>). The bridge calls EliteEssentials' public <code>EconomyAPI</code> for deposits and reads the currency symbol from its config so sell notifications use your custom currency.</p>
-    <p>EliteEssentials has no sell-price registry, so all sell prices come from your <code>prices.json</code>.</p>
-
-    <h2 id="prices">Sell prices</h2>
-    <p>The local price book is at <code>UserData/Saves/&lt;world&gt;/mods/KatsuyaTV_PerfectSellChest/prices.json</code>. Each entry is <code>itemId</code> mapped to price per unit:</p>
-    <pre><code>{
-  "Wood": 1.0,
-  "Stone": 0.5,
-  "Iron_Ingot": 5.0,
-  "Diamond": 50.0
-}</code></pre>
-    <p>The itemId must match exactly what <code>ItemStack.getItemId()</code> returns. Items not listed are simply not sold.</p>
+    <p><code>prices.json</code> holds the price of each item. <code>sellchests.json</code>, <code>players.json</code> and <code>stats.json</code> hold the chests, the players' message mode and the totals.</p>
 
     <h2 id="faq">FAQ</h2>
-
-    <h3>The plugin output is in French / Spanish-looking / a language I do not speak</h3>
-    <p>Versions before 1.2.0 were hardcoded in French. Upgrade to v1.2.0 and set <code>"lang"</code> in <code>config.json</code> to <code>EN</code>, <code>FR</code>, <code>ES</code>, <code>DE</code>, <code>IT</code> or <code>PT</code>. Or run <code>/sellchest setlang &lt;code&gt;</code> in-game.</p>
-
-    <h3>Items not selling</h3>
-    <p>Make sure you ran <code>/sellchest</code> next to the chest to register it (check <code>/sellchest info</code> for your owned count). Also verify your economy plugin is loaded and your items are listed in <code>prices.json</code>.</p>
-
-    <h3>I use EliteEssentials Economy</h3>
-    <p>Set <code>"economyPlugin": "EliteEssentials"</code> in <code>config.json</code> and restart the server. Sell prices still come from <code>prices.json</code>.</p>
-
-    <h3>Can I disable the per-player chest limit?</h3>
-    <p>Set <code>"defaultChestLimit": -1</code> in <code>config.json</code>. You can also override individual players via the <code>playerLimits</code> map.</p>
-
-    <h3>Where is the data stored?</h3>
-    <p>Registered chests are in <code>sellchests.json</code>, prices in <code>prices.json</code>, settings in <code>config.json</code> all under <code>UserData/Saves/&lt;world&gt;/mods/KatsuyaTV_PerfectSellChest/</code>.</p>
+    <h3>Items are not selling</h3>
+    <p>Check the chest in <code>/sellchest</code>: its state says "Selling", or "1 item with no price" when an item is not on the price list. Put the price in <code>/sellchest admin</code>, Prices tab. A chest that was placed before the plugin was installed has to be claimed with <code>/sellchest register</code> while you stand next to it.</p>
+    <h3>Do I need an economy plugin?</h3>
+    <p>No. Without one, chests pay in gold bars. If PerfectEconomy, Ecotale or EliteEssentials is installed, it is used, in that order.</p>
+    <h3>I used HTSkyBlock, EconomySystem or Ryukazan Economy</h3>
+    <p>These are not supported. PerfectEconomy, Ecotale and EliteEssentials are; with none of them chests pay in gold bars.</p>
+    <h3>Can a player make money by buying in the shop and selling in a chest?</h3>
+    <p>Not with PerfectShop installed: a chest pays at most 90 % of the shop price. Without PerfectShop you set the prices yourself.</p>
+    <h3>A player lost a chest after a world was deleted</h3>
+    <p>The player can use "Forget this chest" in <code>/sellchest</code>, and an admin "Remove from list". Chests in a deleted world no longer count toward the limit forever.</p>
+    <h3>A file was set aside as .broken</h3>
+    <p>The file could not be read, so the plugin kept a copy named <code>.broken</code> next to it and started with defaults. Fix the typo in the copy and put it back, or start again from the admin panel.</p>
   </main>
 </div>
 
 <footer>
-  <p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> &mdash; Perfect Plugins &copy; 2026</p>
+  <p>Made by <a href="https://github.com/katsuyatvcontact-ops">KatsuyaTV</a> — Perfect Plugins 2026</p>
 </footer>
-
 </body>
 </html>
